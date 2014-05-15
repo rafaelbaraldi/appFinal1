@@ -24,6 +24,7 @@
 		1BE8E3E5192533AD00D108C0 /* appFinal1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3E4192533AD00D108C0 /* appFinal1Tests.m */; };
 		1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */; };
 		1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */; };
+		1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3FB192544E900D108C0 /* LocalStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		1BE8E3EF1925343300D108C0 /* TelaCadastroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaCadastroViewController.h; sourceTree = "<group>"; };
 		1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaCadastroViewController.m; sourceTree = "<group>"; };
 		1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaCadastroViewController.xib; sourceTree = "<group>"; };
+		1BE8E3FA192544E900D108C0 /* LocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStore.h; sourceTree = "<group>"; };
+		1BE8E3FB192544E900D108C0 /* LocalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,7 @@
 		1BE8E3C1192533AD00D108C0 /* appFinal1 */ = {
 			isa = PBXGroup;
 			children = (
+				1BE8E3F91925449D00D108C0 /* Singleton */,
 				1BE8E3F5192539C500D108C0 /* Banco */,
 				1BE8E3F4192539B900D108C0 /* Cadastro */,
 				1BE8E3CA192533AD00D108C0 /* AppDelegate.h */,
@@ -175,6 +179,15 @@
 				1BE8E3CD192533AD00D108C0 /* appFinal1.xcdatamodeld */,
 			);
 			name = Banco;
+			sourceTree = "<group>";
+		};
+		1BE8E3F91925449D00D108C0 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				1BE8E3FA192544E900D108C0 /* LocalStore.h */,
+				1BE8E3FB192544E900D108C0 /* LocalStore.m */,
+			);
+			name = Singleton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */,
 				1BE8E3CF192533AD00D108C0 /* appFinal1.xcdatamodeld in Sources */,
 				1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */,
 				1BE8E3CC192533AD00D108C0 /* AppDelegate.m in Sources */,

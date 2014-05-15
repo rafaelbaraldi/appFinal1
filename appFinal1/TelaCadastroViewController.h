@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TelaCadastroViewController : UIViewController
+@interface TelaCadastroViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-//views
+//variaveis
+@property NSMutableArray *instrumentos;
+
+@property NSMutableArray *instrumentosQueToca;
+
+
+//Views
 @property (strong, nonatomic) IBOutlet UILabel *lblCabecalho;
 @property (strong, nonatomic) IBOutlet UILabel *lblInstrumentos;
 @property (strong, nonatomic) IBOutlet UILabel *lblEstilos;
@@ -32,17 +38,30 @@
 @property (strong, nonatomic) IBOutlet UIButton *btnInstrumentos;
 @property (strong, nonatomic) IBOutlet UIButton *btnEstilos;
 @property (strong, nonatomic) IBOutlet UIButton *btnConfirmar;
-
-
 @property (strong, nonatomic) IBOutlet UIView *viewInstrumentos;
 
 
+@property (strong, nonatomic) IBOutlet UITableView *tbInstrumentoQueToco;
 
-//Actions
+
+//view instrumentos
+@property (strong, nonatomic) IBOutlet UIView *viewPesquisarInstrumentos;
+
+//view pesquisa instrumentos
+@property (strong, nonatomic) IBOutlet UIButton *btnPesquisaVoltar;
+
+
+//Actions View Principal
 - (IBAction)btnInstrumentosClick:(id)sender;
 - (IBAction)btnEstilosClik:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *btnConfirmarClick;
+- (IBAction)btnConfirmarClick:(id)sender;
+- (IBAction)btnAdicionarInstrumentoClick:(id)sender;
 
+//Action View Instrumentos
+- (IBAction)btnInstrumentosVoltarClick:(id)sender;
+
+//Action View Pesquisa Instrumento
+- (IBAction)btnPesquisaVoltarClick:(id)sender;
 
 
 //Metodos
