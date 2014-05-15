@@ -12,16 +12,13 @@
 
 //variaveis
 @property NSMutableArray *instrumentos;
-
 @property NSMutableArray *instrumentosQueToca;
-
 
 //Views
 @property (strong, nonatomic) IBOutlet UILabel *lblCabecalho;
 @property (strong, nonatomic) IBOutlet UILabel *lblInstrumentos;
 @property (strong, nonatomic) IBOutlet UILabel *lblEstilos;
 @property (strong, nonatomic) IBOutlet UILabel *lblExemploObservacoes;
-
 
 @property (strong, nonatomic) IBOutlet UITextField *txtNome;
 @property (strong, nonatomic) IBOutlet UITextField *txtEmail;
@@ -30,9 +27,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *txtBairro;
 @property (strong, nonatomic) IBOutlet UITextField *txtObservacoes;
 
-
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segGenero;
-
 
 @property (strong, nonatomic) IBOutlet UIButton *btnLocalAtual;
 @property (strong, nonatomic) IBOutlet UIButton *btnInstrumentos;
@@ -40,16 +35,13 @@
 @property (strong, nonatomic) IBOutlet UIButton *btnConfirmar;
 @property (strong, nonatomic) IBOutlet UIView *viewInstrumentos;
 
-
-@property (strong, nonatomic) IBOutlet UITableView *tbInstrumentoQueToco;
-
-
-//view instrumentos
+//View Instrumentos
 @property (strong, nonatomic) IBOutlet UIView *viewPesquisarInstrumentos;
 
-//view pesquisa instrumentos
-@property (strong, nonatomic) IBOutlet UIButton *btnPesquisaVoltar;
+//View Pesquisa Instrumento
+@property (strong, nonatomic) IBOutlet UITableView *tbInstrumentoQueToco;
 
+@property (strong, nonatomic) IBOutlet UIButton *btnPesquisaVoltar;
 
 //Actions View Principal
 - (IBAction)btnInstrumentosClick:(id)sender;
