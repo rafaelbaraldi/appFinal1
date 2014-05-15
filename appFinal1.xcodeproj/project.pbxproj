@@ -22,6 +22,8 @@
 		1BE8E3DB192533AD00D108C0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE8E3BF192533AD00D108C0 /* CoreData.framework */; };
 		1BE8E3E3192533AD00D108C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1BE8E3E1192533AD00D108C0 /* InfoPlist.strings */; };
 		1BE8E3E5192533AD00D108C0 /* appFinal1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3E4192533AD00D108C0 /* appFinal1Tests.m */; };
+		1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */; };
+		1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		1BE8E3E0192533AD00D108C0 /* appFinal1Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "appFinal1Tests-Info.plist"; sourceTree = "<group>"; };
 		1BE8E3E2192533AD00D108C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1BE8E3E4192533AD00D108C0 /* appFinal1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = appFinal1Tests.m; sourceTree = "<group>"; };
+		1BE8E3EF1925343300D108C0 /* TelaCadastroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaCadastroViewController.h; sourceTree = "<group>"; };
+		1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaCadastroViewController.m; sourceTree = "<group>"; };
+		1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaCadastroViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +120,11 @@
 		1BE8E3C1192533AD00D108C0 /* appFinal1 */ = {
 			isa = PBXGroup;
 			children = (
+				1BE8E3F5192539C500D108C0 /* Banco */,
+				1BE8E3F4192539B900D108C0 /* Cadastro */,
 				1BE8E3CA192533AD00D108C0 /* AppDelegate.h */,
 				1BE8E3CB192533AD00D108C0 /* AppDelegate.m */,
 				1BE8E3D0192533AD00D108C0 /* Images.xcassets */,
-				1BE8E3CD192533AD00D108C0 /* appFinal1.xcdatamodeld */,
 				1BE8E3C2192533AD00D108C0 /* Supporting Files */,
 			);
 			path = appFinal1;
@@ -151,6 +157,24 @@
 				1BE8E3E1192533AD00D108C0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BE8E3F4192539B900D108C0 /* Cadastro */ = {
+			isa = PBXGroup;
+			children = (
+				1BE8E3EF1925343300D108C0 /* TelaCadastroViewController.h */,
+				1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */,
+				1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */,
+			);
+			name = Cadastro;
+			sourceTree = "<group>";
+		};
+		1BE8E3F5192539C500D108C0 /* Banco */ = {
+			isa = PBXGroup;
+			children = (
+				1BE8E3CD192533AD00D108C0 /* appFinal1.xcdatamodeld */,
+			);
+			name = Banco;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */,
 				1BE8E3C6192533AD00D108C0 /* InfoPlist.strings in Resources */,
 				1BE8E3D1192533AD00D108C0 /* Images.xcassets in Resources */,
 			);
@@ -249,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BE8E3CF192533AD00D108C0 /* appFinal1.xcdatamodeld in Sources */,
+				1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */,
 				1BE8E3CC192533AD00D108C0 /* AppDelegate.m in Sources */,
 				1BE8E3C8192533AD00D108C0 /* main.m in Sources */,
 			);
