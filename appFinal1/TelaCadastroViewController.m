@@ -8,6 +8,7 @@
 
 #import "TelaCadastroViewController.h"
 #import "LocalStore.h"
+#import "CadastroStore.h"
 
 @interface TelaCadastroViewController ()
 
@@ -19,7 +20,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -27,14 +28,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-    _instrumentos = [[NSMutableArray alloc]initWithArray:[NSArray arrayWithObjects:@"guitarra", @"baixo", @"bateria", @"violao", @"vocal", nil]];
+    //Instrumentos
+    _tbInstrumentosDelegate = [[TBInstrumentosDelegate alloc]init];
+    _tbInstrumentosPesquisar.delegate = _tbInstrumentosDelegate;
+    _tbInstrumentosPesquisar.dataSource = _tbInstrumentosDelegate;
     
-    _instrumentosQueToca =[[NSMutableArray alloc] init];
-    
-    _instrumentosFiltrados =[[NSMutableArray alloc] init];
-    [_instrumentosFiltrados addObjectsFromArray:_instrumentos];
+    //Instrumentos Que Toca
+    _tbInstrumentosQueTocaDelegate = [[TBInstrumentosQueTocaDelegate alloc]init];
+    _tbInstrumentoQueToco.delegate = _tbInstrumentosQueTocaDelegate;
+    _tbInstrumentoQueToco.dataSource = _tbInstrumentosQueTocaDelegate;
+
+    [[CadastroStore sharedStore]setViewTela:self];
 }
 
 -(void)habilitarTodasViewsTela:(BOOL)condicao{
@@ -105,81 +110,20 @@
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     
-    [_instrumentosFiltrados removeAllObjects];
+    [[[CadastroStore sharedStore] instrumentosFiltrados] removeAllObjects];
     
     if([searchText isEqual:@""]){
-        [_instrumentosFiltrados addObjectsFromArray:_instrumentos];
+        [[[CadastroStore sharedStore] instrumentosFiltrados] addObjectsFromArray:[[CadastroStore sharedStore] instrumentos]];
     }
     
-    for (NSString *s in _instrumentos) {
+    for (NSString *s in [[CadastroStore sharedStore] instrumentos]) {
         if([s rangeOfString:searchText].location != NSNotFound){
-            [_instrumentosFiltrados addObject:s];
+            [[[CadastroStore sharedStore] instrumentosFiltrados] addObject:s];
         }
     }
     
     [_tbInstrumentosPesquisar reloadData];
 }
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    if(tableView.tag == 1){
-        return [_instrumentosFiltrados count];
-    }
-    else{
-        return [_instrumentosQueToca count];
-    }
-}
-
-//Conteudo das Celulas
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if(tableView.tag == 1){
-        UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"InstrumentosPesquisaCell"];
-        
-        if(celula == nil){
-            celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"InstrumentosPesquisaCell"];
-        }
-        celula.textLabel.text = [_instrumentosFiltrados objectAtIndex:indexPath.row];
-        
-        return celula;
-    }
-    else{
-        UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"InstrumentosQueTocaCell"];
-        
-        if(celula == nil){
-            celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"InstrumentosQueTocaCell"];
-        }
-        celula.textLabel.text = [_instrumentosQueToca objectAtIndex:indexPath.row];
-        
-        return celula;
-    }
-}
-
-//Selecionar Celula
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(tableView.tag == 1){
-        if(![_instrumentosQueToca containsObject:[_instrumentosFiltrados objectAtIndex:indexPath.row]]){
-            [_instrumentosQueToca addObject:[_instrumentosFiltrados objectAtIndex:indexPath.row]];
-        }
-
-        [self btnPesquisaVoltarClick:nil];
-
-        [_tbInstrumentoQueToco reloadData];
-    }
-    else{
-        if([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark){
-            [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
-        }
-        else{
-            [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
-        }
-    }
-}
-
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];

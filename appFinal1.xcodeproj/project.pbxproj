@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BD384501926A34F0044A2E4 /* TBInstrumentosDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3844F1926A34F0044A2E4 /* TBInstrumentosDelegate.m */; };
+		1BD384561926A5CB0044A2E4 /* CadastroStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD384551926A5CB0044A2E4 /* CadastroStore.m */; };
+		1BD384591926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD384581926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m */; };
 		1BE8E3BA192533AD00D108C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE8E3B9192533AD00D108C0 /* Foundation.framework */; };
 		1BE8E3BC192533AD00D108C0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE8E3BB192533AD00D108C0 /* CoreGraphics.framework */; };
 		1BE8E3BE192533AD00D108C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE8E3BD192533AD00D108C0 /* UIKit.framework */; };
@@ -38,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BD3844E1926A34F0044A2E4 /* TBInstrumentosDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBInstrumentosDelegate.h; sourceTree = "<group>"; };
+		1BD3844F1926A34F0044A2E4 /* TBInstrumentosDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBInstrumentosDelegate.m; sourceTree = "<group>"; };
+		1BD384541926A5CB0044A2E4 /* CadastroStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroStore.h; sourceTree = "<group>"; };
+		1BD384551926A5CB0044A2E4 /* CadastroStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadastroStore.m; sourceTree = "<group>"; };
+		1BD384571926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBInstrumentosQueTocaDelegate.h; sourceTree = "<group>"; };
+		1BD384581926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBInstrumentosQueTocaDelegate.m; sourceTree = "<group>"; };
 		1BE8E3B6192533AD00D108C0 /* appFinal1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appFinal1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BE8E3B9192533AD00D108C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1BE8E3BB192533AD00D108C0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,6 +98,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BD384511926A56D0044A2E4 /* Tela */ = {
+			isa = PBXGroup;
+			children = (
+				1BE8E3EF1925343300D108C0 /* TelaCadastroViewController.h */,
+				1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */,
+				1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */,
+			);
+			name = Tela;
+			sourceTree = "<group>";
+		};
+		1BD384521926A5750044A2E4 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				1BD384571926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.h */,
+				1BD384581926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m */,
+				1BD3844E1926A34F0044A2E4 /* TBInstrumentosDelegate.h */,
+				1BD3844F1926A34F0044A2E4 /* TBInstrumentosDelegate.m */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		1BD384531926A5810044A2E4 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				1BD384541926A5CB0044A2E4 /* CadastroStore.h */,
+				1BD384551926A5CB0044A2E4 /* CadastroStore.m */,
+			);
+			name = Singleton;
+			sourceTree = "<group>";
+		};
 		1BE8E3AD192533AD00D108C0 = {
 			isa = PBXGroup;
 			children = (
@@ -166,9 +205,9 @@
 		1BE8E3F4192539B900D108C0 /* Cadastro */ = {
 			isa = PBXGroup;
 			children = (
-				1BE8E3EF1925343300D108C0 /* TelaCadastroViewController.h */,
-				1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */,
-				1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */,
+				1BD384531926A5810044A2E4 /* Singleton */,
+				1BD384521926A5750044A2E4 /* Delegates */,
+				1BD384511926A56D0044A2E4 /* Tela */,
 			);
 			name = Cadastro;
 			sourceTree = "<group>";
@@ -286,9 +325,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BD384591926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m in Sources */,
+				1BD384561926A5CB0044A2E4 /* CadastroStore.m in Sources */,
 				1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */,
 				1BE8E3CF192533AD00D108C0 /* appFinal1.xcdatamodeld in Sources */,
 				1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */,
+				1BD384501926A34F0044A2E4 /* TBInstrumentosDelegate.m in Sources */,
 				1BE8E3CC192533AD00D108C0 /* AppDelegate.m in Sources */,
 				1BE8E3C8192533AD00D108C0 /* main.m in Sources */,
 			);

@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TBInstrumentosDelegate.h"
+#import "TBInstrumentosQueTocaDelegate.h"
 
-@interface TelaCadastroViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface TelaCadastroViewController : UIViewController <UISearchBarDelegate>
 
-//variaveis
-@property NSMutableArray *instrumentos;
-@property NSMutableArray *instrumentosQueToca;
-@property NSMutableArray *instrumentosFiltrados;
+@property TBInstrumentosDelegate *tbInstrumentosDelegate;
+@property TBInstrumentosQueTocaDelegate *tbInstrumentosQueTocaDelegate;
 
 //Views
 @property (strong, nonatomic) IBOutlet UILabel *lblCabecalho;

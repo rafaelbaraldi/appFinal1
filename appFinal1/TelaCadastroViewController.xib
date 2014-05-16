@@ -200,10 +200,6 @@
                     <rect key="frame" x="0.0" y="99" width="274" height="351"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="tjC-B2-0Od"/>
-                        <outlet property="delegate" destination="-1" id="xLr-VX-bNN"/>
-                    </connections>
                 </tableView>
                 <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7w-b8-TqP">
                     <rect key="frame" x="0.0" y="55" width="274" height="44"/>
