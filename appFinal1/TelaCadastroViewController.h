@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TelaCadastroViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface TelaCadastroViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 //variaveis
 @property NSMutableArray *instrumentos;
 @property NSMutableArray *instrumentosQueToca;
+@property NSMutableArray *instrumentosFiltrados;
 
 //Views
 @property (strong, nonatomic) IBOutlet UILabel *lblCabecalho;
@@ -40,6 +41,7 @@
 
 //View Pesquisa Instrumento
 @property (strong, nonatomic) IBOutlet UITableView *tbInstrumentoQueToco;
+@property (strong, nonatomic) IBOutlet UITableView *tbInstrumentosPesquisar;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnPesquisaVoltar;
 

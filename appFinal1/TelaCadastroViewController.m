@@ -30,8 +30,11 @@
     // Do any additional setup after loading the view from its nib.
     
     _instrumentos = [[NSMutableArray alloc]initWithArray:[NSArray arrayWithObjects:@"guitarra", @"baixo", @"bateria", @"violao", @"vocal", nil]];
+    
     _instrumentosQueToca =[[NSMutableArray alloc] init];
     
+    _instrumentosFiltrados =[[NSMutableArray alloc] init];
+    [_instrumentosFiltrados addObjectsFromArray:_instrumentos];
 }
 
 -(void)habilitarTodasViewsTela:(BOOL)condicao{
@@ -44,20 +47,20 @@
     }
 }
 
-- (IBAction)btnInstrumentosClick:(id)sender {
+-(IBAction)btnInstrumentosClick:(id)sender {
     [self habilitarTodasViewsTela:NO];
     
     [self exibiViewInstrumentos];
 }
 
-- (IBAction)btnEstilosClik:(id)sender {
+-(IBAction)btnEstilosClik:(id)sender {
     [self habilitarTodasViewsTela:NO];
 }
 
-- (IBAction)btnConfirmarClick:(id)sender {
+-(IBAction)btnConfirmarClick:(id)sender {
 }
 
-- (IBAction)btnAdicionarInstrumentoClick:(id)sender {
+-(IBAction)btnAdicionarInstrumentoClick:(id)sender {
     [_viewInstrumentos removeFromSuperview];
     
     [self exibiViewPesquisarInstrumento];
@@ -88,21 +91,33 @@
     [self.view addSubview:_viewPesquisarInstrumentos];
 }
 
-//View Instrumentos
-- (IBAction)btnInstrumentosVoltarClick:(id)sender {
+//View Instrumentos Que Toca
+-(IBAction)btnInstrumentosVoltarClick:(id)sender {
     [_viewInstrumentos removeFromSuperview];
-    
     [self habilitarTodasViewsTela:YES];
 }
 
-
-
-
 //View Pesquisa Instrumento
-- (IBAction)btnPesquisaVoltarClick:(id)sender{
+-(IBAction)btnPesquisaVoltarClick:(id)sender{
     [_viewPesquisarInstrumentos removeFromSuperview];
-    
     [self exibiViewInstrumentos];
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+    [_instrumentosFiltrados removeAllObjects];
+    
+    if([searchText isEqual:@""]){
+        [_instrumentosFiltrados addObjectsFromArray:_instrumentos];
+    }
+    
+    for (NSString *s in _instrumentos) {
+        if([s rangeOfString:searchText].location != NSNotFound){
+            [_instrumentosFiltrados addObject:s];
+        }
+    }
+    
+    [_tbInstrumentosPesquisar reloadData];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -112,51 +127,61 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if(tableView.tag == 1){
-        return [_instrumentos count];
+        return [_instrumentosFiltrados count];
     }
     else{
         return [_instrumentosQueToca count];
     }
 }
 
+//Conteudo das Celulas
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if(tableView.tag == 1){
-        UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+        UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"InstrumentosPesquisaCell"];
         
         if(celula == nil){
-            celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
+            celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"InstrumentosPesquisaCell"];
         }
-        
-        celula.textLabel.text = [_instrumentos objectAtIndex:indexPath.row];
+        celula.textLabel.text = [_instrumentosFiltrados objectAtIndex:indexPath.row];
         
         return celula;
     }
     else{
-        UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UITableViewInstrumentosCell"];
+        UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"InstrumentosQueTocaCell"];
         
         if(celula == nil){
-            celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewInstrumentosCell"];
+            celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"InstrumentosQueTocaCell"];
         }
-        
         celula.textLabel.text = [_instrumentosQueToca objectAtIndex:indexPath.row];
         
         return celula;
     }
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [_instrumentosQueToca addObject:[_instrumentos objectAtIndex:indexPath.row]];
-    
-    [self btnPesquisaVoltarClick:nil];
-    
-    [_tbInstrumentoQueToco reloadData];
+//Selecionar Celula
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(tableView.tag == 1){
+        if(![_instrumentosQueToca containsObject:[_instrumentosFiltrados objectAtIndex:indexPath.row]]){
+            [_instrumentosQueToca addObject:[_instrumentosFiltrados objectAtIndex:indexPath.row]];
+        }
+
+        [self btnPesquisaVoltarClick:nil];
+
+        [_tbInstrumentoQueToco reloadData];
+    }
+    else{
+        if([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark){
+            [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
+        }
+        else{
+            [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+        }
+    }
 }
 
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 @end

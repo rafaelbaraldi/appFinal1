@@ -489,6 +489,7 @@
 				1BE8E3EA192533AD00D108C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1BE8E3EB192533AD00D108C0 /* Build configuration list for PBXNativeTarget "appFinal1Tests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +498,7 @@
 				1BE8E3ED192533AD00D108C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

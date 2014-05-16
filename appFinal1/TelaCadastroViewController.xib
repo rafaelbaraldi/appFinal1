@@ -17,6 +17,7 @@
                 <outlet property="lblInstrumentos" destination="9AN-91-mwR" id="8X6-Eu-WB3"/>
                 <outlet property="segGenero" destination="Idd-DK-tTQ" id="j4W-pk-8ou"/>
                 <outlet property="tbInstrumentoQueToco" destination="RhC-FL-3Wi" id="31X-0B-Bsv"/>
+                <outlet property="tbInstrumentosPesquisar" destination="tKL-RQ-yFw" id="1N1-yw-dRE"/>
                 <outlet property="txtBairro" destination="Gsv-uY-0ZC" id="0UN-Ux-U9U"/>
                 <outlet property="txtCidade" destination="5GH-bR-2Py" id="VQU-GK-B8M"/>
                 <outlet property="txtEmail" destination="zqw-fa-R2x" id="goi-Jl-5pY"/>
@@ -164,6 +165,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="sfk-7u-1wk"/>
+                        <outlet property="delegate" destination="-1" id="I2l-4X-sCD"/>
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTz-T9-Rak">
@@ -207,6 +209,9 @@
                     <rect key="frame" x="0.0" y="55" width="274" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="lGl-2j-AHF"/>
+                    </connections>
                 </searchBar>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVl-Zi-yXx">
                     <rect key="frame" x="20" y="463" width="234" height="30"/>
