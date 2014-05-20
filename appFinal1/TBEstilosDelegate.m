@@ -1,19 +1,20 @@
+
 //
-//  TBInstrumentosDelegate.m
+//  TBEstilosDelegate.m
 //  appFinal1
 //
-//  Created by RAFAEL BARALDI on 16/05/14.
+//  Created by RAFAEL BARALDI on 19/05/14.
 //  Copyright (c) 2014 RAFAEL BARALDI. All rights reserved.
 //
 
-#import "TBInstrumentosDelegate.h"
+#import "TBEstilosDelegate.h"
 #import "CadastroStore.h"
 
-@interface TBInstrumentosDelegate ()
+@interface TBEstilosDelegate ()
 
 @end
 
-@implementation TBInstrumentosDelegate
+@implementation TBEstilosDelegate
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,28 +42,28 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[[CadastroStore sharedStore] instrumentosFiltrados] count];
+    return [[[CadastroStore sharedStore] estilosFiltrados] count];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"InstrumentosPesquisaCell"];
+    UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"EstilosPesquisaCell"];
     
     if(celula == nil){
-        celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"InstrumentosPesquisaCell"];
+        celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EstilosPesquisaCell"];
     }
-    celula.textLabel.text = [[[CadastroStore sharedStore] instrumentosFiltrados] objectAtIndex:indexPath.row];
+    celula.textLabel.text = [[[CadastroStore sharedStore] estilosFiltrados] objectAtIndex:indexPath.row];
     
     return celula;
 }
 
+//Selecionar Celula
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-    if(![[[CadastroStore sharedStore] instrumentosQueToca] containsObject:[[[CadastroStore sharedStore] instrumentosFiltrados] objectAtIndex:indexPath.row]]){
-        [[[CadastroStore sharedStore] instrumentosQueToca] addObject:[[[CadastroStore sharedStore] instrumentosFiltrados] objectAtIndex:indexPath.row]];
+    if(![[[CadastroStore sharedStore] estilosQueToca] containsObject:[[[CadastroStore sharedStore] estilosFiltrados] objectAtIndex:indexPath.row]]){
+        [[[CadastroStore sharedStore] estilosQueToca] addObject:[[[CadastroStore sharedStore] estilosFiltrados] objectAtIndex:indexPath.row]];
     }
     
-    [[[CadastroStore sharedStore] viewTela] btnPesquisaVoltarClick:nil];
-    [[[[CadastroStore sharedStore] viewTela] tbInstrumentoQueToco] reloadData];
+    [[[CadastroStore sharedStore] viewTela] btnEstiloPesquisaVoltarClick:nil];
+    [[[[CadastroStore sharedStore] viewTela] tbEstilosQueToco] reloadData];
 }
 
 /*

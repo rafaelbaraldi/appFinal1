@@ -15,6 +15,10 @@
 @property NSMutableArray *instrumentosQueToca;
 @property NSMutableArray *instrumentosFiltrados;
 
+@property NSMutableArray *estilos;
+@property NSMutableArray *estilosQueToca;
+@property NSMutableArray *estilosFiltrados;
+
 @property TelaCadastroViewController *viewTela;
 
 +(CadastroStore*)sharedStore;

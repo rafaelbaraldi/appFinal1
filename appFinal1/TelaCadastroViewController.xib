@@ -10,22 +10,24 @@
                 <outlet property="btnEstilos" destination="IhR-l6-OG9" id="hF2-YQ-isc"/>
                 <outlet property="btnInstrumentos" destination="2vP-PE-NJq" id="Ifr-n1-HH4"/>
                 <outlet property="btnLocalAtual" destination="aQF-Ob-P7G" id="SIo-Kf-nzn"/>
-                <outlet property="btnPesquisaVoltar" destination="VK1-ao-vPs" id="uC9-HV-2TB"/>
                 <outlet property="lblCabecalho" destination="ZYL-If-F3M" id="hJ6-RA-VFA"/>
                 <outlet property="lblEstilos" destination="9YT-ss-PXQ" id="MFG-n2-sfm"/>
                 <outlet property="lblExemploObservacoes" destination="cre-rv-EyK" id="xfI-cf-2PL"/>
                 <outlet property="lblInstrumentos" destination="9AN-91-mwR" id="8X6-Eu-WB3"/>
                 <outlet property="segGenero" destination="Idd-DK-tTQ" id="j4W-pk-8ou"/>
+                <outlet property="tbEstilosPesquisar" destination="SIO-iB-tbz" id="mCr-Uy-gtA"/>
+                <outlet property="tbEstilosQueToco" destination="RFk-Qs-TQz" id="ZYs-y5-gmd"/>
                 <outlet property="tbInstrumentoQueToco" destination="RhC-FL-3Wi" id="31X-0B-Bsv"/>
                 <outlet property="tbInstrumentosPesquisar" destination="tKL-RQ-yFw" id="1N1-yw-dRE"/>
                 <outlet property="txtBairro" destination="Gsv-uY-0ZC" id="0UN-Ux-U9U"/>
                 <outlet property="txtCidade" destination="5GH-bR-2Py" id="VQU-GK-B8M"/>
                 <outlet property="txtEmail" destination="zqw-fa-R2x" id="goi-Jl-5pY"/>
-                <outlet property="txtNome" destination="tK2-vN-3Su" id="SBU-Z6-krE"/>
                 <outlet property="txtObservacoes" destination="Fmi-r7-pnf" id="dwI-7h-G3Y"/>
                 <outlet property="txtSenha" destination="COy-JI-FXJ" id="85H-fv-pyn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewEstilos" destination="Kdt-oe-Zcp" id="ebh-7l-Ti5"/>
                 <outlet property="viewInstrumentos" destination="HdV-1D-dX4" id="4ab-Qe-dUe"/>
+                <outlet property="viewPesquisarEstilos" destination="z8y-BG-mTE" id="22g-Hl-9Lr"/>
                 <outlet property="viewPesquisarInstrumentos" destination="uFW-R9-mEa" id="N4u-Es-ltf"/>
             </connections>
         </placeholder>
@@ -46,6 +48,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="6BB-dw-4LR"/>
+                    </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zqw-fa-R2x">
                     <rect key="frame" x="26" y="158" width="269" height="30"/>
@@ -110,7 +115,7 @@
                         <action selector="btnEstilosClik:" destination="-1" eventType="touchUpInside" id="IJV-8f-rcr"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bateria, Guitarra, Teclado..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AN-91-mwR">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AN-91-mwR">
                     <rect key="frame" x="88" y="361" width="145" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -122,7 +127,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rock, Pop, Reggae" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YT-ss-PXQ">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YT-ss-PXQ">
                     <rect key="frame" x="88" y="427" width="145" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -224,6 +229,83 @@
                     </state>
                     <connections>
                         <action selector="btnPesquisaVoltarClick:" destination="-1" eventType="touchUpInside" id="Ebo-Ci-wVB"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.87663424739999996" green="0.87663424739999996" blue="0.87663424739999996" alpha="1" colorSpace="calibratedRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="Kdt-oe-Zcp">
+            <rect key="frame" x="0.0" y="0.0" width="274" height="502"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Estilos Musicais que toco" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL4-Iw-WtX">
+                    <rect key="frame" x="5" y="70" width="239" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" alpha="0.55000001192092896" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RFk-Qs-TQz">
+                    <rect key="frame" x="0.0" y="99" width="274" height="403"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7l-Xp-wWm">
+                    <rect key="frame" x="247" y="70" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnAdicionarEstilosClick:" destination="-1" eventType="touchUpInside" id="1Ex-op-vTW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSf-0m-x1a">
+                    <rect key="frame" x="20" y="13" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Voltar">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnEstilosVoltarClick:" destination="-1" eventType="touchUpInside" id="bgs-7Z-lFu"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.87663424739999996" green="0.87663424739999996" blue="0.87663424739999996" alpha="1" colorSpace="calibratedRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="z8y-BG-mTE">
+            <rect key="frame" x="0.0" y="0.0" width="274" height="502"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" alpha="0.55000001192092896" tag="1" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SIO-iB-tbz">
+                    <rect key="frame" x="0.0" y="99" width="274" height="351"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <searchBar tag="1" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pvA-g4-sn8">
+                    <rect key="frame" x="0.0" y="55" width="274" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="TDI-TV-Bly"/>
+                    </connections>
+                </searchBar>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfN-02-XZG">
+                    <rect key="frame" x="20" y="463" width="234" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Não encontrou seu estilo?">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msH-JE-mZy">
+                    <rect key="frame" x="20" y="14" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Voltar">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnEstiloPesquisaVoltarClick:" destination="-1" eventType="touchUpInside" id="ack-va-Ksf"/>
                     </connections>
                 </button>
             </subviews>

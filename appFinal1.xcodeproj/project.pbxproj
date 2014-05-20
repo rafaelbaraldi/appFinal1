@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B1870AC192A85F400EC6375 /* TBEstilosQueTocaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870AB192A85F400EC6375 /* TBEstilosQueTocaDelegate.m */; };
+		1B1870AF192A860200EC6375 /* TBEstilosDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870AE192A860200EC6375 /* TBEstilosDelegate.m */; };
+		1B1870B2192A9C6400EC6375 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870B1192A9C6400EC6375 /* Usuario.m */; };
+		1B1870B5192AA01900EC6375 /* CadastroUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870B4192AA01900EC6375 /* CadastroUsuario.m */; };
 		1BD384501926A34F0044A2E4 /* TBInstrumentosDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3844F1926A34F0044A2E4 /* TBInstrumentosDelegate.m */; };
 		1BD384561926A5CB0044A2E4 /* CadastroStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD384551926A5CB0044A2E4 /* CadastroStore.m */; };
 		1BD384591926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD384581926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m */; };
@@ -41,6 +45,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B1870AA192A85F400EC6375 /* TBEstilosQueTocaDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEstilosQueTocaDelegate.h; sourceTree = "<group>"; };
+		1B1870AB192A85F400EC6375 /* TBEstilosQueTocaDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEstilosQueTocaDelegate.m; sourceTree = "<group>"; };
+		1B1870AD192A860200EC6375 /* TBEstilosDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEstilosDelegate.h; sourceTree = "<group>"; };
+		1B1870AE192A860200EC6375 /* TBEstilosDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEstilosDelegate.m; sourceTree = "<group>"; };
+		1B1870B0192A9C6400EC6375 /* Usuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usuario.h; sourceTree = "<group>"; };
+		1B1870B1192A9C6400EC6375 /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = "<group>"; };
+		1B1870B3192AA01900EC6375 /* CadastroUsuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroUsuario.h; sourceTree = "<group>"; };
+		1B1870B4192AA01900EC6375 /* CadastroUsuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadastroUsuario.m; sourceTree = "<group>"; };
 		1BD3844E1926A34F0044A2E4 /* TBInstrumentosDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBInstrumentosDelegate.h; sourceTree = "<group>"; };
 		1BD3844F1926A34F0044A2E4 /* TBInstrumentosDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBInstrumentosDelegate.m; sourceTree = "<group>"; };
 		1BD384541926A5CB0044A2E4 /* CadastroStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroStore.h; sourceTree = "<group>"; };
@@ -115,6 +127,10 @@
 				1BD384581926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m */,
 				1BD3844E1926A34F0044A2E4 /* TBInstrumentosDelegate.h */,
 				1BD3844F1926A34F0044A2E4 /* TBInstrumentosDelegate.m */,
+				1B1870AD192A860200EC6375 /* TBEstilosDelegate.h */,
+				1B1870AE192A860200EC6375 /* TBEstilosDelegate.m */,
+				1B1870AA192A85F400EC6375 /* TBEstilosQueTocaDelegate.h */,
+				1B1870AB192A85F400EC6375 /* TBEstilosQueTocaDelegate.m */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -216,6 +232,10 @@
 			isa = PBXGroup;
 			children = (
 				1BE8E3CD192533AD00D108C0 /* appFinal1.xcdatamodeld */,
+				1B1870B0192A9C6400EC6375 /* Usuario.h */,
+				1B1870B1192A9C6400EC6375 /* Usuario.m */,
+				1B1870B3192AA01900EC6375 /* CadastroUsuario.h */,
+				1B1870B4192AA01900EC6375 /* CadastroUsuario.m */,
 			);
 			name = Banco;
 			sourceTree = "<group>";
@@ -330,8 +350,12 @@
 				1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */,
 				1BE8E3CF192533AD00D108C0 /* appFinal1.xcdatamodeld in Sources */,
 				1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */,
+				1B1870B5192AA01900EC6375 /* CadastroUsuario.m in Sources */,
 				1BD384501926A34F0044A2E4 /* TBInstrumentosDelegate.m in Sources */,
+				1B1870B2192A9C6400EC6375 /* Usuario.m in Sources */,
+				1B1870AC192A85F400EC6375 /* TBEstilosQueTocaDelegate.m in Sources */,
 				1BE8E3CC192533AD00D108C0 /* AppDelegate.m in Sources */,
+				1B1870AF192A860200EC6375 /* TBEstilosDelegate.m in Sources */,
 				1BE8E3C8192533AD00D108C0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

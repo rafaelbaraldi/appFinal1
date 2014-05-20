@@ -1,19 +1,19 @@
 //
-//  TBInstrumentosQueTocaDelegate.m
+//  TBEstilosQueTocaDelegate.m
 //  appFinal1
 //
-//  Created by RAFAEL BARALDI on 16/05/14.
+//  Created by RAFAEL BARALDI on 19/05/14.
 //  Copyright (c) 2014 RAFAEL BARALDI. All rights reserved.
 //
 
-#import "TBInstrumentosQueTocaDelegate.h"
+#import "TBEstilosQueTocaDelegate.h"
 #import "CadastroStore.h"
 
-@interface TBInstrumentosQueTocaDelegate ()
+@interface TBEstilosQueTocaDelegate ()
 
 @end
 
-@implementation TBInstrumentosQueTocaDelegate
+@implementation TBEstilosQueTocaDelegate
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,51 +36,38 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return [[[CadastroStore sharedStore] instrumentosQueToca] count];
+    return [[[CadastroStore sharedStore] estilosQueToca] count];
 }
 
 //Conteudo das Celulas
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"InstrumentosQueTocaCell"];
+    UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"EstilosQueTocaCell"];
     
     if(celula == nil){
-        celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"InstrumentosQueTocaCell"];
+        celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EstilosQueTocaCell"];
     }
-    celula.textLabel.text = [[[CadastroStore sharedStore] instrumentosQueToca] objectAtIndex:indexPath.row];
+    celula.textLabel.text = [[[CadastroStore sharedStore] estilosQueToca] objectAtIndex:indexPath.row];
     
     return celula;
-}
-
-//Selecionar Celula
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark){
-        [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
-    }
-    else{
-        [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
-    }
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(editingStyle == UITableViewCellEditingStyleDelete){
         
-        [[[CadastroStore sharedStore]instrumentosQueToca]removeObjectAtIndex:indexPath.row];
+        [[[CadastroStore sharedStore]estilosQueToca]removeObjectAtIndex:indexPath.row];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-        return YES;
+    return YES;
 }
+
 
 /*
 #pragma mark - Navigation

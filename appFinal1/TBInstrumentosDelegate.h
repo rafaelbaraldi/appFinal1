@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TBInstrumentosDelegate : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface TBInstrumentosDelegate : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
