@@ -26,8 +26,15 @@
     self = [super init];
     if(self){
         _raioBorda = 10;
+        
+        [self carregaContexto];
     }
     return self;
+}
+
+-(void)carregaContexto{
+    _appDelegate = [[UIApplication sharedApplication] delegate];
+    _context = [_appDelegate managedObjectContext];
 }
 
 @end

@@ -12,8 +12,6 @@
 
 @interface CadastroUsuario : UIViewController
 
-@property AppDelegate *appDelegate;
-@property NSManagedObjectContext *context;
 @property NSFetchRequest *requestUsuario;
 
 -(NSArray *)usuarios;

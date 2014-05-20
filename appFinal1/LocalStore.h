@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AppDelegate.h"
 
 @interface LocalStore : NSObject
 
 @property int raioBorda;
+
+@property AppDelegate *appDelegate;
+@property NSManagedObjectContext *context;
 
 +(LocalStore*)sharedStore;
 

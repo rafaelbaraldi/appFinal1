@@ -7,6 +7,7 @@
 //
 
 #import "CadastroUsuario.h"
+#import "LocalStore.h"
 
 @interface CadastroUsuario ()
 
@@ -28,7 +29,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [self carregaContexto];
 }
 
@@ -39,35 +39,22 @@
 }
 
 -(void)carregaContexto{
-    _appDelegate = [[UIApplication sharedApplication] delegate];
-    _context = [_appDelegate managedObjectContext];
-    
     _requestUsuario = [NSFetchRequest fetchRequestWithEntityName:@"Usuario"];
 }
 
 -(NSArray *)usuarios{
 
-    return [_context executeFetchRequest:_requestUsuario error:nil];
+    return [[[LocalStore sharedStore] context] executeFetchRequest:_requestUsuario error:nil];
 }
 
 -(BOOL)cadastraUsuario:(Usuario *)usuario{
     
-    if([[usuario nome] length] == 0){
+    if([[usuario nome] isEqualToString:@""]){
         return NO;
     }
     
-    Usuario *novoUsuario = [NSEntityDescription insertNewObjectForEntityForName:@"Usuario" inManagedObjectContext:_context];
     
-    [novoUsuario setNome:[usuario nome]];
-    [novoUsuario setEmail:[usuario email]];
-    [novoUsuario setSexo:[usuario sexo]];
-    [novoUsuario setCidade:[usuario cidade]];
-    [novoUsuario setBairro:[usuario bairro]];
-//    [novoUsuario setInstrumentos:[usuario instrumentos]];
-//    [novoUsuario setEstilos:[usuario estilos]];
-    [novoUsuario setObservacoes:[usuario observacoes]];
-    
-    [_context save:nil];
+    [[[LocalStore sharedStore] context] save:nil];
     
     return true;
 }

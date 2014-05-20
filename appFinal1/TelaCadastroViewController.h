@@ -12,7 +12,7 @@
 #import "TBEstilosDelegate.h"
 #import "TBEstilosQueTocaDelegate.h"
 
-@interface TelaCadastroViewController : UIViewController <UISearchBarDelegate>
+@interface TelaCadastroViewController : UIViewController <UISearchBarDelegate, UITextFieldDelegate>
 
 @property TBInstrumentosDelegate *tbInstrumentosDelegate;
 @property TBInstrumentosQueTocaDelegate *tbInstrumentosQueTocaDelegate;
