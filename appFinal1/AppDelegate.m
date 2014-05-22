@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "TelaCadastroViewController.h"
+#import "TelaBuscaViewController.h"
+
+#import "TBFiltroInstrumento.h"
 
 @implementation AppDelegate
 
@@ -20,7 +23,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    [self.window setRootViewController:[[TelaCadastroViewController alloc] initWithNibName:@"TelaCadastroViewController" bundle:nil]];
+    [self.window setRootViewController:[[TelaBuscaViewController alloc] initWithNibName:@"TelaBuscaViewController" bundle:nil]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
