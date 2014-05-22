@@ -35,4 +35,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)btnInstrumentoClick:(id)sender {
+}
+
+- (IBAction)btnEstiloClick:(id)sender {
+}
+
+- (IBAction)btnHorariosClick:(id)sender {
+}
 @end

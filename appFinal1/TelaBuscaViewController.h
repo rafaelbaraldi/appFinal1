@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TelaBuscaViewController : UIViewController
+@interface TelaBuscaViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UIView *viewFiltros;
+
+- (IBAction)btnInstrumentoClick:(id)sender;
+- (IBAction)btnEstiloClick:(id)sender;
+- (IBAction)btnHorariosClick:(id)sender;
+
 
 @end
