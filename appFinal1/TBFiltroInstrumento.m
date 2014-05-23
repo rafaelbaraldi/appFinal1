@@ -7,6 +7,8 @@
 //
 
 #import "TBFiltroInstrumento.h"
+#import "BuscaStore.h"
+#import "BuscaConexao.h"
 
 @interface TBFiltroInstrumento ()
 
@@ -36,6 +38,39 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    NSDictionary *json = [BuscaConexao retornaListaDe:@"instrumento"];
+    
+    NSString *ret;
+    
+    for(NSString *s in json){
+        ret = [s valueForKeyPath:@"nome"];
+        [[[BuscaStore sharedStore] instrumentos] addObject:ret];
+    }
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [[[BuscaStore sharedStore] instrumentos] count];
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"InstrumentosPesquisaCell"];
+    
+    if(celula == nil){
+        celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"InstrumentosPesquisaCell"];
+    }
+    celula.textLabel.text = [[[BuscaStore sharedStore] instrumentos] objectAtIndex:indexPath.row];
+    
+    return celula;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [[BuscaStore sharedStore] setInstrumento:[[[BuscaStore sharedStore] instrumentos] objectAtIndex:indexPath.row]];
+    [self retorna];
 }
 
 - (void)didReceiveMemoryWarning

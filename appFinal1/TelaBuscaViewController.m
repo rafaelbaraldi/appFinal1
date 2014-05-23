@@ -10,6 +10,8 @@
 #import "TBFiltroEstilo.h"
 #import "TBFiltroHorario.h"
 #import "TBFiltroInstrumento.h"
+#import "BuscaStore.h"
+#import "BuscaConexao.h"
 
 @interface TelaBuscaViewController ()
 
@@ -22,7 +24,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
+        _usuarios = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -31,6 +33,19 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self atualizaBusca];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    if ([[[BuscaStore sharedStore] instrumento] length] > 0) {
+        _btnInstumento.titleLabel.text =[[BuscaStore sharedStore] instrumento];
+    }
+    if ([[[BuscaStore sharedStore] estilo] length] > 0) {
+        _btnEstilo.titleLabel.text =[[BuscaStore sharedStore] estilo];
+    }
+    
+    [self atualizaBusca];
+    [_tbUsuarios reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,15 +86,33 @@
 //Delegate TableView
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
+    return [_usuarios count];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioPesquisaCell"];
     
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    return cell;
+    if(celula == nil){
+        celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioPesquisaCell"];
+    }
+    celula.textLabel.text = [_usuarios objectAtIndex:indexPath.row];
+    
+    return celula;
 }
 
-
+-(void)atualizaBusca{
+    NSDictionary *json = [BuscaConexao buscaUsuario:[[BuscaStore sharedStore]instrumento] estilo:[[BuscaStore sharedStore]estilo] cidade:_txtCidade.text ];
+    
+    NSString *ret;
+    
+    for(NSString *s in json){
+        ret = [s valueForKeyPath:@"nome"];
+        [_usuarios addObject:ret];
+    }
+}
 
 @end

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TBFiltroEstilo : UIViewController
+@interface TBFiltroEstilo : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

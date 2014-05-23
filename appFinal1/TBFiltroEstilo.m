@@ -7,6 +7,8 @@
 //
 
 #import "TBFiltroEstilo.h"
+#import "BuscaStore.h"
+#import "BuscaConexao.h"
 
 @interface TBFiltroEstilo ()
 
@@ -36,6 +38,39 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+    NSDictionary *json = [BuscaConexao retornaListaDe:@"estilo"];
+    
+    NSString *ret;
+    
+    for(NSString *s in json){
+        ret = [s valueForKeyPath:@"nome"];
+        [[[BuscaStore sharedStore] estilos] addObject:ret];
+    }
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [[[BuscaStore sharedStore] estilos] count];
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"EstilosPesquisaCell"];
+    
+    if(celula == nil){
+        celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EstilosPesquisaCell"];
+    }
+    celula.textLabel.text = [[[BuscaStore sharedStore] estilos] objectAtIndex:indexPath.row];
+    
+    return celula;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [[BuscaStore sharedStore] setEstilo:[[[BuscaStore sharedStore] estilos] objectAtIndex:indexPath.row]];
+    [self retorna];
 }
 
 - (void)didReceiveMemoryWarning

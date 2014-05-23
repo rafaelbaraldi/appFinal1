@@ -10,11 +10,18 @@
 
 @interface TelaBuscaViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
+@property NSMutableArray *usuarios;
+
 @property (strong, nonatomic) IBOutlet UIView *viewFiltros;
 
 - (IBAction)btnInstrumentoClick:(id)sender;
 - (IBAction)btnEstiloClick:(id)sender;
 - (IBAction)btnHorariosClick:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIButton *btnInstumento;
+@property (strong, nonatomic) IBOutlet UIButton *btnEstilo;
+
+@property (strong, nonatomic) IBOutlet UITextField *txtCidade;
+@property (strong, nonatomic) IBOutlet UITableView *tbUsuarios;
 
 @end

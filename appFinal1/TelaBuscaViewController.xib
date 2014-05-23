@@ -6,6 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TelaBuscaViewController">
             <connections>
+                <outlet property="btnEstilo" destination="9Pe-oG-gi2" id="CSf-4W-M5o"/>
+                <outlet property="btnInstumento" destination="ZcF-60-fJs" id="dsA-TR-zJX"/>
+                <outlet property="tbUsuarios" destination="ZNM-PJ-8e3" id="xyY-le-sbo"/>
+                <outlet property="txtCidade" destination="Pn6-pB-ta9" id="OM5-mq-buj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewFiltros" destination="JTQ-ca-Sza" id="ooS-Z3-zyi"/>
             </connections>

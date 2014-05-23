@@ -11,6 +11,8 @@
 		1B1870AF192A860200EC6375 /* TBEstilosDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870AE192A860200EC6375 /* TBEstilosDelegate.m */; };
 		1B1870B2192A9C6400EC6375 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870B1192A9C6400EC6375 /* Usuario.m */; };
 		1B1870B5192AA01900EC6375 /* CadastroUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870B4192AA01900EC6375 /* CadastroUsuario.m */; };
+		1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5FE13F192FC23B00E35BCC /* BuscaStore.m */; };
+		1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5FE143192FD00300E35BCC /* BuscaConexao.m */; };
 		1B82766F192BDB3500E461AD /* TelaBuscaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B82766D192BDB3500E461AD /* TelaBuscaViewController.m */; };
 		1B827670192BDB3500E461AD /* TelaBuscaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B82766E192BDB3500E461AD /* TelaBuscaViewController.xib */; };
 		1B827672192BDCE800E461AD /* delegatesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B827671192BDCE800E461AD /* delegatesTest.m */; };
@@ -62,6 +64,10 @@
 		1B1870B1192A9C6400EC6375 /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = "<group>"; };
 		1B1870B3192AA01900EC6375 /* CadastroUsuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroUsuario.h; sourceTree = "<group>"; };
 		1B1870B4192AA01900EC6375 /* CadastroUsuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadastroUsuario.m; sourceTree = "<group>"; };
+		1B5FE13E192FC23B00E35BCC /* BuscaStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuscaStore.h; sourceTree = "<group>"; };
+		1B5FE13F192FC23B00E35BCC /* BuscaStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuscaStore.m; sourceTree = "<group>"; };
+		1B5FE142192FD00300E35BCC /* BuscaConexao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuscaConexao.h; sourceTree = "<group>"; };
+		1B5FE143192FD00300E35BCC /* BuscaConexao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuscaConexao.m; sourceTree = "<group>"; };
 		1B82766C192BDB3500E461AD /* TelaBuscaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaBuscaViewController.h; sourceTree = "<group>"; };
 		1B82766D192BDB3500E461AD /* TelaBuscaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaBuscaViewController.m; sourceTree = "<group>"; };
 		1B82766E192BDB3500E461AD /* TelaBuscaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaBuscaViewController.xib; sourceTree = "<group>"; };
@@ -132,9 +138,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B5FE13D192FC22600E35BCC /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				1B5FE13E192FC23B00E35BCC /* BuscaStore.h */,
+				1B5FE13F192FC23B00E35BCC /* BuscaStore.m */,
+			);
+			name = Singleton;
+			sourceTree = "<group>";
+		};
+		1B5FE141192FCFE600E35BCC /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				1B5FE142192FD00300E35BCC /* BuscaConexao.h */,
+				1B5FE143192FD00300E35BCC /* BuscaConexao.m */,
+			);
+			name = WebService;
+			sourceTree = "<group>";
+		};
 		1B82766A192BDA0100E461AD /* Busca */ = {
 			isa = PBXGroup;
 			children = (
+				1B5FE141192FCFE600E35BCC /* WebService */,
+				1B5FE13D192FC22600E35BCC /* Singleton */,
 				1B82766B192BDB2000E461AD /* Tela */,
 			);
 			name = Busca;
@@ -408,6 +434,7 @@
 				1B1870B5192AA01900EC6375 /* CadastroUsuario.m in Sources */,
 				31F83E21192E851D0070D597 /* TBFiltroHorario.m in Sources */,
 				1BD384501926A34F0044A2E4 /* TBInstrumentosDelegate.m in Sources */,
+				1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */,
 				31F83E1C192E85050070D597 /* TBFiltroInstrumento.m in Sources */,
 				1B1870B2192A9C6400EC6375 /* Usuario.m in Sources */,
 				1B1870AC192A85F400EC6375 /* TBEstilosQueTocaDelegate.m in Sources */,
@@ -415,6 +442,7 @@
 				1B82766F192BDB3500E461AD /* TelaBuscaViewController.m in Sources */,
 				1BE8E3CC192533AD00D108C0 /* AppDelegate.m in Sources */,
 				1B1870AF192A860200EC6375 /* TBEstilosDelegate.m in Sources */,
+				1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */,
 				1BE8E3C8192533AD00D108C0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
