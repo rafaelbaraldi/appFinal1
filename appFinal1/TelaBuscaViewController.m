@@ -34,17 +34,40 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self atualizaBusca];
+    
+    [_txtCidade addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
+    _tbUsuarios.layer.zPosition = 3;
+    
+    _frameTbUsuarios = _tbUsuarios.frame;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    if ([[[BuscaStore sharedStore] instrumento] length] > 0) {
-        _btnInstumento.titleLabel.text =[[BuscaStore sharedStore] instrumento];
-    }
-    if ([[[BuscaStore sharedStore] estilo] length] > 0) {
-        _btnEstilo.titleLabel.text =[[BuscaStore sharedStore] estilo];
-    }
     
     [self atualizaBusca];
+    
+    [self atualizaTela];
+}
+
+-(void)atualizaTela{
+    
+    //Filtro Instrumento
+    if ([[[BuscaStore sharedStore] instrumento] length] > 0) {
+        _btnInstumento.titleLabel.text =[[BuscaStore sharedStore] instrumento];
+        _btnRemoverInstrumento.hidden = NO;
+    }
+    else{
+        _btnRemoverInstrumento.hidden = YES;
+    }
+    
+    //Filtro Estilo Musical
+    if ([[[BuscaStore sharedStore] estilo] length] > 0) {
+        _btnEstilo.titleLabel.text =[[BuscaStore sharedStore] estilo];
+        _btnRemoverEstilo.hidden = NO;
+    }
+    else{
+        _btnRemoverEstilo.hidden = YES;
+    }
+    
     [_tbUsuarios reloadData];
 }
 
@@ -76,11 +99,58 @@
     [self presentViewController:nav animated:YES completion:nil];
 }
 
+- (IBAction)btnRemoverEstiloClick:(id)sender {
+    [[BuscaStore sharedStore] setEstilo:@""];
+    _btnEstilo.titleLabel.text = @"Estilo Musical";
+    
+    [self atualizaBusca];
+    [self atualizaTela];
+}
+
+- (IBAction)btnRemoverInstrumentoClick:(id)sender {
+    [[BuscaStore sharedStore] setInstrumento:@""];
+    _btnInstumento.titleLabel.text = @"Intrumento";
+    
+    [self atualizaBusca];
+    [self atualizaTela];
+}
+
+- (IBAction)btnEsconderFiltroClick:(id)sender {
+    
+    if(_viewFiltros.hidden){
+        [UIView animateWithDuration:0.5 animations:^{
+            [_tbUsuarios setFrame:_frameTbUsuarios];
+            
+             _btnEsconderFiltro.titleLabel.text = @"Esconder";
+            _viewFiltros.hidden = NO;
+        }];
+    }
+    else{
+        [UIView animateWithDuration:0.5 animations:^{
+            CGRect frameView = _viewFiltros.frame;
+            CGRect frameUsuario = _tbUsuarios.frame;
+            frameUsuario.origin.y = frameView.origin.y;
+            frameUsuario.size.height += frameView.size.height;
+            
+            [_tbUsuarios setFrame:frameUsuario];
+        }completion:^(BOOL finished) {
+            
+            _btnEsconderFiltro.titleLabel.text = @"Mostrar";
+            _viewFiltros.hidden = YES;
+        }];
+    }
+}
+
 //Delegate TextField
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [textField resignFirstResponder];
     return YES;
+}
+
+-(void)textFieldDidChange{
+    [self atualizaBusca];
+    [_tbUsuarios reloadData];
 }
 
 //Delegate TableView
@@ -95,16 +165,31 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioPesquisaCell"];
+    [celula setFrame:CGRectMake(0, 0, celula.frame.size.width, 130)];
+    
     
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioPesquisaCell"];
+        
+        UILabel *nome = [[UILabel alloc] initWithFrame:CGRectMake(80, 5, 200, 15)];
+        nome.text = [_usuarios objectAtIndex:indexPath.row];
+        
+        UILabel *cidade = [[UILabel alloc] initWithFrame:CGRectMake(80, 25, 200, 15)];
+        cidade.text = @"dasdsa";
+        cidade.font = [UIFont fontWithName:@"arial" size:10];
+        
+        [celula addSubview:nome];
+        [celula addSubview:cidade];
     }
-    celula.textLabel.text = [_usuarios objectAtIndex:indexPath.row];
+    
+    
     
     return celula;
 }
 
 -(void)atualizaBusca{
+    [_usuarios removeAllObjects];
+    
     NSDictionary *json = [BuscaConexao buscaUsuario:[[BuscaStore sharedStore]instrumento] estilo:[[BuscaStore sharedStore]estilo] cidade:_txtCidade.text ];
     
     NSString *ret;
