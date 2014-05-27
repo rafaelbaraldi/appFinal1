@@ -216,7 +216,7 @@
     
     for(NSString *s in json){
         TPUsuario *ret = [[TPUsuario alloc]init];
-        ret.identificador = (NSInteger)[s valueForKey:@"id"];
+        ret.identificador = [s valueForKey:@"identificador"];
         ret.nome = [s valueForKeyPath:@"nome"];
         ret.cidade = [s valueForKeyPath:@"cidade"];
         

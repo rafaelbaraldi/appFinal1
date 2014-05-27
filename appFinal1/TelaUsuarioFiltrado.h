@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TPUsuario.h"
 
 @interface TelaUsuarioFiltrado : UIViewController
 
-@property NSInteger identificador;
+@property NSString *identificador;
+@property TPUsuario *pessoa;
 
 @property (strong, nonatomic) IBOutlet UILabel *lblNome;
 @property (strong, nonatomic) IBOutlet UILabel *lblSexo;
@@ -18,6 +20,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblEstilo;
 @property (strong, nonatomic) IBOutlet UITextView *lblAtribuicoes;
 
--(id)initWithIdentificador:(NSInteger)idUsuario;
+-(id)initWithIdentificador:(NSString*)idUsuario;
 
 @end

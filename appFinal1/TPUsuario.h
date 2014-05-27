@@ -10,7 +10,7 @@
 
 @interface TPUsuario : NSObject
 
-@property NSInteger identificador;
+@property NSString *identificador;
 
 @property NSString *nome;
 @property NSString *sexo;

@@ -52,4 +52,25 @@
     return json;
 }
 
++(NSDictionary*)buscaUsuario:(NSString*)identificador{
+    NSString *url = @"http://54.187.203.61/appMusica/usuarioFiltrado.php";
+    
+    NSString *post = [NSString stringWithFormat:@"id=%@", identificador];
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSMutableURLRequest *request = [[ NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"context-type"];
+    [request setHTTPBody:postData];
+    
+    NSURLResponse *response;
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:returnData options:kNilOptions error:nil];
+    
+    return json;
+}
+
 @end

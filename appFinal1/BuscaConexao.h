@@ -12,5 +12,6 @@
 
 +(NSDictionary*)retornaListaDe:(NSString*) tabela;
 +(NSDictionary*)buscaUsuario:(NSString *)instrumento estilo:(NSString*)estilo cidade:(NSString*)cidade;
++(NSDictionary*)buscaUsuario:(NSString*)identificador;
 
 @end
