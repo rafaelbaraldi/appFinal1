@@ -10,7 +10,14 @@
 
 @interface TPUsuario : NSObject
 
+@property NSInteger identificador;
+
 @property NSString *nome;
+@property NSString *sexo;
 @property NSString *cidade;
+@property NSString *bairro;
+@property NSString *atribuicoes;
+@property NSMutableArray *estilos;
+@property NSMutableArray *instrumentos;
 
 @end

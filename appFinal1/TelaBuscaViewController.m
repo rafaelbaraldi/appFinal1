@@ -7,11 +7,15 @@
 //
 
 #import "TelaBuscaViewController.h"
+#import "TelaUsuarioFiltrado.h"
+
 #import "TBFiltroEstilo.h"
 #import "TBFiltroHorario.h"
 #import "TBFiltroInstrumento.h"
+
 #import "BuscaStore.h"
 #import "BuscaConexao.h"
+
 #import "TPUsuario.h"
 
 @interface TelaBuscaViewController ()
@@ -158,6 +162,14 @@
     return 1;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TelaUsuarioFiltrado *tuVC = [[TelaUsuarioFiltrado alloc] initWithIdentificador:((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tuVC];
+    
+    [self presentViewController:nav animated:YES completion:nil];
+    
+}
+
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioPesquisaCell"];
     [celula setFrame:CGRectMake(0, 0, celula.frame.size.width, 130)];
@@ -194,7 +206,6 @@
         ((UILabel*)[celula viewWithTag:2]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
     }
     
-    
     return celula;
 }
 
@@ -205,8 +216,10 @@
     
     for(NSString *s in json){
         TPUsuario *ret = [[TPUsuario alloc]init];
+        ret.identificador = (NSInteger)[s valueForKey:@"id"];
         ret.nome = [s valueForKeyPath:@"nome"];
         ret.cidade = [s valueForKeyPath:@"cidade"];
+        
         [_usuarios addObject:ret];
     }
 }

@@ -39,6 +39,9 @@
 		1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */; };
 		1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3FB192544E900D108C0 /* LocalStore.m */; };
 		31F67C75193515CC00113DA8 /* escrever.png in Resources */ = {isa = PBXBuildFile; fileRef = 31F67C74193515CC00113DA8 /* escrever.png */; };
+		31F67C79193523D400113DA8 /* TelaUsuarioFiltrado.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F67C77193523D400113DA8 /* TelaUsuarioFiltrado.m */; };
+		31F67C7A193523D400113DA8 /* TelaUsuarioFiltrado.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F67C78193523D400113DA8 /* TelaUsuarioFiltrado.xib */; };
+		31F67C7D1935286600113DA8 /* TPInstrumento.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F67C7C1935286600113DA8 /* TPInstrumento.m */; };
 		31F83E14192E84C70070D597 /* TBFiltroEstilo.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F83E12192E84C70070D597 /* TBFiltroEstilo.m */; };
 		31F83E15192E84C70070D597 /* TBFiltroEstilo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E13192E84C70070D597 /* TBFiltroEstilo.xib */; };
 		31F83E1C192E85050070D597 /* TBFiltroInstrumento.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F83E1A192E85050070D597 /* TBFiltroInstrumento.m */; };
@@ -106,6 +109,11 @@
 		1BE8E3FA192544E900D108C0 /* LocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStore.h; sourceTree = "<group>"; };
 		1BE8E3FB192544E900D108C0 /* LocalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStore.m; sourceTree = "<group>"; };
 		31F67C74193515CC00113DA8 /* escrever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = escrever.png; sourceTree = "<group>"; };
+		31F67C76193523D400113DA8 /* TelaUsuarioFiltrado.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaUsuarioFiltrado.h; sourceTree = "<group>"; };
+		31F67C77193523D400113DA8 /* TelaUsuarioFiltrado.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaUsuarioFiltrado.m; sourceTree = "<group>"; };
+		31F67C78193523D400113DA8 /* TelaUsuarioFiltrado.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaUsuarioFiltrado.xib; sourceTree = "<group>"; };
+		31F67C7B1935286600113DA8 /* TPInstrumento.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPInstrumento.h; sourceTree = "<group>"; };
+		31F67C7C1935286600113DA8 /* TPInstrumento.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPInstrumento.m; sourceTree = "<group>"; };
 		31F83E11192E84C70070D597 /* TBFiltroEstilo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBFiltroEstilo.h; sourceTree = "<group>"; };
 		31F83E12192E84C70070D597 /* TBFiltroEstilo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBFiltroEstilo.m; sourceTree = "<group>"; };
 		31F83E13192E84C70070D597 /* TBFiltroEstilo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBFiltroEstilo.xib; sourceTree = "<group>"; };
@@ -148,6 +156,8 @@
 			children = (
 				1B1666271935084000E2FB47 /* TPUsuario.h */,
 				1B1666281935084000E2FB47 /* TPUsuario.m */,
+				31F67C7B1935286600113DA8 /* TPInstrumento.h */,
+				31F67C7C1935286600113DA8 /* TPInstrumento.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -184,6 +194,9 @@
 		1B82766B192BDB2000E461AD /* Tela */ = {
 			isa = PBXGroup;
 			children = (
+				31F67C76193523D400113DA8 /* TelaUsuarioFiltrado.h */,
+				31F67C77193523D400113DA8 /* TelaUsuarioFiltrado.m */,
+				31F67C78193523D400113DA8 /* TelaUsuarioFiltrado.xib */,
 				1B82766C192BDB3500E461AD /* TelaBuscaViewController.h */,
 				1B82766D192BDB3500E461AD /* TelaBuscaViewController.m */,
 				1B82766E192BDB3500E461AD /* TelaBuscaViewController.xib */,
@@ -428,6 +441,7 @@
 				1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */,
 				31F83E22192E851D0070D597 /* TBFiltroHorario.xib in Resources */,
 				31F83E15192E84C70070D597 /* TBFiltroEstilo.xib in Resources */,
+				31F67C7A193523D400113DA8 /* TelaUsuarioFiltrado.xib in Resources */,
 				31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */,
 				1BE8E3C6192533AD00D108C0 /* InfoPlist.strings in Resources */,
 				1BE8E3D1192533AD00D108C0 /* Images.xcassets in Resources */,
@@ -458,6 +472,7 @@
 				1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */,
 				1B1870B5192AA01900EC6375 /* CadastroUsuario.m in Sources */,
 				31F83E21192E851D0070D597 /* TBFiltroHorario.m in Sources */,
+				31F67C79193523D400113DA8 /* TelaUsuarioFiltrado.m in Sources */,
 				1BD384501926A34F0044A2E4 /* TBInstrumentosDelegate.m in Sources */,
 				1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */,
 				31F83E1C192E85050070D597 /* TBFiltroInstrumento.m in Sources */,
@@ -470,6 +485,7 @@
 				1B1870AF192A860200EC6375 /* TBEstilosDelegate.m in Sources */,
 				1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */,
 				1BE8E3C8192533AD00D108C0 /* main.m in Sources */,
+				31F67C7D1935286600113DA8 /* TPInstrumento.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
