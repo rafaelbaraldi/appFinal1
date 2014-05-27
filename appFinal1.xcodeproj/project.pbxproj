@@ -38,6 +38,7 @@
 		1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */; };
 		1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */; };
 		1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3FB192544E900D108C0 /* LocalStore.m */; };
+		31F67C75193515CC00113DA8 /* escrever.png in Resources */ = {isa = PBXBuildFile; fileRef = 31F67C74193515CC00113DA8 /* escrever.png */; };
 		31F83E14192E84C70070D597 /* TBFiltroEstilo.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F83E12192E84C70070D597 /* TBFiltroEstilo.m */; };
 		31F83E15192E84C70070D597 /* TBFiltroEstilo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E13192E84C70070D597 /* TBFiltroEstilo.xib */; };
 		31F83E1C192E85050070D597 /* TBFiltroInstrumento.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F83E1A192E85050070D597 /* TBFiltroInstrumento.m */; };
@@ -104,6 +105,7 @@
 		1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaCadastroViewController.xib; sourceTree = "<group>"; };
 		1BE8E3FA192544E900D108C0 /* LocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStore.h; sourceTree = "<group>"; };
 		1BE8E3FB192544E900D108C0 /* LocalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStore.m; sourceTree = "<group>"; };
+		31F67C74193515CC00113DA8 /* escrever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = escrever.png; sourceTree = "<group>"; };
 		31F83E11192E84C70070D597 /* TBFiltroEstilo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBFiltroEstilo.h; sourceTree = "<group>"; };
 		31F83E12192E84C70070D597 /* TBFiltroEstilo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBFiltroEstilo.m; sourceTree = "<group>"; };
 		31F83E13192E84C70070D597 /* TBFiltroEstilo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBFiltroEstilo.xib; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		1B82766A192BDA0100E461AD /* Busca */ = {
 			isa = PBXGroup;
 			children = (
+				31F67C6F1935130A00113DA8 /* Imagens */,
 				1B5FE141192FCFE600E35BCC /* WebService */,
 				1B5FE13D192FC22600E35BCC /* Singleton */,
 				1B82766B192BDB2000E461AD /* Tela */,
@@ -339,6 +342,14 @@
 			name = Singleton;
 			sourceTree = "<group>";
 		};
+		31F67C6F1935130A00113DA8 /* Imagens */ = {
+			isa = PBXGroup;
+			children = (
+				31F67C74193515CC00113DA8 /* escrever.png */,
+			);
+			name = Imagens;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -420,6 +431,7 @@
 				31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */,
 				1BE8E3C6192533AD00D108C0 /* InfoPlist.strings in Resources */,
 				1BE8E3D1192533AD00D108C0 /* Images.xcassets in Resources */,
+				31F67C75193515CC00113DA8 /* escrever.png in Resources */,
 				1B827670192BDB3500E461AD /* TelaBuscaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

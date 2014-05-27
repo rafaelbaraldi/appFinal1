@@ -20,8 +20,7 @@
 
 @implementation TelaBuscaViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -30,10 +29,19 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [self atualizaBusca];
+    [self atualizaTela];
+}
+
+- (void)viewDidLoad{
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
     [self atualizaBusca];
     
     [_txtCidade addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
@@ -42,15 +50,7 @@
     _frameTbUsuarios = _tbUsuarios.frame;
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    
-    [self atualizaBusca];
-    
-    [self atualizaTela];
-}
-
 -(void)atualizaTela{
-    
     //Filtro Instrumento
     if ([[[BuscaStore sharedStore] instrumento] length] > 0) {
         _btnInstumento.titleLabel.text =[[BuscaStore sharedStore] instrumento];
@@ -70,12 +70,6 @@
     }
     
     [_tbUsuarios reloadData];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 //Botoes
@@ -174,15 +168,26 @@
         
         UILabel *nome = [[UILabel alloc] initWithFrame:CGRectMake(80, 5, 200, 15)];
         nome.text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
+        nome.adjustsFontSizeToFitWidth = YES;
         nome.tag = 1;
         
         UILabel *cidade = [[UILabel alloc] initWithFrame:CGRectMake(80, 25, 200, 15)];
         cidade.text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
         cidade.font = [UIFont fontWithName:@"arial" size:10];
+        cidade.adjustsFontSizeToFitWidth = YES;
         cidade.tag = 2;
+        
+        UIButton *btnEnviarMsg = [[UIButton alloc] initWithFrame:CGRectMake(250, 8, 24, 24)];
+        [btnEnviarMsg setImage:[UIImage imageNamed:@"escrever.png"] forState:UIControlStateNormal];
+    
+        UIButton *btnAdicionar = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        [btnAdicionar setFrame:CGRectMake(280, 9, 25, 25)];
         
         [celula addSubview:nome];
         [celula addSubview:cidade];
+        
+        [celula addSubview:btnEnviarMsg];
+        [celula addSubview:btnAdicionar];
     }
     else{
         ((UILabel*)[celula viewWithTag:1]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;

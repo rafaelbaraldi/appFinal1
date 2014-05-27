@@ -23,7 +23,7 @@
         
         [[self navigationItem] setTitle:@"Filtro Instrumento"];
         
-        UIBarButtonItem *busca = [[UIBarButtonItem alloc]initWithTitle:@"Voltar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
+        UIBarButtonItem *busca = [[UIBarButtonItem alloc]initWithTitle:@"< Voltar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
         [[self navigationItem] setLeftBarButtonItem:busca];
     }
     return self;
