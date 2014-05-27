@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B1666291935084000E2FB47 /* TPUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1666281935084000E2FB47 /* TPUsuario.m */; };
 		1B1870AC192A85F400EC6375 /* TBEstilosQueTocaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870AB192A85F400EC6375 /* TBEstilosQueTocaDelegate.m */; };
 		1B1870AF192A860200EC6375 /* TBEstilosDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870AE192A860200EC6375 /* TBEstilosDelegate.m */; };
 		1B1870B2192A9C6400EC6375 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870B1192A9C6400EC6375 /* Usuario.m */; };
@@ -56,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B1666271935084000E2FB47 /* TPUsuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPUsuario.h; sourceTree = "<group>"; };
+		1B1666281935084000E2FB47 /* TPUsuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPUsuario.m; sourceTree = "<group>"; };
 		1B1870AA192A85F400EC6375 /* TBEstilosQueTocaDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEstilosQueTocaDelegate.h; sourceTree = "<group>"; };
 		1B1870AB192A85F400EC6375 /* TBEstilosQueTocaDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEstilosQueTocaDelegate.m; sourceTree = "<group>"; };
 		1B1870AD192A860200EC6375 /* TBEstilosDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEstilosDelegate.h; sourceTree = "<group>"; };
@@ -138,6 +141,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B166626193507FC00E2FB47 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1B1666271935084000E2FB47 /* TPUsuario.h */,
+				1B1666281935084000E2FB47 /* TPUsuario.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		1B5FE13D192FC22600E35BCC /* Singleton */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +267,7 @@
 			children = (
 				1BE8E3CA192533AD00D108C0 /* AppDelegate.h */,
 				1BE8E3CB192533AD00D108C0 /* AppDelegate.m */,
+				1B166626193507FC00E2FB47 /* Classes */,
 				1BE8E3F91925449D00D108C0 /* Singleton */,
 				1BE8E3F5192539C500D108C0 /* Banco */,
 				1BE8E3F4192539B900D108C0 /* Cadastro */,
@@ -439,6 +452,7 @@
 				1B1870B2192A9C6400EC6375 /* Usuario.m in Sources */,
 				1B1870AC192A85F400EC6375 /* TBEstilosQueTocaDelegate.m in Sources */,
 				31F83E14192E84C70070D597 /* TBFiltroEstilo.m in Sources */,
+				1B1666291935084000E2FB47 /* TPUsuario.m in Sources */,
 				1B82766F192BDB3500E461AD /* TelaBuscaViewController.m in Sources */,
 				1BE8E3CC192533AD00D108C0 /* AppDelegate.m in Sources */,
 				1B1870AF192A860200EC6375 /* TBEstilosDelegate.m in Sources */,

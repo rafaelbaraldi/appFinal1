@@ -12,6 +12,7 @@
 #import "TBFiltroInstrumento.h"
 #import "BuscaStore.h"
 #import "BuscaConexao.h"
+#import "TPUsuario.h"
 
 @interface TelaBuscaViewController ()
 
@@ -172,16 +173,21 @@
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioPesquisaCell"];
         
         UILabel *nome = [[UILabel alloc] initWithFrame:CGRectMake(80, 5, 200, 15)];
-        nome.text = [_usuarios objectAtIndex:indexPath.row];
+        nome.text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
+        nome.tag = 1;
         
         UILabel *cidade = [[UILabel alloc] initWithFrame:CGRectMake(80, 25, 200, 15)];
-        cidade.text = @"dasdsa";
+        cidade.text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
         cidade.font = [UIFont fontWithName:@"arial" size:10];
+        cidade.tag = 2;
         
         [celula addSubview:nome];
         [celula addSubview:cidade];
     }
-    
+    else{
+        ((UILabel*)[celula viewWithTag:1]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
+        ((UILabel*)[celula viewWithTag:2]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
+    }
     
     
     return celula;
@@ -192,10 +198,10 @@
     
     NSDictionary *json = [BuscaConexao buscaUsuario:[[BuscaStore sharedStore]instrumento] estilo:[[BuscaStore sharedStore]estilo] cidade:_txtCidade.text ];
     
-    NSString *ret;
-    
     for(NSString *s in json){
-        ret = [s valueForKeyPath:@"nome"];
+        TPUsuario *ret = [[TPUsuario alloc]init];
+        ret.nome = [s valueForKeyPath:@"nome"];
+        ret.cidade = [s valueForKeyPath:@"cidade"];
         [_usuarios addObject:ret];
     }
 }
