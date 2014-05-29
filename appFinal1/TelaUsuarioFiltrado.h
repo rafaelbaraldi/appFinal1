@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TPUsuario.h"
 
-@interface TelaUsuarioFiltrado : UIViewController
+@interface TelaUsuarioFiltrado : UIViewController <UITableViewDataSource>
 
 @property NSString *identificador;
 @property TPUsuario *pessoa;

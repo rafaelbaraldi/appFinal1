@@ -123,15 +123,15 @@ const int OBSERVACOES = 2;
     usuario.estilos = [usuario.estilos substringFromIndex:2];
     
     
-    NSLog(@"nome: %@ \n email: %@ \n sexo: %@ \n cidade: %@ \n bairro: %@ \n instumentos: %@ \n estilos: %@ \n obs: %@", usuario.nome, usuario.email, usuario.sexo, usuario.cidade, usuario.bairro, usuario.instrumentos, usuario.estilos, usuario.observacoes);
-    
-    CadastroUsuario *cadastro = [[CadastroUsuario alloc] init];
-    if([cadastro cadastraUsuario:usuario]){
-        NSLog(@"OK \n \n");
-    }
-    else{
-        NSLog(@"NO \n \n");
-    }
+//    NSLog(@"nome: %@ \n email: %@ \n sexo: %@ \n cidade: %@ \n bairro: %@ \n instumentos: %@ \n estilos: %@ \n obs: %@", usuario.nome, usuario.email, usuario.sexo, usuario.cidade, usuario.bairro, usuario.instrumentos, usuario.estilos, usuario.observacoes);
+//    
+//    CadastroUsuario *cadastro = [[CadastroUsuario alloc] init];
+//    if([cadastro cadastraUsuario:usuario]){
+//        NSLog(@"OK \n \n");
+//    }
+//    else{
+//        NSLog(@"NO \n \n");
+//    }
 }
 
 -(void)exibiView:(UIView *)view alpha:(BOOL)alpha{

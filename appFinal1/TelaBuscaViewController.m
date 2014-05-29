@@ -163,6 +163,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString * i = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador;
     TelaUsuarioFiltrado *tuVC = [[TelaUsuarioFiltrado alloc] initWithIdentificador:((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tuVC];
     

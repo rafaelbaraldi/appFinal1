@@ -29,8 +29,6 @@
     if (self){
         _identificador = idUsuario;
         
-        [self carregaUsuarioFiltrado];
-        
         [[self navigationItem] setTitle:@"Perfil"];
         
         UIBarButtonItem *busca = [[UIBarButtonItem alloc]initWithTitle:@"Voltar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
@@ -41,6 +39,9 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    
+    [self carregaUsuarioFiltrado];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -57,41 +58,75 @@
     
     _lblNome.text = _pessoa.nome;
     _lblSexo.text = _pessoa.sexo;
+    
+    _lblCidadeBairro.lineBreakMode = NSLineBreakByCharWrapping;
+    _lblCidadeBairro.numberOfLines = 2;
     _lblCidadeBairro.text = [NSString stringWithFormat:@"%@, %@", _pessoa.cidade, _pessoa.bairro];
+    
     _lblAtribuicoes.text = _pessoa.atribuicoes;
+    
+    for (NSString* s in _pessoa.estilos) {
+        _lblEstilo.text = [NSString stringWithFormat:@"%@, %@", _lblEstilo.text, s];
+    }
+    
+    _lblEstilo.text = [_lblEstilo.text substringFromIndex:2];
 }
 
 -(TPUsuario*)buscaPessoa{
     NSDictionary *json = [BuscaConexao buscaUsuario:_identificador];
     
-    TPUsuario *ret = [[TPUsuario alloc]init];
-    ret.nome = @"";
-    ret.sexo = @"";
-    ret.cidade = @"";
-    ret.bairro = @"";
-    ret.atribuicoes = @"";
-    ret.instrumentos = [[NSMutableArray alloc]init];
-    ret.estilos = [[NSMutableArray alloc]init];
+    TPUsuario *pessoa = [[TPUsuario alloc]init];
+    pessoa.nome = @"";
+    pessoa.sexo = @"";
+    pessoa.cidade = @"";
+    pessoa.bairro = @"";
+    pessoa.atribuicoes = @"";
+    pessoa.instrumentos = [[NSMutableArray alloc]init];
+    pessoa.estilos = [[NSMutableArray alloc]init];
     
     for(NSString *s in json){
-        if([ret.nome  isEqualToString:@""]){
-            ret.nome = [s valueForKeyPath:@"nome"];
-            ret.cidade = [s valueForKeyPath:@"cidade"];
-            ret.sexo = [s valueForKeyPath:@"sexo"];
-            ret.bairro = [s valueForKeyPath:@"bairro"];
-            ret.atribuicoes = [s valueForKeyPath:@"atribuicoes"];
+        if([pessoa.nome  isEqualToString:@""]){
+            pessoa.nome = [s valueForKeyPath:@"nome"];
+            pessoa.cidade = [s valueForKeyPath:@"cidade"];
+            pessoa.sexo = [s valueForKeyPath:@"sexo"];
+            pessoa.bairro = [s valueForKeyPath:@"bairro"];
+            pessoa.atribuicoes = [s valueForKeyPath:@"atribuicoes"];
         }
         if (![[s valueForKeyPath:@"instrumento_musical"] isEqualToString:@""]) {
             TPInstrumento *instrumento = [[TPInstrumento alloc]init];
             instrumento.nome = [s valueForKeyPath:@"instrumento_musical"];
             instrumento.possui = (BOOL)[s valueForKeyPath:@"possui"];
-            [ret.instrumentos addObject:instrumento];
+            [pessoa.instrumentos addObject:instrumento];
         }
         if (![[s valueForKeyPath:@"estilo_musical"] isEqualToString:@""]) {
-            [ret.estilos addObject:[s valueForKeyPath:@"estilo_musical"]];
+            [pessoa.estilos addObject:[s valueForKeyPath:@"estilo_musical"]];
         }
     }
-    return  ret;
+    return  pessoa;
+}
+
+//Delegate TableView
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return [_pessoa.instrumentos count];
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioSelecionadoCell"];
+    
+    
+    if(celula == nil){
+        celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioSelecionadoCell"];
+        
+    }
+    
+    celula.textLabel.text = ((TPInstrumento*)[_pessoa.instrumentos objectAtIndex:indexPath.row]).nome;
+    
+    return celula;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
 
 @end
