@@ -28,6 +28,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[self navigationItem] setTitle:@"Buscar Músico"];
+        
         _usuarios = [[NSMutableArray alloc] init];
     }
     return self;
@@ -48,10 +50,15 @@
     
     [self atualizaBusca];
     
+    //Metodo de Busca por cidade
     [_txtCidade addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
-    _tbUsuarios.layer.zPosition = 3;
     
+    //Bag esconder Filtro
+    _tbUsuarios.layer.zPosition = 3;
     _frameTbUsuarios = _tbUsuarios.frame;
+    
+    //Controla tamnho da tbViewUsuario
+    [self controlaAlturaTbViewUsuario];
 }
 
 -(void)atualizaTela{
@@ -152,6 +159,17 @@
     [_tbUsuarios reloadData];
 }
 
+
+-(void)controlaAlturaTbViewUsuario{
+    
+//    CGRect novaFrameTbUsuarios = _tbUsuarios.frame;
+//    novaFrameTbUsuarios.size.height = 600;
+//    
+//    [_tbUsuarios setFrame:novaFrameTbUsuarios];
+//    
+//    [_tbUsuarios reloadData];
+}
+
 //Delegate TableView
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -163,12 +181,11 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString * i = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador;
+//    NSString * i = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador;
     TelaUsuarioFiltrado *tuVC = [[TelaUsuarioFiltrado alloc] initWithIdentificador:((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tuVC];
     
     [self presentViewController:nav animated:YES completion:nil];
-    
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

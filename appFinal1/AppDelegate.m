@@ -23,7 +23,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    [self.window setRootViewController:[[TelaBuscaViewController alloc] initWithNibName:@"TelaBuscaViewController" bundle:nil]];
+    TelaBuscaViewController *telaVc = [[TelaBuscaViewController alloc] init];
+    UINavigationController *navegacaoC = [[UINavigationController alloc] initWithRootViewController:telaVc];
+    
+    [self.window setRootViewController:navegacaoC];
+    
+//    [self.window setRootViewController:[[TelaBuscaViewController alloc] initWithNibName:@"TelaBuscaViewController" bundle:nil]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
