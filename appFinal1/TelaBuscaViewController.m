@@ -16,6 +16,8 @@
 #import "BuscaStore.h"
 #import "BuscaConexao.h"
 
+#import "LocalStore.h"
+
 #import "TPUsuario.h"
 
 @interface TelaBuscaViewController ()
@@ -58,7 +60,16 @@
     _frameTbUsuarios = _tbUsuarios.frame;
     
     //Controla tamnho da tbViewUsuario
-    [self controlaAlturaTbViewUsuario];
+    //[self controlaAlturaTbViewUsuario];
+    
+    //Deixa a borda dos boteos arredondados
+    [self arredondaBordaBotoes];
+}
+
+-(void)arredondaBordaBotoes{
+    
+    [[_btnEstilo layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
+    [[_btnInstumento layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];    
 }
 
 -(void)atualizaTela{
@@ -72,8 +83,8 @@
     }
     
     //Filtro Estilo Musical
-    if ([[[BuscaStore sharedStore] estilo] length] > 0) {
-        _btnEstilo.titleLabel.text =[[BuscaStore sharedStore] estilo];
+    if ([[[BuscaStore sharedStore] estilo] length] > 0) {        
+        _btnEstilo.titleLabel.text = [[BuscaStore sharedStore] estilo];
         _btnRemoverEstilo.hidden = NO;
     }
     else{
@@ -109,6 +120,7 @@
 
 - (IBAction)btnRemoverInstrumentoClick:(id)sender {
     [[BuscaStore sharedStore] setInstrumento:@""];
+    [[BuscaStore sharedStore] setProfissao:@""];
     _btnInstumento.titleLabel.text = @"Intrumento";
     
     [self atualizaBusca];

@@ -38,6 +38,7 @@
 		1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */; };
 		1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */; };
 		1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3FB192544E900D108C0 /* LocalStore.m */; };
+		31C31744194783B700C99512 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C31743194783B700C99512 /* delete.png */; };
 		31F67C75193515CC00113DA8 /* escrever.png in Resources */ = {isa = PBXBuildFile; fileRef = 31F67C74193515CC00113DA8 /* escrever.png */; };
 		31F67C79193523D400113DA8 /* TelaUsuarioFiltrado.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F67C77193523D400113DA8 /* TelaUsuarioFiltrado.m */; };
 		31F67C7A193523D400113DA8 /* TelaUsuarioFiltrado.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F67C78193523D400113DA8 /* TelaUsuarioFiltrado.xib */; };
@@ -108,6 +109,7 @@
 		1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaCadastroViewController.xib; sourceTree = "<group>"; };
 		1BE8E3FA192544E900D108C0 /* LocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStore.h; sourceTree = "<group>"; };
 		1BE8E3FB192544E900D108C0 /* LocalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStore.m; sourceTree = "<group>"; };
+		31C31743194783B700C99512 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		31F67C74193515CC00113DA8 /* escrever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = escrever.png; sourceTree = "<group>"; };
 		31F67C76193523D400113DA8 /* TelaUsuarioFiltrado.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaUsuarioFiltrado.h; sourceTree = "<group>"; };
 		31F67C77193523D400113DA8 /* TelaUsuarioFiltrado.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaUsuarioFiltrado.m; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				31F67C74193515CC00113DA8 /* escrever.png */,
+				31C31743194783B700C99512 /* delete.png */,
 			);
 			name = Imagens;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				1BE8E3C6192533AD00D108C0 /* InfoPlist.strings in Resources */,
 				1BE8E3D1192533AD00D108C0 /* Images.xcassets in Resources */,
 				31F67C75193515CC00113DA8 /* escrever.png in Resources */,
+				31C31744194783B700C99512 /* delete.png in Resources */,
 				1B827670192BDB3500E461AD /* TelaBuscaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -68,7 +68,7 @@
     return celula;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{    
     [[BuscaStore sharedStore] setEstilo:[[[BuscaStore sharedStore] estilos] objectAtIndex:indexPath.row]];
     [self retorna];
 }
