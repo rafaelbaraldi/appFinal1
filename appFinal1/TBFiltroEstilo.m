@@ -23,7 +23,7 @@
         // Custom initialization
         [[self navigationItem] setTitle:@"Filtro Estilo Musical"];
         
-        UIBarButtonItem *busca = [[UIBarButtonItem alloc]initWithTitle:@"Voltar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
+        UIBarButtonItem *busca = [[UIBarButtonItem alloc]initWithTitle:@"Buscar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
         [[self navigationItem] setLeftBarButtonItem:busca];
     }
     return self;
@@ -31,7 +31,7 @@
 
 -(void)retorna{
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad

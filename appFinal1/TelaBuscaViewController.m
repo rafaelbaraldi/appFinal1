@@ -63,8 +63,8 @@
 
 -(void)atualizaTela{
     //Filtro Instrumento
-    if ([[[BuscaStore sharedStore] instrumento] length] > 0) {
-        _btnInstumento.titleLabel.text =[[BuscaStore sharedStore] instrumento];
+    if ([[[BuscaStore sharedStore] profissao] length] > 0) {
+        _btnInstumento.titleLabel.text = [[BuscaStore sharedStore] profissao];
         _btnRemoverInstrumento.hidden = NO;
     }
     else{
@@ -86,23 +86,17 @@
 //Botoes
 - (IBAction)btnInstrumentoClick:(id)sender {
     TBFiltroInstrumento *tbInstrumentoVC = [[TBFiltroInstrumento alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tbInstrumentoVC];
-    
-    [self presentViewController:nav animated:YES completion:nil];
+    [[self navigationController] pushViewController:tbInstrumentoVC animated:YES];
 }
 
 - (IBAction)btnEstiloClick:(id)sender {
     TBFiltroEstilo *tbEstiloVC = [[TBFiltroEstilo alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tbEstiloVC];
-    
-    [self presentViewController:nav animated:YES completion:nil];
+    [[self navigationController] pushViewController:tbEstiloVC animated:YES];
 }
 
 - (IBAction)btnHorariosClick:(id)sender {
     TBFiltroHorario *tbHorariosVC = [[TBFiltroHorario alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tbHorariosVC];
-    
-    [self presentViewController:nav animated:YES completion:nil];
+    [[self navigationController] pushViewController:tbHorariosVC animated:YES];
 }
 
 - (IBAction)btnRemoverEstiloClick:(id)sender {
@@ -158,7 +152,6 @@
     [self atualizaBusca];
     [_tbUsuarios reloadData];
 }
-
 
 -(void)controlaAlturaTbViewUsuario{
     

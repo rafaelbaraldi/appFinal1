@@ -12,9 +12,11 @@
 
 @property NSMutableArray *instrumentos;
 @property NSMutableArray *estilos;
+@property NSMutableArray *profissoes;
 
-@property NSString* instrumento;
-@property NSString* estilo;
+@property NSString *instrumento;
+@property NSString *estilo;
+@property NSString *profissao;
 
 +(BuscaStore*)sharedStore;
 
