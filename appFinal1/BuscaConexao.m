@@ -11,17 +11,20 @@
 @implementation BuscaConexao
 
 +(NSDictionary*)retornaListaDe:(NSString *)tabela{
+    
     NSString *url = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/%@.php", tabela];
+    NSData *data = [url dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSString *post = @"id=3&nome=ra";
+    url = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    //NSString *post = @"id=3&nome=ra";
+    //NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
     NSMutableURLRequest *request = [[ NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"context-type"];
-    [request setHTTPBody:postData];
+    //[request setHTTPBody:postData];
     
     NSURLResponse *response;
     NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];

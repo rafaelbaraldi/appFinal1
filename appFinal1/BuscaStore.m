@@ -25,11 +25,13 @@
 -(id)init{
     self = [super init];
     if(self){
-        _instrumentos =[[NSMutableArray alloc] init];
-        _estilos =[[NSMutableArray alloc] init];
+        _instrumentos = [[NSMutableArray alloc] init];
+        _estilos = [[NSMutableArray alloc] init];
+        _profissoes = [[NSMutableArray alloc] init];
         
         _instrumento = [[NSString alloc]init];
         _estilo = [[NSString alloc]init];
+        _profissao = [[NSString alloc] init];
         
     }
     return self;

@@ -19,8 +19,10 @@
 - (IBAction)btnInstrumentoClick:(id)sender;
 - (IBAction)btnEstiloClick:(id)sender;
 - (IBAction)btnHorariosClick:(id)sender;
+
 - (IBAction)btnRemoverEstiloClick:(id)sender;
 - (IBAction)btnRemoverInstrumentoClick:(id)sender;
+
 - (IBAction)btnEsconderFiltroClick:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnEsconderFiltro;
@@ -33,4 +35,5 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *btnRemoverInstrumento;
 @property (strong, nonatomic) IBOutlet UIButton *btnRemoverEstilo;
+
 @end

@@ -16,14 +16,13 @@
 
 @implementation TBFiltroInstrumento
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
         [[self navigationItem] setTitle:@"Filtro Instrumento"];
         
-        UIBarButtonItem *busca = [[UIBarButtonItem alloc]initWithTitle:@"Voltar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
+        UIBarButtonItem *busca = [[UIBarButtonItem alloc]initWithTitle:@"Buscar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
         [[self navigationItem] setLeftBarButtonItem:busca];
     }
     return self;
@@ -31,13 +30,11 @@
 
 -(void)retorna{
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     NSDictionary *json = [BuscaConexao retornaListaDe:@"instrumento"];
     
@@ -46,6 +43,9 @@
     for(NSString *s in json){
         ret = [s valueForKeyPath:@"nome"];
         [[[BuscaStore sharedStore] instrumentos] addObject:ret];
+        
+        ret = [s valueForKeyPath:@"profissao"];
+        [[[BuscaStore sharedStore] profissoes] addObject:ret];
     }
 }
 
@@ -69,14 +69,13 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [[BuscaStore sharedStore] setProfissao:[[[BuscaStore sharedStore] profissoes] objectAtIndex:indexPath.row]];
     [[BuscaStore sharedStore] setInstrumento:[[[BuscaStore sharedStore] instrumentos] objectAtIndex:indexPath.row]];
     [self retorna];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

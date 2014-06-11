@@ -16,6 +16,8 @@
 #import "BuscaStore.h"
 #import "BuscaConexao.h"
 
+#import "LocalStore.h"
+
 #import "TPUsuario.h"
 
 @interface TelaBuscaViewController ()
@@ -28,6 +30,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[self navigationItem] setTitle:@"Buscar Músico"];
+        
         _usuarios = [[NSMutableArray alloc] init];
     }
     return self;
@@ -48,16 +52,30 @@
     
     [self atualizaBusca];
     
+    //Metodo de Busca por cidade
     [_txtCidade addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
-    _tbUsuarios.layer.zPosition = 3;
     
+    //Bag esconder Filtro
+    _tbUsuarios.layer.zPosition = 3;
     _frameTbUsuarios = _tbUsuarios.frame;
+    
+    //Controla tamnho da tbViewUsuario
+    //[self controlaAlturaTbViewUsuario];
+    
+    //Deixa a borda dos boteos arredondados
+    [self arredondaBordaBotoes];
+}
+
+-(void)arredondaBordaBotoes{
+    
+    [[_btnEstilo layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
+    [[_btnInstumento layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];    
 }
 
 -(void)atualizaTela{
     //Filtro Instrumento
-    if ([[[BuscaStore sharedStore] instrumento] length] > 0) {
-        _btnInstumento.titleLabel.text =[[BuscaStore sharedStore] instrumento];
+    if ([[[BuscaStore sharedStore] profissao] length] > 0) {
+        _btnInstumento.titleLabel.text = [[BuscaStore sharedStore] profissao];
         _btnRemoverInstrumento.hidden = NO;
     }
     else{
@@ -65,8 +83,8 @@
     }
     
     //Filtro Estilo Musical
-    if ([[[BuscaStore sharedStore] estilo] length] > 0) {
-        _btnEstilo.titleLabel.text =[[BuscaStore sharedStore] estilo];
+    if ([[[BuscaStore sharedStore] estilo] length] > 0) {        
+        _btnEstilo.titleLabel.text = [[BuscaStore sharedStore] estilo];
         _btnRemoverEstilo.hidden = NO;
     }
     else{
@@ -79,23 +97,17 @@
 //Botoes
 - (IBAction)btnInstrumentoClick:(id)sender {
     TBFiltroInstrumento *tbInstrumentoVC = [[TBFiltroInstrumento alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tbInstrumentoVC];
-    
-    [self presentViewController:nav animated:YES completion:nil];
+    [[self navigationController] pushViewController:tbInstrumentoVC animated:YES];
 }
 
 - (IBAction)btnEstiloClick:(id)sender {
     TBFiltroEstilo *tbEstiloVC = [[TBFiltroEstilo alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tbEstiloVC];
-    
-    [self presentViewController:nav animated:YES completion:nil];
+    [[self navigationController] pushViewController:tbEstiloVC animated:YES];
 }
 
 - (IBAction)btnHorariosClick:(id)sender {
     TBFiltroHorario *tbHorariosVC = [[TBFiltroHorario alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tbHorariosVC];
-    
-    [self presentViewController:nav animated:YES completion:nil];
+    [[self navigationController] pushViewController:tbHorariosVC animated:YES];
 }
 
 - (IBAction)btnRemoverEstiloClick:(id)sender {
@@ -108,6 +120,7 @@
 
 - (IBAction)btnRemoverInstrumentoClick:(id)sender {
     [[BuscaStore sharedStore] setInstrumento:@""];
+    [[BuscaStore sharedStore] setProfissao:@""];
     _btnInstumento.titleLabel.text = @"Intrumento";
     
     [self atualizaBusca];
@@ -152,6 +165,16 @@
     [_tbUsuarios reloadData];
 }
 
+-(void)controlaAlturaTbViewUsuario{
+    
+//    CGRect novaFrameTbUsuarios = _tbUsuarios.frame;
+//    novaFrameTbUsuarios.size.height = 600;
+//    
+//    [_tbUsuarios setFrame:novaFrameTbUsuarios];
+//    
+//    [_tbUsuarios reloadData];
+}
+
 //Delegate TableView
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -163,12 +186,11 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString * i = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador;
+//    NSString * i = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador;
     TelaUsuarioFiltrado *tuVC = [[TelaUsuarioFiltrado alloc] initWithIdentificador:((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tuVC];
     
     [self presentViewController:nav animated:YES completion:nil];
-    
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
