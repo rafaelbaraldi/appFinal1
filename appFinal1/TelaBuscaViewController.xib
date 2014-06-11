@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="btnEsconderFiltro" destination="8i9-TD-Lyn" id="Cgz-4Y-VRC"/>
                 <outlet property="btnEstilo" destination="9Pe-oG-gi2" id="R6V-Wf-zkN"/>
+                <outlet property="btnHorarios" destination="jH1-oh-0US" id="vfM-AX-S0D"/>
                 <outlet property="btnInstumento" destination="ZcF-60-fJs" id="dsA-TR-zJX"/>
                 <outlet property="btnRemoverEstilo" destination="bym-wc-cur" id="lwy-Rq-7St"/>
                 <outlet property="btnRemoverInstrumento" destination="h0P-7Z-idq" id="C3I-R3-P8k"/>
@@ -36,7 +37,7 @@
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-60-fJs">
                             <rect key="frame" x="4" y="26" width="135" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.077871989340000003" green="0.28629103500000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.14117647707462311" green="0.66666668653488159" blue="0.96862751245498657" alpha="1" colorSpace="deviceRGB"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Instrumento">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,7 +49,7 @@
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pe-oG-gi2">
                             <rect key="frame" x="163" y="26" width="128" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.077871989340000003" green="0.28629103500000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.14117647707462311" green="0.66666668653488159" blue="0.96862751245498657" alpha="1" colorSpace="deviceRGB"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Estilo Musical ">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -69,7 +70,7 @@
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jH1-oh-0US">
                             <rect key="frame" x="4" y="63" width="287" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.077871989340000003" green="0.28629103500000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.072338819464524043" green="0.65865858311599468" blue="0.97864079475402832" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Horarios Disponiveis para ensaio">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -113,10 +114,10 @@
                         <action selector="btnEsconderFiltroClick:" destination="-1" eventType="touchUpInside" id="7fh-tc-Hnz"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yzY-OJ-snY">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="yzY-OJ-snY">
                     <rect key="frame" x="0.0" y="229" width="320" height="339"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="2bo-xW-jmj"/>
                         <outlet property="delegate" destination="-1" id="hvy-d4-QPp"/>

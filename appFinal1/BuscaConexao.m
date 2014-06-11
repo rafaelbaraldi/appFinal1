@@ -7,6 +7,7 @@
 //
 
 #import "BuscaConexao.h"
+#import "LocalStore.h"
 
 @implementation BuscaConexao
 
@@ -29,7 +30,10 @@
     NSURLResponse *response;
     NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:returnData options:kNilOptions error:nil];
+    NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    s = [[LocalStore sharedStore]substituiCaracteresHTML:s];
+    
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[s dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
     
     return json;
 }
@@ -50,7 +54,10 @@
     NSURLResponse *response;
     NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:returnData options:kNilOptions error:nil];
+    NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    s = [[LocalStore sharedStore]substituiCaracteresHTML:s];
+    
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[s dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
     
     return json;
 }
@@ -71,7 +78,10 @@
     NSURLResponse *response;
     NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:returnData options:kNilOptions error:nil];
+    NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    s = [[LocalStore sharedStore]substituiCaracteresHTML:s];
+    
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[s dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
     
     return json;
 }

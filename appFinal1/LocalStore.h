@@ -18,4 +18,6 @@
 
 +(LocalStore*)sharedStore;
 
+-(NSString*)substituiCaracteresHTML:(NSString*)htmlCode;
+
 @end

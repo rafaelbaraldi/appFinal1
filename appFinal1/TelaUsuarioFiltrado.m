@@ -95,7 +95,8 @@
         if (![[s valueForKeyPath:@"instrumento_musical"] isEqualToString:@""]) {
             TPInstrumento *instrumento = [[TPInstrumento alloc]init];
             instrumento.nome = [s valueForKeyPath:@"instrumento_musical"];
-            instrumento.possui = (BOOL)[s valueForKeyPath:@"possui"];
+            NSString* b = [s valueForKeyPath:@"possui"];
+            instrumento.possui = [b boolValue];
             [pessoa.instrumentos addObject:instrumento];
         }
         if (![[s valueForKeyPath:@"estilo_musical"] isEqualToString:@""]) {
@@ -114,10 +115,25 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioSelecionadoCell"];
     
+    UIButton *btnPossui = [[UIButton alloc] initWithFrame:CGRectMake(240, 8, 25, 25)];
+    
     
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioSelecionadoCell"];
         
+        btnPossui.tag = 1;
+        
+        [celula addSubview:btnPossui];
+    }
+    else{
+        btnPossui = ((UIButton*)[celula viewWithTag:1]);
+    }
+    
+    if (((TPInstrumento*)[_pessoa.instrumentos objectAtIndex:indexPath.row]).possui) {
+        btnPossui.backgroundColor = [UIColor greenColor];
+    }
+    else{
+        btnPossui.backgroundColor = [UIColor redColor];
     }
     
     celula.textLabel.text = ((TPInstrumento*)[_pessoa.instrumentos objectAtIndex:indexPath.row]).nome;

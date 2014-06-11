@@ -29,6 +29,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *btnInstumento;
 @property (strong, nonatomic) IBOutlet UIButton *btnEstilo;
+@property (strong, nonatomic) IBOutlet UIButton *btnHorarios;
 
 @property (strong, nonatomic) IBOutlet UITextField *txtCidade;
 @property (strong, nonatomic) IBOutlet UITableView *tbUsuarios;

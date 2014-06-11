@@ -69,7 +69,8 @@
 -(void)arredondaBordaBotoes{
     
     [[_btnEstilo layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
-    [[_btnInstumento layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];    
+    [[_btnInstumento layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
+    [[_btnHorarios layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
 }
 
 -(void)atualizaTela{
@@ -195,7 +196,6 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioPesquisaCell"];
-    [celula setFrame:CGRectMake(0, 0, celula.frame.size.width, 130)];
     
     
     if(celula == nil){
