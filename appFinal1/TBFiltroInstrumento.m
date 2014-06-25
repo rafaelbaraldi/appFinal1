@@ -36,17 +36,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    NSDictionary *json = [BuscaConexao retornaListaDe:@"instrumento"];
-    
-    NSString *ret;
-    
-    for(NSString *s in json){
-        ret = [s valueForKeyPath:@"nome"];
-        [[[BuscaStore sharedStore] instrumentos] addObject:ret];
-        
-        ret = [s valueForKeyPath:@"profissao"];
-        [[[BuscaStore sharedStore] profissoes] addObject:ret];
-    }
+    _todosInstrumentos = [BuscaStore retornaListaDe:@"instrumento"];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -54,7 +44,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[[BuscaStore sharedStore] instrumentos] count];
+    return [_todosInstrumentos count];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -63,14 +53,13 @@
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"InstrumentosPesquisaCell"];
     }
-    celula.textLabel.text = [[[BuscaStore sharedStore] instrumentos] objectAtIndex:indexPath.row];
+    celula.textLabel.text = [_todosInstrumentos objectAtIndex:indexPath.row];
     
     return celula;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [[BuscaStore sharedStore] setProfissao:[[[BuscaStore sharedStore] profissoes] objectAtIndex:indexPath.row]];
-    [[BuscaStore sharedStore] setInstrumento:[[[BuscaStore sharedStore] instrumentos] objectAtIndex:indexPath.row]];
+    [[BuscaStore sharedStore] setInstrumento:[_todosInstrumentos objectAtIndex:indexPath.row]];
     [self retorna];
 }
 

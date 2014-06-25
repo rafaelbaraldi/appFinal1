@@ -10,4 +10,6 @@
 
 @interface TBFiltroInstrumento : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property NSMutableArray* todosInstrumentos;
+
 @end

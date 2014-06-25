@@ -43,14 +43,14 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
-    [self atualizaBusca];
+    _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [self atualizaTela];
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    [self atualizaBusca];
+    _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     
     //Metodo de Busca por cidade
     [_txtCidade addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
@@ -58,9 +58,6 @@
     //Bag esconder Filtro
     _tbUsuarios.layer.zPosition = 3;
     _frameTbUsuarios = _tbUsuarios.frame;
-    
-    //Controla tamnho da tbViewUsuario
-    //[self controlaAlturaTbViewUsuario];
     
     //Deixa a borda dos boteos arredondados
     [self arredondaBordaBotoes];
@@ -75,8 +72,8 @@
 
 -(void)atualizaTela{
     //Filtro Instrumento
-    if ([[[BuscaStore sharedStore] profissao] length] > 0) {
-        _btnInstumento.titleLabel.text = [[BuscaStore sharedStore] profissao];
+    if ([[[BuscaStore sharedStore] instrumento] length] > 0) {
+        _btnInstumento.titleLabel.text = [[BuscaStore sharedStore] instrumento];
         _btnRemoverInstrumento.hidden = NO;
     }
     else{
@@ -115,16 +112,15 @@
     [[BuscaStore sharedStore] setEstilo:@""];
     _btnEstilo.titleLabel.text = @"Estilo Musical";
     
-    [self atualizaBusca];
+    _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [self atualizaTela];
 }
 
 - (IBAction)btnRemoverInstrumentoClick:(id)sender {
     [[BuscaStore sharedStore] setInstrumento:@""];
-    [[BuscaStore sharedStore] setProfissao:@""];
     _btnInstumento.titleLabel.text = @"Intrumento";
     
-    [self atualizaBusca];
+    _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [self atualizaTela];
 }
 
@@ -162,18 +158,8 @@
 }
 
 -(void)textFieldDidChange{
-    [self atualizaBusca];
+    _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [_tbUsuarios reloadData];
-}
-
--(void)controlaAlturaTbViewUsuario{
-    
-//    CGRect novaFrameTbUsuarios = _tbUsuarios.frame;
-//    novaFrameTbUsuarios.size.height = 600;
-//    
-//    [_tbUsuarios setFrame:novaFrameTbUsuarios];
-//    
-//    [_tbUsuarios reloadData];
 }
 
 //Delegate TableView
@@ -187,7 +173,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSString * i = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador;
+    
     TelaUsuarioFiltrado *tuVC = [[TelaUsuarioFiltrado alloc] initWithIdentificador:((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tuVC];
     
@@ -196,7 +182,6 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioPesquisaCell"];
-    
     
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioPesquisaCell"];
@@ -230,21 +215,6 @@
     }
     
     return celula;
-}
-
--(void)atualizaBusca{
-    [_usuarios removeAllObjects];
-    
-    NSDictionary *json = [BuscaConexao buscaUsuario:[[BuscaStore sharedStore]instrumento] estilo:[[BuscaStore sharedStore]estilo] cidade:_txtCidade.text ];
-    
-    for(NSString *s in json){
-        TPUsuario *ret = [[TPUsuario alloc]init];
-        ret.identificador = [s valueForKey:@"identificador"];
-        ret.nome = [s valueForKeyPath:@"nome"];
-        ret.cidade = [s valueForKeyPath:@"cidade"];
-        
-        [_usuarios addObject:ret];
-    }
 }
 
 @end

@@ -39,14 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
-    NSDictionary *json = [BuscaConexao retornaListaDe:@"estilo"];
-    
-    NSString *ret;
-    
-    for(NSString *s in json){
-        ret = [s valueForKeyPath:@"nome"];
-        [[[BuscaStore sharedStore] estilos] addObject:ret];
-    }
+    _todosEstilos = [BuscaStore retornaListaDe:@"estilo"];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -54,7 +47,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[[BuscaStore sharedStore] estilos] count];
+    return [_todosEstilos count];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -63,13 +56,13 @@
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EstilosPesquisaCell"];
     }
-    celula.textLabel.text = [[[BuscaStore sharedStore] estilos] objectAtIndex:indexPath.row];
+    celula.textLabel.text = [_todosEstilos objectAtIndex:indexPath.row];
     
     return celula;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{    
-    [[BuscaStore sharedStore] setEstilo:[[[BuscaStore sharedStore] estilos] objectAtIndex:indexPath.row]];
+    [[BuscaStore sharedStore] setEstilo:[_todosEstilos objectAtIndex:indexPath.row]];
     [self retorna];
 }
 

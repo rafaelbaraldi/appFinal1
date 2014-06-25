@@ -7,17 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TPUsuario.h"
 
 @interface BuscaStore : NSObject
 
-@property NSMutableArray *instrumentos;
-@property NSMutableArray *estilos;
-@property NSMutableArray *profissoes;
+//@property NSMutableArray *instrumentos;
+//@property NSMutableArray *estilos;
 
 @property NSString *instrumento;
 @property NSString *estilo;
-@property NSString *profissao;
 
 +(BuscaStore*)sharedStore;
+
++(TPUsuario*)buscaPessoa:(NSString*)identificador;
+
++(NSMutableArray*)atualizaBusca:(NSMutableArray*)usuarios cidade:(NSString*)cidade;
+
++(NSMutableArray*)retornaListaDe:(NSString*)nome;
 
 @end

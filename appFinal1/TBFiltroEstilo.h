@@ -10,4 +10,6 @@
 
 @interface TBFiltroEstilo : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property NSMutableArray* todosEstilos;
+
 @end

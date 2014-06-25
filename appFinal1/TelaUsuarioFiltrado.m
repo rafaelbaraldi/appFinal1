@@ -9,6 +9,7 @@
 #import "TelaUsuarioFiltrado.h"
 #import "BuscaConexao.h"
 #import "TPInstrumento.h"
+#import "BuscaStore.h"
 
 @interface TelaUsuarioFiltrado ()
 
@@ -54,7 +55,7 @@
 }
 
 -(void)carregaUsuarioFiltrado{
-    _pessoa = [self buscaPessoa];
+    _pessoa = [BuscaStore buscaPessoa:_identificador];
     
     _lblNome.text = _pessoa.nome;
     _lblSexo.text = _pessoa.sexo;
@@ -70,40 +71,6 @@
     }
     
     _lblEstilo.text = [_lblEstilo.text substringFromIndex:2];
-}
-
--(TPUsuario*)buscaPessoa{
-    NSDictionary *json = [BuscaConexao buscaUsuario:_identificador];
-    
-    TPUsuario *pessoa = [[TPUsuario alloc]init];
-    pessoa.nome = @"";
-    pessoa.sexo = @"";
-    pessoa.cidade = @"";
-    pessoa.bairro = @"";
-    pessoa.atribuicoes = @"";
-    pessoa.instrumentos = [[NSMutableArray alloc]init];
-    pessoa.estilos = [[NSMutableArray alloc]init];
-    
-    for(NSString *s in json){
-        if([pessoa.nome  isEqualToString:@""]){
-            pessoa.nome = [s valueForKeyPath:@"nome"];
-            pessoa.cidade = [s valueForKeyPath:@"cidade"];
-            pessoa.sexo = [s valueForKeyPath:@"sexo"];
-            pessoa.bairro = [s valueForKeyPath:@"bairro"];
-            pessoa.atribuicoes = [s valueForKeyPath:@"atribuicoes"];
-        }
-        if (![[s valueForKeyPath:@"instrumento_musical"] isEqualToString:@""]) {
-            TPInstrumento *instrumento = [[TPInstrumento alloc]init];
-            instrumento.nome = [s valueForKeyPath:@"instrumento_musical"];
-            NSString* b = [s valueForKeyPath:@"possui"];
-            instrumento.possui = [b boolValue];
-            [pessoa.instrumentos addObject:instrumento];
-        }
-        if (![[s valueForKeyPath:@"estilo_musical"] isEqualToString:@""]) {
-            [pessoa.estilos addObject:[s valueForKeyPath:@"estilo_musical"]];
-        }
-    }
-    return  pessoa;
 }
 
 //Delegate TableView
