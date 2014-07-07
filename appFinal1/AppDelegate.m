@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+
 #import "TelaCadastroViewController.h"
 #import "TelaBuscaViewController.h"
+#import "TelaLoginViewController.h"
 
 #import "TBFiltroInstrumento.h"
 
@@ -23,12 +25,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    TelaBuscaViewController *telaVc = [[TelaBuscaViewController alloc] init];
+    //TelaBuscaViewController *telaVc = [[TelaBuscaViewController alloc] init];
+
+    TelaLoginViewController *telaVc = [[TelaLoginViewController alloc] init];
+    
     UINavigationController *navegacaoC = [[UINavigationController alloc] initWithRootViewController:telaVc];
-    
     [self.window setRootViewController:navegacaoC];
-    
-//    [self.window setRootViewController:[[TelaBuscaViewController alloc] initWithNibName:@"TelaBuscaViewController" bundle:nil]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

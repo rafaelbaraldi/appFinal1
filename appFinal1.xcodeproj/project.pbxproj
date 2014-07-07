@@ -49,6 +49,9 @@
 		31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E1B192E85050070D597 /* TBFiltroInstrumento.xib */; };
 		31F83E21192E851D0070D597 /* TBFiltroHorario.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F83E1F192E851D0070D597 /* TBFiltroHorario.m */; };
 		31F83E22192E851D0070D597 /* TBFiltroHorario.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E20192E851D0070D597 /* TBFiltroHorario.xib */; };
+		73EC6E92196B121B0034CB9B /* TelaLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73EC6E90196B121B0034CB9B /* TelaLoginViewController.m */; };
+		73EC6E93196B121B0034CB9B /* TelaLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EC6E91196B121B0034CB9B /* TelaLoginViewController.xib */; };
+		73EC6E97196B18430034CB9B /* LoginConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 73EC6E96196B18430034CB9B /* LoginConexao.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +128,11 @@
 		31F83E1E192E851D0070D597 /* TBFiltroHorario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBFiltroHorario.h; sourceTree = "<group>"; };
 		31F83E1F192E851D0070D597 /* TBFiltroHorario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBFiltroHorario.m; sourceTree = "<group>"; };
 		31F83E20192E851D0070D597 /* TBFiltroHorario.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBFiltroHorario.xib; sourceTree = "<group>"; };
+		73EC6E8F196B121B0034CB9B /* TelaLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaLoginViewController.h; sourceTree = "<group>"; };
+		73EC6E90196B121B0034CB9B /* TelaLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaLoginViewController.m; sourceTree = "<group>"; };
+		73EC6E91196B121B0034CB9B /* TelaLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaLoginViewController.xib; sourceTree = "<group>"; };
+		73EC6E95196B18430034CB9B /* LoginConexao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginConexao.h; sourceTree = "<group>"; };
+		73EC6E96196B18430034CB9B /* LoginConexao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginConexao.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +296,7 @@
 				1B166626193507FC00E2FB47 /* Classes */,
 				1BE8E3F91925449D00D108C0 /* Singleton */,
 				1BE8E3F5192539C500D108C0 /* Banco */,
+				73EC6E8D196B11C40034CB9B /* Login */,
 				1BE8E3F4192539B900D108C0 /* Cadastro */,
 				1B82766A192BDA0100E461AD /* Busca */,
 				1BE8E3D0192533AD00D108C0 /* Images.xcassets */,
@@ -366,6 +375,34 @@
 			name = Imagens;
 			sourceTree = "<group>";
 		};
+		73EC6E8D196B11C40034CB9B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				73EC6E94196B181E0034CB9B /* WebService */,
+				73EC6E8E196B12060034CB9B /* Tela */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		73EC6E8E196B12060034CB9B /* Tela */ = {
+			isa = PBXGroup;
+			children = (
+				73EC6E8F196B121B0034CB9B /* TelaLoginViewController.h */,
+				73EC6E90196B121B0034CB9B /* TelaLoginViewController.m */,
+				73EC6E91196B121B0034CB9B /* TelaLoginViewController.xib */,
+			);
+			name = Tela;
+			sourceTree = "<group>";
+		};
+		73EC6E94196B181E0034CB9B /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				73EC6E95196B18430034CB9B /* LoginConexao.h */,
+				73EC6E96196B18430034CB9B /* LoginConexao.m */,
+			);
+			name = WebService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -442,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */,
+				73EC6E93196B121B0034CB9B /* TelaLoginViewController.xib in Resources */,
 				31F83E22192E851D0070D597 /* TBFiltroHorario.xib in Resources */,
 				31F83E15192E84C70070D597 /* TBFiltroEstilo.xib in Resources */,
 				31F67C7A193523D400113DA8 /* TelaUsuarioFiltrado.xib in Resources */,
@@ -477,6 +515,7 @@
 				1B1870B5192AA01900EC6375 /* CadastroUsuario.m in Sources */,
 				31F83E21192E851D0070D597 /* TBFiltroHorario.m in Sources */,
 				31F67C79193523D400113DA8 /* TelaUsuarioFiltrado.m in Sources */,
+				73EC6E97196B18430034CB9B /* LoginConexao.m in Sources */,
 				1BD384501926A34F0044A2E4 /* TBInstrumentosDelegate.m in Sources */,
 				1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */,
 				31F83E1C192E85050070D597 /* TBFiltroInstrumento.m in Sources */,
@@ -487,6 +526,7 @@
 				1B82766F192BDB3500E461AD /* TelaBuscaViewController.m in Sources */,
 				1BE8E3CC192533AD00D108C0 /* AppDelegate.m in Sources */,
 				1B1870AF192A860200EC6375 /* TBEstilosDelegate.m in Sources */,
+				73EC6E92196B121B0034CB9B /* TelaLoginViewController.m in Sources */,
 				1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */,
 				1BE8E3C8192533AD00D108C0 /* main.m in Sources */,
 				31F67C7D1935286600113DA8 /* TPInstrumento.m in Sources */,
