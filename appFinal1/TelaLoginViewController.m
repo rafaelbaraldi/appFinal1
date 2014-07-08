@@ -7,7 +7,7 @@
 //
 
 #import "TelaLoginViewController.h"
-#import "TelaPerfilViewController.h"
+#import "TelaBuscaViewController.h"
 
 #import "LoginStore.h"
 
@@ -64,8 +64,8 @@
 
     if([LoginStore login:email senha:senha]){
         
-        TelaPerfilViewController *tpVc = [[TelaPerfilViewController alloc] init];
-        [tpVc presentedViewController];
+        TelaBuscaViewController *telaVc = [[TelaBuscaViewController alloc] init];
+        [[self navigationController] pushViewController:telaVc animated:YES];
     }
     else{
         NSLog(@"Usuario Erado");
