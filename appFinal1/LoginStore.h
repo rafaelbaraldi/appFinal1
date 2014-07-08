@@ -1,5 +1,5 @@
 //
-//  LoginConexao.h
+//  LoginStore.h
 //  appFinal1
 //
 //  Created by Rafael Cardoso on 07/07/14.
@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LoginConexao.h"
 
-@interface LoginConexao : NSObject
+@interface LoginStore : NSObject
 
-+(NSDictionary*)login:(NSString*)email senha:(NSString*)senha;
++(LoginStore*)sharedStore;
+
++(BOOL)login:(NSString*)email senha:(NSString *)senha;
 
 @end

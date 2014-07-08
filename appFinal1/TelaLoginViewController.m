@@ -7,7 +7,9 @@
 //
 
 #import "TelaLoginViewController.h"
-#import "LoginConexao.h"
+#import "TelaPerfilViewController.h"
+
+#import "LoginStore.h"
 
 @interface TelaLoginViewController ()
 
@@ -30,6 +32,8 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    [_txtSenha setSecureTextEntry:YES];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -53,5 +57,18 @@
 }
 
 - (IBAction)btnContinuarClick:(id)sender {
+    
+    NSString *email = _txtEmail.text;
+    NSString *senha = _txtSenha.text;
+    
+
+    if([LoginStore login:email senha:senha]){
+        
+        TelaPerfilViewController *tpVc = [[TelaPerfilViewController alloc] init];
+        [tpVc presentedViewController];
+    }
+    else{
+        NSLog(@"Usuario Erado");
+    }
 }
 @end
