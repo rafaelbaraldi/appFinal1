@@ -7,6 +7,7 @@
 //
 
 #import "LocalStore.h"
+#import "TelaLoginViewController.h"
 
 @implementation LocalStore
 
@@ -27,9 +28,16 @@
     if(self){
         _raioBorda = 10;
         
+        [self carregaTelas];
+        
         [self carregaContexto];
     }
     return self;
+}
+
+-(void)carregaTelas{
+    
+    _LoginTela = [[TelaLoginViewController alloc] init];
 }
 
 -(void)carregaContexto{

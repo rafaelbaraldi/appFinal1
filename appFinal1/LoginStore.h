@@ -11,8 +11,17 @@
 
 @interface LoginStore : NSObject
 
++(NSString*)email;
++(void)setEmail:(NSString*)novoEmail;
+
++(NSString*)senha;
++(void)setSenha:(NSString*)novaSenha;
+
 +(LoginStore*)sharedStore;
 
 +(BOOL)login:(NSString*)email senha:(NSString *)senha;
 
++(BOOL)verificaSeEstaLogado;
++(void)deslogar;
+    
 @end

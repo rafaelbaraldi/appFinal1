@@ -10,4 +10,6 @@
 
 @interface TelaPerfilViewController : UIViewController
 
+- (IBAction)btnSair:(id)sender;
+
 @end

@@ -10,6 +10,7 @@
 #import "TelaBuscaViewController.h"
 
 #import "LoginStore.h"
+#import "LocalStore.h"
 
 @interface TelaLoginViewController ()
 
@@ -22,10 +23,6 @@
     if (self) {
 
         [[self navigationItem] setTitle:@"Login"];
-        
-        UIBarButtonItem *login = [[UIBarButtonItem alloc]initWithTitle:@"Voltar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
-        [[self navigationItem] setLeftBarButtonItem:login];
-        
     }
     return self;
 }
@@ -34,16 +31,12 @@
     [super viewDidLoad];
     
     [_txtSenha setSecureTextEntry:YES];
+    
+    [[LocalStore sharedStore] setUltimaTela:@"TelaLoginViewController"];
 }
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-}
-
-//Tab Bar
--(void)retorna{
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //Return Text Field
@@ -61,14 +54,16 @@
     NSString *email = _txtEmail.text;
     NSString *senha = _txtSenha.text;
     
-
-    if([LoginStore login:email senha:senha]){
-        
-        TelaBuscaViewController *telaVc = [[TelaBuscaViewController alloc] init];
-        [[self navigationController] pushViewController:telaVc animated:YES];
-    }
-    else{
-        NSLog(@"Usuario Erado");
+    if([email length] > 0 && [senha length] > 0){
+        if([LoginStore login:email senha:senha]){
+            
+            TelaBuscaViewController *telaVc = [[TelaBuscaViewController alloc] init];
+            [[self navigationController] pushViewController:telaVc animated:YES];
+        }
+        else{
+            UIAlertView *alertDadosIncorretos = [[UIAlertView alloc] initWithTitle:@"ERRO" message:@"E-mail ou senha inválidos" delegate:self cancelButtonTitle:@"Rejeitar" otherButtonTitles:nil];
+            [alertDadosIncorretos show];
+        }
     }
 }
 @end

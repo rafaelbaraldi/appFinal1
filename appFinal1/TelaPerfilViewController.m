@@ -8,6 +8,9 @@
 
 #import "TelaPerfilViewController.h"
 
+#import "LoginStore.h"
+#import "LocalStore.h"
+
 @interface TelaPerfilViewController ()
 
 @end
@@ -35,4 +38,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)btnSair:(id)sender {
+    
+    [LoginStore deslogar];
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] LoginTela] animated:YES];
+}
 @end

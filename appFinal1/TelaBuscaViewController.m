@@ -9,6 +9,8 @@
 #import "TelaBuscaViewController.h"
 #import "TelaUsuarioFiltrado.h"
 
+#import "LocalStore.h"
+
 #import "TBFiltroEstilo.h"
 #import "TBFiltroHorario.h"
 #import "TBFiltroInstrumento.h"
@@ -42,6 +44,11 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
+    //Verificar se veio de busca
+    if([[[LocalStore sharedStore] ultimaTela] isEqualToString:@"TelaLoginViewController"]){
+        [[self navigationItem] setHidesBackButton:YES];
+    }
     
     _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [self atualizaTela];

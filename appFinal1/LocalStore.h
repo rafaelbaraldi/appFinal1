@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
+#import "TelaLoginViewController.h"
 
 @interface LocalStore : NSObject
 
 @property int raioBorda;
+
+@property TelaLoginViewController *LoginTela;
+@property NSString *ultimaTela;
 
 @property AppDelegate *appDelegate;
 @property NSManagedObjectContext *context;
