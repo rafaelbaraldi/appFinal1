@@ -17,6 +17,8 @@
 
 #import "TBFiltroInstrumento.h"
 
+#import "CoreAudioViewController.h"
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -38,7 +40,7 @@
     }
     
     UINavigationController *navegacaoC = [[UINavigationController alloc] initWithRootViewController:telaVc];
-    [self.window setRootViewController:navegacaoC];
+    [self.window setRootViewController:[[CoreAudioViewController alloc] initWithNibName:@"CoreAudioViewController" bundle:nil]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
