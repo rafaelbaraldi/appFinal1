@@ -8,17 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1B1666291935084000E2FB47 /* TPUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1666281935084000E2FB47 /* TPUsuario.m */; };
-		1B1870AC192A85F400EC6375 /* TBEstilosQueTocaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870AB192A85F400EC6375 /* TBEstilosQueTocaDelegate.m */; };
-		1B1870AF192A860200EC6375 /* TBEstilosDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870AE192A860200EC6375 /* TBEstilosDelegate.m */; };
 		1B1870B2192A9C6400EC6375 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870B1192A9C6400EC6375 /* Usuario.m */; };
 		1B1870B5192AA01900EC6375 /* CadastroUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870B4192AA01900EC6375 /* CadastroUsuario.m */; };
 		1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5FE13F192FC23B00E35BCC /* BuscaStore.m */; };
 		1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5FE143192FD00300E35BCC /* BuscaConexao.m */; };
 		1B82766F192BDB3500E461AD /* TelaBuscaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B82766D192BDB3500E461AD /* TelaBuscaViewController.m */; };
 		1B827670192BDB3500E461AD /* TelaBuscaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B82766E192BDB3500E461AD /* TelaBuscaViewController.xib */; };
-		1BD384501926A34F0044A2E4 /* TBInstrumentosDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3844F1926A34F0044A2E4 /* TBInstrumentosDelegate.m */; };
 		1BD384561926A5CB0044A2E4 /* CadastroStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD384551926A5CB0044A2E4 /* CadastroStore.m */; };
-		1BD384591926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD384581926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m */; };
 		1BE8E3BA192533AD00D108C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE8E3B9192533AD00D108C0 /* Foundation.framework */; };
 		1BE8E3BC192533AD00D108C0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE8E3BB192533AD00D108C0 /* CoreGraphics.framework */; };
 		1BE8E3BE192533AD00D108C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE8E3BD192533AD00D108C0 /* UIKit.framework */; };
@@ -50,6 +46,14 @@
 		31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E1B192E85050070D597 /* TBFiltroInstrumento.xib */; };
 		31F83E21192E851D0070D597 /* TBFiltroHorario.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F83E1F192E851D0070D597 /* TBFiltroHorario.m */; };
 		31F83E22192E851D0070D597 /* TBFiltroHorario.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E20192E851D0070D597 /* TBFiltroHorario.xib */; };
+		73A3072319744C09005551D3 /* TBEstilosQueTocaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A3072119744C09005551D3 /* TBEstilosQueTocaViewController.m */; };
+		73A3072419744C09005551D3 /* TBEstilosQueTocaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A3072219744C09005551D3 /* TBEstilosQueTocaViewController.xib */; };
+		73A3072819744CBC005551D3 /* TBEstilosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A3072619744CBC005551D3 /* TBEstilosViewController.m */; };
+		73A3072919744CBC005551D3 /* TBEstilosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A3072719744CBC005551D3 /* TBEstilosViewController.xib */; };
+		73A3072E19746B4C005551D3 /* TBInstrumentosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A3072C19746B4C005551D3 /* TBInstrumentosViewController.m */; };
+		73A3072F19746B4C005551D3 /* TBInstrumentosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A3072D19746B4C005551D3 /* TBInstrumentosViewController.xib */; };
+		73A3073319746B60005551D3 /* TBInstrumentosQueTocaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A3073119746B60005551D3 /* TBInstrumentosQueTocaViewController.m */; };
+		73A3073419746B60005551D3 /* TBInstrumentosQueTocaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A3073219746B60005551D3 /* TBInstrumentosQueTocaViewController.xib */; };
 		73C8496A196F11BD003D9371 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C84969196F11BD003D9371 /* Security.framework */; };
 		73DF446C197053EB000EE360 /* TelaEsqueciSenhaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DF446A197053EB000EE360 /* TelaEsqueciSenhaViewController.m */; };
 		73DF446D197053EB000EE360 /* TelaEsqueciSenhaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73DF446B197053EB000EE360 /* TelaEsqueciSenhaViewController.xib */; };
@@ -74,10 +78,6 @@
 /* Begin PBXFileReference section */
 		1B1666271935084000E2FB47 /* TPUsuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPUsuario.h; sourceTree = "<group>"; };
 		1B1666281935084000E2FB47 /* TPUsuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPUsuario.m; sourceTree = "<group>"; };
-		1B1870AA192A85F400EC6375 /* TBEstilosQueTocaDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEstilosQueTocaDelegate.h; sourceTree = "<group>"; };
-		1B1870AB192A85F400EC6375 /* TBEstilosQueTocaDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEstilosQueTocaDelegate.m; sourceTree = "<group>"; };
-		1B1870AD192A860200EC6375 /* TBEstilosDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEstilosDelegate.h; sourceTree = "<group>"; };
-		1B1870AE192A860200EC6375 /* TBEstilosDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEstilosDelegate.m; sourceTree = "<group>"; };
 		1B1870B0192A9C6400EC6375 /* Usuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usuario.h; sourceTree = "<group>"; };
 		1B1870B1192A9C6400EC6375 /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = "<group>"; };
 		1B1870B3192AA01900EC6375 /* CadastroUsuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroUsuario.h; sourceTree = "<group>"; };
@@ -89,12 +89,8 @@
 		1B82766C192BDB3500E461AD /* TelaBuscaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaBuscaViewController.h; sourceTree = "<group>"; };
 		1B82766D192BDB3500E461AD /* TelaBuscaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaBuscaViewController.m; sourceTree = "<group>"; };
 		1B82766E192BDB3500E461AD /* TelaBuscaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaBuscaViewController.xib; sourceTree = "<group>"; };
-		1BD3844E1926A34F0044A2E4 /* TBInstrumentosDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBInstrumentosDelegate.h; sourceTree = "<group>"; };
-		1BD3844F1926A34F0044A2E4 /* TBInstrumentosDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBInstrumentosDelegate.m; sourceTree = "<group>"; };
 		1BD384541926A5CB0044A2E4 /* CadastroStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroStore.h; sourceTree = "<group>"; };
 		1BD384551926A5CB0044A2E4 /* CadastroStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadastroStore.m; sourceTree = "<group>"; };
-		1BD384571926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBInstrumentosQueTocaDelegate.h; sourceTree = "<group>"; };
-		1BD384581926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBInstrumentosQueTocaDelegate.m; sourceTree = "<group>"; };
 		1BE8E3B6192533AD00D108C0 /* appFinal1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appFinal1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BE8E3B9192533AD00D108C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1BE8E3BB192533AD00D108C0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -137,6 +133,18 @@
 		31F83E1E192E851D0070D597 /* TBFiltroHorario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBFiltroHorario.h; sourceTree = "<group>"; };
 		31F83E1F192E851D0070D597 /* TBFiltroHorario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBFiltroHorario.m; sourceTree = "<group>"; };
 		31F83E20192E851D0070D597 /* TBFiltroHorario.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBFiltroHorario.xib; sourceTree = "<group>"; };
+		73A3072019744C09005551D3 /* TBEstilosQueTocaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEstilosQueTocaViewController.h; sourceTree = "<group>"; };
+		73A3072119744C09005551D3 /* TBEstilosQueTocaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEstilosQueTocaViewController.m; sourceTree = "<group>"; };
+		73A3072219744C09005551D3 /* TBEstilosQueTocaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBEstilosQueTocaViewController.xib; sourceTree = "<group>"; };
+		73A3072519744CBC005551D3 /* TBEstilosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEstilosViewController.h; sourceTree = "<group>"; };
+		73A3072619744CBC005551D3 /* TBEstilosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEstilosViewController.m; sourceTree = "<group>"; };
+		73A3072719744CBC005551D3 /* TBEstilosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBEstilosViewController.xib; sourceTree = "<group>"; };
+		73A3072B19746B4C005551D3 /* TBInstrumentosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBInstrumentosViewController.h; sourceTree = "<group>"; };
+		73A3072C19746B4C005551D3 /* TBInstrumentosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBInstrumentosViewController.m; sourceTree = "<group>"; };
+		73A3072D19746B4C005551D3 /* TBInstrumentosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBInstrumentosViewController.xib; sourceTree = "<group>"; };
+		73A3073019746B60005551D3 /* TBInstrumentosQueTocaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBInstrumentosQueTocaViewController.h; sourceTree = "<group>"; };
+		73A3073119746B60005551D3 /* TBInstrumentosQueTocaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBInstrumentosQueTocaViewController.m; sourceTree = "<group>"; };
+		73A3073219746B60005551D3 /* TBInstrumentosQueTocaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBInstrumentosQueTocaViewController.xib; sourceTree = "<group>"; };
 		73C84969196F11BD003D9371 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		73DF4469197053EB000EE360 /* TelaEsqueciSenhaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaEsqueciSenhaViewController.h; sourceTree = "<group>"; };
 		73DF446A197053EB000EE360 /* TelaEsqueciSenhaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaEsqueciSenhaViewController.m; sourceTree = "<group>"; };
@@ -252,21 +260,6 @@
 			name = Tela;
 			sourceTree = "<group>";
 		};
-		1BD384521926A5750044A2E4 /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				1BD384571926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.h */,
-				1BD384581926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m */,
-				1BD3844E1926A34F0044A2E4 /* TBInstrumentosDelegate.h */,
-				1BD3844F1926A34F0044A2E4 /* TBInstrumentosDelegate.m */,
-				1B1870AD192A860200EC6375 /* TBEstilosDelegate.h */,
-				1B1870AE192A860200EC6375 /* TBEstilosDelegate.m */,
-				1B1870AA192A85F400EC6375 /* TBEstilosQueTocaDelegate.h */,
-				1B1870AB192A85F400EC6375 /* TBEstilosQueTocaDelegate.m */,
-			);
-			name = Delegates;
-			sourceTree = "<group>";
-		};
 		1BD384531926A5810044A2E4 /* Singleton */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,7 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				1BD384531926A5810044A2E4 /* Singleton */,
-				1BD384521926A5750044A2E4 /* Delegates */,
+				73A3072A19746B17005551D3 /* Tela Instrumentos */,
+				73AEFF6E197449AC00B249BB /* Tela Estilos */,
 				1BD384511926A56D0044A2E4 /* Tela */,
 			);
 			name = Cadastro;
@@ -412,6 +406,32 @@
 				31C31743194783B700C99512 /* delete.png */,
 			);
 			name = Imagens;
+			sourceTree = "<group>";
+		};
+		73A3072A19746B17005551D3 /* Tela Instrumentos */ = {
+			isa = PBXGroup;
+			children = (
+				73A3072B19746B4C005551D3 /* TBInstrumentosViewController.h */,
+				73A3072C19746B4C005551D3 /* TBInstrumentosViewController.m */,
+				73A3072D19746B4C005551D3 /* TBInstrumentosViewController.xib */,
+				73A3073019746B60005551D3 /* TBInstrumentosQueTocaViewController.h */,
+				73A3073119746B60005551D3 /* TBInstrumentosQueTocaViewController.m */,
+				73A3073219746B60005551D3 /* TBInstrumentosQueTocaViewController.xib */,
+			);
+			name = "Tela Instrumentos";
+			sourceTree = "<group>";
+		};
+		73AEFF6E197449AC00B249BB /* Tela Estilos */ = {
+			isa = PBXGroup;
+			children = (
+				73A3072519744CBC005551D3 /* TBEstilosViewController.h */,
+				73A3072619744CBC005551D3 /* TBEstilosViewController.m */,
+				73A3072719744CBC005551D3 /* TBEstilosViewController.xib */,
+				73A3072019744C09005551D3 /* TBEstilosQueTocaViewController.h */,
+				73A3072119744C09005551D3 /* TBEstilosQueTocaViewController.m */,
+				73A3072219744C09005551D3 /* TBEstilosQueTocaViewController.xib */,
+			);
+			name = "Tela Estilos";
 			sourceTree = "<group>";
 		};
 		73EC6E8D196B11C40034CB9B /* Login */ = {
@@ -542,12 +562,16 @@
 			files = (
 				73EC6EA1196B3BB90034CB9B /* TelaPerfilViewController.xib in Resources */,
 				1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */,
+				73A3072F19746B4C005551D3 /* TBInstrumentosViewController.xib in Resources */,
 				73EC6E93196B121B0034CB9B /* TelaLoginViewController.xib in Resources */,
 				31F83E22192E851D0070D597 /* TBFiltroHorario.xib in Resources */,
 				31F83E15192E84C70070D597 /* TBFiltroEstilo.xib in Resources */,
+				73A3072419744C09005551D3 /* TBEstilosQueTocaViewController.xib in Resources */,
+				73A3072919744CBC005551D3 /* TBEstilosViewController.xib in Resources */,
 				31F67C7A193523D400113DA8 /* TelaUsuarioFiltrado.xib in Resources */,
 				31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */,
 				1BE8E3C6192533AD00D108C0 /* InfoPlist.strings in Resources */,
+				73A3073419746B60005551D3 /* TBInstrumentosQueTocaViewController.xib in Resources */,
 				1BE8E3D1192533AD00D108C0 /* Images.xcassets in Resources */,
 				31F67C75193515CC00113DA8 /* escrever.png in Resources */,
 				31C31744194783B700C99512 /* delete.png in Resources */,
@@ -573,29 +597,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				73DF446C197053EB000EE360 /* TelaEsqueciSenhaViewController.m in Sources */,
-				1BD384591926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m in Sources */,
 				1BD384561926A5CB0044A2E4 /* CadastroStore.m in Sources */,
 				1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */,
 				1BE8E3CF192533AD00D108C0 /* appFinal1.xcdatamodeld in Sources */,
 				1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */,
 				1B1870B5192AA01900EC6375 /* CadastroUsuario.m in Sources */,
 				31F83E21192E851D0070D597 /* TBFiltroHorario.m in Sources */,
+				73A3072819744CBC005551D3 /* TBEstilosViewController.m in Sources */,
 				31F67C79193523D400113DA8 /* TelaUsuarioFiltrado.m in Sources */,
 				2FB3B34319745A0B0054B7F7 /* CoreAudioViewController.m in Sources */,
 				73EC6EA0196B3BB90034CB9B /* TelaPerfilViewController.m in Sources */,
 				73EC6E97196B18430034CB9B /* LoginConexao.m in Sources */,
-				1BD384501926A34F0044A2E4 /* TBInstrumentosDelegate.m in Sources */,
 				1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */,
 				31F83E1C192E85050070D597 /* TBFiltroInstrumento.m in Sources */,
 				1B1870B2192A9C6400EC6375 /* Usuario.m in Sources */,
 				73EC6E9B196B32FE0034CB9B /* LoginStore.m in Sources */,
-				1B1870AC192A85F400EC6375 /* TBEstilosQueTocaDelegate.m in Sources */,
 				31F83E14192E84C70070D597 /* TBFiltroEstilo.m in Sources */,
+				73A3073319746B60005551D3 /* TBInstrumentosQueTocaViewController.m in Sources */,
 				1B1666291935084000E2FB47 /* TPUsuario.m in Sources */,
 				1B82766F192BDB3500E461AD /* TelaBuscaViewController.m in Sources */,
 				1BE8E3CC192533AD00D108C0 /* AppDelegate.m in Sources */,
-				1B1870AF192A860200EC6375 /* TBEstilosDelegate.m in Sources */,
+				73A3072319744C09005551D3 /* TBEstilosQueTocaViewController.m in Sources */,
 				73EC6E92196B121B0034CB9B /* TelaLoginViewController.m in Sources */,
+				73A3072E19746B4C005551D3 /* TBInstrumentosViewController.m in Sources */,
 				1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */,
 				1BE8E3C8192533AD00D108C0 /* main.m in Sources */,
 				31F67C7D1935286600113DA8 /* TPInstrumento.m in Sources */,

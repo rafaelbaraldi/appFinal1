@@ -9,15 +9,28 @@
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
 
+#import "TelaCadastroViewController.h"
 #import "TelaLoginViewController.h"
 #import "TelaEsqueciSenhaViewController.h"
+
+#import "TBInstrumentosViewController.h"
+#import "TBInstrumentosQueTocaViewController.h"
+#import "TBEstilosViewController.h"
+#import "TBEstilosQueTocaViewController.h"
 
 @interface LocalStore : NSObject
 
 @property int raioBorda;
 
-@property TelaEsqueciSenhaViewController *EsqueciSenhaTela;
-@property TelaLoginViewController *LoginTela;
+@property TBInstrumentosViewController *TelaTBInstrumentos;
+@property TBInstrumentosQueTocaViewController *TelaTBInstruementosQueToco;
+@property TBEstilosQueTocaViewController *TelaTBEstilosQueToco;
+@property TBEstilosViewController *TelaTBEstilos;
+
+@property TelaCadastroViewController *TelaCadastro;
+@property TelaEsqueciSenhaViewController *TelaEsqueciSenha;
+@property TelaLoginViewController *TelaLogin;
+
 @property NSString *ultimaTela;
 
 @property AppDelegate *appDelegate;

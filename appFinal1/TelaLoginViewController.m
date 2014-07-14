@@ -52,7 +52,7 @@
     //Salva email temporario
     [[LoginStore sharedStore] setEmailTemporario:_txtEmail.text];
     
-    [[self navigationController] pushViewController:[[LocalStore sharedStore] EsqueciSenhaTela] animated:YES];
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaEsqueciSenha] animated:YES];
 }
 
 - (IBAction)btnContinuarClick:(id)sender {

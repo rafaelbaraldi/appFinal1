@@ -41,6 +41,6 @@
 - (IBAction)btnSair:(id)sender {
     
     [LoginStore deslogar];
-    [[self navigationController] pushViewController:[[LocalStore sharedStore] LoginTela] animated:YES];
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaLogin] animated:YES];
 }
 @end

@@ -1,45 +1,71 @@
 //
-//  TBInstrumentosQueTocaDelegate.m
+//  TBInstrumentosQueTocaViewController.m
 //  appFinal1
 //
-//  Created by RAFAEL BARALDI on 16/05/14.
+//  Created by Rafael Cardoso on 14/07/14.
 //  Copyright (c) 2014 RAFAEL BARALDI. All rights reserved.
 //
 
-#import "TBInstrumentosQueTocaDelegate.h"
+#import "TBInstrumentosQueTocaViewController.h"
+
+#import "LocalStore.h"
 #import "CadastroStore.h"
 
-@interface TBInstrumentosQueTocaDelegate ()
+@interface TBInstrumentosQueTocaViewController ()
 
 @end
 
-@implementation TBInstrumentosQueTocaDelegate
+@implementation TBInstrumentosQueTocaViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [[self navigationItem] setTitle:@"Meus Instrumentos"];
+    
+    UIBarButtonItem *voltarItem = [[UIBarButtonItem alloc] initWithTitle:@"Cadastro" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
+    [[self navigationItem] setLeftBarButtonItem:voltarItem];
+    
+    //Adiconar Estilos
+    [self addInstrumentos];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    [_tbInstrumentosQueToca reloadData];
+    
+    //Adicionar texto
+    if([[[CadastroStore sharedStore] instrumentosQueToca] count] > 0){
+        [_lblInstrumentos setHidden:NO];
+    }
+}
+
+-(void)retorna{
+    [[self navigationController] popToRootViewControllerAnimated:YES];
+}
+
+-(void) addInstrumentos{
+    
+    UIBarButtonItem *addInstrumento = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(adicionarNovoInstrumento)];
+    [[self navigationItem] setRightBarButtonItem:addInstrumento];
+}
+
+-(void)adicionarNovoInstrumento{
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaTBInstrumentos] animated:YES];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
-
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -79,18 +105,7 @@
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-        return YES;
+    return YES;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

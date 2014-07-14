@@ -7,6 +7,8 @@
 //
 
 #import "LocalStore.h"
+
+#import "TelaCadastroViewController.h"
 #import "TelaLoginViewController.h"
 
 @implementation LocalStore
@@ -37,8 +39,13 @@
 
 -(void)carregaTelas{
     
-    _LoginTela = [[TelaLoginViewController alloc] init];
-    _EsqueciSenhaTela = [[TelaEsqueciSenhaViewController alloc] init];
+    _TelaTBInstruementosQueToco = [[TBInstrumentosQueTocaViewController alloc] init];
+    _TelaTBInstrumentos = [[TBInstrumentosViewController alloc] init];
+    _TelaTBEstilos = [[TBEstilosViewController alloc] init];
+    _TelaTBEstilosQueToco = [[TBEstilosQueTocaViewController alloc] init];
+    _TelaCadastro = [[TelaCadastroViewController alloc] init];
+    _TelaLogin = [[TelaLoginViewController alloc] init];
+    _TelaEsqueciSenha = [[TelaEsqueciSenhaViewController alloc] init];
 }
 
 -(void)carregaContexto{

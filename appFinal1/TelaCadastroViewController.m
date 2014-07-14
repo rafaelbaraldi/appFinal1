@@ -7,13 +7,14 @@
 //
 
 #import "TelaCadastroViewController.h"
+
 #import "LocalStore.h"
 #import "CadastroStore.h"
 #import "Usuario.h"
 #import "CadastroUsuario.h"
 
-const int PESQUISA_INTRUMENTO = 0;
-const int PESQUISA_ESTILO = 1;
+#import "TBEstilosQueTocaViewController.h"
+
 const int OBSERVACOES = 2;
 
 @interface TelaCadastroViewController ()
@@ -22,11 +23,9 @@ const int OBSERVACOES = 2;
 
 @implementation TelaCadastroViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
     }
     return self;
 }
@@ -35,43 +34,31 @@ const int OBSERVACOES = 2;
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     
-    [self carregaInstrumentos];
+    [[self navigationItem] setTitle:@"Cadastro"];
     
-    [self carregaEstilos];
-
     //Usa Cadastro no singleton
     [[CadastroStore sharedStore]setViewTela:self];
+    
+    //Senha
+    [_txtSenha setSecureTextEntry:YES];
 }
 
--(void)carregaInstrumentos{
+-(void) viewWillAppear:(BOOL)animated{
     
-    //Instrumentos
-    _tbInstrumentosDelegate = [[TBInstrumentosDelegate alloc]init];
-    _tbInstrumentosPesquisar.delegate = _tbInstrumentosDelegate;
-    _tbInstrumentosPesquisar.dataSource = _tbInstrumentosDelegate;
-    
-    //Instrumentos Que Toca
-    _tbInstrumentosQueTocaDelegate = [[TBInstrumentosQueTocaDelegate alloc]init];
-    _tbInstrumentoQueToco.delegate = _tbInstrumentosQueTocaDelegate;
-    _tbInstrumentoQueToco.dataSource = _tbInstrumentosQueTocaDelegate;
-    
+    [self carregaLabels];
 }
 
--(void)carregaEstilos{
+-(IBAction)btnEstilosClik:(id)sender {
     
-    //Estilos
-    _tbEstilosDelegate = [[TBEstilosDelegate alloc]init];
-    _tbEstilosPesquisar.delegate = _tbEstilosDelegate;
-    _tbEstilosPesquisar.dataSource = _tbEstilosDelegate;
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaTBEstilosQueToco] animated:YES];
+}
+
+-(IBAction)btnInstrumentosClick:(id)sender {
     
-    //Estilos Que Toca
-    _tbEstilosQueTocaDelegate = [[TBEstilosQueTocaDelegate alloc]init];
-    _tbEstilosQueToco.delegate = _tbEstilosQueTocaDelegate;
-    _tbEstilosQueToco.dataSource = _tbEstilosQueTocaDelegate;
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaTBInstruementosQueToco] animated:YES];
 }
 
 -(void)habilitarTodasViewsTela:(BOOL)condicao{
@@ -82,19 +69,6 @@ const int OBSERVACOES = 2;
     for (UILabel* v in self.view.subviews) {
         v.enabled = condicao;
     }
-}
-
--(IBAction)btnInstrumentosClick:(id)sender {
-//    [self habilitarTodasViewsTela:NO];
-//
-//    [self exibiView:_viewInstrumentos alpha:YES];
-    [self presentViewController:[[UIViewController alloc] init] animated:YES completion:nil];
-}
-
--(IBAction)btnEstilosClik:(id)sender {
-    [self habilitarTodasViewsTela:NO];
-    
-    [self exibiView:_viewEstilos alpha:YES];
 }
 
 -(IBAction)btnConfirmarClick:(id)sender {
@@ -148,42 +122,6 @@ const int OBSERVACOES = 2;
     [view.layer setCornerRadius:[[LocalStore sharedStore] raioBorda]];
     
     [self.view addSubview:view];
-}
-
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    
-    if(searchBar.tag == PESQUISA_INTRUMENTO){
-        
-        [[[CadastroStore sharedStore] instrumentosFiltrados] removeAllObjects];
-        
-        if([searchText isEqual:@""]){
-            [[[CadastroStore sharedStore] instrumentosFiltrados] addObjectsFromArray:[[CadastroStore sharedStore] instrumentos]];
-        }
-        
-        for (NSString *s in [[CadastroStore sharedStore] instrumentos]){
-            if([s rangeOfString:searchText].location != NSNotFound){
-                [[[CadastroStore sharedStore] instrumentosFiltrados] addObject:s];
-            }
-        }
-        
-        [_tbInstrumentosPesquisar reloadData];
-    }
-    else{
-        
-        [[[CadastroStore sharedStore] estilosFiltrados] removeAllObjects];
-        
-        if([searchText isEqual:@""]){
-            [[[CadastroStore sharedStore] estilosFiltrados] addObjectsFromArray:[[CadastroStore sharedStore] estilos]];
-        }
-        
-        for (NSString *s in [[CadastroStore sharedStore] estilos]) {
-            if([s rangeOfString:searchText].location != NSNotFound){
-                [[[CadastroStore sharedStore] estilosFiltrados] addObject:s];
-            }
-        }
-        
-        [_tbEstilosPesquisar reloadData];
-    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -285,46 +223,5 @@ const int OBSERVACOES = 2;
             _lblEstilos.text = [NSString stringWithFormat:@"%@, %@, %@...", [auxInstrumentos objectAtIndex:0], [auxInstrumentos objectAtIndex:1], [auxInstrumentos objectAtIndex:2]];
             break;
     }
-}
-
-//Botoes Instrumentos
--(IBAction)btnInstrumentosVoltarClick:(id)sender {
-    [_viewInstrumentos removeFromSuperview];
-    
-    [self habilitarTodasViewsTela:YES];
-    
-    [self carregaLabels];
-}
-
--(IBAction)btnAdicionarInstrumentoClick:(id)sender {
-    [_viewInstrumentos removeFromSuperview];
-    
-    [self exibiView:_viewPesquisarInstrumentos alpha:NO];
-}
-
--(IBAction)btnPesquisaVoltarClick:(id)sender{
-    [_viewPesquisarInstrumentos removeFromSuperview];
-
-    [self exibiView:_viewInstrumentos alpha:YES];
-}
-
-//Botoes Estilos
-- (IBAction)btnEstilosVoltarClick:(id)sender {
-    [_viewEstilos removeFromSuperview];
-    
-    [self habilitarTodasViewsTela:YES];
-    
-    [self carregaLabels];
-}
-
-- (IBAction)btnAdicionarEstilosClick:(id)sender {
-    [_viewEstilos removeFromSuperview];
-    
-    [self exibiView:_viewPesquisarEstilos alpha:NO];
-}
-- (IBAction)btnEstiloPesquisaVoltarClick:(id)sender {
-    [_viewPesquisarEstilos removeFromSuperview];
-    
-    [self exibiView:_viewEstilos alpha:YES];
 }
 @end

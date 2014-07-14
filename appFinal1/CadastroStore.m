@@ -33,10 +33,6 @@
         _instrumentosFiltrados =[[NSMutableArray alloc] init];
         [_instrumentosFiltrados addObjectsFromArray:_instrumentos];
         
-        
-        
-        
-        
         //estilos
         _estilos = [[NSMutableArray alloc]initWithArray:[NSArray arrayWithObjects:@"rock", @"pop", @"funk", @"punk", @"reggae", nil]];
         
