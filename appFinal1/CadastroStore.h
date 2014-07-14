@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "TelaCadastroViewController.h"
 
+#import "Usuario.h"
+
 @interface CadastroStore : NSObject
 
 @property NSMutableArray *instrumentos;
@@ -22,5 +24,9 @@
 @property TelaCadastroViewController *viewTela;
 
 +(CadastroStore*)sharedStore;
+
++(NSString *)validaCadastro:(Usuario*)usuario;
+
++(BOOL)cadastrar:(Usuario*)usuario;
 
 @end

@@ -11,7 +11,6 @@
 #import "LocalStore.h"
 #import "CadastroStore.h"
 #import "Usuario.h"
-#import "CadastroUsuario.h"
 
 #import "TBEstilosQueTocaViewController.h"
 
@@ -93,35 +92,28 @@ const int OBSERVACOES = 2;
         usuario.estilos = [NSString stringWithFormat:@"%@, %@", usuario.estilos, s];
     }
     
-    usuario.instrumentos = [usuario.instrumentos substringFromIndex:2];
-    usuario.estilos = [usuario.estilos substringFromIndex:2];
-    
-    
-//    NSLog(@"nome: %@ \n email: %@ \n sexo: %@ \n cidade: %@ \n bairro: %@ \n instumentos: %@ \n estilos: %@ \n obs: %@", usuario.nome, usuario.email, usuario.sexo, usuario.cidade, usuario.bairro, usuario.instrumentos, usuario.estilos, usuario.observacoes);
-//    
-//    CadastroUsuario *cadastro = [[CadastroUsuario alloc] init];
-//    if([cadastro cadastraUsuario:usuario]){
-//        NSLog(@"OK \n \n");
-//    }
-//    else{
-//        NSLog(@"NO \n \n");
-//    }
-}
-
--(void)exibiView:(UIView *)view alpha:(BOOL)alpha{
-    
-    if(alpha){
-        view.alpha = 0.95;
+    if([usuario.instrumentos length] > 0){
+        usuario.instrumentos = [usuario.instrumentos substringFromIndex:2];
     }
-
-    CGRect frame = view.frame;
-    frame.origin.x = 23;
-    frame.origin.y = 33;
-    view.frame = frame;
+    if([usuario.estilos length] > 0){
+        usuario.estilos = [usuario.estilos substringFromIndex:2];
+    }
     
-    [view.layer setCornerRadius:[[LocalStore sharedStore] raioBorda]];
     
-    [self.view addSubview:view];
+    NSString *valida = [CadastroStore validaCadastro:usuario];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERRO" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    if([valida length] > 0){
+        
+        valida = [NSString stringWithFormat:@"Informe corretamente %@", valida];
+        
+        [alert setMessage:valida];
+        [alert show];
+    }
+    else{
+        [CadastroStore cadastrar:usuario];
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{

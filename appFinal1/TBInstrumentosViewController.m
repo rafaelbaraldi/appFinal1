@@ -31,7 +31,6 @@
     
     UIBarButtonItem *voltarItem = [[UIBarButtonItem alloc] initWithTitle:@"Cadastro" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
     [[self navigationItem] setLeftBarButtonItem:voltarItem];
-    
 }
 
 - (void)didReceiveMemoryWarning{
@@ -51,7 +50,7 @@
     }
     
     for (NSString *s in [[CadastroStore sharedStore] instrumentos]){
-        if([s rangeOfString:searchText].location != NSNotFound){
+        if([s rangeOfString:searchText options: NSCaseInsensitiveSearch].location != NSNotFound){
             [[[CadastroStore sharedStore] instrumentosFiltrados] addObject:s];
         }
     }

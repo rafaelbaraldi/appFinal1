@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1B1666291935084000E2FB47 /* TPUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1666281935084000E2FB47 /* TPUsuario.m */; };
 		1B1870B2192A9C6400EC6375 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870B1192A9C6400EC6375 /* Usuario.m */; };
-		1B1870B5192AA01900EC6375 /* CadastroUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1870B4192AA01900EC6375 /* CadastroUsuario.m */; };
 		1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5FE13F192FC23B00E35BCC /* BuscaStore.m */; };
 		1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5FE143192FD00300E35BCC /* BuscaConexao.m */; };
 		1B82766F192BDB3500E461AD /* TelaBuscaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B82766D192BDB3500E461AD /* TelaBuscaViewController.m */; };
@@ -54,6 +53,7 @@
 		73A3072F19746B4C005551D3 /* TBInstrumentosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A3072D19746B4C005551D3 /* TBInstrumentosViewController.xib */; };
 		73A3073319746B60005551D3 /* TBInstrumentosQueTocaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A3073119746B60005551D3 /* TBInstrumentosQueTocaViewController.m */; };
 		73A3073419746B60005551D3 /* TBInstrumentosQueTocaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A3073219746B60005551D3 /* TBInstrumentosQueTocaViewController.xib */; };
+		73A307381974844A005551D3 /* CadastroConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A307371974844A005551D3 /* CadastroConexao.m */; };
 		73C8496A196F11BD003D9371 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C84969196F11BD003D9371 /* Security.framework */; };
 		73DF446C197053EB000EE360 /* TelaEsqueciSenhaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DF446A197053EB000EE360 /* TelaEsqueciSenhaViewController.m */; };
 		73DF446D197053EB000EE360 /* TelaEsqueciSenhaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73DF446B197053EB000EE360 /* TelaEsqueciSenhaViewController.xib */; };
@@ -80,8 +80,6 @@
 		1B1666281935084000E2FB47 /* TPUsuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPUsuario.m; sourceTree = "<group>"; };
 		1B1870B0192A9C6400EC6375 /* Usuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usuario.h; sourceTree = "<group>"; };
 		1B1870B1192A9C6400EC6375 /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = "<group>"; };
-		1B1870B3192AA01900EC6375 /* CadastroUsuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroUsuario.h; sourceTree = "<group>"; };
-		1B1870B4192AA01900EC6375 /* CadastroUsuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadastroUsuario.m; sourceTree = "<group>"; };
 		1B5FE13E192FC23B00E35BCC /* BuscaStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuscaStore.h; sourceTree = "<group>"; };
 		1B5FE13F192FC23B00E35BCC /* BuscaStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuscaStore.m; sourceTree = "<group>"; };
 		1B5FE142192FD00300E35BCC /* BuscaConexao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuscaConexao.h; sourceTree = "<group>"; };
@@ -145,6 +143,8 @@
 		73A3073019746B60005551D3 /* TBInstrumentosQueTocaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBInstrumentosQueTocaViewController.h; sourceTree = "<group>"; };
 		73A3073119746B60005551D3 /* TBInstrumentosQueTocaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBInstrumentosQueTocaViewController.m; sourceTree = "<group>"; };
 		73A3073219746B60005551D3 /* TBInstrumentosQueTocaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBInstrumentosQueTocaViewController.xib; sourceTree = "<group>"; };
+		73A307361974844A005551D3 /* CadastroConexao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroConexao.h; sourceTree = "<group>"; };
+		73A307371974844A005551D3 /* CadastroConexao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadastroConexao.m; sourceTree = "<group>"; };
 		73C84969196F11BD003D9371 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		73DF4469197053EB000EE360 /* TelaEsqueciSenhaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaEsqueciSenhaViewController.h; sourceTree = "<group>"; };
 		73DF446A197053EB000EE360 /* TelaEsqueciSenhaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaEsqueciSenhaViewController.m; sourceTree = "<group>"; };
@@ -306,13 +306,13 @@
 			children = (
 				1BE8E3CA192533AD00D108C0 /* AppDelegate.h */,
 				1BE8E3CB192533AD00D108C0 /* AppDelegate.m */,
-				2FB3B33E197459E70054B7F7 /* Gravacao */,
 				1B166626193507FC00E2FB47 /* Classes */,
 				1BE8E3F91925449D00D108C0 /* Singleton */,
 				1BE8E3F5192539C500D108C0 /* Banco */,
 				73EC6E9C196B3B710034CB9B /* Perfil */,
 				73EC6E8D196B11C40034CB9B /* Login */,
 				1BE8E3F4192539B900D108C0 /* Cadastro */,
+				2FB3B33E197459E70054B7F7 /* Gravacao */,
 				1B82766A192BDA0100E461AD /* Busca */,
 				1BE8E3D0192533AD00D108C0 /* Images.xcassets */,
 				1BE8E3C2192533AD00D108C0 /* Supporting Files */,
@@ -352,6 +352,7 @@
 		1BE8E3F4192539B900D108C0 /* Cadastro */ = {
 			isa = PBXGroup;
 			children = (
+				73A30735197483A3005551D3 /* WebService */,
 				1BD384531926A5810044A2E4 /* Singleton */,
 				73A3072A19746B17005551D3 /* Tela Instrumentos */,
 				73AEFF6E197449AC00B249BB /* Tela Estilos */,
@@ -366,8 +367,6 @@
 				1BE8E3CD192533AD00D108C0 /* appFinal1.xcdatamodeld */,
 				1B1870B0192A9C6400EC6375 /* Usuario.h */,
 				1B1870B1192A9C6400EC6375 /* Usuario.m */,
-				1B1870B3192AA01900EC6375 /* CadastroUsuario.h */,
-				1B1870B4192AA01900EC6375 /* CadastroUsuario.m */,
 			);
 			name = Banco;
 			sourceTree = "<group>";
@@ -419,6 +418,15 @@
 				73A3073219746B60005551D3 /* TBInstrumentosQueTocaViewController.xib */,
 			);
 			name = "Tela Instrumentos";
+			sourceTree = "<group>";
+		};
+		73A30735197483A3005551D3 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				73A307361974844A005551D3 /* CadastroConexao.h */,
+				73A307371974844A005551D3 /* CadastroConexao.m */,
+			);
+			name = WebService;
 			sourceTree = "<group>";
 		};
 		73AEFF6E197449AC00B249BB /* Tela Estilos */ = {
@@ -601,12 +609,12 @@
 				1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */,
 				1BE8E3CF192533AD00D108C0 /* appFinal1.xcdatamodeld in Sources */,
 				1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */,
-				1B1870B5192AA01900EC6375 /* CadastroUsuario.m in Sources */,
 				31F83E21192E851D0070D597 /* TBFiltroHorario.m in Sources */,
 				73A3072819744CBC005551D3 /* TBEstilosViewController.m in Sources */,
 				31F67C79193523D400113DA8 /* TelaUsuarioFiltrado.m in Sources */,
 				2FB3B34319745A0B0054B7F7 /* CoreAudioViewController.m in Sources */,
 				73EC6EA0196B3BB90034CB9B /* TelaPerfilViewController.m in Sources */,
+				73A307381974844A005551D3 /* CadastroConexao.m in Sources */,
 				73EC6E97196B18430034CB9B /* LoginConexao.m in Sources */,
 				1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */,
 				31F83E1C192E85050070D597 /* TBFiltroInstrumento.m in Sources */,

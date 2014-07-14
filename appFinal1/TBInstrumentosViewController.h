@@ -10,5 +10,6 @@
 
 @interface TBInstrumentosViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbInstrumentos;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchInstrumento;
 
 @end

@@ -81,7 +81,7 @@
     }
     
     for (NSString *s in [[CadastroStore sharedStore] estilos]) {
-        if([s rangeOfString:searchText].location != NSNotFound){
+        if([s rangeOfString:searchText options: NSCaseInsensitiveSearch].location != NSNotFound){
             [[[CadastroStore sharedStore] estilosFiltrados] addObject:s];
         }
     }

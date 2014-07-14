@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TBInstrumentosViewController">
             <connections>
+                <outlet property="searchInstrumento" destination="YDY-DQ-oz2" id="HIg-SU-KRg"/>
                 <outlet property="tbInstrumentos" destination="Y96-7r-qAJ" id="gqm-zv-oXr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,9 +26,13 @@
                     </connections>
                 </tableView>
                 <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDY-DQ-oz2">
-                    <rect key="frame" x="0.0" y="85" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="63" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textInputTraits key="textInputTraits"/>
+                    <scopeButtonTitles>
+                        <string>Title</string>
+                        <string>Title</string>
+                    </scopeButtonTitles>
                     <connections>
                         <outlet property="delegate" destination="-1" id="FVg-Sd-qvL"/>
                     </connections>
