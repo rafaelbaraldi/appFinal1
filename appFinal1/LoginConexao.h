@@ -11,5 +11,6 @@
 @interface LoginConexao : NSObject
 
 +(NSDictionary*)login:(NSString*)email senha:(NSString*)senha;
++(NSDictionary*)esqueciSenha:(NSString*)email;
 
 @end

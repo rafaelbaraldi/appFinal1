@@ -11,6 +11,8 @@
 
 @interface LoginStore : NSObject
 
+@property NSString* emailTemporario;
+
 +(NSString*)email;
 +(void)setEmail:(NSString*)novoEmail;
 

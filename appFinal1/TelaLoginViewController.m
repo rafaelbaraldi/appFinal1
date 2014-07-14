@@ -8,6 +8,7 @@
 
 #import "TelaLoginViewController.h"
 #import "TelaBuscaViewController.h"
+#import "TelaEsqueciSenhaViewController.h"
 
 #import "LoginStore.h"
 #import "LocalStore.h"
@@ -47,6 +48,11 @@
 }
 
 - (IBAction)btnSenhaClick:(id)sender {
+    
+    //Salva email temporario
+    [[LoginStore sharedStore] setEmailTemporario:_txtEmail.text];
+    
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] EsqueciSenhaTela] animated:YES];
 }
 
 - (IBAction)btnContinuarClick:(id)sender {

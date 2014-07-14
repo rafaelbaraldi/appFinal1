@@ -49,6 +49,8 @@
 		31F83E21192E851D0070D597 /* TBFiltroHorario.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F83E1F192E851D0070D597 /* TBFiltroHorario.m */; };
 		31F83E22192E851D0070D597 /* TBFiltroHorario.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E20192E851D0070D597 /* TBFiltroHorario.xib */; };
 		73C8496A196F11BD003D9371 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C84969196F11BD003D9371 /* Security.framework */; };
+		73DF446C197053EB000EE360 /* TelaEsqueciSenhaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DF446A197053EB000EE360 /* TelaEsqueciSenhaViewController.m */; };
+		73DF446D197053EB000EE360 /* TelaEsqueciSenhaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73DF446B197053EB000EE360 /* TelaEsqueciSenhaViewController.xib */; };
 		73EC6E92196B121B0034CB9B /* TelaLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73EC6E90196B121B0034CB9B /* TelaLoginViewController.m */; };
 		73EC6E93196B121B0034CB9B /* TelaLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EC6E91196B121B0034CB9B /* TelaLoginViewController.xib */; };
 		73EC6E97196B18430034CB9B /* LoginConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 73EC6E96196B18430034CB9B /* LoginConexao.m */; };
@@ -131,6 +133,9 @@
 		31F83E1F192E851D0070D597 /* TBFiltroHorario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBFiltroHorario.m; sourceTree = "<group>"; };
 		31F83E20192E851D0070D597 /* TBFiltroHorario.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBFiltroHorario.xib; sourceTree = "<group>"; };
 		73C84969196F11BD003D9371 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		73DF4469197053EB000EE360 /* TelaEsqueciSenhaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaEsqueciSenhaViewController.h; sourceTree = "<group>"; };
+		73DF446A197053EB000EE360 /* TelaEsqueciSenhaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaEsqueciSenhaViewController.m; sourceTree = "<group>"; };
+		73DF446B197053EB000EE360 /* TelaEsqueciSenhaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaEsqueciSenhaViewController.xib; sourceTree = "<group>"; };
 		73EC6E8F196B121B0034CB9B /* TelaLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaLoginViewController.h; sourceTree = "<group>"; };
 		73EC6E90196B121B0034CB9B /* TelaLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaLoginViewController.m; sourceTree = "<group>"; };
 		73EC6E91196B121B0034CB9B /* TelaLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaLoginViewController.xib; sourceTree = "<group>"; };
@@ -401,6 +406,9 @@
 				73EC6E8F196B121B0034CB9B /* TelaLoginViewController.h */,
 				73EC6E90196B121B0034CB9B /* TelaLoginViewController.m */,
 				73EC6E91196B121B0034CB9B /* TelaLoginViewController.xib */,
+				73DF4469197053EB000EE360 /* TelaEsqueciSenhaViewController.h */,
+				73DF446A197053EB000EE360 /* TelaEsqueciSenhaViewController.m */,
+				73DF446B197053EB000EE360 /* TelaEsqueciSenhaViewController.xib */,
 			);
 			name = Tela;
 			sourceTree = "<group>";
@@ -519,6 +527,7 @@
 				1BE8E3D1192533AD00D108C0 /* Images.xcassets in Resources */,
 				31F67C75193515CC00113DA8 /* escrever.png in Resources */,
 				31C31744194783B700C99512 /* delete.png in Resources */,
+				73DF446D197053EB000EE360 /* TelaEsqueciSenhaViewController.xib in Resources */,
 				1B827670192BDB3500E461AD /* TelaBuscaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +547,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73DF446C197053EB000EE360 /* TelaEsqueciSenhaViewController.m in Sources */,
 				1BD384591926AF710044A2E4 /* TBInstrumentosQueTocaDelegate.m in Sources */,
 				1BD384561926A5CB0044A2E4 /* CadastroStore.m in Sources */,
 				1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */,

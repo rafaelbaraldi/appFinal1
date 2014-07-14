@@ -38,6 +38,7 @@
 -(void)carregaTelas{
     
     _LoginTela = [[TelaLoginViewController alloc] init];
+    _EsqueciSenhaTela = [[TelaEsqueciSenhaViewController alloc] init];
 }
 
 -(void)carregaContexto{
