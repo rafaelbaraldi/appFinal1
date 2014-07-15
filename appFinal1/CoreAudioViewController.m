@@ -30,7 +30,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+}
+
+
+-(void)carregaGravador{
     NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc]init];
     //AVFormatIDKey==kAudioFormatLinearPCM
     [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
@@ -41,13 +44,15 @@
     //quality
     [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityHigh] forKey:AVEncoderAudioQualityKey];
     
-    NSURL *url = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"VoiceFile"]];
+    NSURL *url = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.%@.%@", 0, _txtCategoria.text, _txtNome.text]]];
     
-//    NSString *strUrl = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-//    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/lll.aac", strUrl]];
-
+    //    NSString *strUrl = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    //    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/lll.aac", strUrl]];
+    
     urlPlay = url;
     recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordSetting error:nil];
+    
+    NSLog(@"%@", [urlPlay path]);
 }
 
 
@@ -58,24 +63,33 @@
 
 
 - (IBAction)gravar:(id)sender {
-    if(_gravando){
-        [recorder stop];
-        [_btnGravar setTitle:@"Gravar" forState:UIControlStateNormal];
+    if([_txtCategoria.text length] > 0 && [_txtNome.text length] > 0){
+        if(_gravando){
+            [recorder stop];
+            [_btnGravar setTitle:@"Gravar" forState:UIControlStateNormal];
+            _gravando = false;
+        }
+        else{
+            [self carregaGravador];
+            [recorder prepareToRecord];
+            [_btnGravar setTitle:@"Gravando" forState:UIControlStateNormal];
+            _gravando = true;
+            [recorder record];
+        }
     }
     else{
-        [recorder prepareToRecord];
-        [_btnGravar setTitle:@"Gravando" forState:UIControlStateNormal];
-        [recorder record];
+        NSLog(@"sem nome ou categoria");
     }
 }
 
-- (IBAction)parar:(id)sender {
-    [recorder stop];
-}
 
 - (IBAction)playGravacao:(id)sender {
     player = [[AVAudioPlayer alloc]initWithContentsOfURL:urlPlay error:nil];
     [player play];
+}
+
+- (IBAction)txtCategoriaSair:(id)sender {
+    [sender resignFirstResponder];
 }
 
 

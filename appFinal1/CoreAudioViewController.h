@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnGravar;
 
 - (IBAction)gravar:(id)sender;
-- (IBAction)parar:(id)sender;
 - (IBAction)playGravacao:(id)sender;
+- (IBAction)txtCategoriaSair:(id)sender;
 
 @end
