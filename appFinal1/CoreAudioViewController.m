@@ -9,6 +9,8 @@
 #import "CoreAudioViewController.h"
 //#import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "Musica.h"
+#import "LocalStore.h"
 
 @interface CoreAudioViewController ()
 
@@ -30,6 +32,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    NSArray * a = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Musica"] error:nil];
+    
+    for (Musica* m in a) {
+        NSLog(@"%@", m.url);
+    }
 }
 
 
@@ -61,6 +69,16 @@
     [super didReceiveMemoryWarning];
 }
 
+-(void)registrarGravacao{
+    Musica *m = [NSEntityDescription insertNewObjectForEntityForName:@"Musica" inManagedObjectContext:[[LocalStore sharedStore] context]];
+    
+    m.nome = _txtNome.text;
+    m.categoria = _txtCategoria.text;
+    m.url = urlPlay.path;
+    m.idUsuario = 0;
+    
+    [[[LocalStore sharedStore] context] save:nil];
+}
 
 - (IBAction)gravar:(id)sender {
     if([_txtCategoria.text length] > 0 && [_txtNome.text length] > 0){
@@ -74,6 +92,7 @@
             [recorder prepareToRecord];
             [_btnGravar setTitle:@"Gravando" forState:UIControlStateNormal];
             _gravando = true;
+            [self registrarGravacao];
             [recorder record];
         }
     }

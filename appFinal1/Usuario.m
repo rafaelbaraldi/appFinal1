@@ -2,7 +2,7 @@
 //  Usuario.m
 //  appFinal1
 //
-//  Created by RAFAEL BARALDI on 19/05/14.
+//  Created by Rafael Baraldi on 14/07/14.
 //  Copyright (c) 2014 RAFAEL BARALDI. All rights reserved.
 //
 
@@ -11,14 +11,14 @@
 
 @implementation Usuario
 
-@dynamic nome;
-@dynamic email;
-@dynamic sexo;
-@dynamic cidade;
 @dynamic bairro;
-@dynamic instrumentos;
+@dynamic cidade;
+@dynamic email;
 @dynamic estilos;
+@dynamic instrumentos;
+@dynamic nome;
 @dynamic observacoes;
 @dynamic senha;
+@dynamic sexo;
 
 @end
