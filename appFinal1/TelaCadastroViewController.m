@@ -10,6 +10,8 @@
 
 #import "LocalStore.h"
 #import "CadastroStore.h"
+#import "LoginStore.h"
+
 #import "Usuario.h"
 
 #import "TBEstilosQueTocaViewController.h"
@@ -87,7 +89,6 @@ const int OBSERVACOES = 2;
     for (NSString* s in [[CadastroStore sharedStore] instrumentosQueToca]) {
         usuario.instrumentos = [NSString stringWithFormat:@"%@, %@", usuario.instrumentos, s];
     }
-    
     for (NSString* s in [[CadastroStore sharedStore] estilosQueToca]) {
         usuario.estilos = [NSString stringWithFormat:@"%@, %@", usuario.estilos, s];
     }
@@ -112,7 +113,19 @@ const int OBSERVACOES = 2;
         [alert show];
     }
     else{
-        [CadastroStore cadastrar:usuario];
+        BOOL cadastrou = [CadastroStore cadastrar:usuario];
+        if(!cadastrou){
+            valida = [NSString stringWithFormat:@"Esse e-mail já está em uso"];
+            
+            [alert setMessage:valida];
+            [alert show];
+        }
+        else{
+            //Realiza Login
+            [LoginStore login:usuario.email senha:usuario.senha];
+            
+            [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
+        }
     }
 }
 
@@ -177,18 +190,22 @@ const int OBSERVACOES = 2;
 
         case 1:
             _lblInstrumentos.text = [auxInstrumentos objectAtIndex:0];
+            _lblInstrumentos.text = [_lblInstrumentos.text stringByReplacingOccurrencesOfString:@"1" withString:@""];
             break;
             
         case 2:
             _lblInstrumentos.text = [NSString stringWithFormat:@"%@, %@", [auxInstrumentos objectAtIndex:0], [auxInstrumentos objectAtIndex:1]];
+            _lblInstrumentos.text = [_lblInstrumentos.text stringByReplacingOccurrencesOfString:@"1" withString:@""];
             break;
 
         case 3:
             _lblInstrumentos.text = [NSString stringWithFormat:@"%@, %@, %@", [auxInstrumentos objectAtIndex:0], [auxInstrumentos objectAtIndex:1], [auxInstrumentos objectAtIndex:2]];
+            _lblInstrumentos.text = [_lblInstrumentos.text stringByReplacingOccurrencesOfString:@"1" withString:@""];
             break;
             
         default:
             _lblInstrumentos.text = [NSString stringWithFormat:@"%@, %@, %@...", [auxInstrumentos objectAtIndex:0], [auxInstrumentos objectAtIndex:1], [auxInstrumentos objectAtIndex:2]];
+            _lblInstrumentos.text = [_lblInstrumentos.text stringByReplacingOccurrencesOfString:@"1" withString:@""];
             break;
     }
     

@@ -80,7 +80,9 @@
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"InstrumentosQueTocaCell"];
     }
-    celula.textLabel.text = [[[CadastroStore sharedStore] instrumentosQueToca] objectAtIndex:indexPath.row];
+    NSString *instrumento = [[[CadastroStore sharedStore] instrumentosQueToca] objectAtIndex:indexPath.row];
+    instrumento = [instrumento stringByReplacingOccurrencesOfString:@"1" withString:@""];
+    celula.textLabel.text = instrumento;
     
     return celula;
 }
@@ -89,16 +91,34 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark){
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
+        
+        //Remove gambi para saber que tem instrumento
+        NSMutableArray *instrumentos = [[CadastroStore sharedStore] instrumentosQueToca];
+        
+        NSString *instrumento = [instrumentos objectAtIndex:indexPath.row];
+        
+        if([instrumento rangeOfString:@"1"].location != NSNotFound){
+            instrumento = [instrumento stringByReplacingOccurrencesOfString:@"1" withString:@""];
+            [instrumentos replaceObjectAtIndex:indexPath.row withObject:instrumento];
+        }
     }
     else{
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+        
+        //Adiciona gambi para saber que tem instrumento
+        NSMutableArray *instrumentos = [[CadastroStore sharedStore] instrumentosQueToca];
+        
+        NSString *instrumento = [instrumentos objectAtIndex:indexPath.row];
+        
+        instrumento = [NSString stringWithFormat:@"%@1", instrumento];
+        [instrumentos replaceObjectAtIndex:indexPath.row withObject:instrumento];
     }
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(editingStyle == UITableViewCellEditingStyleDelete){
         
-        [[[CadastroStore sharedStore]instrumentosQueToca]removeObjectAtIndex:indexPath.row];
+        [[[CadastroStore sharedStore]instrumentosQueToca] removeObjectAtIndex:indexPath.row];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }

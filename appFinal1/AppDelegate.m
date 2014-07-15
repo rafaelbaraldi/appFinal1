@@ -10,6 +10,8 @@
 
 #import "LoginStore.h"
 
+#import "LocalStore.h"
+
 #import "TelaCadastroViewController.h"
 #import "TelaBuscaViewController.h"
 #import "TelaLoginViewController.h"
@@ -33,7 +35,7 @@
     
     UIViewController *telaVc;
     if(logado){
-        telaVc = [[TelaBuscaViewController alloc] init];
+        telaVc = [[LocalStore sharedStore] TelaInicio];
     }
     else{
         telaVc = [[TelaLoginViewController alloc] init];

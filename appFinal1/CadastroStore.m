@@ -51,9 +51,8 @@
 
 +(BOOL)cadastrar:(Usuario*)usuario{
     
-    BOOL resposta;
-    
     NSDictionary *jsonUsuario = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 usuario.observacoes, @"observacoes",
                                  usuario.estilos, @"estilos",
                                  usuario.instrumentos, @"instrumentos",
                                  usuario.bairro, @"bairro",
@@ -64,13 +63,15 @@
                                  usuario.nome, @"nome" , nil];
     
     NSData *jsonCadastrar = [NSJSONSerialization dataWithJSONObject:jsonUsuario options:NSJSONWritingPrettyPrinted error:nil];
-
-    [CadastroConexao cadastrar:jsonCadastrar];
     
 //    NSString* newStr = [[NSString alloc] initWithData:jsonCadastrar encoding:NSUTF8StringEncoding];
 //    NSLog(@"%@",newStr);
     
-    return resposta;
+    BOOL cadastrou;
+
+    cadastrou = [CadastroConexao cadastrar:jsonCadastrar];
+    
+    return cadastrou;
 }
 
 +(NSString *)validaCadastro:(Usuario *)usuario{

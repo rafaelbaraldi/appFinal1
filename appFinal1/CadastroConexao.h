@@ -12,6 +12,6 @@
 
 @interface CadastroConexao : NSObject
 
-+(NSDictionary*)cadastrar:(NSData*)jsonCadastro;
++(BOOL)cadastrar:(NSData*)jsonCadastro;
 
 @end

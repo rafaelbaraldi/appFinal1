@@ -63,8 +63,7 @@
     if([email length] > 0 && [senha length] > 0){
         if([LoginStore login:email senha:senha]){
             
-            TelaBuscaViewController *telaVc = [[TelaBuscaViewController alloc] init];
-            [[self navigationController] pushViewController:telaVc animated:YES];
+            [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
         }
         else{
             UIAlertView *alertDadosIncorretos = [[UIAlertView alloc] initWithTitle:@"ERRO" message:@"E-mail ou senha inválidos" delegate:self cancelButtonTitle:@"Rejeitar" otherButtonTitles:nil];

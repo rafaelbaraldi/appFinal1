@@ -14,18 +14,19 @@
 @implementation CadastroConexao
 
 
-+(NSDictionary*)cadastrar:(NSData*)jsonCadastro{
-    NSString *url = @"http://54.187.203.61/appMusica/usuarioFiltrado.php";
++(BOOL)cadastrar:(NSData*)jsonCadastro{
     
-    NSString *post = [NSString stringWithFormat:@"id"];
+    NSString *url = @"http://54.187.203.61/appMusica/cadastroUsuario.php";
     
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *strJson = [[NSString alloc] initWithData:jsonCadastro encoding:NSUTF8StringEncoding];
+
+    NSData *jsonData = [strJson dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
     NSMutableURLRequest *request = [[ NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"context-type"];
-    [request setHTTPBody:postData];
+    [request setHTTPBody:jsonData];
     
     NSURLResponse *response;
     NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
@@ -33,9 +34,13 @@
     NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
     s = [[LocalStore sharedStore]substituiCaracteresHTML:s];
     
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[s dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
+    BOOL cadastrou = YES;
     
-    return json;
+    if([s isEqualToString:@""]){
+        cadastrou = NO;
+    }
+    
+    return cadastrou;
 }
 
 @end

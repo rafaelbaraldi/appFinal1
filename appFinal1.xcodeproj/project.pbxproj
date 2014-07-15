@@ -46,6 +46,8 @@
 		31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E1B192E85050070D597 /* TBFiltroInstrumento.xib */; };
 		31F83E21192E851D0070D597 /* TBFiltroHorario.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F83E1F192E851D0070D597 /* TBFiltroHorario.m */; };
 		31F83E22192E851D0070D597 /* TBFiltroHorario.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E20192E851D0070D597 /* TBFiltroHorario.xib */; };
+		737D09E81975C5D1000975F6 /* TelaInicioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 737D09E61975C5D1000975F6 /* TelaInicioViewController.m */; };
+		737D09E91975C5D1000975F6 /* TelaInicioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 737D09E71975C5D1000975F6 /* TelaInicioViewController.xib */; };
 		73A3072319744C09005551D3 /* TBEstilosQueTocaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A3072119744C09005551D3 /* TBEstilosQueTocaViewController.m */; };
 		73A3072419744C09005551D3 /* TBEstilosQueTocaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A3072219744C09005551D3 /* TBEstilosQueTocaViewController.xib */; };
 		73A3072819744CBC005551D3 /* TBEstilosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A3072619744CBC005551D3 /* TBEstilosViewController.m */; };
@@ -134,6 +136,9 @@
 		31F83E1E192E851D0070D597 /* TBFiltroHorario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBFiltroHorario.h; sourceTree = "<group>"; };
 		31F83E1F192E851D0070D597 /* TBFiltroHorario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBFiltroHorario.m; sourceTree = "<group>"; };
 		31F83E20192E851D0070D597 /* TBFiltroHorario.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBFiltroHorario.xib; sourceTree = "<group>"; };
+		737D09E51975C5D1000975F6 /* TelaInicioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaInicioViewController.h; sourceTree = "<group>"; };
+		737D09E61975C5D1000975F6 /* TelaInicioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaInicioViewController.m; sourceTree = "<group>"; };
+		737D09E71975C5D1000975F6 /* TelaInicioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaInicioViewController.xib; sourceTree = "<group>"; };
 		73A3072019744C09005551D3 /* TBEstilosQueTocaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEstilosQueTocaViewController.h; sourceTree = "<group>"; };
 		73A3072119744C09005551D3 /* TBEstilosQueTocaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEstilosQueTocaViewController.m; sourceTree = "<group>"; };
 		73A3072219744C09005551D3 /* TBEstilosQueTocaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBEstilosQueTocaViewController.xib; sourceTree = "<group>"; };
@@ -309,6 +314,7 @@
 			children = (
 				1BE8E3CA192533AD00D108C0 /* AppDelegate.h */,
 				1BE8E3CB192533AD00D108C0 /* AppDelegate.m */,
+				737D09E41975C5B1000975F6 /* Inicio */,
 				1B166626193507FC00E2FB47 /* Classes */,
 				1BE8E3F91925449D00D108C0 /* Singleton */,
 				1BE8E3F5192539C500D108C0 /* Banco */,
@@ -410,6 +416,16 @@
 				31C31743194783B700C99512 /* delete.png */,
 			);
 			name = Imagens;
+			sourceTree = "<group>";
+		};
+		737D09E41975C5B1000975F6 /* Inicio */ = {
+			isa = PBXGroup;
+			children = (
+				737D09E51975C5D1000975F6 /* TelaInicioViewController.h */,
+				737D09E61975C5D1000975F6 /* TelaInicioViewController.m */,
+				737D09E71975C5D1000975F6 /* TelaInicioViewController.xib */,
+			);
+			name = Inicio;
 			sourceTree = "<group>";
 		};
 		73A3072A19746B17005551D3 /* Tela Instrumentos */ = {
@@ -578,6 +594,7 @@
 				73A3072F19746B4C005551D3 /* TBInstrumentosViewController.xib in Resources */,
 				73EC6E93196B121B0034CB9B /* TelaLoginViewController.xib in Resources */,
 				31F83E22192E851D0070D597 /* TBFiltroHorario.xib in Resources */,
+				737D09E91975C5D1000975F6 /* TelaInicioViewController.xib in Resources */,
 				31F83E15192E84C70070D597 /* TBFiltroEstilo.xib in Resources */,
 				73A3072419744C09005551D3 /* TBEstilosQueTocaViewController.xib in Resources */,
 				73A3072919744CBC005551D3 /* TBEstilosViewController.xib in Resources */,
@@ -625,6 +642,7 @@
 				1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */,
 				31F83E1C192E85050070D597 /* TBFiltroInstrumento.m in Sources */,
 				73EC6E9B196B32FE0034CB9B /* LoginStore.m in Sources */,
+				737D09E81975C5D1000975F6 /* TelaInicioViewController.m in Sources */,
 				31F83E14192E84C70070D597 /* TBFiltroEstilo.m in Sources */,
 				73A3073319746B60005551D3 /* TBInstrumentosQueTocaViewController.m in Sources */,
 				1B1666291935084000E2FB47 /* TPUsuario.m in Sources */,

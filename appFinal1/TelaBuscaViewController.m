@@ -46,9 +46,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     //Verificar se veio de busca
-    if([[[LocalStore sharedStore] ultimaTela] isEqualToString:@"TelaLoginViewController"]){
-        [[self navigationItem] setHidesBackButton:YES];
-    }
+//    if([[[LocalStore sharedStore] ultimaTela] isEqualToString:@"TelaLoginViewController"]){
+//        [[self navigationItem] setHidesBackButton:YES];
+//    }
     
     _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [self atualizaTela];

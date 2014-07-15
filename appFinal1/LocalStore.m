@@ -46,6 +46,9 @@
     _TelaCadastro = [[TelaCadastroViewController alloc] init];
     _TelaLogin = [[TelaLoginViewController alloc] init];
     _TelaEsqueciSenha = [[TelaEsqueciSenhaViewController alloc] init];
+    _TelaPerfil = [[TelaPerfilViewController alloc] init];
+    _TelaBusca = [[TelaBuscaViewController alloc] init];
+    _TelaInicio = [[TelaInicioViewController alloc] init];
 }
 
 -(void)carregaContexto{

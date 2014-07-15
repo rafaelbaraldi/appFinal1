@@ -12,6 +12,9 @@
 #import "TelaCadastroViewController.h"
 #import "TelaLoginViewController.h"
 #import "TelaEsqueciSenhaViewController.h"
+#import "TelaPerfilViewController.h"
+#import "TelaBuscaViewController.h"
+#import "TelaInicioViewController.h"
 
 #import "TBInstrumentosViewController.h"
 #import "TBInstrumentosQueTocaViewController.h"
@@ -27,9 +30,12 @@
 @property TBEstilosQueTocaViewController *TelaTBEstilosQueToco;
 @property TBEstilosViewController *TelaTBEstilos;
 
+@property TelaPerfilViewController *TelaPerfil;
 @property TelaCadastroViewController *TelaCadastro;
 @property TelaEsqueciSenhaViewController *TelaEsqueciSenha;
 @property TelaLoginViewController *TelaLogin;
+@property TelaBuscaViewController *TelaBusca;
+@property TelaInicioViewController *TelaInicio;
 
 @property NSString *ultimaTela;
 
