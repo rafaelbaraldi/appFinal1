@@ -17,6 +17,12 @@
     AVAudioPlayer *player;
 }
 
+@property BOOL gravando;
+
+@property (weak, nonatomic) IBOutlet UITextField *txtNome;
+@property (weak, nonatomic) IBOutlet UITextField *txtCategoria;
+@property (weak, nonatomic) IBOutlet UIButton *btnGravar;
+
 - (IBAction)gravar:(id)sender;
 - (IBAction)parar:(id)sender;
 - (IBAction)playGravacao:(id)sender;

@@ -21,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _gravando = false;
     }
     return self;
 }
@@ -57,8 +58,15 @@
 
 
 - (IBAction)gravar:(id)sender {
-    [recorder prepareToRecord];
-    [recorder record];
+    if(_gravando){
+        [recorder stop];
+        [_btnGravar setTitle:@"Gravar" forState:UIControlStateNormal];
+    }
+    else{
+        [recorder prepareToRecord];
+        [_btnGravar setTitle:@"Gravando" forState:UIControlStateNormal];
+        [recorder record];
+    }
 }
 
 - (IBAction)parar:(id)sender {

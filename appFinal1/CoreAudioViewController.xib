@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoreAudioViewController">
             <connections>
+                <outlet property="btnGravar" destination="xq6-C9-MdR" id="l4L-0C-rBN"/>
+                <outlet property="txtCategoria" destination="8Yg-xD-65j" id="jhj-6b-eRV"/>
+                <outlet property="txtNome" destination="hgM-xv-VOb" id="uxL-x5-wFQ"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -21,8 +24,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="gravar:" destination="-1" eventType="touchDown" id="T78-dX-Zub"/>
-                        <action selector="parar:" destination="-1" eventType="touchUpInside" id="hmm-5w-yeB"/>
+                        <action selector="gravar:" destination="-1" eventType="touchUpInside" id="F6Z-co-1OX"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kR1-bE-xq0">
@@ -35,6 +37,18 @@
                         <action selector="playGravacao:" destination="-1" eventType="touchUpInside" id="Ett-Sh-Kpm"/>
                     </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hgM-xv-VOb">
+                    <rect key="frame" x="20" y="50" width="280" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categoria" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Yg-xD-65j">
+                    <rect key="frame" x="20" y="88" width="280" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
