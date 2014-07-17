@@ -45,6 +45,7 @@
     [self.window setRootViewController:navegacaoC];
     
 //    [self.window setRootViewController:[[CoreAudioViewController alloc] initWithNibName:@"CoreAudioViewController" bundle:nil]];
+    [self.window setRootViewController:[[TelaPerfilViewController alloc] initWithNibName:@"TelaPerfilViewController" bundle:nil]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

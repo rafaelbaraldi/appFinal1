@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TelaPerfilViewController : UIViewController
+@interface TelaPerfilViewController : UIViewController <UICollectionViewDataSource>
 
 - (IBAction)btnSair:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionV;
 
 @end
