@@ -28,10 +28,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *btnInstrumentos;
 @property (strong, nonatomic) IBOutlet UIButton *btnEstilos;
 @property (strong, nonatomic) IBOutlet UIButton *btnConfirmar;
+@property (weak, nonatomic) IBOutlet UIButton *btnHorarios;
 
 //Actions View Principal
 - (IBAction)btnInstrumentosClick:(id)sender;
 - (IBAction)btnEstilosClik:(id)sender;
 - (IBAction)btnConfirmarClick:(id)sender;
+- (IBAction)btnHorariosClick:(id)sender;
 
 @end

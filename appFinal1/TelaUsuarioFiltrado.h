@@ -18,7 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblSexo;
 @property (strong, nonatomic) IBOutlet UILabel *lblCidadeBairro;
 @property (strong, nonatomic) IBOutlet UILabel *lblEstilo;
-@property (strong, nonatomic) IBOutlet UITextView *lblAtribuicoes;
+@property (weak, nonatomic) IBOutlet UILabel *lblAtribuicoes;
 
 -(id)initWithIdentificador:(NSString*)idUsuario;
 

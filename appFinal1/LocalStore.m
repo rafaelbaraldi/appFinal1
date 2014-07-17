@@ -28,7 +28,7 @@
 -(id)init{
     self = [super init];
     if(self){
-        _raioBorda = 10;
+        _raioBorda = 5;
         
         [self carregaTelas];
         
@@ -49,6 +49,7 @@
     _TelaPerfil = [[TelaPerfilViewController alloc] init];
     _TelaBusca = [[TelaBuscaViewController alloc] init];
     _TelaInicio = [[TelaInicioViewController alloc] init];
+    _TelaHorarios = [[TelaHorariosViewController alloc] init];
 }
 
 -(void)carregaContexto{

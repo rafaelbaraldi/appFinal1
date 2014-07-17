@@ -53,7 +53,7 @@
 }
 
 -(void)retorna{
-    [[self navigationController] popToRootViewControllerAnimated:YES];
+    [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaCadastro] animated:YES];
 }
 
 -(void)adicionarNovoEstilo{

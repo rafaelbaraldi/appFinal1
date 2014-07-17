@@ -35,7 +35,7 @@
     
     UIViewController *telaVc;
     if(logado){
-        telaVc = [[LocalStore sharedStore] TelaInicio];
+        telaVc = [[LocalStore sharedStore] TelaHorarios];
     }
     else{
         telaVc = [[TelaLoginViewController alloc] init];

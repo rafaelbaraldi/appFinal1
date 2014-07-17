@@ -43,6 +43,9 @@ const int OBSERVACOES = 2;
     //Usa Cadastro no singleton
     [[CadastroStore sharedStore]setViewTela:self];
     
+    //Deixa a borda dos boteos arredondados
+    [self arredondaBordaBotoes];
+    
     //Senha
     [_txtSenha setSecureTextEntry:YES];
 }
@@ -50,6 +53,13 @@ const int OBSERVACOES = 2;
 -(void) viewWillAppear:(BOOL)animated{
     
     [self carregaLabels];
+}
+
+-(void)arredondaBordaBotoes{
+    
+    [[_btnEstilos layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
+    [[_btnInstrumentos layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
+    [[_btnHorarios layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
 }
 
 -(IBAction)btnEstilosClik:(id)sender {
@@ -127,6 +137,10 @@ const int OBSERVACOES = 2;
             [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
         }
     }
+}
+
+- (IBAction)btnHorariosClick:(id)sender {
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaHorarios] animated:YES];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{

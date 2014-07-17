@@ -15,6 +15,7 @@
 #import "TelaPerfilViewController.h"
 #import "TelaBuscaViewController.h"
 #import "TelaInicioViewController.h"
+#import "TelaHorariosViewController.h"
 
 #import "TBInstrumentosViewController.h"
 #import "TBInstrumentosQueTocaViewController.h"
@@ -36,6 +37,7 @@
 @property TelaLoginViewController *TelaLogin;
 @property TelaBuscaViewController *TelaBusca;
 @property TelaInicioViewController *TelaInicio;
+@property TelaHorariosViewController *TelaHorarios;
 
 @property NSString *ultimaTela;
 

@@ -48,6 +48,9 @@
 		31F83E22192E851D0070D597 /* TBFiltroHorario.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E20192E851D0070D597 /* TBFiltroHorario.xib */; };
 		737D09E81975C5D1000975F6 /* TelaInicioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 737D09E61975C5D1000975F6 /* TelaInicioViewController.m */; };
 		737D09E91975C5D1000975F6 /* TelaInicioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 737D09E71975C5D1000975F6 /* TelaInicioViewController.xib */; };
+		737F349E1976E71F00AAF796 /* TelaHorariosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F349C1976E71F00AAF796 /* TelaHorariosViewController.m */; };
+		737F349F1976E71F00AAF796 /* TelaHorariosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 737F349D1976E71F00AAF796 /* TelaHorariosViewController.xib */; };
+		737F34A11976F9CC00AAF796 /* cellHorario.xib in Resources */ = {isa = PBXBuildFile; fileRef = 737F34A01976F9CC00AAF796 /* cellHorario.xib */; };
 		73A3072319744C09005551D3 /* TBEstilosQueTocaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A3072119744C09005551D3 /* TBEstilosQueTocaViewController.m */; };
 		73A3072419744C09005551D3 /* TBEstilosQueTocaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A3072219744C09005551D3 /* TBEstilosQueTocaViewController.xib */; };
 		73A3072819744CBC005551D3 /* TBEstilosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A3072619744CBC005551D3 /* TBEstilosViewController.m */; };
@@ -139,6 +142,10 @@
 		737D09E51975C5D1000975F6 /* TelaInicioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaInicioViewController.h; sourceTree = "<group>"; };
 		737D09E61975C5D1000975F6 /* TelaInicioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaInicioViewController.m; sourceTree = "<group>"; };
 		737D09E71975C5D1000975F6 /* TelaInicioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaInicioViewController.xib; sourceTree = "<group>"; };
+		737F349B1976E71F00AAF796 /* TelaHorariosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaHorariosViewController.h; sourceTree = "<group>"; };
+		737F349C1976E71F00AAF796 /* TelaHorariosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaHorariosViewController.m; sourceTree = "<group>"; };
+		737F349D1976E71F00AAF796 /* TelaHorariosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaHorariosViewController.xib; sourceTree = "<group>"; };
+		737F34A01976F9CC00AAF796 /* cellHorario.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cellHorario.xib; sourceTree = "<group>"; };
 		73A3072019744C09005551D3 /* TBEstilosQueTocaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBEstilosQueTocaViewController.h; sourceTree = "<group>"; };
 		73A3072119744C09005551D3 /* TBEstilosQueTocaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBEstilosQueTocaViewController.m; sourceTree = "<group>"; };
 		73A3072219744C09005551D3 /* TBEstilosQueTocaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBEstilosQueTocaViewController.xib; sourceTree = "<group>"; };
@@ -363,6 +370,7 @@
 			children = (
 				73A30735197483A3005551D3 /* WebService */,
 				1BD384531926A5810044A2E4 /* Singleton */,
+				737F349A1976E70800AAF796 /* Tela Horarios */,
 				73A3072A19746B17005551D3 /* Tela Instrumentos */,
 				73AEFF6E197449AC00B249BB /* Tela Estilos */,
 				1BD384511926A56D0044A2E4 /* Tela */,
@@ -426,6 +434,17 @@
 				737D09E71975C5D1000975F6 /* TelaInicioViewController.xib */,
 			);
 			name = Inicio;
+			sourceTree = "<group>";
+		};
+		737F349A1976E70800AAF796 /* Tela Horarios */ = {
+			isa = PBXGroup;
+			children = (
+				737F349B1976E71F00AAF796 /* TelaHorariosViewController.h */,
+				737F349C1976E71F00AAF796 /* TelaHorariosViewController.m */,
+				737F34A01976F9CC00AAF796 /* cellHorario.xib */,
+				737F349D1976E71F00AAF796 /* TelaHorariosViewController.xib */,
+			);
+			name = "Tela Horarios";
 			sourceTree = "<group>";
 		};
 		73A3072A19746B17005551D3 /* Tela Instrumentos */ = {
@@ -596,12 +615,14 @@
 				31F83E22192E851D0070D597 /* TBFiltroHorario.xib in Resources */,
 				737D09E91975C5D1000975F6 /* TelaInicioViewController.xib in Resources */,
 				31F83E15192E84C70070D597 /* TBFiltroEstilo.xib in Resources */,
+				737F349F1976E71F00AAF796 /* TelaHorariosViewController.xib in Resources */,
 				73A3072419744C09005551D3 /* TBEstilosQueTocaViewController.xib in Resources */,
 				73A3072919744CBC005551D3 /* TBEstilosViewController.xib in Resources */,
 				31F67C7A193523D400113DA8 /* TelaUsuarioFiltrado.xib in Resources */,
 				31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */,
 				1BE8E3C6192533AD00D108C0 /* InfoPlist.strings in Resources */,
 				73A3073419746B60005551D3 /* TBInstrumentosQueTocaViewController.xib in Resources */,
+				737F34A11976F9CC00AAF796 /* cellHorario.xib in Resources */,
 				1BE8E3D1192533AD00D108C0 /* Images.xcassets in Resources */,
 				31F67C75193515CC00113DA8 /* escrever.png in Resources */,
 				31C31744194783B700C99512 /* delete.png in Resources */,
@@ -653,6 +674,7 @@
 				73EC6E92196B121B0034CB9B /* TelaLoginViewController.m in Sources */,
 				73A3072E19746B4C005551D3 /* TBInstrumentosViewController.m in Sources */,
 				1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */,
+				737F349E1976E71F00AAF796 /* TelaHorariosViewController.m in Sources */,
 				1BE8E3C8192533AD00D108C0 /* main.m in Sources */,
 				31F67C7D1935286600113DA8 /* TPInstrumento.m in Sources */,
 			);

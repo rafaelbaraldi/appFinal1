@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="btnConfirmar" destination="yAn-l7-pUc" id="vnP-Pr-UgM"/>
                 <outlet property="btnEstilos" destination="IhR-l6-OG9" id="hF2-YQ-isc"/>
+                <outlet property="btnHorarios" destination="bMY-ZV-hAu" id="GAz-Eh-hwo"/>
                 <outlet property="btnInstrumentos" destination="2vP-PE-NJq" id="Ifr-n1-HH4"/>
                 <outlet property="lblCabecalho" destination="ZYL-If-F3M" id="hJ6-RA-VFA"/>
                 <outlet property="lblEstilos" destination="9YT-ss-PXQ" id="MFG-n2-sfm"/>
@@ -29,14 +30,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Por favor confirme suas informações abaixo:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYL-If-F3M">
-                    <rect key="frame" x="34" y="91" width="253" height="21"/>
+                    <rect key="frame" x="34" y="72" width="253" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tK2-vN-3Su">
-                    <rect key="frame" x="26" y="120" width="269" height="30"/>
+                    <rect key="frame" x="26" y="101" width="269" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -45,7 +46,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zqw-fa-R2x">
-                    <rect key="frame" x="26" y="158" width="269" height="30"/>
+                    <rect key="frame" x="26" y="137" width="269" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -54,7 +55,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="COy-JI-FXJ">
-                    <rect key="frame" x="26" y="196" width="269" height="30"/>
+                    <rect key="frame" x="26" y="175" width="269" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -63,7 +64,7 @@
                     </connections>
                 </textField>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Idd-DK-tTQ">
-                    <rect key="frame" x="26" y="238" width="269" height="29"/>
+                    <rect key="frame" x="26" y="214" width="269" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <segments>
                         <segment title="Masculino"/>
@@ -71,7 +72,7 @@
                     </segments>
                 </segmentedControl>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cidade" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5GH-bR-2Py">
-                    <rect key="frame" x="26" y="277" width="129" height="30"/>
+                    <rect key="frame" x="26" y="253" width="129" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -80,7 +81,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bairro" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gsv-uY-0ZC">
-                    <rect key="frame" x="172" y="277" width="123" height="30"/>
+                    <rect key="frame" x="172" y="253" width="123" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -89,9 +90,10 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vP-PE-NJq">
-                    <rect key="frame" x="78" y="337" width="165" height="30"/>
+                    <rect key="frame" x="26" y="297" width="269" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.19215688109397888" green="0.5058823823928833" blue="0.98431378602981567" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.13333334028720856" green="0.59215688705444336" blue="0.96078437566757202" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Instrumentos">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,9 +103,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhR-l6-OG9">
-                    <rect key="frame" x="78" y="395" width="165" height="30"/>
+                    <rect key="frame" x="26" y="354" width="269" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.19215688110000001" green="0.50588238240000005" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.13333334028720856" green="0.59215688705444336" blue="0.96078437566757202" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" title="Estilos Musicais">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -112,26 +114,38 @@
                         <action selector="btnEstilosClik:" destination="-1" eventType="touchUpInside" id="IJV-8f-rcr"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMY-ZV-hAu">
+                    <rect key="frame" x="26" y="410" width="269" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.13333334028720856" green="0.59215688705444336" blue="0.96078437566757202" alpha="1" colorSpace="deviceRGB"/>
+                    <state key="normal" title="Horarios para ensaio">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnHorariosClick:" destination="-1" eventType="touchUpInside" id="qbs-jb-55Y"/>
+                    </connections>
+                </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AN-91-mwR">
-                    <rect key="frame" x="88" y="366" width="145" height="21"/>
+                    <rect key="frame" x="26" y="325" width="269" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ex: Conhecimento em escala, ritimicas, teoria" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cre-rv-EyK">
-                    <rect key="frame" x="34" y="487" width="261" height="21"/>
+                    <rect key="frame" x="34" y="491" width="261" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YT-ss-PXQ">
-                    <rect key="frame" x="88" y="427" width="145" height="21"/>
+                    <rect key="frame" x="26" y="382" width="269" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Observações" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fmi-r7-pnf">
-                    <rect key="frame" x="26" y="456" width="274" height="30"/>
+                    <rect key="frame" x="26" y="460" width="274" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -140,7 +154,7 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAn-l7-pUc">
-                    <rect key="frame" x="130" y="518" width="68" height="30"/>
+                    <rect key="frame" x="130" y="526" width="68" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Confirmar">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
