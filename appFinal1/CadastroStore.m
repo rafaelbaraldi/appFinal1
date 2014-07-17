@@ -45,6 +45,9 @@
         _estilosFiltrados =[[NSMutableArray alloc] init];
         [_estilosFiltrados addObjectsFromArray:_estilos];
         
+        //horaios
+        _horariosQueToca = [[NSMutableArray alloc]init];
+        
     }
     return self;
 }
@@ -55,6 +58,7 @@
                                  usuario.observacoes, @"observacoes",
                                  usuario.estilos, @"estilos",
                                  usuario.instrumentos, @"instrumentos",
+                                 usuario.horarios, @"horarios",                                 
                                  usuario.bairro, @"bairro",
                                  usuario.cidade, @"cidade",
                                  usuario.sexo, @"sexo",
@@ -104,6 +108,10 @@
     }
     if([usuario.estilos length] == 0){
         valida = @"seus ESTILOS";
+        return valida;
+    }
+    if([usuario.horarios length] == 0){
+        valida = @"seus HORÁRIOS disponíveis para ensaio";
         return valida;
     }
     

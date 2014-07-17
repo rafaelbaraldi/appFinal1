@@ -17,6 +17,7 @@
 @dynamic estilos;
 @dynamic instrumentos;
 @dynamic nome;
+@dynamic horarios;
 @dynamic observacoes;
 @dynamic senha;
 @dynamic sexo;

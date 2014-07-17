@@ -93,6 +93,7 @@ const int OBSERVACOES = 2;
     usuario.cidade = _txtCidade.text;
     usuario.bairro = _txtBairro.text;
     usuario.observacoes = _txtObservacoes.text;
+    usuario.horarios = @"";
     usuario.instrumentos = @"";
     usuario.estilos = @"";
     
@@ -102,6 +103,9 @@ const int OBSERVACOES = 2;
     for (NSString* s in [[CadastroStore sharedStore] estilosQueToca]) {
         usuario.estilos = [NSString stringWithFormat:@"%@, %@", usuario.estilos, s];
     }
+    for (NSString* s in [[CadastroStore sharedStore] horariosQueToca]) {
+        usuario.horarios = [NSString stringWithFormat:@"%@, %@", usuario.horarios, s];
+    }
     
     if([usuario.instrumentos length] > 0){
         usuario.instrumentos = [usuario.instrumentos substringFromIndex:2];
@@ -109,14 +113,15 @@ const int OBSERVACOES = 2;
     if([usuario.estilos length] > 0){
         usuario.estilos = [usuario.estilos substringFromIndex:2];
     }
-    
+    if([usuario.horarios length] > 0){
+        usuario.horarios = [usuario.horarios substringFromIndex:2];
+    }
     
     NSString *valida = [CadastroStore validaCadastro:usuario];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERRO" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     
     if([valida length] > 0){
-        
         valida = [NSString stringWithFormat:@"Informe corretamente %@", valida];
         
         [alert setMessage:valida];

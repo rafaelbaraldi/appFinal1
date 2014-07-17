@@ -21,6 +21,8 @@
 @property NSMutableArray *estilosQueToca;
 @property NSMutableArray *estilosFiltrados;
 
+@property NSMutableArray *horariosQueToca;
+
 @property TelaCadastroViewController *viewTela;
 
 +(CadastroStore*)sharedStore;

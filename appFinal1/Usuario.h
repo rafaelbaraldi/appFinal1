@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSString * estilos;
 @property (nonatomic, retain) NSString * instrumentos;
 @property (nonatomic, retain) NSString * nome;
+@property (nonatomic, retain) NSString * horarios;
 @property (nonatomic, retain) NSString * observacoes;
 @property (nonatomic, retain) NSString * senha;
 @property (nonatomic, retain) NSString * sexo;
