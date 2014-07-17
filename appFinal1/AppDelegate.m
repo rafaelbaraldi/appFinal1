@@ -35,11 +35,13 @@
     
     UIViewController *telaVc;
     if(logado){
-        telaVc = [[LocalStore sharedStore] TelaCadastro];
+//        telaVc = [[LocalStore sharedStore] TelaCadastroFoto];
     }
     else{
-        telaVc = [[TelaLoginViewController alloc] init];
+//        telaVc = [[TelaLoginViewController alloc] init];
     }
+    
+    telaVc = [[LocalStore sharedStore] TelaCadastroFoto];
     
     UINavigationController *navegacaoC = [[UINavigationController alloc] initWithRootViewController:telaVc];
     [self.window setRootViewController:navegacaoC];
