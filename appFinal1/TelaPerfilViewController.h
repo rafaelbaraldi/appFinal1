@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVAudioPlayer.h>
 
-@interface TelaPerfilViewController : UIViewController <UICollectionViewDataSource>
+@interface TelaPerfilViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>{
+    AVAudioPlayer* player;
+}
+
+@property NSMutableArray* categorias;
+@property NSMutableArray* musicas;
+@property NSMutableArray* musicasPorCategoria;
 
 - (IBAction)btnSair:(id)sender;
 

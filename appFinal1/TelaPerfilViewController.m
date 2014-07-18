@@ -10,6 +10,8 @@
 
 #import "LoginStore.h"
 #import "LocalStore.h"
+#import "Musica.h"
+
 
 @interface TelaPerfilViewController ()
 
@@ -30,9 +32,30 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _musicas = [[NSMutableArray alloc] initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Musica"] error:nil]];
+    _categorias = [[NSMutableArray alloc] init];
+    _musicasPorCategoria = [[NSMutableArray alloc] init];
+    
+    for (Musica* m in _musicas) {
+        if(![_categorias containsObject:m.categoria]){
+            [_categorias addObject:m.categoria];
+            [_musicasPorCategoria addObject:[[NSMutableArray alloc] init]];
+        }
+//        NSLog(@"%@", m.url);
+    }
+    
+    for (int i = 0; i < [_categorias count]; i++) {
+        for (Musica* m in _musicas) {
+            if([[_categorias objectAtIndex:i] isEqualToString:m.categoria]){
+                [[_musicasPorCategoria objectAtIndex:i] addObject:m];
+            }
+        }
+    }
     
     [_collectionV registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"FlickrCell"];
     [_collectionV registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+    
+//    [_collectionV setAllowsSelection:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,6 +76,13 @@
 //        cell = [[UICollectionViewCell alloc] init];
 //    }
     cell.backgroundColor = [UIColor blueColor];
+    
+    UILabel* lblMusica = [[UILabel alloc] initWithFrame:CGRectMake(6, 6, 20, 20)];
+    lblMusica.text = ((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).nome;
+    lblMusica.textColor = [UIColor whiteColor];
+    lblMusica.font = [lblMusica.font fontWithSize:8];
+    [cell addSubview:lblMusica];
+    
     return cell;
 }
 
@@ -67,7 +97,7 @@
         }
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        label.text = @"headeer";
+        label.text = [_categorias objectAtIndex:indexPath.section];
         label.textColor = [UIColor greenColor];
         [reusableview addSubview:label];
         return reusableview;
@@ -76,11 +106,24 @@
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 3;
+    return [_categorias count];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 20;
+    return [[_musicasPorCategoria objectAtIndex:section] count];
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%@", ((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).url);
+    
+    NSURL* url = [[NSURL alloc] initFileURLWithPath:((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).url];
+    
+    player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+    
+//    NSURL* url = [[NSURL alloc] initFileURLWithPath:((Musica*)[_musicas objectAtIndex:2]).url];
+//    player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+    
+    [player play];
 }
 
 @end

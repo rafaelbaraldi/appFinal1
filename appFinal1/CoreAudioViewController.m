@@ -33,9 +33,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSArray * a = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Musica"] error:nil];
+    _musicas = [[NSMutableArray alloc]initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Musica"] error:nil]];
     
-    for (Musica* m in a) {
+    for (Musica* m in _musicas) {
         NSLog(@"%@", m.url);
     }
 }
@@ -80,20 +80,34 @@
     [[[LocalStore sharedStore] context] save:nil];
 }
 
+-(BOOL)musicaComEsseNomeJaExisteNessaCategoria{
+    for (Musica* m in _musicas) {
+        if ([m.categoria isEqualToString:_txtCategoria.text] && [m.nome isEqualToString:_txtNome.text]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (IBAction)gravar:(id)sender {
     if([_txtCategoria.text length] > 0 && [_txtNome.text length] > 0){
-        if(_gravando){
-            [recorder stop];
-            [_btnGravar setTitle:@"Gravar" forState:UIControlStateNormal];
-            _gravando = false;
+        if(![self musicaComEsseNomeJaExisteNessaCategoria]){
+            if(_gravando){
+                [recorder stop];
+                [_btnGravar setTitle:@"Gravar" forState:UIControlStateNormal];
+                _gravando = false;
+            }
+            else{
+                [self carregaGravador];
+                [recorder prepareToRecord];
+                [_btnGravar setTitle:@"Gravando" forState:UIControlStateNormal];
+                _gravando = true;
+                [self registrarGravacao];
+                [recorder record];
+            }
         }
         else{
-            [self carregaGravador];
-            [recorder prepareToRecord];
-            [_btnGravar setTitle:@"Gravando" forState:UIControlStateNormal];
-            _gravando = true;
-            [self registrarGravacao];
-            [recorder record];
+            NSLog(@"Musica com esse nome ja existe nessa categoria");
         }
     }
     else{
@@ -103,8 +117,15 @@
 
 
 - (IBAction)playGravacao:(id)sender {
-    player = [[AVAudioPlayer alloc]initWithContentsOfURL:urlPlay error:nil];
+    
+//    player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:@"/Users/rafaelbaraldi/Library/Application Support/iPhone Simulator/7.1/Applications/617742BD-CC25-4CBD-8D3F-450293F47FEB/tmp/0.ter.t"] error:nil];
+    
+    NSURL* url = [[NSURL alloc] initFileURLWithPath:((Musica*)[_musicas objectAtIndex:2]).url];
+    player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+    
+//    player = [[AVAudioPlayer alloc]initWithContentsOfURL:urlPlay error:nil];
     [player play];
+    
 }
 
 - (IBAction)txtCategoriaSair:(id)sender {

@@ -18,6 +18,7 @@
 }
 
 @property BOOL gravando;
+@property NSMutableArray* musicas;
 
 @property (weak, nonatomic) IBOutlet UITextField *txtNome;
 @property (weak, nonatomic) IBOutlet UITextField *txtCategoria;
