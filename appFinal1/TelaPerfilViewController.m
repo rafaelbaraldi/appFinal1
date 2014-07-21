@@ -12,6 +12,8 @@
 #import "LocalStore.h"
 #import "Musica.h"
 
+#import <AVFoundation/AVAudioSession.h>
+
 
 @interface TelaPerfilViewController ()
 
@@ -56,6 +58,9 @@
     [_collectionV registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
     
 //    [_collectionV setAllowsSelection:YES];
+    
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 }
 
 - (void)didReceiveMemoryWarning

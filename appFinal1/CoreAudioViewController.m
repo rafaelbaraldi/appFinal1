@@ -61,6 +61,9 @@
     recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordSetting error:nil];
     
     NSLog(@"%@", [urlPlay path]);
+    
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
 }
 
 
