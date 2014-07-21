@@ -120,10 +120,10 @@
     
 //    player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:@"/Users/rafaelbaraldi/Library/Application Support/iPhone Simulator/7.1/Applications/617742BD-CC25-4CBD-8D3F-450293F47FEB/tmp/0.ter.t"] error:nil];
     
-    NSURL* url = [[NSURL alloc] initFileURLWithPath:((Musica*)[_musicas objectAtIndex:2]).url];
-    player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+//    NSURL* url = [[NSURL alloc] initFileURLWithPath:((Musica*)[_musicas objectAtIndex:2]).url];
+//    player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
     
-//    player = [[AVAudioPlayer alloc]initWithContentsOfURL:urlPlay error:nil];
+    player = [[AVAudioPlayer alloc]initWithContentsOfURL:urlPlay error:nil];
     [player play];
     
 }
