@@ -116,6 +116,7 @@
 
 -(void)tirarFoto{
     _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    _imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
 
     [self presentViewController:_imagePickerController animated:YES completion:nil];
 }
@@ -123,6 +124,25 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
     _fotoSelecionada = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+//    NSString *imgPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.jpg"];
+//    
+//    [UIImageJPEGRepresentation(_fotoSelecionada, 1.0) writeToFile:imgPath atomically:YES];
+//    
+//    NSData *imagedata = [NSData dataWithData:UIImagePNGRepresentation(_fotoSelecionada)];
+//    
+//    NSString *base64string = [imagedata base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+//    
+//    NSString *str = [NSString stringWithFormat:@"http://www.testes01.com/newsie/receberprofilephoto.php"];
+//    NSURL *url = [NSURL URLWithString:[str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+//    
+//    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+//    [request setPostValue:base64string forKey:@"imagedata"];
+//    [request setRequestMethod:@"POST"];
+//    [request setDelegate:self];
+//    [request startSynchronous];
+//    NSLog(@"responseStatusCode %i",[request responseStatusCode]);
+//    NSLog(@"responseStatusString %@",[request responseString]);
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
