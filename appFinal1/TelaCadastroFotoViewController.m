@@ -125,24 +125,39 @@
     
     _fotoSelecionada = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-//    NSString *imgPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.jpg"];
-//    
-//    [UIImageJPEGRepresentation(_fotoSelecionada, 1.0) writeToFile:imgPath atomically:YES];
-//    
-//    NSData *imagedata = [NSData dataWithData:UIImagePNGRepresentation(_fotoSelecionada)];
-//    
-//    NSString *base64string = [imagedata base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-//    
-//    NSString *str = [NSString stringWithFormat:@"http://www.testes01.com/newsie/receberprofilephoto.php"];
-//    NSURL *url = [NSURL URLWithString:[str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-//    
-//    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-//    [request setPostValue:base64string forKey:@"imagedata"];
-//    [request setRequestMethod:@"POST"];
-//    [request setDelegate:self];
-//    [request startSynchronous];
-//    NSLog(@"responseStatusCode %i",[request responseStatusCode]);
-//    NSLog(@"responseStatusString %@",[request responseString]);
+    NSData *imageData = UIImageJPEGRepresentation(_fotoSelecionada, 90);
+
+    //Conexao Cadastro
+    NSString *url = @"http://54.187.203.61/appMusica/cadastroFoto.php";
+    
+    //request
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"context-type"];
+    
+    //boundary
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+	NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    
+	[request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    //body
+    NSMutableData *body = [NSMutableData data];
+	[body appendData:[[NSString stringWithFormat:@"--%@ ",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Disposition: form-data; name=\"userfile\"; filename=\"ipodfile.jpg\" " dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithFormat:@"--%@-- ",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //request
+    [request setHTTPBody:body];
+    
+    //conexao
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+
+    NSLog(@"%@", returnString);
+
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
