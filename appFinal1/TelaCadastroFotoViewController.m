@@ -12,6 +12,7 @@
 
 #import "LocalStore.h"
 #import "CadastroStore.h"
+#import "CadastroConexao.h"
 
 @interface TelaCadastroFotoViewController ()
 
@@ -29,9 +30,6 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    UIBarButtonItem *voltarItem = [[UIBarButtonItem alloc] initWithTitle:@"Cadastro" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
-    [[self navigationItem] setLeftBarButtonItem:voltarItem];
-    
     //Carrega menu
     [self carregaMenu];
     
@@ -45,19 +43,8 @@
     [super didReceiveMemoryWarning];
 }
 
--(void) viewDidAppear:(BOOL)animated{
-    
-    //Carrega imagem na view
-    if (_fotoSelecionada != nil) {
-        [_imgView setImage:_fotoSelecionada];
-        
-        _imgView.layer.masksToBounds = YES;
-        _imgView.layer.cornerRadius = _imgView.frame.size.width / 2;
-    }
-}
-
--(void)retorna{
-    //[[self navigationController] popToViewController:[[LocalStore sharedStore] TelaCadastro] animated:YES];
+-(void)viewWillAppear:(BOOL)animated{
+    [self exibiFoto];
 }
 
 -(void)arredondaBordaBotoes{
@@ -66,12 +53,38 @@
     [[_btnContinuar layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
 }
 
+-(void)exibiFoto{
+    if (_fotoSelecionada.image != nil) {
+        [_imgView setImage:_fotoSelecionada.image];
+        
+        _imgView.layer.masksToBounds = YES;
+        _imgView.layer.cornerRadius = _imgView.frame.size.width / 2;
+    }
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 - (IBAction)btnAdicionarFotoClick:(id)sender {
     
     [_menu showInView:self.view];
 }
 
 - (IBAction)btnContinuarClick:(id)sender {
+    
+    if (_fotoSelecionada.image != nil) {
+        UIImage *foto = _fotoSelecionada.image;
+        foto = [self imageWithImage:foto scaledToSize:CGSizeMake(foto.size.width / 10, foto.size.height / 10)];
+        
+        [CadastroConexao uploadFoto: foto];
+    }
+    
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
 }
 
 -(void)carregaMenu{
@@ -85,7 +98,7 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     
-    switch (buttonIndex) {
+    switch (buttonIndex){
         case 0:
             [self importarDoFacebook];
             break;
@@ -112,6 +125,8 @@
     _imagePickerController = [[UIImagePickerController alloc] init];
     _imagePickerController.editing = YES;
     _imagePickerController.delegate = (id)self;
+    
+    _fotoSelecionada = [[UIImageView alloc] init];
 }
 
 -(void)tirarFoto{
@@ -123,41 +138,7 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
-    _fotoSelecionada = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    NSData *imageData = UIImageJPEGRepresentation(_fotoSelecionada, 90);
-
-    //Conexao Cadastro
-    NSString *url = @"http://54.187.203.61/appMusica/cadastroFoto.php";
-    
-    //request
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"context-type"];
-    
-    //boundary
-    NSString *boundary = @"---------------------------14737809831466499882746641449";
-	NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
-    
-	[request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    //body
-    NSMutableData *body = [NSMutableData data];
-	[body appendData:[[NSString stringWithFormat:@"--%@ ",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"Content-Disposition: form-data; name=\"userfile\"; filename=\"ipodfile.jpg\" " dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"Content-Type: application/octet-stream" dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[NSData dataWithData:imageData]];
-    [body appendData:[[NSString stringWithFormat:@"--%@-- ",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    //request
-    [request setHTTPBody:body];
-    
-    //conexao
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-
-    NSLog(@"%@", returnString);
-
+    _fotoSelecionada.image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

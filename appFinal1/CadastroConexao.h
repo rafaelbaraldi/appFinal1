@@ -12,6 +12,8 @@
 
 @interface CadastroConexao : NSObject
 
-+(BOOL)cadastrar:(NSData*)jsonCadastro;
++(NSString*)cadastrar:(NSData*)jsonCadastro;
+
++(void)uploadFoto:(UIImage*)foto;
 
 @end

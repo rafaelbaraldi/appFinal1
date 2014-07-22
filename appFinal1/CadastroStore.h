@@ -13,6 +13,8 @@
 
 @interface CadastroStore : NSObject
 
+@property NSString *nomeFotoPerfil;
+
 @property NSMutableArray *instrumentos;
 @property NSMutableArray *instrumentosQueToca;
 @property NSMutableArray *instrumentosFiltrados;
@@ -29,6 +31,6 @@
 
 +(NSString *)validaCadastro:(Usuario*)usuario;
 
-+(BOOL)cadastrar:(Usuario*)usuario;
++(NSString*)cadastrar:(Usuario*)usuario;
 
 @end

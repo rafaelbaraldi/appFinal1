@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnContinuar;
 
 @property UIActionSheet *menu;
-@property UIImage *fotoSelecionada;
+@property UIImageView *fotoSelecionada;
 @property UIImagePickerController *imagePickerController;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 

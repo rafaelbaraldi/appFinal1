@@ -128,8 +128,9 @@ const int OBSERVACOES = 2;
         [alert show];
     }
     else{
-        BOOL cadastrou = [CadastroStore cadastrar:usuario];
-        if(!cadastrou){
+        NSString *cadastrou = [CadastroStore cadastrar:usuario];
+        
+        if([cadastrou rangeOfString:@"\"Duplicate entry"].location != NSNotFound){
             valida = [NSString stringWithFormat:@"Esse e-mail já está em uso"];
             
             [alert setMessage:valida];
@@ -139,7 +140,12 @@ const int OBSERVACOES = 2;
             //Realiza Login
             [LoginStore login:usuario.email senha:usuario.senha];
             
-            [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
+            //Salva idNomeUsuario
+            NSMutableString * str = [[NSMutableString alloc] initWithString:cadastrou];
+            [str replaceOccurrencesOfString:@"\"" withString:@"" options:NSCaseInsensitiveSearch range:(NSRange){0,[str length]}];
+            [[CadastroStore sharedStore] setNomeFotoPerfil:str];
+            
+            [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaCadastroFoto] animated:YES];
         }
     }
 }

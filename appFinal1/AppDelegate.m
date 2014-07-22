@@ -41,13 +41,13 @@
 //        telaVc = [[TelaLoginViewController alloc] init];
     }
     
-    telaVc = [[LocalStore sharedStore] TelaCadastroFoto];
+    telaVc = [[LocalStore sharedStore] TelaCadastro];
     
     UINavigationController *navegacaoC = [[UINavigationController alloc] initWithRootViewController:telaVc];
     [self.window setRootViewController:navegacaoC];
     
 //    [self.window setRootViewController:[[CoreAudioViewController alloc] initWithNibName:@"CoreAudioViewController" bundle:nil]];
-    [self.window setRootViewController:[[TelaPerfilViewController alloc] initWithNibName:@"TelaPerfilViewController" bundle:nil]];
+//    [self.window setRootViewController:[[TelaPerfilViewController alloc] initWithNibName:@"TelaPerfilViewController" bundle:nil]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
