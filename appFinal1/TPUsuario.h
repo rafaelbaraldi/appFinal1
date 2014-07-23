@@ -17,7 +17,10 @@
 @property NSString *cidade;
 @property NSString *bairro;
 @property NSString *atribuicoes;
+@property NSString *email;
+@property NSString *senha;
 @property NSMutableArray *estilos;
 @property NSMutableArray *instrumentos;
+@property NSMutableArray *horarios;
 
 @end

@@ -54,6 +54,7 @@
     NSDictionary *json = [BuscaConexao buscaUsuario:identificador];
     
     TPUsuario *pessoa = [[TPUsuario alloc]init];
+    pessoa.identificador = @"";
     pessoa.nome = @"";
     pessoa.sexo = @"";
     pessoa.cidade = @"";
@@ -64,6 +65,7 @@
     
     for(NSString *s in json){
         if([pessoa.nome  isEqualToString:@""]){
+            pessoa.identificador = [s valueForKeyPath:@"id"];
             pessoa.nome = [s valueForKeyPath:@"nome"];
             pessoa.cidade = [s valueForKeyPath:@"cidade"];
             pessoa.sexo = [s valueForKeyPath:@"sexo"];

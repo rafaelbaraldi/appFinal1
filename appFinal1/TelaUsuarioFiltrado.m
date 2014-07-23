@@ -24,6 +24,10 @@
     return self;
 }
 
+- (IBAction)btnSeguirClick:(id)sender {
+    [BuscaConexao seguirAmigo:_pessoa.identificador];
+}
+
 - (id) initWithIdentificador:(NSString*)idUsuario{
     self = [super init];
     

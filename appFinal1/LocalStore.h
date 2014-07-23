@@ -23,7 +23,11 @@
 #import "TBEstilosViewController.h"
 #import "TBEstilosQueTocaViewController.h"
 
+#import "TPUsuario.h"
+
 @interface LocalStore : NSObject
+
+@property TPUsuario *usuarioAtual;
 
 @property int raioBorda;
 

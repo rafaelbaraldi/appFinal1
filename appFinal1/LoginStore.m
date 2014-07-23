@@ -66,7 +66,7 @@ static NSString* senha = @"";
 +(void)armazenaLogin:(NSDictionary*)usuario{
     
     NSFetchRequest *nsfr = [NSFetchRequest fetchRequestWithEntityName:@"Usuario"];
-    NSNumber *number = [[NSNumber alloc] initWithInt:(int)[usuario valueForKeyPath:@"id"]];
+    NSNumber *number = [[NSNumber alloc] initWithInt:[[usuario valueForKeyPath:@"id"] intValue]];
     NSPredicate *predicateID = [NSPredicate predicateWithFormat:@"identificador == %@",number];
     [nsfr setPredicate:predicateID];
     
@@ -89,15 +89,25 @@ static NSString* senha = @"";
     [u setCidade:[usuario valueForKeyPath:@"cidade"]];
     [u setBairro:[usuario valueForKeyPath:@"bairro"]];
     [u setObservacoes:[usuario valueForKeyPath:@"observacoes"]];
-    [u setIdentificador:[usuario valueForKeyPath:@"id"]];
+    [u setIdentificador:number];
     
     [[[LocalStore sharedStore] context]  save:nil];
     
     NSArray * a = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Usuario"] error:nil];
     
     for (Usuario* us in a) {
-        NSLog(@"id = %d, nome = %@ /n", [us.identificador intValue], us.nome);
+        NSLog(@"id = %d, nome = %@", [us.identificador intValue], us.nome);
     }
+    
+    
+    [[LocalStore sharedStore] usuarioAtual].identificador = [NSString stringWithFormat:@"%d", [u.identificador intValue]];
+    [[LocalStore sharedStore] usuarioAtual].nome = u.nome;
+    [[LocalStore sharedStore] usuarioAtual].email = u.email;
+    [[LocalStore sharedStore] usuarioAtual].senha = u.senha;
+    [[LocalStore sharedStore] usuarioAtual].sexo = u.sexo;
+    [[LocalStore sharedStore] usuarioAtual].cidade = u.cidade;
+    [[LocalStore sharedStore] usuarioAtual].bairro = u.bairro;
+    [[LocalStore sharedStore] usuarioAtual].atribuicoes = u.observacoes;
     
 }
 
@@ -118,9 +128,9 @@ static NSString* senha = @"";
         [self setSenha:senha];
         
         //Grava Dados do Usuario no Coredata
-        if(![self verificaSeEstaLogado]){
+//        if(![self verificaSeEstaLogado]){
             [self armazenaLogin:json];
-        }
+//        }
         
         return true;
     }

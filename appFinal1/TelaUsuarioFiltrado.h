@@ -20,6 +20,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblEstilo;
 @property (weak, nonatomic) IBOutlet UILabel *lblAtribuicoes;
 
+
+- (IBAction)btnSeguirClick:(id)sender;
+
+
 -(id)initWithIdentificador:(NSString*)idUsuario;
 
 @end

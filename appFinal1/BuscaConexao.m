@@ -86,4 +86,25 @@
     return json;
 }
 
++(void)seguirAmigo:(NSString*)idAmigo{
+    NSString *url = @"http://54.187.203.61/appMusica/seguirAmigo.php";
+    
+    NSString *post = [NSString stringWithFormat:@"id_usuario=%@&id_seguindo=%@", [[LocalStore sharedStore] usuarioAtual].identificador, idAmigo];
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSMutableURLRequest *request = [[ NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"context-type"];
+    [request setHTTPBody:postData];
+    
+    
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    
+    NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@", s);
+}
+
 @end
