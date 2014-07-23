@@ -52,21 +52,6 @@
     
     _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [self atualizaTela];
-    
-    TPUsuario *usuarioZero = [[TPUsuario alloc] init];
-    usuarioZero.identificador = @"0";
-    usuarioZero.nome = @"nome";
-    usuarioZero.email = @"email";
-    usuarioZero.senha = @"senha";
-    usuarioZero.sexo = @"sexo";
-    usuarioZero.cidade = @"cidade";
-    usuarioZero.bairro = @"bairro";
-    usuarioZero.atribuicoes = @"atribuicoes";
-    usuarioZero.estilos = [[NSMutableArray alloc] init];
-    usuarioZero.instrumentos = [[NSMutableArray alloc] init];
-    usuarioZero.horarios = [[NSMutableArray alloc] init];
-    
-    [[LocalStore sharedStore] setUsuarioAtual:usuarioZero];
 }
 
 - (void)viewDidLoad{

@@ -93,11 +93,11 @@ static NSString* senha = @"";
     
     [[[LocalStore sharedStore] context]  save:nil];
     
-    NSArray * a = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Usuario"] error:nil];
-    
-    for (Usuario* us in a) {
-        NSLog(@"id = %d, nome = %@", [us.identificador intValue], us.nome);
-    }
+//    NSArray * a = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Usuario"] error:nil];
+//    
+//    for (Usuario* us in a) {
+//        NSLog(@"id = %d, nome = %@", [us.identificador intValue], us.nome);
+//    }
     
     
     [[LocalStore sharedStore] usuarioAtual].identificador = [NSString stringWithFormat:@"%d", [u.identificador intValue]];
