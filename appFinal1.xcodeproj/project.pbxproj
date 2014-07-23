@@ -31,8 +31,8 @@
 		1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */; };
 		1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */; };
 		1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3FB192544E900D108C0 /* LocalStore.m */; };
-		2F3DE73A1974BB130095DB16 /* Musica.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3DE7391974BB130095DB16 /* Musica.m */; };
-		2F3DE73D1974BB140095DB16 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3DE73C1974BB140095DB16 /* Usuario.m */; };
+		2F79ACC519802CF000C3DD0E /* Musica.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F79ACC419802CF000C3DD0E /* Musica.m */; };
+		2F79ACCB19802D2900C3DD0E /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F79ACCA19802D2900C3DD0E /* Usuario.m */; };
 		2FB3B34319745A0B0054B7F7 /* CoreAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB3B34119745A0B0054B7F7 /* CoreAudioViewController.m */; };
 		2FB3B34419745A0B0054B7F7 /* CoreAudioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FB3B34219745A0B0054B7F7 /* CoreAudioViewController.xib */; };
 		31C31744194783B700C99512 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C31743194783B700C99512 /* delete.png */; };
@@ -118,10 +118,10 @@
 		1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaCadastroViewController.xib; sourceTree = "<group>"; };
 		1BE8E3FA192544E900D108C0 /* LocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStore.h; sourceTree = "<group>"; };
 		1BE8E3FB192544E900D108C0 /* LocalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStore.m; sourceTree = "<group>"; };
-		2F3DE7381974BB130095DB16 /* Musica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Musica.h; sourceTree = "<group>"; };
-		2F3DE7391974BB130095DB16 /* Musica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Musica.m; sourceTree = "<group>"; };
-		2F3DE73B1974BB140095DB16 /* Usuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usuario.h; sourceTree = "<group>"; };
-		2F3DE73C1974BB140095DB16 /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = "<group>"; };
+		2F79ACC319802CF000C3DD0E /* Musica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Musica.h; sourceTree = "<group>"; };
+		2F79ACC419802CF000C3DD0E /* Musica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Musica.m; sourceTree = "<group>"; };
+		2F79ACC919802D2900C3DD0E /* Usuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usuario.h; sourceTree = "<group>"; };
+		2F79ACCA19802D2900C3DD0E /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = "<group>"; };
 		2FB3B34019745A0B0054B7F7 /* CoreAudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAudioViewController.h; sourceTree = "<group>"; };
 		2FB3B34119745A0B0054B7F7 /* CoreAudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreAudioViewController.m; sourceTree = "<group>"; };
 		2FB3B34219745A0B0054B7F7 /* CoreAudioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoreAudioViewController.xib; sourceTree = "<group>"; };
@@ -389,11 +389,11 @@
 		1BE8E3F5192539C500D108C0 /* Banco */ = {
 			isa = PBXGroup;
 			children = (
+				2F79ACC919802D2900C3DD0E /* Usuario.h */,
+				2F79ACCA19802D2900C3DD0E /* Usuario.m */,
 				1BE8E3CD192533AD00D108C0 /* appFinal1.xcdatamodeld */,
-				2F3DE73B1974BB140095DB16 /* Usuario.h */,
-				2F3DE73C1974BB140095DB16 /* Usuario.m */,
-				2F3DE7381974BB130095DB16 /* Musica.h */,
-				2F3DE7391974BB130095DB16 /* Musica.m */,
+				2F79ACC319802CF000C3DD0E /* Musica.h */,
+				2F79ACC419802CF000C3DD0E /* Musica.m */,
 			);
 			name = Banco;
 			sourceTree = "<group>";
@@ -657,7 +657,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				73DF446C197053EB000EE360 /* TelaEsqueciSenhaViewController.m in Sources */,
-				2F3DE73A1974BB130095DB16 /* Musica.m in Sources */,
 				1BD384561926A5CB0044A2E4 /* CadastroStore.m in Sources */,
 				1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */,
 				1BE8E3CF192533AD00D108C0 /* appFinal1.xcdatamodeld in Sources */,
@@ -668,6 +667,7 @@
 				2FB3B34319745A0B0054B7F7 /* CoreAudioViewController.m in Sources */,
 				73EC6EA0196B3BB90034CB9B /* TelaPerfilViewController.m in Sources */,
 				73A307381974844A005551D3 /* CadastroConexao.m in Sources */,
+				2F79ACC519802CF000C3DD0E /* Musica.m in Sources */,
 				73EC6E97196B18430034CB9B /* LoginConexao.m in Sources */,
 				1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */,
 				31F83E1C192E85050070D597 /* TBFiltroInstrumento.m in Sources */,
@@ -677,13 +677,13 @@
 				73A3073319746B60005551D3 /* TBInstrumentosQueTocaViewController.m in Sources */,
 				1B1666291935084000E2FB47 /* TPUsuario.m in Sources */,
 				1B82766F192BDB3500E461AD /* TelaBuscaViewController.m in Sources */,
-				2F3DE73D1974BB140095DB16 /* Usuario.m in Sources */,
 				1BE8E3CC192533AD00D108C0 /* AppDelegate.m in Sources */,
 				73A3072319744C09005551D3 /* TBEstilosQueTocaViewController.m in Sources */,
 				73EC6E92196B121B0034CB9B /* TelaLoginViewController.m in Sources */,
 				73A3072E19746B4C005551D3 /* TBInstrumentosViewController.m in Sources */,
 				1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */,
 				737F349E1976E71F00AAF796 /* TelaHorariosViewController.m in Sources */,
+				2F79ACCB19802D2900C3DD0E /* Usuario.m in Sources */,
 				1BE8E3C8192533AD00D108C0 /* main.m in Sources */,
 				737F34A519785C3F00AAF796 /* TelaCadastroFotoViewController.m in Sources */,
 				31F67C7D1935286600113DA8 /* TPInstrumento.m in Sources */,

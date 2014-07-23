@@ -65,8 +65,23 @@ static NSString* senha = @"";
 
 +(void)armazenaLogin:(NSDictionary*)usuario{
     
-    Usuario *u = [NSEntityDescription insertNewObjectForEntityForName:@"Usuario"
-                                      inManagedObjectContext:[[LocalStore sharedStore] context]];
+    NSFetchRequest *nsfr = [NSFetchRequest fetchRequestWithEntityName:@"Usuario"];
+    NSNumber *number = [[NSNumber alloc] initWithInt:(int)[usuario valueForKeyPath:@"id"]];
+    NSPredicate *predicateID = [NSPredicate predicateWithFormat:@"identificador == %@",number];
+    [nsfr setPredicate:predicateID];
+    
+    NSMutableArray *buscaUsuario = [[NSMutableArray alloc] initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:nsfr error:nil]];
+    
+    
+    Usuario * u;
+    if ([buscaUsuario count] <= 0) {
+        u = [NSEntityDescription insertNewObjectForEntityForName:@"Usuario"
+                                          inManagedObjectContext:[[LocalStore sharedStore] context]];
+    }
+    else{
+        u = [buscaUsuario objectAtIndex:0];
+    }
+    
     [u setNome:[usuario valueForKeyPath:@"nome"]];
     [u setEmail:[usuario valueForKeyPath:@"email"]];
     [u setSenha:[usuario valueForKeyPath:@"senha"]];
@@ -74,8 +89,16 @@ static NSString* senha = @"";
     [u setCidade:[usuario valueForKeyPath:@"cidade"]];
     [u setBairro:[usuario valueForKeyPath:@"bairro"]];
     [u setObservacoes:[usuario valueForKeyPath:@"observacoes"]];
+    [u setIdentificador:[usuario valueForKeyPath:@"id"]];
     
     [[[LocalStore sharedStore] context]  save:nil];
+    
+    NSArray * a = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Usuario"] error:nil];
+    
+    for (Usuario* us in a) {
+        NSLog(@"id = %d, nome = %@ /n", [us.identificador intValue], us.nome);
+    }
+    
 }
 
 +(void)deslogar{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Musica" representedClassName="Musica" syncable="YES">
         <attribute name="categoria" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idUsuario" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -12,6 +12,7 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="estilos" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="horarios" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identificador" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="instrumentos" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="observacoes" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,6 +21,6 @@
     </entity>
     <elements>
         <element name="Musica" positionX="-54" positionY="63" width="128" height="105"/>
-        <element name="Usuario" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="Usuario" positionX="-63" positionY="-18" width="128" height="210"/>
     </elements>
 </model>
