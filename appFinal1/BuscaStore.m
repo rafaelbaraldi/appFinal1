@@ -30,6 +30,9 @@
         _instrumento = [[NSString alloc]init];
         _estilo = [[NSString alloc]init];
         
+        _instrumentosFiltrados = [[NSMutableArray alloc] init];
+        _estilosFiltrados = [[NSMutableArray alloc] init];
+        
     }
     return self;
 }

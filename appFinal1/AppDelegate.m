@@ -43,7 +43,7 @@
 //        telaVc = [[TelaLoginViewController alloc] init];
     }
     
-    telaVc = [[LocalStore sharedStore] TelaLogin];
+    telaVc = [[LocalStore sharedStore] TelaBusca];
     
     UINavigationController *navegacaoC = [[UINavigationController alloc] initWithRootViewController:telaVc];
     [self.window setRootViewController:navegacaoC];

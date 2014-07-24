@@ -20,7 +20,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         [[self navigationItem] setTitle:@"Filtro Estilo Musical"];
         
         UIBarButtonItem *busca = [[UIBarButtonItem alloc]initWithTitle:@"Buscar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
@@ -30,16 +29,15 @@
 }
 
 -(void)retorna{
-    
     [[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 
     _todosEstilos = [BuscaStore retornaListaDe:@"estilo"];
+    
+    [[[BuscaStore sharedStore] estilosFiltrados] removeAllObjects];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -47,7 +45,12 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_todosEstilos count];
+    if([[[BuscaStore sharedStore] estilosFiltrados] count] == 0){
+        return [_todosEstilos  count];
+    }
+    else{
+        return [[[BuscaStore sharedStore] estilosFiltrados]  count];
+    }
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -56,20 +59,46 @@
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EstilosPesquisaCell"];
     }
-    celula.textLabel.text = [_todosEstilos objectAtIndex:indexPath.row];
+    if([[[BuscaStore sharedStore] estilosFiltrados] count] == 0){
+        celula.textLabel.text = [_todosEstilos  objectAtIndex:indexPath.row];
+    }
+    else{
+        celula.textLabel.text = [[[BuscaStore sharedStore] estilosFiltrados]  objectAtIndex:indexPath.row];
+    }
     
     return celula;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{    
-    [[BuscaStore sharedStore] setEstilo:[_todosEstilos objectAtIndex:indexPath.row]];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if([[[BuscaStore sharedStore] estilosFiltrados] count] == 0){
+        [[BuscaStore sharedStore] setInstrumento:[_todosEstilos objectAtIndex:indexPath.row]];
+    }
+    else{
+        [[BuscaStore sharedStore] setEstilo:[[[BuscaStore sharedStore] estilosFiltrados] objectAtIndex:indexPath.row]];
+    }
+    
     [self retorna];
 }
 
-- (void)didReceiveMemoryWarning
-{
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+    [[[BuscaStore sharedStore] estilosFiltrados] removeAllObjects];
+    
+    if([searchText isEqual:@""]){
+        [[[BuscaStore sharedStore] estilosFiltrados] addObjectsFromArray:_todosEstilos];
+    }
+    
+    for (NSString *s in _todosEstilos){
+        if([s rangeOfString:searchText options: NSCaseInsensitiveSearch].location != NSNotFound){
+            [[[BuscaStore sharedStore] estilosFiltrados] addObject:s];
+        }
+    }
+    
+    [_tbEstilos reloadData];
+}
+
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TBFiltroEstilo : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface TBFiltroEstilo : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property NSMutableArray* todosEstilos;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchEstilos;
+@property (weak, nonatomic) IBOutlet UITableView *tbEstilos;
 
 @end

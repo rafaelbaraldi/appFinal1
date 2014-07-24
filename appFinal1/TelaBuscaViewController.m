@@ -50,7 +50,11 @@
 //        [[self navigationItem] setHidesBackButton:YES];
 //    }
     
+    //Habilitar Botao de esonder Filtro
+    [self habilitaBotaoEsconder];
+    
     _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
+    
     [self atualizaTela];
 }
 
@@ -75,6 +79,15 @@
     [[_btnEstilo layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
     [[_btnInstumento layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
     [[_btnHorarios layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
+}
+
+-(void)habilitaBotaoEsconder{
+    if(![_usuarios count] > 0){
+        [_btnEsconderFiltro setHidden:YES];
+    }
+    else{
+        [_btnEsconderFiltro setHidden:NO];
+    }
 }
 
 -(void)atualizaTela{
@@ -137,7 +150,7 @@
         [UIView animateWithDuration:0.5 animations:^{
             [_tbUsuarios setFrame:_frameTbUsuarios];
             
-             _btnEsconderFiltro.titleLabel.text = @"Esconder";
+             _btnEsconderFiltro.titleLabel.text = @"Esconder filtro";
             _viewFiltros.hidden = NO;
         }];
     }
@@ -151,7 +164,7 @@
             [_tbUsuarios setFrame:frameUsuario];
         }completion:^(BOOL finished) {
             
-            _btnEsconderFiltro.titleLabel.text = @"Mostrar";
+            _btnEsconderFiltro.titleLabel.text = @"Mostrar filtro";
             _viewFiltros.hidden = YES;
         }];
     }
@@ -220,6 +233,8 @@
         ((UILabel*)[celula viewWithTag:1]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
         ((UILabel*)[celula viewWithTag:2]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
     }
+    
+    [self habilitaBotaoEsconder];
     
     return celula;
 }

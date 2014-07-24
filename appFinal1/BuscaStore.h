@@ -11,8 +11,8 @@
 
 @interface BuscaStore : NSObject
 
-//@property NSMutableArray *instrumentos;
-//@property NSMutableArray *estilos;
+@property NSMutableArray *instrumentosFiltrados;
+@property NSMutableArray *estilosFiltrados;
 
 @property NSString *instrumento;
 @property NSString *estilo;
