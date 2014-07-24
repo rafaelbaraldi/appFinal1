@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAtribuicoes;
 
 
+@property (weak, nonatomic) IBOutlet UIButton *btnSeguir;
+
 - (IBAction)btnSeguirClick:(id)sender;
 
 

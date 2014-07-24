@@ -24,10 +24,6 @@
     return self;
 }
 
-- (IBAction)btnSeguirClick:(id)sender {
-    [BuscaConexao seguirAmigo:_pessoa.identificador];
-}
-
 - (id) initWithIdentificador:(NSString*)idUsuario{
     self = [super init];
     
@@ -58,6 +54,10 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self carregaBotaoSeguirAmigo];
+}
+
 -(void)carregaUsuarioFiltrado{
     _pessoa = [BuscaStore buscaPessoa:_identificador];
     
@@ -75,6 +75,34 @@
     }
     
     _lblEstilo.text = [_lblEstilo.text substringFromIndex:2];
+}
+
+-(void)carregaBotaoSeguirAmigo{
+    
+    NSString *result = [BuscaConexao seguirAmigo:_pessoa.identificador acao:@"consultar"];
+    
+    if ([result isEqualToString:@"1\n"]) {
+        [self alterarBotaoSeguirAmigo];
+    }
+    else{
+        [[_btnSeguir layer] setBorderWidth:2];
+        [[_btnSeguir layer] setBorderColor:([UIColor blueColor].CGColor)];
+        [_btnSeguir setTitle:@"Seguir" forState:UIControlStateNormal];
+        [_btnSeguir setBackgroundColor:[UIColor whiteColor]];
+        [_btnSeguir setTintColor:[UIColor blueColor]];
+    }
+}
+
+- (IBAction)btnSeguirClick:(id)sender {
+    [BuscaConexao seguirAmigo:_pessoa.identificador acao:@"inserir"];
+    [self carregaBotaoSeguirAmigo];
+}
+
+-(void)alterarBotaoSeguirAmigo{
+
+    [_btnSeguir setTitle:@"Seguindo" forState:UIControlStateNormal];
+    [_btnSeguir setBackgroundColor:[UIColor blueColor]];
+    [_btnSeguir setTintColor:[UIColor whiteColor]];
 }
 
 //Delegate TableView

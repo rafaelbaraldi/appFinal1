@@ -86,10 +86,10 @@
     return json;
 }
 
-+(void)seguirAmigo:(NSString*)idAmigo{
++(NSString*)seguirAmigo:(NSString*)idAmigo acao:(NSString*)acao{
     NSString *url = @"http://54.187.203.61/appMusica/seguirAmigo.php";
     
-    NSString *post = [NSString stringWithFormat:@"id_usuario=%@&id_seguindo=%@", [[LocalStore sharedStore] usuarioAtual].identificador, idAmigo];
+    NSString *post = [NSString stringWithFormat:@"id_usuario=%@&id_seguindo=%@&acao=%@", [[LocalStore sharedStore] usuarioAtual].identificador, idAmigo, acao];
     
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
@@ -103,8 +103,9 @@
     NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     
     NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    return s;
     
-    NSLog(@"%@", s);
+//    NSLog(@"%@", s);
 }
 
 @end
