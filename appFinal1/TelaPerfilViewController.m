@@ -21,19 +21,19 @@
 
 @implementation TelaPerfilViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    //Carrega dados do Usuario
+    [self carregaDadosUsuario];
+    
     _musicas = [[NSMutableArray alloc] initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Musica"] error:nil]];
     _categorias = [[NSMutableArray alloc] init];
     _musicasPorCategoria = [[NSMutableArray alloc] init];
@@ -63,10 +63,18 @@
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+-(void)carregaDadosUsuario{
+    
+    //Imagem
+    NSString *urlImage = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", [[LocalStore sharedStore] usuarioAtual].identificador];
+    
+    _imagePerfil.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]]];
+    _imagePerfil.layer.masksToBounds = YES;
+    _imagePerfil.layer.cornerRadius = _imagePerfil.frame.size.width / 2;
 }
 
 - (IBAction)btnSair:(id)sender {

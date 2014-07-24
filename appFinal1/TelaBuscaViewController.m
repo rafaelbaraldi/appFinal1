@@ -206,12 +206,12 @@
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioPesquisaCell"];
         
-        UILabel *nome = [[UILabel alloc] initWithFrame:CGRectMake(80, 5, 200, 15)];
+        UILabel *nome = [[UILabel alloc] initWithFrame:CGRectMake(90, 5, 200, 15)];
         nome.text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
         nome.adjustsFontSizeToFitWidth = YES;
         nome.tag = 1;
         
-        UILabel *cidade = [[UILabel alloc] initWithFrame:CGRectMake(80, 25, 200, 15)];
+        UILabel *cidade = [[UILabel alloc] initWithFrame:CGRectMake(90, 25, 200, 15)];
         cidade.text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
         cidade.font = [UIFont fontWithName:@"arial" size:10];
         cidade.adjustsFontSizeToFitWidth = YES;
@@ -228,15 +228,39 @@
         
         [celula addSubview:btnEnviarMsg];
         [celula addSubview:btnAdicionar];
+        
+        //Carrega Foto
+        UIImageView *fotoUsuario = [self carregaImagemUsuario:indexPath.row];
+        
+        [celula addSubview:fotoUsuario];
     }
     else{
         ((UILabel*)[celula viewWithTag:1]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
         ((UILabel*)[celula viewWithTag:2]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
+        
+        //Reaproveita Foto
+        NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
+        UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
+        
+        ((UIImageView*)[celula viewWithTag:3]).image = foto;
     }
     
     [self habilitaBotaoEsconder];
     
     return celula;
+}
+
+-(UIImageView*)carregaImagemUsuario:(NSInteger)row{
+    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", ((TPUsuario*)[_usuarios objectAtIndex:row]).identificador];
+    UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
+    
+    UIImageView *fotoUsuario = [[UIImageView alloc] initWithFrame:CGRectMake(15, 3, 65, 65)];
+    fotoUsuario.layer.masksToBounds = YES;
+    fotoUsuario.layer.cornerRadius = fotoUsuario.frame.size.width / 2;
+    fotoUsuario.image = foto;
+    fotoUsuario.tag = 3;
+    
+    return fotoUsuario;
 }
 
 @end

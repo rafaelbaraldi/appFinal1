@@ -19,6 +19,7 @@
 
 - (IBAction)btnSair:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imagePerfil;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionV;
 
 @end

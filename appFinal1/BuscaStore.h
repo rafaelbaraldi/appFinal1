@@ -13,6 +13,7 @@
 
 @property NSMutableArray *instrumentosFiltrados;
 @property NSMutableArray *estilosFiltrados;
+@property NSMutableArray *horariosFiltrados;
 
 @property NSString *instrumento;
 @property NSString *estilo;

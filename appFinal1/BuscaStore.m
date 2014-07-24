@@ -32,6 +32,7 @@
         
         _instrumentosFiltrados = [[NSMutableArray alloc] init];
         _estilosFiltrados = [[NSMutableArray alloc] init];
+        _horariosFiltrados = [[NSMutableArray alloc] init];
         
     }
     return self;
