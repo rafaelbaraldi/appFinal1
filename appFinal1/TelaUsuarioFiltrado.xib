@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TelaUsuarioFiltrado">
             <connections>
                 <outlet property="btnSeguir" destination="O4m-NZ-uPc" id="4At-Ga-6Ed"/>
+                <outlet property="imageUsuario" destination="GsB-IR-rtq" id="btz-nc-DVZ"/>
                 <outlet property="lblAtribuicoes" destination="fUi-9D-9UP" id="HKQ-UC-96P"/>
                 <outlet property="lblCidadeBairro" destination="gFX-7q-Y1o" id="qTa-xV-0CJ"/>
                 <outlet property="lblEstilo" destination="AaZ-l0-7ji" id="Q1o-Hu-xVc"/>
@@ -21,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GsB-IR-rtq">
-                    <rect key="frame" x="20" y="78" width="126" height="124"/>
+                    <rect key="frame" x="20" y="78" width="120" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z08-L2-oai">

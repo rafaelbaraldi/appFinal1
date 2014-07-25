@@ -71,7 +71,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if([[[BuscaStore sharedStore] estilosFiltrados] count] == 0){
-        [[BuscaStore sharedStore] setInstrumento:[_todosEstilos objectAtIndex:indexPath.row]];
+        [[BuscaStore sharedStore] setEstilo:[_todosEstilos objectAtIndex:indexPath.row]];
     }
     else{
         [[BuscaStore sharedStore] setEstilo:[[[BuscaStore sharedStore] estilosFiltrados] objectAtIndex:indexPath.row]];

@@ -45,23 +45,20 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
-    //Verificar se veio de busca
-//    if([[[LocalStore sharedStore] ultimaTela] isEqualToString:@"TelaLoginViewController"]){
-//        [[self navigationItem] setHidesBackButton:YES];
-//    }
-    
     //Habilitar Botao de esonder Filtro
     [self habilitaBotaoEsconder];
     
-    _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
+    //Verifica se há filtro de horarios preenchidos
+    [self carregaFiltroDeHorario];
+    
+    //Carrega os usuarios buscado
+    [self carregaUsuarioBuscado];
     
     [self atualizaTela];
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     
     //Metodo de Busca por cidade
     [_txtCidade addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
@@ -72,6 +69,34 @@
     
     //Deixa a borda dos boteos arredondados
     [self arredondaBordaBotoes];
+}
+
+-(void)carregaUsuarioBuscado{
+    
+    UILabel *lblMsgFiltro = [[UILabel alloc] initWithFrame:CGRectMake(20, 300, 287, 50)];
+    
+    if([[[BuscaStore sharedStore] instrumento] length] > 0
+       || [[[BuscaStore sharedStore] estilo] length] > 0
+       || [[[BuscaStore sharedStore] horario] length] > 0
+       ){
+        _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
+        
+        if([_usuarios count] == 0){
+            
+            //Exibi label para pedir o instrumento
+            [lblMsgFiltro setText:@"Nenhum resultado encontrado para a sua pesquisa"];
+            [lblMsgFiltro setTextAlignment:NSTextAlignmentCenter];
+            [lblMsgFiltro setNumberOfLines:2];
+            
+            [[self view] addSubview:lblMsgFiltro];
+        }
+        else{
+            [lblMsgFiltro removeFromSuperview];
+        }
+    }
+    else{
+        [lblMsgFiltro removeFromSuperview];
+    }
 }
 
 -(void)arredondaBordaBotoes{
@@ -91,6 +116,7 @@
 }
 
 -(void)atualizaTela{
+    
     //Filtro Instrumento
     if ([[[BuscaStore sharedStore] instrumento] length] > 0) {
         _btnInstumento.titleLabel.text = [[BuscaStore sharedStore] instrumento];
@@ -110,6 +136,20 @@
     }
     
     [_tbUsuarios reloadData];
+}
+
+-(void)carregaFiltroDeHorario{
+    
+    NSString *h = @"";
+    for (NSString* s in [[BuscaStore sharedStore] horariosFiltrados]) {
+        h = [NSString stringWithFormat:@"%@, %@", h, s];
+    }
+    
+    if([h length] > 0){
+        h = [h substringFromIndex:2];
+    }
+    
+    [[BuscaStore sharedStore] setHorario:h];
 }
 
 //Botoes
@@ -138,7 +178,7 @@
 
 - (IBAction)btnRemoverInstrumentoClick:(id)sender {
     [[BuscaStore sharedStore] setInstrumento:@""];
-    _btnInstumento.titleLabel.text = @"Intrumento";
+    _btnInstumento.titleLabel.text = @"Instrumento";
     
     _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [self atualizaTela];
@@ -245,6 +285,7 @@
         ((UIImageView*)[celula viewWithTag:3]).image = foto;
     }
     
+    //Exibi botao de esconder os filtros de busca
     [self habilitaBotaoEsconder];
     
     return celula;

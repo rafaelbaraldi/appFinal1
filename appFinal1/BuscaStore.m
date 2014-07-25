@@ -93,7 +93,7 @@
 +(NSMutableArray*)atualizaBusca:(NSMutableArray*)usuarios cidade:(NSString*)cidade{
     [usuarios removeAllObjects];
     
-    NSDictionary *json = [BuscaConexao buscaUsuario:[[BuscaStore sharedStore]instrumento] estilo:[[BuscaStore sharedStore]estilo] cidade:cidade];
+    NSDictionary *json = [BuscaConexao buscaUsuario:[[BuscaStore sharedStore]instrumento] estilo:[[BuscaStore sharedStore]estilo] cidade:cidade horario:[[BuscaStore sharedStore] horario]];
     
     for(NSString *s in json){
         TPUsuario *ret = [[TPUsuario alloc]init];

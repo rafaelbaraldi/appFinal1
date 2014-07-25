@@ -17,6 +17,7 @@
 
 @property NSString *instrumento;
 @property NSString *estilo;
+@property NSString *horario;
 
 +(BuscaStore*)sharedStore;
 

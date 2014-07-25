@@ -60,20 +60,36 @@
 -(void)carregaUsuarioFiltrado{
     _pessoa = [BuscaStore buscaPessoa:_identificador];
     
+    //Nome e Sexo
     _lblNome.text = _pessoa.nome;
     _lblSexo.text = _pessoa.sexo;
     
+    //Cidade e Bairro
     _lblCidadeBairro.lineBreakMode = NSLineBreakByCharWrapping;
     _lblCidadeBairro.numberOfLines = 2;
     _lblCidadeBairro.text = [NSString stringWithFormat:@"%@, %@", _pessoa.cidade, _pessoa.bairro];
     
     _lblAtribuicoes.text = _pessoa.atribuicoes;
     
+    //Estilo Musica
     for (NSString* s in _pessoa.estilos) {
         _lblEstilo.text = [NSString stringWithFormat:@"%@, %@", _lblEstilo.text, s];
     }
-    
     _lblEstilo.text = [_lblEstilo.text substringFromIndex:2];
+    
+    //Foto
+    [self carregaImagemUsuario];
+}
+
+-(void)carregaImagemUsuario{
+
+    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", [BuscaStore buscaPessoa:_identificador].identificador];
+    UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
+    
+    _imageUsuario.layer.masksToBounds = YES;
+    _imageUsuario.layer.cornerRadius = _imageUsuario.frame.size.width / 2;
+    _imageUsuario.image = foto;
+    _imageUsuario.tag = 3;
 }
 
 -(void)carregaBotaoSeguirAmigo{
