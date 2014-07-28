@@ -13,6 +13,8 @@
 #import "LoginStore.h"
 #import "LocalStore.h"
 
+#import "Reachability.h"
+
 @interface TelaLoginViewController ()
 
 @end
@@ -34,6 +36,17 @@
     [_txtSenha setSecureTextEntry:YES];
     
     [[LocalStore sharedStore] setUltimaTela:@"TelaLoginViewController"];
+    
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+    } else {
+        NSLog(@"There IS internet connection");
+        if (networkStatus == ReachableViaWiFi) { NSLog(@"wifi"); }
+        else if (networkStatus == ReachableViaWWAN) { NSLog(@"carrier");}
+    }
 }
 
 - (void)didReceiveMemoryWarning{
