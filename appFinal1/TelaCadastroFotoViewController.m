@@ -49,8 +49,8 @@
 
 -(void)arredondaBordaBotoes{
     
-    [[_btnAdicionarFoto layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
-    [[_btnContinuar layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
+    [[_btnAdicionarFoto layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnContinuar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
 }
 
 -(void)exibiFoto{

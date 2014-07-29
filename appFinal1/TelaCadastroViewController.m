@@ -57,9 +57,9 @@ const int OBSERVACOES = 2;
 
 -(void)arredondaBordaBotoes{
     
-    [[_btnEstilos layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
-    [[_btnInstrumentos layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
-    [[_btnHorarios layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
+    [[_btnEstilos layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnInstrumentos layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnHorarios layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
 }
 
 -(IBAction)btnEstilosClik:(id)sender {

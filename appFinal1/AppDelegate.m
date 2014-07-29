@@ -32,27 +32,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-
-    BOOL logado = [LoginStore verificaSeEstaLogado];
-    
-    UIViewController *telaVc;
-    if(logado){
-//        telaVc = [[LocalStore sharedStore] TelaCadastroFoto];
-    }
-    else{
-//        telaVc = [[TelaLoginViewController alloc] init];
-    }
-    
-    telaVc = [[LocalStore sharedStore] TelaBusca];
-    
-    UINavigationController *navegacaoC = [[UINavigationController alloc] initWithRootViewController:telaVc];
-    [self.window setRootViewController:navegacaoC];
-    
-//    [self.window setRootViewController:[[CoreAudioViewController alloc] initWithNibName:@"CoreAudioViewController" bundle:nil]];
-//    [self.window setRootViewController:[[TelaPerfilViewController alloc] initWithNibName:@"TelaPerfilViewController" bundle:nil]];
-    
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
     
     TPUsuario *usuarioZero = [[TPUsuario alloc] init];
     usuarioZero.identificador = @"0";
@@ -68,7 +47,21 @@
     usuarioZero.horarios = [[NSMutableArray alloc] init];
     
     [[LocalStore sharedStore] setUsuarioAtual:usuarioZero];
+
+    BOOL logado = [LoginStore verificaSeEstaLogado];
     
+    UIViewController *telaVc;
+    if(logado){
+        telaVc = [[LocalStore sharedStore] TelaPerfil];
+    }
+    else{
+        telaVc = [[LocalStore sharedStore] TelaInicio];
+    }
+    
+    UINavigationController *navegacaoC = [[UINavigationController alloc] initWithRootViewController:telaVc];
+    [self.window setRootViewController:navegacaoC];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

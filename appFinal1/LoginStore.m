@@ -54,51 +54,20 @@ static NSString* senha = @"";
     
     BOOL resposta = NO;
    
-    NSArray *recuperaUsuario = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Usuario"] error:nil];
+    NSUserDefaults *autenticaLogin = [NSUserDefaults standardUserDefaults];
+    NSString *identificador = [autenticaLogin objectForKey:@"identificador"];
     
-    if ([recuperaUsuario count] > 0) {
+    if(identificador != nil){
+        
+        Usuario *u = [self carregaUsuarioCoreData:identificador];
+        [self salvaUsuarioTPUsuario:u];
         resposta = YES;
     }
     
     return resposta;
 }
 
-+(void)armazenaLogin:(NSDictionary*)usuario{
-    
-    NSFetchRequest *nsfr = [NSFetchRequest fetchRequestWithEntityName:@"Usuario"];
-    NSNumber *number = [[NSNumber alloc] initWithInt:[[usuario valueForKeyPath:@"id"] intValue]];
-    NSPredicate *predicateID = [NSPredicate predicateWithFormat:@"identificador == %@",number];
-    [nsfr setPredicate:predicateID];
-    
-    NSMutableArray *buscaUsuario = [[NSMutableArray alloc] initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:nsfr error:nil]];
-    
-    
-    Usuario * u;
-    if ([buscaUsuario count] <= 0) {
-        u = [NSEntityDescription insertNewObjectForEntityForName:@"Usuario"
-                                          inManagedObjectContext:[[LocalStore sharedStore] context]];
-    }
-    else{
-        u = [buscaUsuario objectAtIndex:0];
-    }
-    
-    [u setNome:[usuario valueForKeyPath:@"nome"]];
-    [u setEmail:[usuario valueForKeyPath:@"email"]];
-    [u setSenha:[usuario valueForKeyPath:@"senha"]];
-    [u setSexo:[usuario valueForKeyPath:@"sexo"]];
-    [u setCidade:[usuario valueForKeyPath:@"cidade"]];
-    [u setBairro:[usuario valueForKeyPath:@"bairro"]];
-    [u setObservacoes:[usuario valueForKeyPath:@"observacoes"]];
-    [u setIdentificador:number];
-    
-    [[[LocalStore sharedStore] context]  save:nil];
-    
-//    NSArray * a = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Usuario"] error:nil];
-//    
-//    for (Usuario* us in a) {
-//        NSLog(@"id = %d, nome = %@", [us.identificador intValue], us.nome);
-//    }
-    
++(void)salvaUsuarioTPUsuario:(Usuario*)u{
     
     [[LocalStore sharedStore] usuarioAtual].identificador = [NSString stringWithFormat:@"%d", [u.identificador intValue]];
     [[LocalStore sharedStore] usuarioAtual].nome = u.nome;
@@ -108,14 +77,77 @@ static NSString* senha = @"";
     [[LocalStore sharedStore] usuarioAtual].cidade = u.cidade;
     [[LocalStore sharedStore] usuarioAtual].bairro = u.bairro;
     [[LocalStore sharedStore] usuarioAtual].atribuicoes = u.observacoes;
+}
+
++(Usuario*)carregaUsuarioCoreData:(NSString *)identificador{
     
+    Usuario *u;
+    
+    NSFetchRequest *nsfr = [NSFetchRequest fetchRequestWithEntityName:@"Usuario"];
+    NSNumber *number = [[NSNumber alloc] initWithInt:[identificador intValue]];
+    NSPredicate *predicateID = [NSPredicate predicateWithFormat:@"identificador == %@",number];
+    [nsfr setPredicate:predicateID];
+    
+    NSMutableArray *buscaUsuario = [[NSMutableArray alloc] initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:nsfr error:nil]];
+    
+    u = [buscaUsuario objectAtIndex:0];
+    
+    return u;
+}
+
++(void)armazenaLogin:(NSDictionary*)usuario{
+    
+    //Cria usuario no CoreData ou atualiza os dados
+    Usuario * u = [self carregaUsuarioCoreData:[usuario valueForKeyPath:@"id"]];
+
+    if (u == nil) {
+        u = [NSEntityDescription insertNewObjectForEntityForName:@"Usuario"
+                                          inManagedObjectContext:[[LocalStore sharedStore] context]];
+    }
+    
+    //Salva usuario logado no CoreData
+    [u setNome:[usuario valueForKeyPath:@"nome"]];
+    [u setEmail:[usuario valueForKeyPath:@"email"]];
+    [u setSenha:[usuario valueForKeyPath:@"senha"]];
+    [u setSexo:[usuario valueForKeyPath:@"sexo"]];
+    [u setCidade:[usuario valueForKeyPath:@"cidade"]];
+    [u setBairro:[usuario valueForKeyPath:@"bairro"]];
+    [u setObservacoes:[usuario valueForKeyPath:@"observacoes"]];
+    
+    NSNumber *number = [[NSNumber alloc] initWithInt:[[usuario valueForKey:@"id"] intValue]];
+    [u setIdentificador:number];
+    
+    [[[LocalStore sharedStore] context]  save:nil];
+    
+    //    NSArray * a = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Usuario"] error:nil];
+    //
+    //    for (Usuario* us in a) {
+    //        NSLog(@"id = %d, nome = %@", [us.identificador intValue], us.nome);
+    //    }
+    
+    //Salva usuario Logado no TPUsuario
+    [self salvaUsuarioTPUsuario:u];
+    
+    //Salva id do Usuario para autenticar login
+    NSUserDefaults *autenticaLogin = [NSUserDefaults standardUserDefaults];
+    [autenticaLogin setObject:[u.identificador stringValue] forKey:@"identificador"];
+    [autenticaLogin synchronize];
 }
 
 +(void)deslogar{
     
+    //Limpa CoreData
     NSArray *recuperaUsuario = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest
                                                                    fetchRequestWithEntityName:@"Usuario"] error:nil];
     recuperaUsuario = nil;
+    
+    //Remove usuarioAtual
+    [[LocalStore sharedStore] setUsuarioAtual:nil];
+    
+    //Remove autenticacao do Usuario
+    NSUserDefaults *autenticaLogin = [NSUserDefaults standardUserDefaults];
+    [autenticaLogin removeObjectForKey:@"identificador"];
+    [autenticaLogin synchronize];
 }
 
 +(BOOL)login:(NSString*)email senha:(NSString *)senha{
@@ -126,11 +158,9 @@ static NSString* senha = @"";
         
         [self setEmail:email];
         [self setSenha:senha];
-        
-        //Grava Dados do Usuario no Coredata
-//        if(![self verificaSeEstaLogado]){
-            [self armazenaLogin:json];
-//        }
+
+        //Em TPUsuario
+        [self armazenaLogin:json];
         
         return true;
     }

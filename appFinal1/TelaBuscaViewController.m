@@ -101,9 +101,9 @@
 
 -(void)arredondaBordaBotoes{
     
-    [[_btnEstilo layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
-    [[_btnInstumento layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
-    [[_btnHorarios layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
+    [[_btnEstilo layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnInstumento layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnHorarios layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
 }
 
 -(void)habilitaBotaoEsconder{

@@ -18,8 +18,16 @@
 @property NSMutableArray* musicasPorCategoria;
 
 - (IBAction)btnSair:(id)sender;
+- (IBAction)btnPerfilEditarClick:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imagePerfil;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblPerfilNome;
+@property (weak, nonatomic) IBOutlet UILabel *lblPerfilCidade;
+@property (weak, nonatomic) IBOutlet UILabel *lblPerfilBairro;
+@property (weak, nonatomic) IBOutlet UILabel *lblPerfilAmigos;
+@property (weak, nonatomic) IBOutlet UIButton *btnPerfilEditar;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionV;
 
 @end

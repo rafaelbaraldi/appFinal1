@@ -34,6 +34,55 @@
     //Carrega dados do Usuario
     [self carregaDadosUsuario];
     
+    //Carrega os audios
+    [self carregaAudios];
+    
+    //Carrega as Bandas
+    [self carregaBandas];
+    
+    //Titulo navigation
+    [[self navigationItem] setTitle:[[LocalStore sharedStore] usuarioAtual].nome];
+}
+
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+}
+
+-(void)carregaDadosUsuario{
+
+    if(![[[LocalStore sharedStore] usuarioAtual].identificador isEqualToString:@"0"]){
+        
+        //Imagem
+        NSString *urlImage = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", [[LocalStore sharedStore] usuarioAtual].identificador];
+        
+        _imagePerfil.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]]];
+        _imagePerfil.layer.masksToBounds = YES;
+        _imagePerfil.layer.cornerRadius = _imagePerfil.frame.size.width / 2;
+        
+        //Nome
+        _lblPerfilNome.text = [[LocalStore sharedStore] usuarioAtual].nome;
+        _lblPerfilCidade.text = [[LocalStore sharedStore] usuarioAtual].cidade;
+        _lblPerfilBairro.text = [[LocalStore sharedStore] usuarioAtual].bairro;
+        
+        //Editar Perfil
+        _btnPerfilEditar.enabled = YES;
+    }
+}
+
+- (IBAction)btnSair:(id)sender {
+    
+    [LoginStore deslogar];
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaInicio] animated:YES];
+}
+
+- (IBAction)btnPerfilEditarClick:(id)sender {
+}
+
+-(void)carregaBandas{
+    
+}
+
+-(void)carregaAudios{
     _musicas = [[NSMutableArray alloc] initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Musica"] error:nil]];
     _categorias = [[NSMutableArray alloc] init];
     _musicasPorCategoria = [[NSMutableArray alloc] init];
@@ -43,7 +92,7 @@
             [_categorias addObject:m.categoria];
             [_musicasPorCategoria addObject:[[NSMutableArray alloc] init]];
         }
-//        NSLog(@"%@", m.url);
+        //        NSLog(@"%@", m.url);
     }
     
     for (int i = 0; i < [_categorias count]; i++) {
@@ -57,30 +106,10 @@
     [_collectionV registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"FlickrCell"];
     [_collectionV registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
     
-//    [_collectionV setAllowsSelection:YES];
+    //    [_collectionV setAllowsSelection:YES];
     
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-}
-
-- (void)didReceiveMemoryWarning{
-    [super didReceiveMemoryWarning];
-}
-
--(void)carregaDadosUsuario{
-    
-    //Imagem
-    NSString *urlImage = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", [[LocalStore sharedStore] usuarioAtual].identificador];
-    
-    _imagePerfil.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]]];
-    _imagePerfil.layer.masksToBounds = YES;
-    _imagePerfil.layer.cornerRadius = _imagePerfil.frame.size.width / 2;
-}
-
-- (IBAction)btnSair:(id)sender {
-    
-    [LoginStore deslogar];
-    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaLogin] animated:YES];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {

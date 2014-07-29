@@ -27,9 +27,13 @@
 
 @interface LocalStore : NSObject
 
-@property TPUsuario *usuarioAtual;
 
-@property int raioBorda;
+@property int RAIOBORDA;
+@property NSString *USUARIOZERO;
+@property NSString *URL;
+/////////////////////////////
+
+@property TPUsuario *usuarioAtual;
 
 @property TBInstrumentosViewController *TelaTBInstrumentos;
 @property TBInstrumentosQueTocaViewController *TelaTBInstruementosQueToco;

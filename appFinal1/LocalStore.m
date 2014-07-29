@@ -28,7 +28,9 @@
 -(id)init{
     self = [super init];
     if(self){
-        _raioBorda = 5;
+        _RAIOBORDA = 5;
+        _USUARIOZERO = @"0";
+        _URL = @"http://54.187.203.61/appMusica/";
         
         [self carregaTelas];
         
