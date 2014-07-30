@@ -46,7 +46,9 @@
     _scrollView.pagingEnabled = YES;
     _scrollView.contentSize = CGSizeMake(320, 2000);
     _scrollView.showsVerticalScrollIndicator = YES;
+    _scrollView.scrollEnabled = YES;
     _scrollView.showsHorizontalScrollIndicator = YES;
+    _scrollView.frame = self.view.frame;
 }
 
 - (void)didReceiveMemoryWarning{
