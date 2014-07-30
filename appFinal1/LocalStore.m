@@ -53,6 +53,7 @@
     _TelaInicio = [[TelaInicioViewController alloc] init];
     _TelaHorarios = [[TelaHorariosViewController alloc] init];
     _TelaCadastroFoto = [[TelaCadastroFotoViewController alloc] init];
+    _TelaUsuarioFiltrado = [[TelaUsuarioFiltrado alloc] init];
 }
 
 -(void)carregaContexto{

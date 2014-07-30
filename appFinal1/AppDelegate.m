@@ -58,6 +58,8 @@
         telaVc = [[LocalStore sharedStore] TelaInicio];
     }
     
+    telaVc = [[LocalStore sharedStore] TelaBusca];
+    
     UINavigationController *navegacaoC = [[UINavigationController alloc] initWithRootViewController:telaVc];
     [self.window setRootViewController:navegacaoC];
     self.window.backgroundColor = [UIColor whiteColor];

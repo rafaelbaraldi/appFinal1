@@ -7,7 +7,10 @@
 //
 
 #import "BuscaStore.h"
+
 #import "TPInstrumento.h"
+#import "TPHorario.h"
+
 #import "BuscaConexao.h"
 
 @implementation BuscaStore
@@ -64,6 +67,7 @@
     pessoa.cidade = @"";
     pessoa.bairro = @"";
     pessoa.atribuicoes = @"";
+    pessoa.horarios = [[NSMutableArray alloc] init];
     pessoa.instrumentos = [[NSMutableArray alloc]init];
     pessoa.estilos = [[NSMutableArray alloc]init];
     
@@ -76,12 +80,21 @@
             pessoa.bairro = [s valueForKeyPath:@"bairro"];
             pessoa.atribuicoes = [s valueForKeyPath:@"atribuicoes"];
         }
+        if (![[s valueForKeyPath:@"horario"] isEqualToString:@""]){
+            NSString *horario = [s valueForKeyPath:@"horario"];
+            
+            TPHorario *tpHorario = [[TPHorario alloc] init];
+            tpHorario.dia = [horario substringToIndex:[horario length] - 1];
+            tpHorario.periodo = [horario substringFromIndex:[horario length] - 1];
+            
+            [pessoa.horarios addObject:tpHorario];
+        }
         if (![[s valueForKeyPath:@"instrumento_musical"] isEqualToString:@""]) {
-            TPInstrumento *instrumento = [[TPInstrumento alloc]init];
-            instrumento.nome = [s valueForKeyPath:@"instrumento_musical"];
-            NSString* b = [s valueForKeyPath:@"possui"];
-            instrumento.possui = [b boolValue];
-            [pessoa.instrumentos addObject:instrumento];
+            TPInstrumento *tpInstrumento = [[TPInstrumento alloc]init];
+            tpInstrumento.nome = [s valueForKeyPath:@"instrumento_musical"];
+            tpInstrumento.possui = [[s valueForKeyPath:@"possui"] boolValue];
+            
+            [pessoa.instrumentos addObject:tpInstrumento];
         }
         if (![[s valueForKeyPath:@"estilo_musical"] isEqualToString:@""]) {
             [pessoa.estilos addObject:[s valueForKeyPath:@"estilo_musical"]];

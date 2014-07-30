@@ -7,8 +7,12 @@
 //
 
 #import "TBFiltroInstrumento.h"
+
+#import "LocalStore.h"
+
 #import "BuscaStore.h"
 #import "BuscaConexao.h"
+
 
 @interface TBFiltroInstrumento ()
 
@@ -30,7 +34,7 @@
 
 -(void)retorna{
     
-    [[self navigationController] popToRootViewControllerAnimated:YES];
+    [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
 }
 
 - (void)viewDidLoad{

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TPUsuario.h"
 
-@interface TelaUsuarioFiltrado : UIViewController <UITableViewDataSource>
+@interface TelaUsuarioFiltrado : UIViewController <UITableViewDataSource, UIScrollViewDelegate>
 
 @property NSString *identificador;
 @property TPUsuario *pessoa;
@@ -23,6 +23,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSeguir;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (IBAction)btnSeguirClick:(id)sender;
 

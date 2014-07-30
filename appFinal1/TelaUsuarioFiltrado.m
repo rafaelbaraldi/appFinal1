@@ -42,6 +42,11 @@
     [super viewDidLoad];
     
     [self carregaUsuarioFiltrado];
+    
+    _scrollView.pagingEnabled = YES;
+    _scrollView.contentSize = CGSizeMake(320, 2000);
+    _scrollView.showsVerticalScrollIndicator = YES;
+    _scrollView.showsHorizontalScrollIndicator = YES;
 }
 
 - (void)didReceiveMemoryWarning{
@@ -79,6 +84,21 @@
     
     //Foto
     [self carregaImagemUsuario];
+    
+    //Horario
+    [self carregaHorariosUsuario];
+}
+
+-(void)carregaHorariosUsuario{
+    
+    UILabel *lblTituloHorario = [[UILabel alloc] initWithFrame:CGRectMake(10, 540, 300, 20)];
+    UILabel *lblHorarios = [[UILabel alloc] initWithFrame:CGRectMake(10, 550, 300, 20)];
+    
+    lblTituloHorario.text = @"Horarios para ensaio";
+    lblHorarios.text = @"Segunda: Manhã - Tarde \n Terça: Noite";
+    
+    [_scrollView addSubview:lblTituloHorario];
+    [_scrollView addSubview:lblHorarios];
 }
 
 -(void)carregaImagemUsuario{
@@ -100,7 +120,7 @@
         [self alterarBotaoSeguirAmigo];
     }
     else{
-        [[_btnSeguir layer] setBorderWidth:2];
+        [[_btnSeguir layer] setBorderWidth:1];
         [[_btnSeguir layer] setBorderColor:([UIColor blueColor].CGColor)];
         [_btnSeguir setTitle:@"Seguir" forState:UIControlStateNormal];
         [_btnSeguir setBackgroundColor:[UIColor whiteColor]];
@@ -134,7 +154,6 @@
     UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioSelecionadoCell"];
     
     UIButton *btnPossui = [[UIButton alloc] initWithFrame:CGRectMake(240, 8, 25, 25)];
-    
     
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioSelecionadoCell"];

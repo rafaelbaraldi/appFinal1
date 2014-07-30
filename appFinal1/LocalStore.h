@@ -14,6 +14,7 @@
 #import "TelaEsqueciSenhaViewController.h"
 #import "TelaPerfilViewController.h"
 #import "TelaBuscaViewController.h"
+#import "TelaUsuarioFiltrado.h"
 #import "TelaInicioViewController.h"
 #import "TelaHorariosViewController.h"
 #import "TelaCadastroFotoViewController.h"
@@ -48,6 +49,7 @@
 @property TelaInicioViewController *TelaInicio;
 @property TelaHorariosViewController *TelaHorarios;
 @property TelaCadastroFotoViewController *TelaCadastroFoto;
+@property TelaUsuarioFiltrado *TelaUsuarioFiltrado;
 
 @property NSString *ultimaTela;
 

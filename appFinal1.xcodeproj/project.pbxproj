@@ -67,6 +67,7 @@
 		73C8496A196F11BD003D9371 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C84969196F11BD003D9371 /* Security.framework */; };
 		73DF446C197053EB000EE360 /* TelaEsqueciSenhaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DF446A197053EB000EE360 /* TelaEsqueciSenhaViewController.m */; };
 		73DF446D197053EB000EE360 /* TelaEsqueciSenhaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73DF446B197053EB000EE360 /* TelaEsqueciSenhaViewController.xib */; };
+		73E0B14219893EFC00107711 /* TPHorario.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E0B14119893EFC00107711 /* TPHorario.m */; };
 		73EC6E92196B121B0034CB9B /* TelaLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73EC6E90196B121B0034CB9B /* TelaLoginViewController.m */; };
 		73EC6E93196B121B0034CB9B /* TelaLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EC6E91196B121B0034CB9B /* TelaLoginViewController.xib */; };
 		73EC6E97196B18430034CB9B /* LoginConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 73EC6E96196B18430034CB9B /* LoginConexao.m */; };
@@ -174,6 +175,8 @@
 		73DF4469197053EB000EE360 /* TelaEsqueciSenhaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaEsqueciSenhaViewController.h; sourceTree = "<group>"; };
 		73DF446A197053EB000EE360 /* TelaEsqueciSenhaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaEsqueciSenhaViewController.m; sourceTree = "<group>"; };
 		73DF446B197053EB000EE360 /* TelaEsqueciSenhaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaEsqueciSenhaViewController.xib; sourceTree = "<group>"; };
+		73E0B14019893EFC00107711 /* TPHorario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPHorario.h; sourceTree = "<group>"; };
+		73E0B14119893EFC00107711 /* TPHorario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPHorario.m; sourceTree = "<group>"; };
 		73EC6E8F196B121B0034CB9B /* TelaLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaLoginViewController.h; sourceTree = "<group>"; };
 		73EC6E90196B121B0034CB9B /* TelaLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaLoginViewController.m; sourceTree = "<group>"; };
 		73EC6E91196B121B0034CB9B /* TelaLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaLoginViewController.xib; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				1B1666281935084000E2FB47 /* TPUsuario.m */,
 				31F67C7B1935286600113DA8 /* TPInstrumento.h */,
 				31F67C7C1935286600113DA8 /* TPInstrumento.m */,
+				73E0B14019893EFC00107711 /* TPHorario.h */,
+				73E0B14119893EFC00107711 /* TPHorario.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -690,6 +695,7 @@
 				73EC6E9B196B32FE0034CB9B /* LoginStore.m in Sources */,
 				737D09E81975C5D1000975F6 /* TelaInicioViewController.m in Sources */,
 				31F83E14192E84C70070D597 /* TBFiltroEstilo.m in Sources */,
+				73E0B14219893EFC00107711 /* TPHorario.m in Sources */,
 				73A3073319746B60005551D3 /* TBInstrumentosQueTocaViewController.m in Sources */,
 				1B1666291935084000E2FB47 /* TPUsuario.m in Sources */,
 				1B82766F192BDB3500E461AD /* TelaBuscaViewController.m in Sources */,
