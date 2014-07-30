@@ -27,7 +27,7 @@
 - (id) initWithIdentificador:(NSString*)idUsuario{
     self = [super init];
     
-    if (self){
+    if (self){ 
         _identificador = idUsuario;
         
         [[self navigationItem] setTitle:@"Perfil"];
