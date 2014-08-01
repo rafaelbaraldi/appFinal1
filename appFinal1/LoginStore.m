@@ -119,12 +119,6 @@ static NSString* senha = @"";
     
     [[[LocalStore sharedStore] context]  save:nil];
     
-    //    NSArray * a = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Usuario"] error:nil];
-    //
-    //    for (Usuario* us in a) {
-    //        NSLog(@"id = %d, nome = %@", [us.identificador intValue], us.nome);
-    //    }
-    
     //Salva usuario Logado no TPUsuario
     [self salvaUsuarioTPUsuario:u];
     
@@ -132,6 +126,13 @@ static NSString* senha = @"";
     NSUserDefaults *autenticaLogin = [NSUserDefaults standardUserDefaults];
     [autenticaLogin setObject:[u.identificador stringValue] forKey:@"identificador"];
     [autenticaLogin synchronize];
+    
+    //    NSArray * a = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Usuario"] error:nil];
+    //
+    //    for (Usuario* us in a) {
+    //        NSLog(@"id = %d, nome = %@", [us.identificador intValue], us.nome);
+    //    }
+    
 }
 
 +(void)deslogar{

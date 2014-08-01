@@ -54,6 +54,11 @@
 }
 
 -(void)exibiFoto{
+    
+    //Vai tentar carregar a foto cadastrada
+    NSString *urlImage = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", [[LocalStore sharedStore] usuarioAtual].identificador];
+    _fotoSelecionada.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]]];
+    
     if (_fotoSelecionada.image != nil) {
         [_imgView setImage:_fotoSelecionada.image];
         

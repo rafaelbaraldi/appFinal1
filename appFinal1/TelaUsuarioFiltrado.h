@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TPUsuario.h"
 
-@interface TelaUsuarioFiltrado : UIViewController <UITableViewDataSource, UIScrollViewDelegate>
+@interface TelaUsuarioFiltrado : UIViewController <UIScrollViewDelegate>
 
 @property NSString *identificador;
 @property TPUsuario *pessoa;
@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAtribuicoes;
 @property (weak, nonatomic) IBOutlet UIImageView *imageUsuario;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblInstrumentos;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSeguir;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

@@ -17,7 +17,6 @@
 @property NSMutableArray* musicas;
 @property NSMutableArray* musicasPorCategoria;
 
-- (IBAction)btnSair:(id)sender;
 - (IBAction)btnPerfilEditarClick:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imagePerfil;

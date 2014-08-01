@@ -18,6 +18,7 @@
 #import "TelaInicioViewController.h"
 #import "TelaHorariosViewController.h"
 #import "TelaCadastroFotoViewController.h"
+#import "TelaOpcoesViewController.h"
 
 #import "TBInstrumentosViewController.h"
 #import "TBInstrumentosQueTocaViewController.h"
@@ -50,6 +51,7 @@
 @property TelaHorariosViewController *TelaHorarios;
 @property TelaCadastroFotoViewController *TelaCadastroFoto;
 @property TelaUsuarioFiltrado *TelaUsuarioFiltrado;
+@property TelaOpcoesViewController *TelaOpcoes;
 
 @property NSString *ultimaTela;
 

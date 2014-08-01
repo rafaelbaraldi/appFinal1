@@ -9,6 +9,7 @@
 #import "TelaUsuarioFiltrado.h"
 #import "BuscaConexao.h"
 #import "TPInstrumento.h"
+#import "TPHorario.h"
 #import "BuscaStore.h"
 
 @interface TelaUsuarioFiltrado ()
@@ -44,7 +45,6 @@
     [self carregaUsuarioFiltrado];
     
     _scrollView.pagingEnabled = YES;
-    _scrollView.contentSize = CGSizeMake(320, 2000);
     _scrollView.showsVerticalScrollIndicator = YES;
     _scrollView.scrollEnabled = YES;
     _scrollView.showsHorizontalScrollIndicator = YES;
@@ -89,18 +89,31 @@
     
     //Horario
     [self carregaHorariosUsuario];
+    
+    //Instrumentos
+    [self carregaInstrumentosUsuario];
 }
 
 -(void)carregaHorariosUsuario{
     
-    UILabel *lblTituloHorario = [[UILabel alloc] initWithFrame:CGRectMake(10, 540, 300, 20)];
-    UILabel *lblHorarios = [[UILabel alloc] initWithFrame:CGRectMake(10, 550, 300, 20)];
+    UILabel *lblTituloHorario = [[UILabel alloc] initWithFrame:CGRectMake(10, 500, 300, 20)];
+    UILabel *lblHorarios = [[UILabel alloc] initWithFrame:CGRectMake(10, 520, 300, 20)];
     
     lblTituloHorario.text = @"Horarios para ensaio";
-    lblHorarios.text = @"Segunda: Manhã - Tarde \n Terça: Noite";
+    lblHorarios.text = [TPHorario horariosEmTexto:_pessoa.horarios];
+    
+    //Espaco entre as linhas
+    [self espacoEntreLinhasLBL:lblHorarios];
+    
+    lblHorarios.numberOfLines = [_pessoa.horarios count];
+    [lblHorarios sizeToFit];
     
     [_scrollView addSubview:lblTituloHorario];
     [_scrollView addSubview:lblHorarios];
+    
+    //Aumentar o scroll
+    _scrollView.frame = CGRectMake(0, 0, 320, 600 + (lblHorarios.frame.size.height / 2));
+    _scrollView.contentSize = CGSizeMake(320, 600 + (lblHorarios.frame.size.height / 2));
 }
 
 -(void)carregaImagemUsuario{
@@ -112,6 +125,44 @@
     _imageUsuario.layer.cornerRadius = _imageUsuario.frame.size.width / 2;
     _imageUsuario.image = foto;
     _imageUsuario.tag = 3;
+}
+
+-(void)carregaInstrumentosUsuario{
+    _lblInstrumentos.text = @"Instrumento                               Possui";
+    
+    int i = 0;
+    for(TPInstrumento *tp in _pessoa.instrumentos){
+        _lblInstrumentos.text = [NSString stringWithFormat:@"%@\n%@", _lblInstrumentos.text, tp.nome];
+        
+        UIButton *btnPossui = [[UIButton alloc] initWithFrame:CGRectMake(240, 33+(i*27), 18, 18)];
+        if (tp.possui) {
+            btnPossui.backgroundColor = [UIColor greenColor];
+        }
+        else{
+            btnPossui.backgroundColor = [UIColor redColor];
+        }
+        
+        [_lblInstrumentos addSubview:btnPossui];
+        i++;
+    }
+    
+    //Espaco entre as linhas
+    [self espacoEntreLinhasLBL:_lblInstrumentos];
+
+    _lblInstrumentos.numberOfLines = [_pessoa.instrumentos count] + 1;
+    [_lblInstrumentos sizeToFit];
+}
+
+-(void)espacoEntreLinhasLBL:(UILabel*)label{
+    
+    NSMutableParagraphStyle *style  = [[NSMutableParagraphStyle alloc] init];
+    style.minimumLineHeight = 27.f;
+    style.maximumLineHeight = 27.f;
+    NSDictionary *attributtes = @{NSParagraphStyleAttributeName : style,};
+    label.attributedText = [[NSAttributedString alloc] initWithString:label.text
+                                                                      attributes:attributtes];
+    
+    label.lineBreakMode = NSLineBreakByCharWrapping;
 }
 
 -(void)carregaBotaoSeguirAmigo{
@@ -141,47 +192,4 @@
     [_btnSeguir setBackgroundColor:[UIColor blueColor]];
     [_btnSeguir setTintColor:[UIColor whiteColor]];
 }
-
-//Delegate TableView
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return [_pessoa.instrumentos count];
-}
-
--(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"Instrumento                               Possui";
-}
-
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioSelecionadoCell"];
-    
-    UIButton *btnPossui = [[UIButton alloc] initWithFrame:CGRectMake(240, 8, 25, 25)];
-    
-    if(celula == nil){
-        celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioSelecionadoCell"];
-        
-        btnPossui.tag = 1;
-        
-        [celula addSubview:btnPossui];
-    }
-    else{
-        btnPossui = ((UIButton*)[celula viewWithTag:1]);
-    }
-    
-    if (((TPInstrumento*)[_pessoa.instrumentos objectAtIndex:indexPath.row]).possui) {
-        btnPossui.backgroundColor = [UIColor greenColor];
-    }
-    else{
-        btnPossui.backgroundColor = [UIColor redColor];
-    }
-    
-    celula.textLabel.text = ((TPInstrumento*)[_pessoa.instrumentos objectAtIndex:indexPath.row]).nome;
-    
-    return celula;
-}
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-
 @end

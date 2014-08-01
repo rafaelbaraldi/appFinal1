@@ -42,6 +42,9 @@
     
     //Titulo navigation
     [[self navigationItem] setTitle:[[LocalStore sharedStore] usuarioAtual].nome];
+    
+    //Botao opções
+    [self carregaBotaoOpcoes];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -69,13 +72,21 @@
     }
 }
 
-- (IBAction)btnSair:(id)sender {
+-(void)carregaBotaoOpcoes{
     
-    [LoginStore deslogar];
-    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaInicio] animated:YES];
+    UIImage *imageOpcoes = [UIImage imageNamed:@"opcoes.png"];
+    
+    UIBarButtonItem *buttonItemOpcoes = [[UIBarButtonItem alloc] initWithImage:imageOpcoes style:UIBarButtonItemStylePlain target:self action:@selector(opcoes)];
+    
+    [[self navigationItem] setRightBarButtonItem:buttonItemOpcoes animated:YES];
+}
+
+-(void)opcoes{
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaOpcoes] animated:YES];
 }
 
 - (IBAction)btnPerfilEditarClick:(id)sender {
+    
 }
 
 -(void)carregaBandas{
