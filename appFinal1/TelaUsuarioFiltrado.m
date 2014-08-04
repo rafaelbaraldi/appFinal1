@@ -44,7 +44,7 @@
     
     [self carregaUsuarioFiltrado];
     
-    _scrollView.pagingEnabled = YES;
+    _scrollView.pagingEnabled = NO;
     _scrollView.showsVerticalScrollIndicator = YES;
     _scrollView.scrollEnabled = YES;
     _scrollView.showsHorizontalScrollIndicator = YES;

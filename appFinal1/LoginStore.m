@@ -90,9 +90,14 @@ static NSString* senha = @"";
     
     NSMutableArray *buscaUsuario = [[NSMutableArray alloc] initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:nsfr error:nil]];
     
-    u = [buscaUsuario objectAtIndex:0];
-    
-    return u;
+    if([buscaUsuario count] <= 0){
+        return nil;
+    }
+    else{
+        u = [buscaUsuario objectAtIndex:0];
+        
+        return u;
+    }
 }
 
 +(void)armazenaLogin:(NSDictionary*)usuario{
