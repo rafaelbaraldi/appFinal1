@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-
+#import "LoginConexao.h"
 @interface appFinal1Tests : XCTestCase
 
 @end
@@ -29,6 +29,16 @@
 - (void)testExample
 {
     XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+}
+
+-(void)testLogando{
+    
+    NSString *email = @"ricardo@gmail.com";
+    NSString *senha = @"1";
+    
+    NSDictionary *json = [LoginConexao login:email senha:senha];
+    
+    XCTAssertNotNil(json, @"toDictionary returned nil");
 }
 
 @end

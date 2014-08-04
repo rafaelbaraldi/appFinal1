@@ -26,8 +26,4 @@
     [super tearDown];
 }
 
--(void)listaDeInstrumentos{
-    XCTAssertEqual([], <#a2#>, <#format...#>)
-}
-
 @end

@@ -11,11 +11,13 @@
 
 @interface BuscaStore : NSObject
 
-//@property NSMutableArray *instrumentos;
-//@property NSMutableArray *estilos;
+@property NSMutableArray *instrumentosFiltrados;
+@property NSMutableArray *estilosFiltrados;
+@property NSMutableArray *horariosFiltrados;
 
 @property NSString *instrumento;
 @property NSString *estilo;
+@property NSString *horario;
 
 +(BuscaStore*)sharedStore;
 

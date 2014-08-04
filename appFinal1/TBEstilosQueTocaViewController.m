@@ -1,41 +1,64 @@
 //
-//  TBEstilosQueTocaDelegate.m
+//  TBEstilosQueTocaViewController.m
 //  appFinal1
 //
-//  Created by RAFAEL BARALDI on 19/05/14.
+//  Created by Rafael Cardoso on 14/07/14.
 //  Copyright (c) 2014 RAFAEL BARALDI. All rights reserved.
 //
 
-#import "TBEstilosQueTocaDelegate.h"
-#import "CadastroStore.h"
+#import "TBEstilosQueTocaViewController.h"
 
-@interface TBEstilosQueTocaDelegate ()
+#import "CadastroStore.h"
+#import "LocalStore.h"
+
+#import "TBEstilosViewController.h"
+
+@interface TBEstilosQueTocaViewController ()
 
 @end
 
-@implementation TBEstilosQueTocaDelegate
+@implementation TBEstilosQueTocaViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [[self navigationItem] setTitle:@"Meus Estilos Musicas"];
+
+    UIBarButtonItem *voltarItem = [[UIBarButtonItem alloc] initWithTitle:@"Cadastro" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
+    [[self navigationItem] setLeftBarButtonItem:voltarItem];
+    
+    //Adiconar Estilos
+    [self addEstilos];
 }
 
-- (void)didReceiveMemoryWarning
-{
+-(void) viewWillAppear:(BOOL)animated{
+    [_tbEstilosQueToca reloadData];
+}
+
+-(void) addEstilos{
+    
+    UIBarButtonItem *addEstilo = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(adicionarNovoEstilo)];
+    [[self navigationItem] setRightBarButtonItem:addEstilo];
+}
+
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+-(void)retorna{
+    [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaCadastro] animated:YES];
+}
+
+-(void)adicionarNovoEstilo{
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaTBEstilos] animated:YES];
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -67,17 +90,5 @@
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

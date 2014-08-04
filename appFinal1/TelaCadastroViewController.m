@@ -7,13 +7,15 @@
 //
 
 #import "TelaCadastroViewController.h"
+
 #import "LocalStore.h"
 #import "CadastroStore.h"
-#import "Usuario.h"
-#import "CadastroUsuario.h"
+#import "LoginStore.h"
 
-const int PESQUISA_INTRUMENTO = 0;
-const int PESQUISA_ESTILO = 1;
+#import "Usuario.h"
+
+#import "TBEstilosQueTocaViewController.h"
+
 const int OBSERVACOES = 2;
 
 @interface TelaCadastroViewController ()
@@ -22,11 +24,9 @@ const int OBSERVACOES = 2;
 
 @implementation TelaCadastroViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
     }
     return self;
 }
@@ -35,43 +35,41 @@ const int OBSERVACOES = 2;
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     
-    [self carregaInstrumentos];
+    [[self navigationItem] setTitle:@"Cadastro"];
     
-    [self carregaEstilos];
-
     //Usa Cadastro no singleton
     [[CadastroStore sharedStore]setViewTela:self];
+    
+    //Deixa a borda dos boteos arredondados
+    [self arredondaBordaBotoes];
+    
+    //Senha
+    [_txtSenha setSecureTextEntry:YES];
 }
 
--(void)carregaInstrumentos{
+-(void) viewWillAppear:(BOOL)animated{
     
-    //Instrumentos
-    _tbInstrumentosDelegate = [[TBInstrumentosDelegate alloc]init];
-    _tbInstrumentosPesquisar.delegate = _tbInstrumentosDelegate;
-    _tbInstrumentosPesquisar.dataSource = _tbInstrumentosDelegate;
-    
-    //Instrumentos Que Toca
-    _tbInstrumentosQueTocaDelegate = [[TBInstrumentosQueTocaDelegate alloc]init];
-    _tbInstrumentoQueToco.delegate = _tbInstrumentosQueTocaDelegate;
-    _tbInstrumentoQueToco.dataSource = _tbInstrumentosQueTocaDelegate;
-    
+    [self carregaLabels];
 }
 
--(void)carregaEstilos{
+-(void)arredondaBordaBotoes{
     
-    //Estilos
-    _tbEstilosDelegate = [[TBEstilosDelegate alloc]init];
-    _tbEstilosPesquisar.delegate = _tbEstilosDelegate;
-    _tbEstilosPesquisar.dataSource = _tbEstilosDelegate;
+    [[_btnEstilos layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnInstrumentos layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnHorarios layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+}
+
+-(IBAction)btnEstilosClik:(id)sender {
     
-    //Estilos Que Toca
-    _tbEstilosQueTocaDelegate = [[TBEstilosQueTocaDelegate alloc]init];
-    _tbEstilosQueToco.delegate = _tbEstilosQueTocaDelegate;
-    _tbEstilosQueToco.dataSource = _tbEstilosQueTocaDelegate;
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaTBEstilosQueToco] animated:YES];
+}
+
+-(IBAction)btnInstrumentosClick:(id)sender {
+    
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaTBInstruementosQueToco] animated:YES];
 }
 
 -(void)habilitarTodasViewsTela:(BOOL)condicao{
@@ -82,19 +80,6 @@ const int OBSERVACOES = 2;
     for (UILabel* v in self.view.subviews) {
         v.enabled = condicao;
     }
-}
-
--(IBAction)btnInstrumentosClick:(id)sender {
-//    [self habilitarTodasViewsTela:NO];
-//
-//    [self exibiView:_viewInstrumentos alpha:YES];
-    [self presentViewController:[[UIViewController alloc] init] animated:YES completion:nil];
-}
-
--(IBAction)btnEstilosClik:(id)sender {
-    [self habilitarTodasViewsTela:NO];
-    
-    [self exibiView:_viewEstilos alpha:YES];
 }
 
 -(IBAction)btnConfirmarClick:(id)sender {
@@ -108,82 +93,65 @@ const int OBSERVACOES = 2;
     usuario.cidade = _txtCidade.text;
     usuario.bairro = _txtBairro.text;
     usuario.observacoes = _txtObservacoes.text;
+    usuario.horarios = @"";
     usuario.instrumentos = @"";
     usuario.estilos = @"";
     
     for (NSString* s in [[CadastroStore sharedStore] instrumentosQueToca]) {
         usuario.instrumentos = [NSString stringWithFormat:@"%@, %@", usuario.instrumentos, s];
     }
-    
     for (NSString* s in [[CadastroStore sharedStore] estilosQueToca]) {
         usuario.estilos = [NSString stringWithFormat:@"%@, %@", usuario.estilos, s];
     }
-    
-    usuario.instrumentos = [usuario.instrumentos substringFromIndex:2];
-    usuario.estilos = [usuario.estilos substringFromIndex:2];
-    
-    
-//    NSLog(@"nome: %@ \n email: %@ \n sexo: %@ \n cidade: %@ \n bairro: %@ \n instumentos: %@ \n estilos: %@ \n obs: %@", usuario.nome, usuario.email, usuario.sexo, usuario.cidade, usuario.bairro, usuario.instrumentos, usuario.estilos, usuario.observacoes);
-//    
-//    CadastroUsuario *cadastro = [[CadastroUsuario alloc] init];
-//    if([cadastro cadastraUsuario:usuario]){
-//        NSLog(@"OK \n \n");
-//    }
-//    else{
-//        NSLog(@"NO \n \n");
-//    }
-}
-
--(void)exibiView:(UIView *)view alpha:(BOOL)alpha{
-    
-    if(alpha){
-        view.alpha = 0.95;
+    for (NSString* s in [[CadastroStore sharedStore] horariosQueToca]) {
+        usuario.horarios = [NSString stringWithFormat:@"%@, %@", usuario.horarios, s];
     }
-
-    CGRect frame = view.frame;
-    frame.origin.x = 23;
-    frame.origin.y = 33;
-    view.frame = frame;
     
-    [view.layer setCornerRadius:[[LocalStore sharedStore] raioBorda]];
+    if([usuario.instrumentos length] > 0){
+        usuario.instrumentos = [usuario.instrumentos substringFromIndex:2];
+    }
+    if([usuario.estilos length] > 0){
+        usuario.estilos = [usuario.estilos substringFromIndex:2];
+    }
+    if([usuario.horarios length] > 0){
+        usuario.horarios = [usuario.horarios substringFromIndex:2];
+    }
     
-    [self.view addSubview:view];
-}
-
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    NSString *valida = [CadastroStore validaCadastro:usuario];
     
-    if(searchBar.tag == PESQUISA_INTRUMENTO){
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERRO" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    if([valida length] > 0){
+        valida = [NSString stringWithFormat:@"Informe corretamente %@", valida];
         
-        [[[CadastroStore sharedStore] instrumentosFiltrados] removeAllObjects];
-        
-        if([searchText isEqual:@""]){
-            [[[CadastroStore sharedStore] instrumentosFiltrados] addObjectsFromArray:[[CadastroStore sharedStore] instrumentos]];
-        }
-        
-        for (NSString *s in [[CadastroStore sharedStore] instrumentos]){
-            if([s rangeOfString:searchText].location != NSNotFound){
-                [[[CadastroStore sharedStore] instrumentosFiltrados] addObject:s];
-            }
-        }
-        
-        [_tbInstrumentosPesquisar reloadData];
+        [alert setMessage:valida];
+        [alert show];
     }
     else{
+        NSString *cadastrou = [CadastroStore cadastrar:usuario];
         
-        [[[CadastroStore sharedStore] estilosFiltrados] removeAllObjects];
-        
-        if([searchText isEqual:@""]){
-            [[[CadastroStore sharedStore] estilosFiltrados] addObjectsFromArray:[[CadastroStore sharedStore] estilos]];
+        if([cadastrou rangeOfString:@"\"Duplicate entry"].location != NSNotFound){
+            valida = [NSString stringWithFormat:@"Esse e-mail já está em uso"];
+            
+            [alert setMessage:valida];
+            [alert show];
         }
-        
-        for (NSString *s in [[CadastroStore sharedStore] estilos]) {
-            if([s rangeOfString:searchText].location != NSNotFound){
-                [[[CadastroStore sharedStore] estilosFiltrados] addObject:s];
-            }
+        else{
+            //Realiza Login
+            [LoginStore login:usuario.email senha:usuario.senha];
+            
+            //Salva nomeFotoPerfil
+//            NSMutableString * str = [[NSMutableString alloc] initWithString:cadastrou];
+//            [str replaceOccurrencesOfString:@"\"" withString:@"" options:NSCaseInsensitiveSearch range:(NSRange){0,[str length]}];
+//            [[CadastroStore sharedStore] setNomeFotoPerfil:str];
+            
+            [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaCadastroFoto] animated:YES];
         }
-        
-        [_tbEstilosPesquisar reloadData];
     }
+}
+
+- (IBAction)btnHorariosClick:(id)sender {
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaHorarios] animated:YES];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -247,18 +215,22 @@ const int OBSERVACOES = 2;
 
         case 1:
             _lblInstrumentos.text = [auxInstrumentos objectAtIndex:0];
+            _lblInstrumentos.text = [_lblInstrumentos.text stringByReplacingOccurrencesOfString:@"1" withString:@""];
             break;
             
         case 2:
             _lblInstrumentos.text = [NSString stringWithFormat:@"%@, %@", [auxInstrumentos objectAtIndex:0], [auxInstrumentos objectAtIndex:1]];
+            _lblInstrumentos.text = [_lblInstrumentos.text stringByReplacingOccurrencesOfString:@"1" withString:@""];
             break;
 
         case 3:
             _lblInstrumentos.text = [NSString stringWithFormat:@"%@, %@, %@", [auxInstrumentos objectAtIndex:0], [auxInstrumentos objectAtIndex:1], [auxInstrumentos objectAtIndex:2]];
+            _lblInstrumentos.text = [_lblInstrumentos.text stringByReplacingOccurrencesOfString:@"1" withString:@""];
             break;
             
         default:
             _lblInstrumentos.text = [NSString stringWithFormat:@"%@, %@, %@...", [auxInstrumentos objectAtIndex:0], [auxInstrumentos objectAtIndex:1], [auxInstrumentos objectAtIndex:2]];
+            _lblInstrumentos.text = [_lblInstrumentos.text stringByReplacingOccurrencesOfString:@"1" withString:@""];
             break;
     }
     
@@ -285,46 +257,5 @@ const int OBSERVACOES = 2;
             _lblEstilos.text = [NSString stringWithFormat:@"%@, %@, %@...", [auxInstrumentos objectAtIndex:0], [auxInstrumentos objectAtIndex:1], [auxInstrumentos objectAtIndex:2]];
             break;
     }
-}
-
-//Botoes Instrumentos
--(IBAction)btnInstrumentosVoltarClick:(id)sender {
-    [_viewInstrumentos removeFromSuperview];
-    
-    [self habilitarTodasViewsTela:YES];
-    
-    [self carregaLabels];
-}
-
--(IBAction)btnAdicionarInstrumentoClick:(id)sender {
-    [_viewInstrumentos removeFromSuperview];
-    
-    [self exibiView:_viewPesquisarInstrumentos alpha:NO];
-}
-
--(IBAction)btnPesquisaVoltarClick:(id)sender{
-    [_viewPesquisarInstrumentos removeFromSuperview];
-
-    [self exibiView:_viewInstrumentos alpha:YES];
-}
-
-//Botoes Estilos
-- (IBAction)btnEstilosVoltarClick:(id)sender {
-    [_viewEstilos removeFromSuperview];
-    
-    [self habilitarTodasViewsTela:YES];
-    
-    [self carregaLabels];
-}
-
-- (IBAction)btnAdicionarEstilosClick:(id)sender {
-    [_viewEstilos removeFromSuperview];
-    
-    [self exibiView:_viewPesquisarEstilos alpha:NO];
-}
-- (IBAction)btnEstiloPesquisaVoltarClick:(id)sender {
-    [_viewPesquisarEstilos removeFromSuperview];
-    
-    [self exibiView:_viewEstilos alpha:YES];
 }
 @end

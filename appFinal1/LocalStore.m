@@ -8,6 +8,9 @@
 
 #import "LocalStore.h"
 
+#import "TelaCadastroViewController.h"
+#import "TelaLoginViewController.h"
+
 @implementation LocalStore
 
 +(LocalStore*)sharedStore{
@@ -25,11 +28,33 @@
 -(id)init{
     self = [super init];
     if(self){
-        _raioBorda = 10;
+        _RAIOBORDA = 5;
+        _USUARIOZERO = @"0";
+        _URL = @"http://54.187.203.61/appMusica/";
+        
+        [self carregaTelas];
         
         [self carregaContexto];
     }
     return self;
+}
+
+-(void)carregaTelas{
+    
+    _TelaTBInstruementosQueToco = [[TBInstrumentosQueTocaViewController alloc] init];
+    _TelaTBInstrumentos = [[TBInstrumentosViewController alloc] init];
+    _TelaTBEstilos = [[TBEstilosViewController alloc] init];
+    _TelaTBEstilosQueToco = [[TBEstilosQueTocaViewController alloc] init];
+    _TelaCadastro = [[TelaCadastroViewController alloc] init];
+    _TelaLogin = [[TelaLoginViewController alloc] init];
+    _TelaEsqueciSenha = [[TelaEsqueciSenhaViewController alloc] init];
+    _TelaPerfil = [[TelaPerfilViewController alloc] init];
+    _TelaBusca = [[TelaBuscaViewController alloc] init];
+    _TelaInicio = [[TelaInicioViewController alloc] init];
+    _TelaHorarios = [[TelaHorariosViewController alloc] init];
+    _TelaCadastroFoto = [[TelaCadastroFotoViewController alloc] init];
+    _TelaUsuarioFiltrado = [[TelaUsuarioFiltrado alloc] init];
+    _TelaOpcoes = [[TelaOpcoesViewController alloc] init];
 }
 
 -(void)carregaContexto{

@@ -9,9 +9,51 @@
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
 
+#import "TelaCadastroViewController.h"
+#import "TelaLoginViewController.h"
+#import "TelaEsqueciSenhaViewController.h"
+#import "TelaPerfilViewController.h"
+#import "TelaBuscaViewController.h"
+#import "TelaUsuarioFiltrado.h"
+#import "TelaInicioViewController.h"
+#import "TelaHorariosViewController.h"
+#import "TelaCadastroFotoViewController.h"
+#import "TelaOpcoesViewController.h"
+
+#import "TBInstrumentosViewController.h"
+#import "TBInstrumentosQueTocaViewController.h"
+#import "TBEstilosViewController.h"
+#import "TBEstilosQueTocaViewController.h"
+
+#import "TPUsuario.h"
+
 @interface LocalStore : NSObject
 
-@property int raioBorda;
+
+@property int RAIOBORDA;
+@property NSString *USUARIOZERO;
+@property NSString *URL;
+/////////////////////////////
+
+@property TPUsuario *usuarioAtual;
+
+@property TBInstrumentosViewController *TelaTBInstrumentos;
+@property TBInstrumentosQueTocaViewController *TelaTBInstruementosQueToco;
+@property TBEstilosQueTocaViewController *TelaTBEstilosQueToco;
+@property TBEstilosViewController *TelaTBEstilos;
+
+@property TelaPerfilViewController *TelaPerfil;
+@property TelaCadastroViewController *TelaCadastro;
+@property TelaEsqueciSenhaViewController *TelaEsqueciSenha;
+@property TelaLoginViewController *TelaLogin;
+@property TelaBuscaViewController *TelaBusca;
+@property TelaInicioViewController *TelaInicio;
+@property TelaHorariosViewController *TelaHorarios;
+@property TelaCadastroFotoViewController *TelaCadastroFoto;
+@property TelaUsuarioFiltrado *TelaUsuarioFiltrado;
+@property TelaOpcoesViewController *TelaOpcoes;
+
+@property NSString *ultimaTela;
 
 @property AppDelegate *appDelegate;
 @property NSManagedObjectContext *context;

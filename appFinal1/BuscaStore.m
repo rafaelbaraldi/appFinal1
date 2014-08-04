@@ -7,7 +7,10 @@
 //
 
 #import "BuscaStore.h"
+
 #import "TPInstrumento.h"
+#import "TPHorario.h"
+
 #import "BuscaConexao.h"
 
 @implementation BuscaStore
@@ -29,6 +32,10 @@
     if(self){        
         _instrumento = [[NSString alloc]init];
         _estilo = [[NSString alloc]init];
+        
+        _instrumentosFiltrados = [[NSMutableArray alloc] init];
+        _estilosFiltrados = [[NSMutableArray alloc] init];
+        _horariosFiltrados = [[NSMutableArray alloc] init];
         
     }
     return self;
@@ -54,28 +61,40 @@
     NSDictionary *json = [BuscaConexao buscaUsuario:identificador];
     
     TPUsuario *pessoa = [[TPUsuario alloc]init];
+    pessoa.identificador = @"";
     pessoa.nome = @"";
     pessoa.sexo = @"";
     pessoa.cidade = @"";
     pessoa.bairro = @"";
     pessoa.atribuicoes = @"";
+    pessoa.horarios = [[NSMutableArray alloc] init];
     pessoa.instrumentos = [[NSMutableArray alloc]init];
     pessoa.estilos = [[NSMutableArray alloc]init];
     
     for(NSString *s in json){
         if([pessoa.nome  isEqualToString:@""]){
+            pessoa.identificador = [s valueForKeyPath:@"id"];
             pessoa.nome = [s valueForKeyPath:@"nome"];
             pessoa.cidade = [s valueForKeyPath:@"cidade"];
             pessoa.sexo = [s valueForKeyPath:@"sexo"];
             pessoa.bairro = [s valueForKeyPath:@"bairro"];
             pessoa.atribuicoes = [s valueForKeyPath:@"atribuicoes"];
         }
+        if (![[s valueForKeyPath:@"horario"] isEqualToString:@""]){
+            NSString *horario = [s valueForKeyPath:@"horario"];
+            
+            TPHorario *tpHorario = [[TPHorario alloc] init];
+            tpHorario.dia = [horario substringToIndex:[horario length] - 1];
+            tpHorario.periodo = [horario substringFromIndex:[horario length] - 1];
+            
+            [pessoa.horarios addObject:tpHorario];
+        }
         if (![[s valueForKeyPath:@"instrumento_musical"] isEqualToString:@""]) {
-            TPInstrumento *instrumento = [[TPInstrumento alloc]init];
-            instrumento.nome = [s valueForKeyPath:@"instrumento_musical"];
-            NSString* b = [s valueForKeyPath:@"possui"];
-            instrumento.possui = [b boolValue];
-            [pessoa.instrumentos addObject:instrumento];
+            TPInstrumento *tpInstrumento = [[TPInstrumento alloc]init];
+            tpInstrumento.nome = [s valueForKeyPath:@"instrumento_musical"];
+            tpInstrumento.possui = [[s valueForKeyPath:@"possui"] boolValue];
+            
+            [pessoa.instrumentos addObject:tpInstrumento];
         }
         if (![[s valueForKeyPath:@"estilo_musical"] isEqualToString:@""]) {
             [pessoa.estilos addObject:[s valueForKeyPath:@"estilo_musical"]];
@@ -87,7 +106,7 @@
 +(NSMutableArray*)atualizaBusca:(NSMutableArray*)usuarios cidade:(NSString*)cidade{
     [usuarios removeAllObjects];
     
-    NSDictionary *json = [BuscaConexao buscaUsuario:[[BuscaStore sharedStore]instrumento] estilo:[[BuscaStore sharedStore]estilo] cidade:cidade];
+    NSDictionary *json = [BuscaConexao buscaUsuario:[[BuscaStore sharedStore]instrumento] estilo:[[BuscaStore sharedStore]estilo] cidade:cidade horario:[[BuscaStore sharedStore] horario]];
     
     for(NSString *s in json){
         TPUsuario *ret = [[TPUsuario alloc]init];

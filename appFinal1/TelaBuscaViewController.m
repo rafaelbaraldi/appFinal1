@@ -9,6 +9,8 @@
 #import "TelaBuscaViewController.h"
 #import "TelaUsuarioFiltrado.h"
 
+#import "LocalStore.h"
+
 #import "TBFiltroEstilo.h"
 #import "TBFiltroHorario.h"
 #import "TBFiltroInstrumento.h"
@@ -43,14 +45,20 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
-    _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
+    //Habilitar Botao de esonder Filtro
+    [self habilitaBotaoEsconder];
+    
+    //Verifica se há filtro de horarios preenchidos
+    [self carregaFiltroDeHorario];
+    
+    //Carrega os usuarios buscado
+    [self carregaUsuarioBuscado];
+    
     [self atualizaTela];
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     
     //Metodo de Busca por cidade
     [_txtCidade addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
@@ -63,14 +71,52 @@
     [self arredondaBordaBotoes];
 }
 
+-(void)carregaUsuarioBuscado{
+    
+    UILabel *lblMsgFiltro = [[UILabel alloc] initWithFrame:CGRectMake(20, 300, 287, 50)];
+    
+    if([[[BuscaStore sharedStore] instrumento] length] > 0
+       || [[[BuscaStore sharedStore] estilo] length] > 0
+       || [[[BuscaStore sharedStore] horario] length] > 0
+       ){
+        _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
+        
+        if([_usuarios count] == 0){
+            
+            //Exibi label para pedir o instrumento
+            [lblMsgFiltro setText:@"Nenhum resultado encontrado para a sua pesquisa"];
+            [lblMsgFiltro setTextAlignment:NSTextAlignmentCenter];
+            [lblMsgFiltro setNumberOfLines:2];
+            
+            [[self view] addSubview:lblMsgFiltro];
+        }
+        else{
+            [lblMsgFiltro removeFromSuperview];
+        }
+    }
+    else{
+        [lblMsgFiltro removeFromSuperview];
+    }
+}
+
 -(void)arredondaBordaBotoes{
     
-    [[_btnEstilo layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
-    [[_btnInstumento layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
-    [[_btnHorarios layer] setCornerRadius:[[LocalStore sharedStore] raioBorda]];
+    [[_btnEstilo layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnInstumento layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnHorarios layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+}
+
+-(void)habilitaBotaoEsconder{
+    if(![_usuarios count] > 0){
+        [_btnEsconderFiltro setHidden:YES];
+    }
+    else{
+        [_btnEsconderFiltro setHidden:NO];
+    }
 }
 
 -(void)atualizaTela{
+    
     //Filtro Instrumento
     if ([[[BuscaStore sharedStore] instrumento] length] > 0) {
         _btnInstumento.titleLabel.text = [[BuscaStore sharedStore] instrumento];
@@ -90,6 +136,20 @@
     }
     
     [_tbUsuarios reloadData];
+}
+
+-(void)carregaFiltroDeHorario{
+    
+    NSString *h = @"";
+    for (NSString* s in [[BuscaStore sharedStore] horariosFiltrados]) {
+        h = [NSString stringWithFormat:@"%@, %@", h, s];
+    }
+    
+    if([h length] > 0){
+        h = [h substringFromIndex:2];
+    }
+    
+    [[BuscaStore sharedStore] setHorario:h];
 }
 
 //Botoes
@@ -118,7 +178,7 @@
 
 - (IBAction)btnRemoverInstrumentoClick:(id)sender {
     [[BuscaStore sharedStore] setInstrumento:@""];
-    _btnInstumento.titleLabel.text = @"Intrumento";
+    _btnInstumento.titleLabel.text = @"Instrumento";
     
     _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [self atualizaTela];
@@ -130,7 +190,7 @@
         [UIView animateWithDuration:0.5 animations:^{
             [_tbUsuarios setFrame:_frameTbUsuarios];
             
-             _btnEsconderFiltro.titleLabel.text = @"Esconder";
+             _btnEsconderFiltro.titleLabel.text = @"Esconder filtro";
             _viewFiltros.hidden = NO;
         }];
     }
@@ -144,7 +204,7 @@
             [_tbUsuarios setFrame:frameUsuario];
         }completion:^(BOOL finished) {
             
-            _btnEsconderFiltro.titleLabel.text = @"Mostrar";
+            _btnEsconderFiltro.titleLabel.text = @"Mostrar filtro";
             _viewFiltros.hidden = YES;
         }];
     }
@@ -186,12 +246,12 @@
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioPesquisaCell"];
         
-        UILabel *nome = [[UILabel alloc] initWithFrame:CGRectMake(80, 5, 200, 15)];
+        UILabel *nome = [[UILabel alloc] initWithFrame:CGRectMake(90, 5, 200, 15)];
         nome.text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
         nome.adjustsFontSizeToFitWidth = YES;
         nome.tag = 1;
         
-        UILabel *cidade = [[UILabel alloc] initWithFrame:CGRectMake(80, 25, 200, 15)];
+        UILabel *cidade = [[UILabel alloc] initWithFrame:CGRectMake(90, 25, 200, 15)];
         cidade.text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
         cidade.font = [UIFont fontWithName:@"arial" size:10];
         cidade.adjustsFontSizeToFitWidth = YES;
@@ -208,13 +268,40 @@
         
         [celula addSubview:btnEnviarMsg];
         [celula addSubview:btnAdicionar];
+        
+        //Carrega Foto
+        UIImageView *fotoUsuario = [self carregaImagemUsuario:indexPath.row];
+        
+        [celula addSubview:fotoUsuario];
     }
     else{
         ((UILabel*)[celula viewWithTag:1]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
         ((UILabel*)[celula viewWithTag:2]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
+        
+        //Reaproveita Foto
+        NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
+        UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
+        
+        ((UIImageView*)[celula viewWithTag:3]).image = foto;
     }
     
+    //Exibi botao de esconder os filtros de busca
+    [self habilitaBotaoEsconder];
+    
     return celula;
+}
+
+-(UIImageView*)carregaImagemUsuario:(NSInteger)row{
+    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", ((TPUsuario*)[_usuarios objectAtIndex:row]).identificador];
+    UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
+    
+    UIImageView *fotoUsuario = [[UIImageView alloc] initWithFrame:CGRectMake(15, 3, 65, 65)];
+    fotoUsuario.layer.masksToBounds = YES;
+    fotoUsuario.layer.cornerRadius = fotoUsuario.frame.size.width / 2;
+    fotoUsuario.image = foto;
+    fotoUsuario.tag = 3;
+    
+    return fotoUsuario;
 }
 
 @end

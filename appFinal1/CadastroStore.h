@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "TelaCadastroViewController.h"
 
+#import "Usuario.h"
+
 @interface CadastroStore : NSObject
+
+@property NSString *nomeFotoPerfil;
 
 @property NSMutableArray *instrumentos;
 @property NSMutableArray *instrumentosQueToca;
@@ -19,8 +23,14 @@
 @property NSMutableArray *estilosQueToca;
 @property NSMutableArray *estilosFiltrados;
 
+@property NSMutableArray *horariosQueToca;
+
 @property TelaCadastroViewController *viewTela;
 
 +(CadastroStore*)sharedStore;
+
++(NSString *)validaCadastro:(Usuario*)usuario;
+
++(NSString*)cadastrar:(Usuario*)usuario;
 
 @end

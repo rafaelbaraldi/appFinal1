@@ -9,6 +9,7 @@
 #import "TelaUsuarioFiltrado.h"
 #import "BuscaConexao.h"
 #import "TPInstrumento.h"
+#import "TPHorario.h"
 #import "BuscaStore.h"
 
 @interface TelaUsuarioFiltrado ()
@@ -27,7 +28,7 @@
 - (id) initWithIdentificador:(NSString*)idUsuario{
     self = [super init];
     
-    if (self){
+    if (self){ 
         _identificador = idUsuario;
         
         [[self navigationItem] setTitle:@"Perfil"];
@@ -41,8 +42,13 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    
     [self carregaUsuarioFiltrado];
+    
+    _scrollView.pagingEnabled = NO;
+    _scrollView.showsVerticalScrollIndicator = YES;
+    _scrollView.scrollEnabled = YES;
+    _scrollView.showsHorizontalScrollIndicator = YES;
+    _scrollView.frame = self.view.frame;
 }
 
 - (void)didReceiveMemoryWarning{
@@ -54,66 +60,136 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self carregaBotaoSeguirAmigo];
+}
+
 -(void)carregaUsuarioFiltrado{
     _pessoa = [BuscaStore buscaPessoa:_identificador];
     
+    //Nome e Sexo
     _lblNome.text = _pessoa.nome;
     _lblSexo.text = _pessoa.sexo;
     
+    //Cidade e Bairro
     _lblCidadeBairro.lineBreakMode = NSLineBreakByCharWrapping;
     _lblCidadeBairro.numberOfLines = 2;
     _lblCidadeBairro.text = [NSString stringWithFormat:@"%@, %@", _pessoa.cidade, _pessoa.bairro];
     
     _lblAtribuicoes.text = _pessoa.atribuicoes;
     
+    //Estilo Musica
     for (NSString* s in _pessoa.estilos) {
         _lblEstilo.text = [NSString stringWithFormat:@"%@, %@", _lblEstilo.text, s];
     }
-    
     _lblEstilo.text = [_lblEstilo.text substringFromIndex:2];
+    
+    //Foto
+    [self carregaImagemUsuario];
+    
+    //Horario
+    [self carregaHorariosUsuario];
+    
+    //Instrumentos
+    [self carregaInstrumentosUsuario];
 }
 
-//Delegate TableView
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+-(void)carregaHorariosUsuario{
     
-    return [_pessoa.instrumentos count];
+    UILabel *lblTituloHorario = [[UILabel alloc] initWithFrame:CGRectMake(10, 500, 300, 20)];
+    UILabel *lblHorarios = [[UILabel alloc] initWithFrame:CGRectMake(10, 520, 300, 20)];
+    
+    lblTituloHorario.text = @"Horarios para ensaio";
+    lblHorarios.text = [TPHorario horariosEmTexto:_pessoa.horarios];
+    
+    //Espaco entre as linhas
+    [self espacoEntreLinhasLBL:lblHorarios];
+    
+    lblHorarios.numberOfLines = [_pessoa.horarios count];
+    [lblHorarios sizeToFit];
+    
+    [_scrollView addSubview:lblTituloHorario];
+    [_scrollView addSubview:lblHorarios];
+    
+    //Aumentar o scroll
+    _scrollView.frame = CGRectMake(0, 0, 320, 600 + (lblHorarios.frame.size.height / 2));
+    _scrollView.contentSize = CGSizeMake(320, 600 + (lblHorarios.frame.size.height / 2));
 }
 
--(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"Instrumento                               Possui";
+-(void)carregaImagemUsuario{
+
+    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", [BuscaStore buscaPessoa:_identificador].identificador];
+    UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
+    
+    _imageUsuario.layer.masksToBounds = YES;
+    _imageUsuario.layer.cornerRadius = _imageUsuario.frame.size.width / 2;
+    _imageUsuario.image = foto;
+    _imageUsuario.tag = 3;
 }
 
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioSelecionadoCell"];
+-(void)carregaInstrumentosUsuario{
+    _lblInstrumentos.text = @"Instrumento                               Possui";
     
-    UIButton *btnPossui = [[UIButton alloc] initWithFrame:CGRectMake(240, 8, 25, 25)];
-    
-    
-    if(celula == nil){
-        celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioSelecionadoCell"];
+    int i = 0;
+    for(TPInstrumento *tp in _pessoa.instrumentos){
+        _lblInstrumentos.text = [NSString stringWithFormat:@"%@\n%@", _lblInstrumentos.text, tp.nome];
         
-        btnPossui.tag = 1;
+        UIButton *btnPossui = [[UIButton alloc] initWithFrame:CGRectMake(240, 33+(i*27), 18, 18)];
+        if (tp.possui) {
+            btnPossui.backgroundColor = [UIColor greenColor];
+        }
+        else{
+            btnPossui.backgroundColor = [UIColor redColor];
+        }
         
-        [celula addSubview:btnPossui];
+        [_lblInstrumentos addSubview:btnPossui];
+        i++;
+    }
+    
+    //Espaco entre as linhas
+    [self espacoEntreLinhasLBL:_lblInstrumentos];
+
+    _lblInstrumentos.numberOfLines = [_pessoa.instrumentos count] + 1;
+    [_lblInstrumentos sizeToFit];
+}
+
+-(void)espacoEntreLinhasLBL:(UILabel*)label{
+    
+    NSMutableParagraphStyle *style  = [[NSMutableParagraphStyle alloc] init];
+    style.minimumLineHeight = 27.f;
+    style.maximumLineHeight = 27.f;
+    NSDictionary *attributtes = @{NSParagraphStyleAttributeName : style,};
+    label.attributedText = [[NSAttributedString alloc] initWithString:label.text
+                                                                      attributes:attributtes];
+    
+    label.lineBreakMode = NSLineBreakByCharWrapping;
+}
+
+-(void)carregaBotaoSeguirAmigo{
+    
+    NSString *result = [BuscaConexao seguirAmigo:_pessoa.identificador acao:@"consultar"];
+    
+    if ([result isEqualToString:@"1\n"]) {
+        [self alterarBotaoSeguirAmigo];
     }
     else{
-        btnPossui = ((UIButton*)[celula viewWithTag:1]);
+        [[_btnSeguir layer] setBorderWidth:1];
+        [[_btnSeguir layer] setBorderColor:([UIColor blueColor].CGColor)];
+        [_btnSeguir setTitle:@"Seguir" forState:UIControlStateNormal];
+        [_btnSeguir setBackgroundColor:[UIColor whiteColor]];
+        [_btnSeguir setTintColor:[UIColor blueColor]];
     }
-    
-    if (((TPInstrumento*)[_pessoa.instrumentos objectAtIndex:indexPath.row]).possui) {
-        btnPossui.backgroundColor = [UIColor greenColor];
-    }
-    else{
-        btnPossui.backgroundColor = [UIColor redColor];
-    }
-    
-    celula.textLabel.text = ((TPInstrumento*)[_pessoa.instrumentos objectAtIndex:indexPath.row]).nome;
-    
-    return celula;
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+- (IBAction)btnSeguirClick:(id)sender {
+    [BuscaConexao seguirAmigo:_pessoa.identificador acao:@"inserir"];
+    [self carregaBotaoSeguirAmigo];
 }
 
+-(void)alterarBotaoSeguirAmigo{
+
+    [_btnSeguir setTitle:@"Seguindo" forState:UIControlStateNormal];
+    [_btnSeguir setBackgroundColor:[UIColor blueColor]];
+    [_btnSeguir setTintColor:[UIColor whiteColor]];
+}
 @end

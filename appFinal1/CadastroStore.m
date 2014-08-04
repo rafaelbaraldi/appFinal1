@@ -8,6 +8,10 @@
 
 #import "CadastroStore.h"
 
+#import "BuscaStore.h"
+
+#import "CadastroConexao.h"
+
 @implementation CadastroStore
 
 +(CadastroStore*)sharedStore{
@@ -26,27 +30,90 @@
     self = [super init];
     if(self){
         //instrumentos
-        _instrumentos = [[NSMutableArray alloc]initWithArray:[NSArray arrayWithObjects:@"guitarra", @"baixo", @"bateria", @"violao", @"vocal", nil]];
+        _instrumentos = [BuscaStore retornaListaDe:@"instrumento"];
         
         _instrumentosQueToca =[[NSMutableArray alloc] init];
         
         _instrumentosFiltrados =[[NSMutableArray alloc] init];
         [_instrumentosFiltrados addObjectsFromArray:_instrumentos];
         
-        
-        
-        
-        
         //estilos
-        _estilos = [[NSMutableArray alloc]initWithArray:[NSArray arrayWithObjects:@"rock", @"pop", @"funk", @"punk", @"reggae", nil]];
+        _estilos = [BuscaStore retornaListaDe:@"estilo"];
         
         _estilosQueToca =[[NSMutableArray alloc] init];
         
         _estilosFiltrados =[[NSMutableArray alloc] init];
         [_estilosFiltrados addObjectsFromArray:_estilos];
         
+        //horaios
+        _horariosQueToca = [[NSMutableArray alloc]init];
+        
     }
     return self;
+}
+
++(NSString*)cadastrar:(Usuario*)usuario{
+    
+    NSDictionary *jsonUsuario = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 usuario.observacoes, @"observacoes",
+                                 usuario.estilos, @"estilos",
+                                 usuario.instrumentos, @"instrumentos",
+                                 usuario.horarios, @"horarios",                                 
+                                 usuario.bairro, @"bairro",
+                                 usuario.cidade, @"cidade",
+                                 usuario.sexo, @"sexo",
+                                 usuario.senha, @"senha",
+                                 usuario.email, @"email",
+                                 usuario.nome, @"nome" , nil];
+    
+    NSData *jsonCadastrar = [NSJSONSerialization dataWithJSONObject:jsonUsuario options:NSJSONWritingPrettyPrinted error:nil];
+    
+//    NSString* newStr = [[NSString alloc] initWithData:jsonCadastrar encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",newStr);
+
+    NSString* cadastrou = [CadastroConexao cadastrar:jsonCadastrar];
+    
+    return cadastrou;
+}
+
++(NSString *)validaCadastro:(Usuario *)usuario{
+    
+    NSString *valida;
+    
+//    if([usuario.nome length] == 0){
+//        valida = @"seu NOME";
+//        return valida;
+//    }
+//    if([usuario.email length] == 0){
+//        valida = @"seu EMAIL";
+//        return valida;
+//    }
+//    if([usuario.senha length] == 0){
+//        valida = @"sua SENHA";
+//        return valida;
+//    }
+//    if([usuario.cidade length] == 0){
+//        valida = @"sua CIDADE";
+//        return valida;
+//    }
+//    if([usuario.bairro length] == 0){
+//        valida = @"seu BAIRRO";
+//        return valida;
+//    }
+//    if([usuario.instrumentos length] == 0){
+//        valida = @"seus INSTRUMENTOS";
+//        return valida;
+//    }
+//    if([usuario.estilos length] == 0){
+//        valida = @"seus ESTILOS";
+//        return valida;
+//    }
+//    if([usuario.horarios length] == 0){
+//        valida = @"seus HORÁRIOS disponíveis para ensaio";
+//        return valida;
+//    }
+    
+    return valida;
 }
 
 @end

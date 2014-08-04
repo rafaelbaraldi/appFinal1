@@ -7,8 +7,12 @@
 //
 
 #import "TBFiltroInstrumento.h"
+
+#import "LocalStore.h"
+
 #import "BuscaStore.h"
 #import "BuscaConexao.h"
+
 
 @interface TBFiltroInstrumento ()
 
@@ -30,13 +34,15 @@
 
 -(void)retorna{
     
-    [[self navigationController] popToRootViewControllerAnimated:YES];
+    [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     
     _todosInstrumentos = [BuscaStore retornaListaDe:@"instrumento"];
+    
+    [[[BuscaStore sharedStore] instrumentosFiltrados] removeAllObjects];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -44,7 +50,12 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_todosInstrumentos count];
+    if([[[BuscaStore sharedStore] instrumentosFiltrados] count] == 0){
+        return [_todosInstrumentos  count];
+    }
+    else{
+        return [[[BuscaStore sharedStore] instrumentosFiltrados]  count];
+    }
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -53,14 +64,42 @@
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"InstrumentosPesquisaCell"];
     }
-    celula.textLabel.text = [_todosInstrumentos objectAtIndex:indexPath.row];
+    if([[[BuscaStore sharedStore] instrumentosFiltrados] count] == 0){
+        celula.textLabel.text = [_todosInstrumentos  objectAtIndex:indexPath.row];
+    }
+    else{
+        celula.textLabel.text = [[[BuscaStore sharedStore] instrumentosFiltrados]  objectAtIndex:indexPath.row];
+    }
     
     return celula;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [[BuscaStore sharedStore] setInstrumento:[_todosInstrumentos objectAtIndex:indexPath.row]];
+    if([[[BuscaStore sharedStore] instrumentosFiltrados] count] == 0){
+        [[BuscaStore sharedStore] setInstrumento:[_todosInstrumentos objectAtIndex:indexPath.row]];
+    }
+    else{
+        [[BuscaStore sharedStore] setInstrumento:[[[BuscaStore sharedStore] instrumentosFiltrados] objectAtIndex:indexPath.row]];
+    }
+        
     [self retorna];
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+    [[[BuscaStore sharedStore] instrumentosFiltrados] removeAllObjects];
+    
+    if([searchText isEqual:@""]){
+        [[[BuscaStore sharedStore] instrumentosFiltrados] addObjectsFromArray:_todosInstrumentos];
+    }
+    
+    for (NSString *s in _todosInstrumentos){
+        if([s rangeOfString:searchText options: NSCaseInsensitiveSearch].location != NSNotFound){
+            [[[BuscaStore sharedStore] instrumentosFiltrados] addObject:s];
+        }
+    }
+    
+    [_tbInstrumentos reloadData];
 }
 
 - (void)didReceiveMemoryWarning{

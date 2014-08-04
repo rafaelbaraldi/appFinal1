@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TBFiltroInstrumento : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface TBFiltroInstrumento : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
 @property NSMutableArray* todosInstrumentos;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchInstrumento;
+@property (weak, nonatomic) IBOutlet UITableView *tbInstrumentos;
 
 @end

@@ -11,7 +11,10 @@
 @interface BuscaConexao : NSObject
 
 +(NSDictionary*)retornaListaDe:(NSString*) tabela;
-+(NSDictionary*)buscaUsuario:(NSString *)instrumento estilo:(NSString*)estilo cidade:(NSString*)cidade;
+
 +(NSDictionary*)buscaUsuario:(NSString*)identificador;
++(NSDictionary*)buscaUsuario:(NSString *)instrumento estilo:(NSString*)estilo cidade:(NSString*)cidade horario:(NSString*)horario;
+
++(NSString*)seguirAmigo:(NSString*)idAmigo acao:(NSString*)acao;
 
 @end
