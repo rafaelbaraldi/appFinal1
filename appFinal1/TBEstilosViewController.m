@@ -20,17 +20,13 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [[self navigationItem] setTitle:@"Estilos Musicais"];
     }
     return self;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    [[self navigationItem] setTitle:@"Estilos Musicais"];
-    
-    UIBarButtonItem *voltarItem = [[UIBarButtonItem alloc] initWithTitle:@"Cadastro" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
-    [[self navigationItem] setLeftBarButtonItem:voltarItem];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -66,9 +62,6 @@
         [[[CadastroStore sharedStore] estilosQueToca] addObject:[[[CadastroStore sharedStore] estilosFiltrados] objectAtIndex:indexPath.row]];
     }
     
-//    [[[CadastroStore sharedStore] viewTela] btnEstiloPesquisaVoltarClick:nil];
-//    [[[[CadastroStore sharedStore] viewTela] tbEstilosQueToco] reloadData];
-    
     [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaTBEstilosQueToco] animated:YES];
 }
 
@@ -87,6 +80,11 @@
     }
     
     [_tbEstilosPesquisar reloadData];
+}
+
+-(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    
+    [searchBar resignFirstResponder];
 }
 
 @end

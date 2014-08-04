@@ -31,9 +31,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         [[self navigationItem] setTitle:@"Buscar Músico"];
-        
         _usuarios = [[NSMutableArray alloc] init];
     }
     return self;
@@ -234,10 +232,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    TelaUsuarioFiltrado *tuVC = [[TelaUsuarioFiltrado alloc] initWithIdentificador:((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tuVC];
-    
-    [self presentViewController:nav animated:YES completion:nil];
+    TelaUsuarioFiltrado *tuVC = [[TelaUsuarioFiltrado alloc] initWithIdentificador:((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];    
+    [[self navigationController] pushViewController:tuVC animated:YES];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

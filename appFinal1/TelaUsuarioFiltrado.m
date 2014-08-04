@@ -21,6 +21,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [[self navigationItem] setTitle:@"Perfil"];
     }
     return self;
 }
@@ -30,11 +31,6 @@
     
     if (self){ 
         _identificador = idUsuario;
-        
-        [[self navigationItem] setTitle:@"Perfil"];
-        
-        UIBarButtonItem *busca = [[UIBarButtonItem alloc]initWithTitle:@"Buscar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
-        [[self navigationItem] setLeftBarButtonItem:busca];
     }
     return self;
 }
@@ -112,8 +108,8 @@
     [_scrollView addSubview:lblHorarios];
     
     //Aumentar o scroll
-    _scrollView.frame = CGRectMake(0, 0, 320, 600 + (lblHorarios.frame.size.height / 2));
-    _scrollView.contentSize = CGSizeMake(320, 600 + (lblHorarios.frame.size.height / 2));
+    _scrollView.frame = CGRectMake(0, 0, 320, 550 + (lblHorarios.frame.size.height / 2));
+    _scrollView.contentSize = CGSizeMake(320, 550 + (lblHorarios.frame.size.height / 2));
 }
 
 -(void)carregaImagemUsuario{

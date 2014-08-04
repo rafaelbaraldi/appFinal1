@@ -22,17 +22,13 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [[self navigationItem] setTitle:@"Meus Estilos Musicas"];
     }
     return self;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    [[self navigationItem] setTitle:@"Meus Estilos Musicas"];
-
-    UIBarButtonItem *voltarItem = [[UIBarButtonItem alloc] initWithTitle:@"Cadastro" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
-    [[self navigationItem] setLeftBarButtonItem:voltarItem];
     
     //Adiconar Estilos
     [self addEstilos];

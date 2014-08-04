@@ -20,6 +20,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [[self navigationItem] setTitle:@"Redefinir Senha"];
     }
     return self;
 }
@@ -30,17 +31,17 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    [[self navigationItem] setTitle:@"Redefinir Senha"];
-
-    UIBarButtonItem *voltarItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
-    [[self navigationItem] setLeftBarButtonItem:voltarItem];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     
     //Carrega email temporario
     [_txtEmail setText:[[LoginStore sharedStore] emailTemporario]];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    _btnProcurar.hidden = NO;
+    _lblMsg.hidden = YES;
 }
 
 -(void)retorna{

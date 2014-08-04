@@ -20,17 +20,13 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [[self navigationItem] setTitle:@"Horários de Ensaio"];
     }
     return self;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    [[self navigationItem] setTitle:@"Horários de Ensaio"];
-    
-    UIBarButtonItem *voltarItem = [[UIBarButtonItem alloc] initWithTitle:@"Cadastro" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
-    [[self navigationItem] setLeftBarButtonItem:voltarItem];
     
     [self carregaValoresHorarios];
 }

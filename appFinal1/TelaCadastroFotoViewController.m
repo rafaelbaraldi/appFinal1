@@ -89,7 +89,12 @@
         [CadastroConexao uploadFoto: foto];
     }
     
-    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
+    if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaPerfil]]) {
+        [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
+    }
+    else{
+        [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
+    }
 }
 
 -(void)carregaMenu{

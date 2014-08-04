@@ -20,17 +20,13 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [[self navigationItem] setTitle:@"Instrumentos Musicais"];
     }
     return self;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-
-    [[self navigationItem] setTitle:@"Instrumentos Musicais"];
-    
-    UIBarButtonItem *voltarItem = [[UIBarButtonItem alloc] initWithTitle:@"Cadastro" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
-    [[self navigationItem] setLeftBarButtonItem:voltarItem];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -78,12 +74,16 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //
     if(![[[CadastroStore sharedStore] instrumentosQueToca] containsObject:[[[CadastroStore sharedStore] instrumentosFiltrados] objectAtIndex:indexPath.row]]){
         [[[CadastroStore sharedStore] instrumentosQueToca] addObject:[[[CadastroStore sharedStore] instrumentosFiltrados] objectAtIndex:indexPath.row]];
     }
     
     [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaTBInstruementosQueToco] animated:YES];
+}
+
+-(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    
+    [searchBar resignFirstResponder];
 }
 
 @end

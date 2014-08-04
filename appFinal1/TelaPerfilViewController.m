@@ -24,6 +24,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [[self navigationItem] setHidesBackButton:YES];
     }
     return self;
 }
@@ -47,6 +48,10 @@
     [self carregaBotaoOpcoes];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self viewDidLoad];
+}
+
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
 }
@@ -64,6 +69,7 @@
         
         //Nome
         _lblPerfilNome.text = [[LocalStore sharedStore] usuarioAtual].nome;
+        NSLog(@"%@", _lblPerfilNome.text);
         _lblPerfilCidade.text = [[LocalStore sharedStore] usuarioAtual].cidade;
         _lblPerfilBairro.text = [[LocalStore sharedStore] usuarioAtual].bairro;
         

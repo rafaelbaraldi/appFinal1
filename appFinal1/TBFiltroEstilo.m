@@ -22,8 +22,6 @@
     if (self) {
         [[self navigationItem] setTitle:@"Filtro Estilo Musical"];
         
-        UIBarButtonItem *busca = [[UIBarButtonItem alloc]initWithTitle:@"Buscar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
-        [[self navigationItem] setLeftBarButtonItem:busca];
     }
     return self;
 }
@@ -95,6 +93,11 @@
     }
     
     [_tbEstilos reloadData];
+}
+
+-(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    
+    [searchBar resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning{

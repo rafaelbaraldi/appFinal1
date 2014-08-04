@@ -137,4 +137,17 @@
     return [NSString stringWithString:temp];
 }
 
+
++(BOOL)verificaSeViewJaEstaNaPilha:(NSArray*)viewControlers proximaTela:(UIViewController*)proximaTela{
+    BOOL estaNaPilha = NO;
+    
+    for (UIViewController* vc in viewControlers) {
+        if([vc isEqual:proximaTela]){
+            estaNaPilha = YES;
+        }
+    }
+    
+    return estaNaPilha;
+}
+
 @end

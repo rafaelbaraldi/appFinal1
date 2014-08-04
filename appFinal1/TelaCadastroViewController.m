@@ -140,11 +140,6 @@ const int OBSERVACOES = 2;
             //Realiza Login
             [LoginStore login:usuario.email senha:usuario.senha];
             
-            //Salva nomeFotoPerfil
-//            NSMutableString * str = [[NSMutableString alloc] initWithString:cadastrou];
-//            [str replaceOccurrencesOfString:@"\"" withString:@"" options:NSCaseInsensitiveSearch range:(NSRange){0,[str length]}];
-//            [[CadastroStore sharedStore] setNomeFotoPerfil:str];
-            
             [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaCadastroFoto] animated:YES];
         }
     }

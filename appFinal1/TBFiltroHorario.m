@@ -22,8 +22,6 @@
         
         [[self navigationItem] setTitle:@"Filtro Horários"];
         
-        UIBarButtonItem *busca = [[UIBarButtonItem alloc]initWithTitle:@"Buscar" style:UIBarButtonItemStylePlain target:self action:@selector(retorna)];
-        [[self navigationItem] setLeftBarButtonItem:busca];
     }
     return self;
 }

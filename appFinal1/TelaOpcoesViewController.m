@@ -44,15 +44,7 @@
 - (IBAction)btnSair:(id)sender {
     [LoginStore deslogar];
     
-    BOOL estaNaPilha = NO;
-    
-    for (UIViewController* vc in [[self navigationController] viewControllers]) {
-        if([vc isEqual:[[LocalStore sharedStore] TelaInicio]]){
-            estaNaPilha = YES;
-        }
-    }
-    
-    if (estaNaPilha) {
+    if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaInicio]]) {
         [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaInicio] animated:YES];
     }
     else{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -17,26 +17,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" alpha="0.55000001192092896" tag="1" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Y96-7r-qAJ">
-                    <rect key="frame" x="0.0" y="129" width="320" height="439"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <searchBar key="tableHeaderView" contentMode="redraw" id="YDY-DQ-oz2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <scopeButtonTitles>
+                            <string>Title</string>
+                            <string>Title</string>
+                        </scopeButtonTitles>
+                        <connections>
+                            <outlet property="delegate" destination="-1" id="FVg-Sd-qvL"/>
+                        </connections>
+                    </searchBar>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="B4F-Vl-E34"/>
                         <outlet property="delegate" destination="-1" id="A1C-2F-HfW"/>
                     </connections>
                 </tableView>
-                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDY-DQ-oz2">
-                    <rect key="frame" x="0.0" y="63" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <scopeButtonTitles>
-                        <string>Title</string>
-                        <string>Title</string>
-                    </scopeButtonTitles>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="FVg-Sd-qvL"/>
-                    </connections>
-                </searchBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

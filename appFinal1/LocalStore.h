@@ -62,4 +62,6 @@
 
 -(NSString*)substituiCaracteresHTML:(NSString*)htmlCode;
 
++(BOOL)verificaSeViewJaEstaNaPilha:(NSArray*)viewControlers proximaTela:(UIViewController*)proximaTela;
+
 @end
