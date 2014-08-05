@@ -74,11 +74,11 @@
     
     _lblAtribuicoes.text = _pessoa.atribuicoes;
     
-    //Estilo Musica
-    for (NSString* s in _pessoa.estilos) {
-        _lblEstilo.text = [NSString stringWithFormat:@"%@, %@", _lblEstilo.text, s];
-    }
-    _lblEstilo.text = [_lblEstilo.text substringFromIndex:2];
+    //Estilos
+    [self carregaEstilosUsuario];
+    
+    //Posicionamento das View
+    [self carregaPosicaoView];
     
     //Foto
     [self carregaImagemUsuario];
@@ -90,10 +90,45 @@
     [self carregaInstrumentosUsuario];
 }
 
+
+-(void)carregaEstilosUsuario{
+    
+    _lblEstilo.numberOfLines = ceilf((float)[_pessoa.estilos count] / 4);
+    [_lblEstilo sizeToFit];
+    
+    //Estilo Musica
+    for (NSString* s in _pessoa.estilos) {
+        _lblEstilo.text = [NSString stringWithFormat:@"%@, %@", _lblEstilo.text, s];
+    }
+    _lblEstilo.text = [_lblEstilo.text substringFromIndex:2];
+    
+    [self espacoEntreLinhasLBL:_lblEstilo];
+}
+
+-(void)carregaPosicaoView{
+    CGRect frame = _lblEstilo.frame;
+    frame.size.width = 299;
+    frame.size.height = ceilf((float)[_pessoa.estilos count] / 4) * 27;
+    [_lblEstilo setFrame:frame];
+
+    frame = _lblInstrumentos.frame;
+    frame.origin.y = _lblEstilo.frame.origin.y + _lblEstilo.frame.size.height + 30;
+    frame.size.height = ([_pessoa.instrumentos count] + 1) * 27;
+    [_lblInstrumentos setFrame:frame];
+
+    frame = _lblTituloAtribuicoes.frame;
+    frame.origin.y = _lblInstrumentos.frame.origin.y + _lblInstrumentos.frame.size.height + 30;
+    [_lblTituloAtribuicoes setFrame:frame];
+
+    frame = _lblAtribuicoes.frame;
+    frame.origin.y = _lblTituloAtribuicoes.frame.origin.y + _lblTituloAtribuicoes.frame.size.height + 10;
+    [_lblAtribuicoes setFrame:frame];
+}
+
 -(void)carregaHorariosUsuario{
     
-    UILabel *lblTituloHorario = [[UILabel alloc] initWithFrame:CGRectMake(10, 500, 300, 20)];
-    UILabel *lblHorarios = [[UILabel alloc] initWithFrame:CGRectMake(10, 520, 300, 20)];
+    UILabel *lblTituloHorario = [[UILabel alloc] initWithFrame:CGRectMake(10, _lblAtribuicoes.frame.origin.y + _lblAtribuicoes.frame.size.height + 30, 300, 20)];
+    UILabel *lblHorarios = [[UILabel alloc] initWithFrame:CGRectMake(10, lblTituloHorario.frame.origin.y + lblTituloHorario.frame.size.height + 20, 300, 20)];
     
     lblTituloHorario.text = @"Horarios para ensaio";
     lblHorarios.text = [TPHorario horariosEmTexto:_pessoa.horarios];
@@ -109,7 +144,7 @@
     
     //Aumentar o scroll
     _scrollView.frame = CGRectMake(0, 0, 320, 550 + (lblHorarios.frame.size.height / 2));
-    _scrollView.contentSize = CGSizeMake(320, 550 + (lblHorarios.frame.size.height / 2));
+    _scrollView.contentSize = CGSizeMake(320, lblHorarios.frame.origin.y + lblHorarios.frame.size.height + 20);
 }
 
 -(void)carregaImagemUsuario{

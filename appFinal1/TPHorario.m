@@ -12,7 +12,7 @@
 
 +(NSString*)horariosEmTexto:(NSMutableArray*)horarios{
     
-    NSString *txtHorario;
+    NSString *txtHorario = @"";
     int i = 1;
     for(int j = 0; j < [horarios count]; j = i){
 
@@ -28,10 +28,10 @@
     
         NSString *txtPeriodo = [self nomeDoPeriodo:tp.periodo];
         
-        if(j >= i){
+        if(j == i){
             i++;
         }
-        if (i >= [horarios count]) {
+        if (i == [horarios count]) {
             txtHorario = [NSString stringWithFormat:@"%@ %@ \n", txtHorario, txtPeriodo];
             break;
         }
@@ -41,11 +41,15 @@
             //Salva o periodo
             txtPeriodo = [NSString stringWithFormat:@"%@ - %@", txtPeriodo, [self nomeDoPeriodo:periodo]];
             i++;
+            
+            if (i == [horarios count]) {
+                break;
+            }
         }
         
         txtHorario = [NSString stringWithFormat:@"%@ %@ \n", txtHorario, txtPeriodo];
     }
-    txtHorario = [txtHorario substringFromIndex:6];
+//    txtHorario = [txtHorario substringFromIndex:6];
     
     return txtHorario;
 }

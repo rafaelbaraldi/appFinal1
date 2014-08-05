@@ -13,6 +13,8 @@
                 <outlet property="lblPerfilBairro" destination="IYv-DW-ThP" id="oUb-w3-BEN"/>
                 <outlet property="lblPerfilCidade" destination="Big-56-ACD" id="sHU-yF-yEM"/>
                 <outlet property="lblPerfilNome" destination="FVV-tH-vSQ" id="ww0-2j-BcB"/>
+                <outlet property="perfilItem" destination="adH-7g-cTX" id="1il-yw-3dZ"/>
+                <outlet property="tabBar" destination="gif-oH-5tS" id="bbF-6h-VxD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IAa-5y-tlx">
-                    <rect key="frame" x="12" y="222" width="300" height="297"/>
+                    <rect key="frame" x="12" y="222" width="300" height="295"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rqu-PP-wDZ">
                         <size key="itemSize" width="50" height="50"/>
@@ -88,6 +90,25 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gif-oH-5tS">
+                    <rect key="frame" x="0.0" y="525" width="320" height="49"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items>
+                        <tabBarItem tag="1" title="Gravar" image="gravar.png" id="dKl-z4-QUr">
+                            <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="10"/>
+                        </tabBarItem>
+                        <tabBarItem tag="2" systemItem="search" id="wg7-G1-VDR">
+                            <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="10"/>
+                        </tabBarItem>
+                        <tabBarItem tag="3" systemItem="contacts" id="adH-7g-cTX">
+                            <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="10"/>
+                        </tabBarItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Mb5-Ai-hzW"/>
+                    </connections>
+                </tabBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -95,6 +116,7 @@
         </view>
     </objects>
     <resources>
+        <image name="gravar.png" width="30" height="30"/>
         <image name="perfil.png" width="512" height="512"/>
     </resources>
 </document>

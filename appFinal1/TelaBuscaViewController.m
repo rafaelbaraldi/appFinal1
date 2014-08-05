@@ -33,6 +33,7 @@
     if (self) {
         [[self navigationItem] setTitle:@"Buscar Músico"];
         _usuarios = [[NSMutableArray alloc] init];
+        
     }
     return self;
 }
@@ -42,6 +43,14 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    if (![[[LocalStore sharedStore] usuarioAtual].identificador isEqualToString:@"0"]) {
+        [[self navigationItem] setHidesBackButton:YES];
+    }
+    else{
+        [[self navigationItem] setHidesBackButton:NO];
+    }
+    
+    [_tabBar setSelectedItem:_buscarItem];
     
     //Habilitar Botao de esonder Filtro
     [self habilitaBotaoEsconder];
@@ -57,6 +66,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
     
     //Metodo de Busca por cidade
     [_txtCidade addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
@@ -298,6 +308,32 @@
     fotoUsuario.tag = 3;
     
     return fotoUsuario;
+}
+
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    
+    UIViewController* vc;
+    
+    switch (item.tag) {
+        case 1:
+            vc = [[LocalStore sharedStore] TelaGravacao];
+            break;
+            
+        case 2:
+            vc = [[LocalStore sharedStore] TelaBusca];
+            break;
+            
+        case 3:
+            vc = [[LocalStore sharedStore] TelaPerfil];
+            break;
+    }
+    
+    if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:vc]) {
+        [[self navigationController] popToViewController:vc animated:YES];
+    }
+    else{
+        [[self navigationController] pushViewController:vc animated:YES];
+    }
 }
 
 @end

@@ -32,6 +32,20 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    //Botao opções
+    [self carregaBotaoOpcoes];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self viewDidLoad];
+    
+    if ([[[LocalStore sharedStore] usuarioAtual].identificador isEqualToString:@"0"]) {
+        [[self navigationItem] setRightBarButtonItem:nil];
+    }
+    else{
+        [self carregaBotaoOpcoes];
+    }
+    
     //Carrega dados do Usuario
     [self carregaDadosUsuario];
     
@@ -44,12 +58,8 @@
     //Titulo navigation
     [[self navigationItem] setTitle:[[LocalStore sharedStore] usuarioAtual].nome];
     
-    //Botao opções
-    [self carregaBotaoOpcoes];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [self viewDidLoad];
+    //Botao do NAvigationItem
+    [_tabBar setSelectedItem:_perfilItem];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -57,25 +67,22 @@
 }
 
 -(void)carregaDadosUsuario{
-
-    if(![[[LocalStore sharedStore] usuarioAtual].identificador isEqualToString:@"0"]){
-        
-        //Imagem
-        NSString *urlImage = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", [[LocalStore sharedStore] usuarioAtual].identificador];
-        
-        _imagePerfil.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]]];
-        _imagePerfil.layer.masksToBounds = YES;
-        _imagePerfil.layer.cornerRadius = _imagePerfil.frame.size.width / 2;
-        
-        //Nome
-        _lblPerfilNome.text = [[LocalStore sharedStore] usuarioAtual].nome;
-        NSLog(@"%@", _lblPerfilNome.text);
-        _lblPerfilCidade.text = [[LocalStore sharedStore] usuarioAtual].cidade;
-        _lblPerfilBairro.text = [[LocalStore sharedStore] usuarioAtual].bairro;
-        
-        //Editar Perfil
-        _btnPerfilEditar.enabled = YES;
-    }
+    
+    //Imagem
+    NSString *urlImage = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", [[LocalStore sharedStore] usuarioAtual].identificador];
+    
+    _imagePerfil.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]]];
+    _imagePerfil.layer.masksToBounds = YES;
+    _imagePerfil.layer.cornerRadius = _imagePerfil.frame.size.width / 2;
+    
+    //Nome
+    _lblPerfilNome.text = [[LocalStore sharedStore] usuarioAtual].nome;
+    NSLog(@"%@", _lblPerfilNome.text);
+    _lblPerfilCidade.text = [[LocalStore sharedStore] usuarioAtual].cidade;
+    _lblPerfilBairro.text = [[LocalStore sharedStore] usuarioAtual].bairro;
+    
+    //Editar Perfil
+    _btnPerfilEditar.enabled = YES;
 }
 
 -(void)carregaBotaoOpcoes{
@@ -183,6 +190,32 @@
 //    player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
     
     [player play];
+}
+
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    
+    UIViewController* vc;
+    
+    switch (item.tag) {
+        case 1:
+            vc = [[LocalStore sharedStore] TelaGravacao];
+            break;
+            
+        case 2:
+            vc = [[LocalStore sharedStore] TelaBusca];
+            break;
+            
+        case 3:
+            vc = [[LocalStore sharedStore] TelaPerfil];
+            break;
+    }
+    
+    if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:vc]) {
+        [[self navigationController] popToViewController:vc animated:YES];
+    }
+    else{
+        [[self navigationController] pushViewController:vc animated:YES];
+    }
 }
 
 @end

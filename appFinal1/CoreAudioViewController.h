@@ -10,7 +10,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface CoreAudioViewController : UIViewController {
+@interface CoreAudioViewController : UIViewController <UITabBarDelegate> {
     
     AVAudioRecorder *recorder;
     NSURL *urlPlay;
@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtNome;
 @property (weak, nonatomic) IBOutlet UITextField *txtCategoria;
 @property (weak, nonatomic) IBOutlet UIButton *btnGravar;
+@property (strong, nonatomic) IBOutlet UITabBarItem *gravarItem;
+@property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 
 - (IBAction)gravar:(id)sender;
 - (IBAction)playGravacao:(id)sender;

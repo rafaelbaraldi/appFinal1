@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblCidadeBairro;
 @property (strong, nonatomic) IBOutlet UILabel *lblEstilo;
 @property (weak, nonatomic) IBOutlet UILabel *lblAtribuicoes;
+@property (strong, nonatomic) IBOutlet UILabel *lblTituloAtribuicoes;
 @property (weak, nonatomic) IBOutlet UIImageView *imageUsuario;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblInstrumentos;

@@ -35,8 +35,6 @@
     
     [_txtSenha setSecureTextEntry:YES];
     
-    [[LocalStore sharedStore] setUltimaTela:@"TelaLoginViewController"];
-    
     
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
@@ -80,11 +78,11 @@
     if([email length] > 0 && [senha length] > 0){
         if([LoginStore login:email senha:senha]){
             
-            if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaPerfil]]) {
-                [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
+            if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaBusca]]) {
+                [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
             }
             else{
-                [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
+                [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
             }
         }
         else{

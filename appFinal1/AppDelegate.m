@@ -32,27 +32,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+
     
-    TPUsuario *usuarioZero = [[TPUsuario alloc] init];
-    usuarioZero.identificador = @"0";
-    usuarioZero.nome = @"nome";
-    usuarioZero.email = @"email";
-    usuarioZero.senha = @"senha";
-    usuarioZero.sexo = @"sexo";
-    usuarioZero.cidade = @"cidade";
-    usuarioZero.bairro = @"bairro";
-    usuarioZero.atribuicoes = @"atribuicoes";
-    usuarioZero.estilos = [[NSMutableArray alloc] init];
-    usuarioZero.instrumentos = [[NSMutableArray alloc] init];
-    usuarioZero.horarios = [[NSMutableArray alloc] init];
-    
-    [[LocalStore sharedStore] setUsuarioAtual:usuarioZero];
+    [LocalStore setParaUsuarioZero];
 
     BOOL logado = [LoginStore verificaSeEstaLogado];
     
     UIViewController *telaVc;
     if(logado){
-        telaVc = [[LocalStore sharedStore] TelaPerfil];
+        telaVc = [[LocalStore sharedStore] TelaBusca];
     }
     else{
         telaVc = [[LocalStore sharedStore] TelaInicio];

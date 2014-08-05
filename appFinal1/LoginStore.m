@@ -152,7 +152,7 @@ static NSString* senha = @"";
     recuperaUsuario = nil;
     
     //Remove usuarioAtual
-    [[LocalStore sharedStore] setUsuarioAtual:nil];
+    [LocalStore setParaUsuarioZero];
     
     //Remove autenticacao do Usuario
     NSUserDefaults *autenticaLogin = [NSUserDefaults standardUserDefaults];

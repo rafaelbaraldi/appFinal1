@@ -90,10 +90,10 @@
     }
     
     if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaPerfil]]) {
-        [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
+        [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
     }
     else{
-        [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
+        [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
     }
 }
 

@@ -25,6 +25,8 @@
 #import "TBEstilosViewController.h"
 #import "TBEstilosQueTocaViewController.h"
 
+#import "CoreAudioViewController.h"
+
 #import "TPUsuario.h"
 
 @interface LocalStore : NSObject
@@ -52,8 +54,8 @@
 @property TelaCadastroFotoViewController *TelaCadastroFoto;
 @property TelaUsuarioFiltrado *TelaUsuarioFiltrado;
 @property TelaOpcoesViewController *TelaOpcoes;
+@property CoreAudioViewController* TelaGravacao;
 
-@property NSString *ultimaTela;
 
 @property AppDelegate *appDelegate;
 @property NSManagedObjectContext *context;
@@ -63,5 +65,7 @@
 -(NSString*)substituiCaracteresHTML:(NSString*)htmlCode;
 
 +(BOOL)verificaSeViewJaEstaNaPilha:(NSArray*)viewControlers proximaTela:(UIViewController*)proximaTela;
+
++(void)setParaUsuarioZero;
 
 @end

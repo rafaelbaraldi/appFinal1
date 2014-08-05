@@ -14,6 +14,7 @@
                 <outlet property="lblInstrumentos" destination="WqM-s2-405" id="XVN-12-2xu"/>
                 <outlet property="lblNome" destination="Z08-L2-oai" id="pQy-WW-D6I"/>
                 <outlet property="lblSexo" destination="nvT-nw-Mew" id="e4Z-zZ-3B5"/>
+                <outlet property="lblTituloAtribuicoes" destination="vhV-R7-NhQ" id="3eu-Pn-Kzp"/>
                 <outlet property="scrollView" destination="Fuw-Nu-luh" id="Rvt-VV-nVg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

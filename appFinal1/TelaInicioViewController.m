@@ -40,6 +40,7 @@
 }
 
 - (IBAction)btnEntrarClick:(id)sender {
+    [LocalStore setParaUsuarioZero];
     [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
 }
 

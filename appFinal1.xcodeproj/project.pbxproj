@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B1666291935084000E2FB47 /* TPUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1666281935084000E2FB47 /* TPUsuario.m */; };
+		1B438252199169D000780F7D /* gravar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B438251199169D000780F7D /* gravar.png */; };
 		1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5FE13F192FC23B00E35BCC /* BuscaStore.m */; };
 		1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5FE143192FD00300E35BCC /* BuscaConexao.m */; };
 		1B82766F192BDB3500E461AD /* TelaBuscaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B82766D192BDB3500E461AD /* TelaBuscaViewController.m */; };
@@ -92,6 +93,7 @@
 /* Begin PBXFileReference section */
 		1B1666271935084000E2FB47 /* TPUsuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPUsuario.h; sourceTree = "<group>"; };
 		1B1666281935084000E2FB47 /* TPUsuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPUsuario.m; sourceTree = "<group>"; };
+		1B438251199169D000780F7D /* gravar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gravar.png; sourceTree = "<group>"; };
 		1B5FE13E192FC23B00E35BCC /* BuscaStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuscaStore.h; sourceTree = "<group>"; };
 		1B5FE13F192FC23B00E35BCC /* BuscaStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuscaStore.m; sourceTree = "<group>"; };
 		1B5FE142192FD00300E35BCC /* BuscaConexao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuscaConexao.h; sourceTree = "<group>"; };
@@ -234,6 +236,14 @@
 				73E0B14119893EFC00107711 /* TPHorario.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		1B438250199169BD00780F7D /* Imagens */ = {
+			isa = PBXGroup;
+			children = (
+				1B438251199169D000780F7D /* gravar.png */,
+			);
+			name = Imagens;
 			sourceTree = "<group>";
 		};
 		1B5FE13D192FC22600E35BCC /* Singleton */ = {
@@ -429,6 +439,7 @@
 		2FB3B33E197459E70054B7F7 /* Gravacao */ = {
 			isa = PBXGroup;
 			children = (
+				1B438250199169BD00780F7D /* Imagens */,
 				2FB3B33F197459F10054B7F7 /* Tela */,
 			);
 			name = Gravacao;
@@ -660,6 +671,7 @@
 				731B555D198817040092D608 /* perfil.png in Resources */,
 				1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */,
 				73A3072F19746B4C005551D3 /* TBInstrumentosViewController.xib in Resources */,
+				1B438252199169D000780F7D /* gravar.png in Resources */,
 				73EC6E93196B121B0034CB9B /* TelaLoginViewController.xib in Resources */,
 				737D09E91975C5D1000975F6 /* TelaInicioViewController.xib in Resources */,
 				31F83E15192E84C70070D597 /* TBFiltroEstilo.xib in Resources */,

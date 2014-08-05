@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVAudioPlayer.h>
 
-@interface TelaPerfilViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>{
+@interface TelaPerfilViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UITabBarDelegate>{
     AVAudioPlayer* player;
 }
 
@@ -28,5 +28,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnPerfilEditar;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionV;
+
+@property (strong, nonatomic) IBOutlet UITabBarItem *perfilItem;
+@property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 
 @end

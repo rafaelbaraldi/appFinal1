@@ -41,20 +41,21 @@
 
 -(void)carregaTelas{
     
-    _TelaTBInstruementosQueToco = [[TBInstrumentosQueTocaViewController alloc] init];
-    _TelaTBInstrumentos = [[TBInstrumentosViewController alloc] init];
-    _TelaTBEstilos = [[TBEstilosViewController alloc] init];
-    _TelaTBEstilosQueToco = [[TBEstilosQueTocaViewController alloc] init];
-    _TelaCadastro = [[TelaCadastroViewController alloc] init];
-    _TelaLogin = [[TelaLoginViewController alloc] init];
-    _TelaEsqueciSenha = [[TelaEsqueciSenhaViewController alloc] init];
-    _TelaPerfil = [[TelaPerfilViewController alloc] init];
-    _TelaBusca = [[TelaBuscaViewController alloc] init];
-    _TelaInicio = [[TelaInicioViewController alloc] init];
-    _TelaHorarios = [[TelaHorariosViewController alloc] init];
-    _TelaCadastroFoto = [[TelaCadastroFotoViewController alloc] init];
-    _TelaUsuarioFiltrado = [[TelaUsuarioFiltrado alloc] init];
-    _TelaOpcoes = [[TelaOpcoesViewController alloc] init];
+    _TelaTBInstruementosQueToco = [[TBInstrumentosQueTocaViewController alloc] initWithNibName:@"TBInstrumentosQueTocaViewController" bundle:nil];
+    _TelaTBInstrumentos = [[TBInstrumentosViewController alloc] initWithNibName:@"TBInstrumentosViewController" bundle:nil];
+    _TelaTBEstilos = [[TBEstilosViewController alloc] initWithNibName:@"TBEstilosViewController" bundle:nil];
+    _TelaTBEstilosQueToco = [[TBEstilosQueTocaViewController alloc] initWithNibName:@"TBEstilosQueTocaViewController" bundle:nil];
+    _TelaCadastro = [[TelaCadastroViewController alloc] initWithNibName:@"TelaCadastroViewController" bundle:nil];
+    _TelaLogin = [[TelaLoginViewController alloc] initWithNibName:@"TelaLoginViewController" bundle:nil];
+    _TelaEsqueciSenha = [[TelaEsqueciSenhaViewController alloc] initWithNibName:@"TelaEsqueciSenhaViewController" bundle:nil];
+    _TelaPerfil = [[TelaPerfilViewController alloc] initWithNibName:@"TelaPerfilViewController" bundle:nil];
+    _TelaBusca = [[TelaBuscaViewController alloc] initWithNibName:@"TelaBuscaViewController" bundle:nil];
+    _TelaInicio = [[TelaInicioViewController alloc] initWithNibName:@"TelaInicioViewController" bundle:nil];
+    _TelaHorarios = [[TelaHorariosViewController alloc] initWithNibName:@"TelaHorariosViewController" bundle:nil];
+    _TelaCadastroFoto = [[TelaCadastroFotoViewController alloc] initWithNibName:@"TelaCadastroFotoViewController" bundle:nil];
+    _TelaUsuarioFiltrado = [[TelaUsuarioFiltrado alloc] initWithNibName:@"TelaUsuarioFiltrado" bundle:nil];
+    _TelaOpcoes = [[TelaOpcoesViewController alloc] initWithNibName:@"TelaOpcoesViewController" bundle:nil];
+    _TelaGravacao = [[CoreAudioViewController alloc] initWithNibName:@"CoreAudioViewController" bundle:nil];
 }
 
 -(void)carregaContexto{
@@ -150,4 +151,20 @@
     return estaNaPilha;
 }
 
++(void)setParaUsuarioZero{
+    TPUsuario *usuarioZero = [[TPUsuario alloc] init];
+    usuarioZero.identificador = @"0";
+    usuarioZero.nome = @"Nome";
+    usuarioZero.email = @"Email";
+    usuarioZero.senha = @"Senha";
+    usuarioZero.sexo = @"Sexo";
+    usuarioZero.cidade = @"Cidade";
+    usuarioZero.bairro = @"Bairro";
+    usuarioZero.atribuicoes = @"Atribuições";
+    usuarioZero.estilos = [[NSMutableArray alloc] init];
+    usuarioZero.instrumentos = [[NSMutableArray alloc] init];
+    usuarioZero.horarios = [[NSMutableArray alloc] init];
+    
+    [[LocalStore sharedStore] setUsuarioAtual:usuarioZero];
+}
 @end

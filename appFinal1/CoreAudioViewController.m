@@ -24,8 +24,16 @@
     if (self) {
         // Custom initialization
         _gravando = false;
+        
+        [[self navigationItem] setTitle:@"Gravar"];
+        [[self navigationItem] setHidesBackButton:YES];
     }
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [_tabBar setSelectedItem:_gravarItem];
 }
 
 - (void)viewDidLoad
@@ -135,5 +143,30 @@
     [sender resignFirstResponder];
 }
 
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    
+    UIViewController* vc;
+    
+    switch (item.tag) {
+        case 1:
+            vc = [[LocalStore sharedStore] TelaGravacao];
+            break;
+            
+        case 2:
+            vc = [[LocalStore sharedStore] TelaBusca];
+            break;
+            
+        case 3:
+            vc = [[LocalStore sharedStore] TelaPerfil];
+            break;
+    }
+    
+    if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:vc]) {
+        [[self navigationController] popToViewController:vc animated:YES];
+    }
+    else{
+        [[self navigationController] pushViewController:vc animated:YES];
+    }
+}
 
 @end
