@@ -11,6 +11,8 @@
 #import "LoginStore.h"
 #import "LocalStore.h"
 #import "Musica.h"
+#import "PerfilStore.h"
+#import "TPBanda.h"
 
 #import <AVFoundation/AVAudioSession.h>
 
@@ -104,7 +106,32 @@
 }
 
 -(void)carregaBandas{
+    _bandas = [PerfilStore retornaListaDeBandas];
     
+    int x = 10;
+    
+    for (TPBanda* b in _bandas) {
+        
+        UIButton* icone = [[UIButton alloc] initWithFrame:CGRectMake(x, 15, 45, 45)];
+        [icone setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", [_bandas indexOfObject:b]]] forState:UIControlStateNormal];
+        
+        UILabel* nome = [[UILabel alloc] initWithFrame:CGRectMake(x, 45, 45, 45)];
+        nome.text =  b.nome;
+        nome.textColor = [UIColor blackColor];
+        [nome setFont:[UIFont fontWithName:@"Verdana" size:7.0]];
+        [nome setTextAlignment:NSTextAlignmentCenter];
+        
+        if([b.nome length] > 11){
+            [nome setNumberOfLines:2];
+        }
+        
+        [_scrollBanda addSubview:icone];
+        [_scrollBanda addSubview:nome];
+        
+        x += 70;
+    }
+    
+    [_scrollBanda setContentSize:CGSizeMake(x, 82)];
 }
 
 -(void)carregaAudios{

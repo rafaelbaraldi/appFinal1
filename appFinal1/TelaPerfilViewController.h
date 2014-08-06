@@ -17,6 +17,8 @@
 @property NSMutableArray* musicas;
 @property NSMutableArray* musicasPorCategoria;
 
+@property NSMutableArray* bandas;
+
 - (IBAction)btnPerfilEditarClick:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imagePerfil;
@@ -31,6 +33,7 @@
 
 @property (strong, nonatomic) IBOutlet UITabBarItem *perfilItem;
 @property (strong, nonatomic) IBOutlet UITabBar *tabBar;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollBanda;
 
 - (IBAction)btnCriarBandaClick:(id)sender;
 

@@ -38,6 +38,26 @@
 		1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */; };
 		1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */; };
 		1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8E3FB192544E900D108C0 /* LocalStore.m */; };
+		1BEA45821992C64B00876D75 /* TPBanda.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEA45811992C64B00876D75 /* TPBanda.m */; };
+		1BEA45951992C7A100876D75 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45841992C7A100876D75 /* 8.png */; };
+		1BEA45961992C7A100876D75 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45851992C7A100876D75 /* 9.png */; };
+		1BEA45971992C7A100876D75 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45861992C7A100876D75 /* 10.png */; };
+		1BEA45981992C7A100876D75 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45871992C7A100876D75 /* 11.png */; };
+		1BEA45991992C7A100876D75 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45881992C7A100876D75 /* 12.png */; };
+		1BEA459A1992C7A100876D75 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45891992C7A100876D75 /* 0.png */; };
+		1BEA459B1992C7A100876D75 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA458A1992C7A100876D75 /* 1.png */; };
+		1BEA459C1992C7A100876D75 /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA458B1992C7A100876D75 /* 13.png */; };
+		1BEA459D1992C7A100876D75 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA458C1992C7A100876D75 /* 2.png */; };
+		1BEA459E1992C7A100876D75 /* 14.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA458D1992C7A100876D75 /* 14.png */; };
+		1BEA459F1992C7A100876D75 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA458E1992C7A100876D75 /* 3.png */; };
+		1BEA45A01992C7A100876D75 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA458F1992C7A100876D75 /* 4.png */; };
+		1BEA45A11992C7A100876D75 /* 16.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45901992C7A100876D75 /* 16.png */; };
+		1BEA45A21992C7A100876D75 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45911992C7A100876D75 /* 6.png */; };
+		1BEA45A31992C7A100876D75 /* 15.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45921992C7A100876D75 /* 15.png */; };
+		1BEA45A41992C7A100876D75 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45931992C7A100876D75 /* 5.png */; };
+		1BEA45A51992C7A100876D75 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45941992C7A100876D75 /* 7.png */; };
+		1BEA45A91992C96200876D75 /* PerfilConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEA45A81992C96200876D75 /* PerfilConexao.m */; };
+		1BEA45AC1992C98D00876D75 /* PerfilStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEA45AB1992C98D00876D75 /* PerfilStore.m */; };
 		2F270FCB1981936C00EFBEB4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F270FCA1981936C00EFBEB4 /* Reachability.m */; };
 		2F79ACC519802CF000C3DD0E /* Musica.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F79ACC419802CF000C3DD0E /* Musica.m */; };
 		2F79ACCB19802D2900C3DD0E /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F79ACCA19802D2900C3DD0E /* Usuario.m */; };
@@ -142,6 +162,29 @@
 		1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaCadastroViewController.xib; sourceTree = "<group>"; };
 		1BE8E3FA192544E900D108C0 /* LocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStore.h; sourceTree = "<group>"; };
 		1BE8E3FB192544E900D108C0 /* LocalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStore.m; sourceTree = "<group>"; };
+		1BEA45801992C64B00876D75 /* TPBanda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBanda.h; sourceTree = "<group>"; };
+		1BEA45811992C64B00876D75 /* TPBanda.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBanda.m; sourceTree = "<group>"; };
+		1BEA45841992C7A100876D75 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		1BEA45851992C7A100876D75 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		1BEA45861992C7A100876D75 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
+		1BEA45871992C7A100876D75 /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
+		1BEA45881992C7A100876D75 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
+		1BEA45891992C7A100876D75 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		1BEA458A1992C7A100876D75 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		1BEA458B1992C7A100876D75 /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
+		1BEA458C1992C7A100876D75 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		1BEA458D1992C7A100876D75 /* 14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14.png; sourceTree = "<group>"; };
+		1BEA458E1992C7A100876D75 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		1BEA458F1992C7A100876D75 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		1BEA45901992C7A100876D75 /* 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 16.png; sourceTree = "<group>"; };
+		1BEA45911992C7A100876D75 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		1BEA45921992C7A100876D75 /* 15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15.png; sourceTree = "<group>"; };
+		1BEA45931992C7A100876D75 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		1BEA45941992C7A100876D75 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		1BEA45A71992C96200876D75 /* PerfilConexao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfilConexao.h; sourceTree = "<group>"; };
+		1BEA45A81992C96200876D75 /* PerfilConexao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfilConexao.m; sourceTree = "<group>"; };
+		1BEA45AA1992C98D00876D75 /* PerfilStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfilStore.h; sourceTree = "<group>"; };
+		1BEA45AB1992C98D00876D75 /* PerfilStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfilStore.m; sourceTree = "<group>"; };
 		2F270FC91981936C00EFBEB4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		2F270FCA1981936C00EFBEB4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		2F79ACC319802CF000C3DD0E /* Musica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Musica.h; sourceTree = "<group>"; };
@@ -244,6 +287,7 @@
 		1B1613021992A275009D5513 /* Banda */ = {
 			isa = PBXGroup;
 			children = (
+				1BEA45831992C75600876D75 /* Imagens */,
 				1B1613121992A975009D5513 /* WebService */,
 				1B1613091992A498009D5513 /* Singleton */,
 				1B1613031992A283009D5513 /* Tela */,
@@ -291,6 +335,8 @@
 				31F67C7C1935286600113DA8 /* TPInstrumento.m */,
 				73E0B14019893EFC00107711 /* TPHorario.h */,
 				73E0B14119893EFC00107711 /* TPHorario.m */,
+				1BEA45801992C64B00876D75 /* TPBanda.h */,
+				1BEA45811992C64B00876D75 /* TPBanda.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -494,6 +540,48 @@
 			name = Singleton;
 			sourceTree = "<group>";
 		};
+		1BEA45831992C75600876D75 /* Imagens */ = {
+			isa = PBXGroup;
+			children = (
+				1BEA45891992C7A100876D75 /* 0.png */,
+				1BEA458A1992C7A100876D75 /* 1.png */,
+				1BEA458C1992C7A100876D75 /* 2.png */,
+				1BEA458E1992C7A100876D75 /* 3.png */,
+				1BEA458F1992C7A100876D75 /* 4.png */,
+				1BEA45931992C7A100876D75 /* 5.png */,
+				1BEA45911992C7A100876D75 /* 6.png */,
+				1BEA45941992C7A100876D75 /* 7.png */,
+				1BEA45841992C7A100876D75 /* 8.png */,
+				1BEA45851992C7A100876D75 /* 9.png */,
+				1BEA45861992C7A100876D75 /* 10.png */,
+				1BEA45871992C7A100876D75 /* 11.png */,
+				1BEA45881992C7A100876D75 /* 12.png */,
+				1BEA458B1992C7A100876D75 /* 13.png */,
+				1BEA458D1992C7A100876D75 /* 14.png */,
+				1BEA45921992C7A100876D75 /* 15.png */,
+				1BEA45901992C7A100876D75 /* 16.png */,
+			);
+			name = Imagens;
+			sourceTree = "<group>";
+		};
+		1BEA45A61992C92100876D75 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				1BEA45A71992C96200876D75 /* PerfilConexao.h */,
+				1BEA45A81992C96200876D75 /* PerfilConexao.m */,
+			);
+			name = WebService;
+			sourceTree = "<group>";
+		};
+		1BEA45AD1992C99200876D75 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				1BEA45AA1992C98D00876D75 /* PerfilStore.h */,
+				1BEA45AB1992C98D00876D75 /* PerfilStore.m */,
+			);
+			name = Singleton;
+			sourceTree = "<group>";
+		};
 		2FB3B33E197459E70054B7F7 /* Gravacao */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +732,8 @@
 		73EC6E9C196B3B710034CB9B /* Perfil */ = {
 			isa = PBXGroup;
 			children = (
+				1BEA45AD1992C99200876D75 /* Singleton */,
+				1BEA45A61992C92100876D75 /* WebService */,
 				731B555B198816F20092D608 /* Imagens */,
 				739DA1E0198C0E53005053DB /* Tela */,
 			);
@@ -731,25 +821,42 @@
 				73A3072F19746B4C005551D3 /* TBInstrumentosViewController.xib in Resources */,
 				1B438252199169D000780F7D /* gravar.png in Resources */,
 				73EC6E93196B121B0034CB9B /* TelaLoginViewController.xib in Resources */,
+				1BEA459E1992C7A100876D75 /* 14.png in Resources */,
+				1BEA45A11992C7A100876D75 /* 16.png in Resources */,
+				1BEA45A51992C7A100876D75 /* 7.png in Resources */,
+				1BEA45961992C7A100876D75 /* 9.png in Resources */,
 				737D09E91975C5D1000975F6 /* TelaInicioViewController.xib in Resources */,
+				1BEA45A01992C7A100876D75 /* 4.png in Resources */,
 				31F83E15192E84C70070D597 /* TBFiltroEstilo.xib in Resources */,
+				1BEA45A21992C7A100876D75 /* 6.png in Resources */,
 				737F349F1976E71F00AAF796 /* TelaHorariosViewController.xib in Resources */,
 				73A3072419744C09005551D3 /* TBEstilosQueTocaViewController.xib in Resources */,
 				73A3072919744CBC005551D3 /* TBEstilosViewController.xib in Resources */,
 				31F67C7A193523D400113DA8 /* TelaUsuarioFiltrado.xib in Resources */,
 				739DA1DF198C0DF8005053DB /* opcoes.png in Resources */,
 				31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */,
+				1BEA45951992C7A100876D75 /* 8.png in Resources */,
+				1BEA45971992C7A100876D75 /* 10.png in Resources */,
+				1BEA45981992C7A100876D75 /* 11.png in Resources */,
 				1BE8E3C6192533AD00D108C0 /* InfoPlist.strings in Resources */,
+				1BEA459D1992C7A100876D75 /* 2.png in Resources */,
 				73A3073419746B60005551D3 /* TBInstrumentosQueTocaViewController.xib in Resources */,
 				737F34A11976F9CC00AAF796 /* cellHorario.xib in Resources */,
+				1BEA45991992C7A100876D75 /* 12.png in Resources */,
+				1BEA45A31992C7A100876D75 /* 15.png in Resources */,
 				73029BA719819A4200BFB4B3 /* TBFiltroHorario.xib in Resources */,
 				737F34A619785C3F00AAF796 /* TelaCadastroFotoViewController.xib in Resources */,
+				1BEA459B1992C7A100876D75 /* 1.png in Resources */,
 				1BE8E3D1192533AD00D108C0 /* Images.xcassets in Resources */,
+				1BEA459F1992C7A100876D75 /* 3.png in Resources */,
 				1B1613081992A2A1009D5513 /* TelaNovaBandaViewController.xib in Resources */,
 				31F67C75193515CC00113DA8 /* escrever.png in Resources */,
+				1BEA45A41992C7A100876D75 /* 5.png in Resources */,
 				1B1613111992A6E2009D5513 /* TelaAmigosViewController.xib in Resources */,
 				31C31744194783B700C99512 /* delete.png in Resources */,
 				73DF446D197053EB000EE360 /* TelaEsqueciSenhaViewController.xib in Resources */,
+				1BEA459A1992C7A100876D75 /* 0.png in Resources */,
+				1BEA459C1992C7A100876D75 /* 13.png in Resources */,
 				739DA1E5198C0E7D005053DB /* TelaOpcoesViewController.xib in Resources */,
 				2FB3B34419745A0B0054B7F7 /* CoreAudioViewController.xib in Resources */,
 				1B827670192BDB3500E461AD /* TelaBuscaViewController.xib in Resources */,
@@ -796,10 +903,12 @@
 				1BE8E3CC192533AD00D108C0 /* AppDelegate.m in Sources */,
 				73A3072319744C09005551D3 /* TBEstilosQueTocaViewController.m in Sources */,
 				739DA1E4198C0E7D005053DB /* TelaOpcoesViewController.m in Sources */,
+				1BEA45A91992C96200876D75 /* PerfilConexao.m in Sources */,
 				73EC6E92196B121B0034CB9B /* TelaLoginViewController.m in Sources */,
 				73A3072E19746B4C005551D3 /* TBInstrumentosViewController.m in Sources */,
 				1B16130C1992A4B0009D5513 /* BandaStore.m in Sources */,
 				73029BA619819A4200BFB4B3 /* TBFiltroHorario.m in Sources */,
+				1BEA45AC1992C98D00876D75 /* PerfilStore.m in Sources */,
 				1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */,
 				1B1613151992A993009D5513 /* BandaConexao.m in Sources */,
 				2F270FCB1981936C00EFBEB4 /* Reachability.m in Sources */,
@@ -808,6 +917,7 @@
 				1BE8E3C8192533AD00D108C0 /* main.m in Sources */,
 				737F34A519785C3F00AAF796 /* TelaCadastroFotoViewController.m in Sources */,
 				1B1613071992A2A1009D5513 /* TelaNovaBandaViewController.m in Sources */,
+				1BEA45821992C64B00876D75 /* TPBanda.m in Sources */,
 				31F67C7D1935286600113DA8 /* TPInstrumento.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

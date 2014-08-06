@@ -54,6 +54,8 @@
         
         [BandaStore criarBanda:_txtNomeDaBanda.text membros:idDosMembros];
     }
+    
+    [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
 }
 
 - (IBAction)txtNomeDaBandaDone:(id)sender {
