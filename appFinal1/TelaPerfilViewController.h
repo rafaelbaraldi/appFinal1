@@ -32,4 +32,6 @@
 @property (strong, nonatomic) IBOutlet UITabBarItem *perfilItem;
 @property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 
+- (IBAction)btnCriarBandaClick:(id)sender;
+
 @end

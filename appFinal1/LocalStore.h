@@ -19,6 +19,8 @@
 #import "TelaHorariosViewController.h"
 #import "TelaCadastroFotoViewController.h"
 #import "TelaOpcoesViewController.h"
+#import "TelaNovaBandaViewController.h"
+#import "TelaAmigosViewController.h"
 
 #import "TBInstrumentosViewController.h"
 #import "TBInstrumentosQueTocaViewController.h"
@@ -55,6 +57,8 @@
 @property TelaUsuarioFiltrado *TelaUsuarioFiltrado;
 @property TelaOpcoesViewController *TelaOpcoes;
 @property CoreAudioViewController* TelaGravacao;
+@property TelaNovaBandaViewController* TelaNovaBanda;
+@property TelaAmigosViewController* TelaAmigos;
 
 
 @property AppDelegate *appDelegate;

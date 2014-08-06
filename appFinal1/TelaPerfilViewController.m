@@ -51,6 +51,7 @@
     
     //Carrega os audios
     [self carregaAudios];
+    [_collectionV reloadData];
     
     //Carrega as Bandas
     [self carregaBandas];
@@ -218,4 +219,7 @@
     }
 }
 
+- (IBAction)btnCriarBandaClick:(id)sender {
+    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaNovaBanda] animated:YES];
+}
 @end

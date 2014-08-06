@@ -56,6 +56,8 @@
     _TelaUsuarioFiltrado = [[TelaUsuarioFiltrado alloc] initWithNibName:@"TelaUsuarioFiltrado" bundle:nil];
     _TelaOpcoes = [[TelaOpcoesViewController alloc] initWithNibName:@"TelaOpcoesViewController" bundle:nil];
     _TelaGravacao = [[CoreAudioViewController alloc] initWithNibName:@"CoreAudioViewController" bundle:nil];
+    _TelaNovaBanda = [[TelaNovaBandaViewController alloc] initWithNibName:@"TelaNovaBandaViewController" bundle:nil];
+    _TelaAmigos = [[TelaAmigosViewController alloc] initWithNibName:@"TelaAmigosViewController" bundle:nil];
 }
 
 -(void)carregaContexto{
