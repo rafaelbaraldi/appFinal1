@@ -12,7 +12,10 @@
 
 +(NSDictionary*)buscaIdAmigos:(NSString*)identificador;
 +(NSDictionary*)buscaBanda:(NSString*)identificador;
++(NSDictionary*)buscaMensagensBanda:(NSString*)identificador;
++(NSDictionary*)buscaMusicasBanda:(NSString*)identificador;
 
 +(NSString*)cadastraBanda:(NSData*)jsonCadastro;
++(NSString*)enviaMensagem:(NSString*)mensagem idBanda:(NSString*)idBanda idUsuario:(NSString*)idUsuario;
 
 @end

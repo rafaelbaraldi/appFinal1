@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B06F79F1993FC1800A6338C /* TPMensagem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B06F79E1993FC1800A6338C /* TPMensagem.m */; };
+		1B06F7A21993FC6400A6338C /* TPMusica.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B06F7A11993FC6400A6338C /* TPMusica.m */; };
+		1B06F7A6199414C700A6338C /* TelaInfosBandaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B06F7A4199414C700A6338C /* TelaInfosBandaViewController.m */; };
+		1B06F7A7199414C700A6338C /* TelaInfosBandaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B06F7A5199414C700A6338C /* TelaInfosBandaViewController.xib */; };
 		1B1613071992A2A1009D5513 /* TelaNovaBandaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1613051992A2A1009D5513 /* TelaNovaBandaViewController.m */; };
 		1B1613081992A2A1009D5513 /* TelaNovaBandaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1613061992A2A1009D5513 /* TelaNovaBandaViewController.xib */; };
 		1B16130C1992A4B0009D5513 /* BandaStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B16130B1992A4B0009D5513 /* BandaStore.m */; };
@@ -119,6 +123,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B06F79D1993FC1800A6338C /* TPMensagem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPMensagem.h; sourceTree = "<group>"; };
+		1B06F79E1993FC1800A6338C /* TPMensagem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPMensagem.m; sourceTree = "<group>"; };
+		1B06F7A01993FC6400A6338C /* TPMusica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPMusica.h; sourceTree = "<group>"; };
+		1B06F7A11993FC6400A6338C /* TPMusica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPMusica.m; sourceTree = "<group>"; };
+		1B06F7A3199414C700A6338C /* TelaInfosBandaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaInfosBandaViewController.h; sourceTree = "<group>"; };
+		1B06F7A4199414C700A6338C /* TelaInfosBandaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaInfosBandaViewController.m; sourceTree = "<group>"; };
+		1B06F7A5199414C700A6338C /* TelaInfosBandaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaInfosBandaViewController.xib; sourceTree = "<group>"; };
 		1B1613041992A2A1009D5513 /* TelaNovaBandaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaNovaBandaViewController.h; sourceTree = "<group>"; };
 		1B1613051992A2A1009D5513 /* TelaNovaBandaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaNovaBandaViewController.m; sourceTree = "<group>"; };
 		1B1613061992A2A1009D5513 /* TelaNovaBandaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaNovaBandaViewController.xib; sourceTree = "<group>"; };
@@ -312,6 +323,9 @@
 				31A0043C1993F0CA00121EF6 /* TelaBandaViewController.h */,
 				31A0043D1993F0CA00121EF6 /* TelaBandaViewController.m */,
 				31A0043E1993F0CA00121EF6 /* TelaBandaViewController.xib */,
+				1B06F7A3199414C700A6338C /* TelaInfosBandaViewController.h */,
+				1B06F7A4199414C700A6338C /* TelaInfosBandaViewController.m */,
+				1B06F7A5199414C700A6338C /* TelaInfosBandaViewController.xib */,
 			);
 			name = Tela;
 			sourceTree = "<group>";
@@ -345,6 +359,10 @@
 				73E0B14119893EFC00107711 /* TPHorario.m */,
 				1BEA45801992C64B00876D75 /* TPBanda.h */,
 				1BEA45811992C64B00876D75 /* TPBanda.m */,
+				1B06F79D1993FC1800A6338C /* TPMensagem.h */,
+				1B06F79E1993FC1800A6338C /* TPMensagem.m */,
+				1B06F7A01993FC6400A6338C /* TPMusica.h */,
+				1B06F7A11993FC6400A6338C /* TPMusica.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -825,6 +843,7 @@
 			files = (
 				73EC6EA1196B3BB90034CB9B /* TelaPerfilViewController.xib in Resources */,
 				731B555D198817040092D608 /* perfil.png in Resources */,
+				1B06F7A7199414C700A6338C /* TelaInfosBandaViewController.xib in Resources */,
 				1BE8E3F31925343300D108C0 /* TelaCadastroViewController.xib in Resources */,
 				73A3072F19746B4C005551D3 /* TBInstrumentosViewController.xib in Resources */,
 				1B438252199169D000780F7D /* gravar.png in Resources */,
@@ -911,12 +930,14 @@
 				1B1666291935084000E2FB47 /* TPUsuario.m in Sources */,
 				1B82766F192BDB3500E461AD /* TelaBuscaViewController.m in Sources */,
 				1BE8E3CC192533AD00D108C0 /* AppDelegate.m in Sources */,
+				1B06F7A6199414C700A6338C /* TelaInfosBandaViewController.m in Sources */,
 				73A3072319744C09005551D3 /* TBEstilosQueTocaViewController.m in Sources */,
 				739DA1E4198C0E7D005053DB /* TelaOpcoesViewController.m in Sources */,
 				1BEA45A91992C96200876D75 /* PerfilConexao.m in Sources */,
 				73EC6E92196B121B0034CB9B /* TelaLoginViewController.m in Sources */,
 				73A3072E19746B4C005551D3 /* TBInstrumentosViewController.m in Sources */,
 				1B16130C1992A4B0009D5513 /* BandaStore.m in Sources */,
+				1B06F79F1993FC1800A6338C /* TPMensagem.m in Sources */,
 				73029BA619819A4200BFB4B3 /* TBFiltroHorario.m in Sources */,
 				1BEA45AC1992C98D00876D75 /* PerfilStore.m in Sources */,
 				1B5FE144192FD00300E35BCC /* BuscaConexao.m in Sources */,
@@ -925,6 +946,7 @@
 				737F349E1976E71F00AAF796 /* TelaHorariosViewController.m in Sources */,
 				2F79ACCB19802D2900C3DD0E /* Usuario.m in Sources */,
 				1BE8E3C8192533AD00D108C0 /* main.m in Sources */,
+				1B06F7A21993FC6400A6338C /* TPMusica.m in Sources */,
 				737F34A519785C3F00AAF796 /* TelaCadastroFotoViewController.m in Sources */,
 				1B1613071992A2A1009D5513 /* TelaNovaBandaViewController.m in Sources */,
 				1BEA45821992C64B00876D75 /* TPBanda.m in Sources */,

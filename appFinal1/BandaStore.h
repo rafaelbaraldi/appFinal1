@@ -18,7 +18,11 @@
 @property NSString *idBandaSelecionada;
 
 +(NSMutableArray*)retornaListaDeAmigos;
++(NSMutableArray*)buscaMensagensBanda:(NSString*)identificador;
++(NSMutableArray*)buscaMusicasBanda:(NSString*)identificador;
 +(NSString*)criarBanda:(NSString*)nome membros:(NSString*)membros;
+
++(NSString*)enviaMensagem:(NSString*)mensagem idBanda:(NSString*)idBanda idUsuario:(NSString*)idUsuario;
 
 +(TPBanda*)buscaBanda:(NSString*)identificador;
 

@@ -10,6 +10,8 @@
 #import "BandaConexao.h"
 #import "LocalStore.h"
 #import "BuscaStore.h"
+#import "TPMensagem.h"
+#import "TPMusica.h"
 
 @implementation BandaStore
 
@@ -73,27 +75,63 @@
     
     banda.identificador = @"";
     banda.nome = @"";
-    banda.mensagens = [[NSMutableArray alloc] init];
     banda.membros = [[NSMutableArray alloc]init];
-    banda.musicas = [[NSMutableArray alloc]init];
     
     for(NSString *s in json){
         if([banda.nome  isEqualToString:@""]){
             banda.identificador = [s valueForKeyPath:@"id"];
             banda.nome = [s valueForKeyPath:@"nome"];;
         }
-        if (![[s valueForKeyPath:@"mensagem"] isEqualToString:@""]){
-            [banda.mensagens addObject:[s valueForKeyPath:@"mensagem"]];
-        }
         if (![[s valueForKeyPath:@"usuario_id"] isEqualToString:@""]) {
-            [banda.membros addObject:[s valueForKeyPath:@"usuario_id"]];
-        }
-        if (![[s valueForKeyPath:@"musica"] isEqualToString:@""]) {
-            [banda.musicas addObject:[s valueForKeyPath:@"musica"]];
+            TPUsuario* membro = [[TPUsuario alloc] init];
+            membro.identificador = [s valueForKeyPath:@"usuario_id"];
+            membro.nome = [s valueForKeyPath:@"nome_usuario"];
+            [banda.membros addObject:membro];
         }
     }
     
+    banda.mensagens = [BandaStore buscaMensagensBanda:identificador];
+    banda.musicas = [BandaStore buscaMusicasBanda:identificador];
+    
     return banda;
+}
+
++(NSMutableArray*)buscaMensagensBanda:(NSString*)identificador{
+    NSDictionary* json = [BandaConexao buscaMensagensBanda:identificador];
+    
+    NSMutableArray* lista = [[NSMutableArray alloc] init];
+    
+    for (NSString* s in json) {
+        TPMensagem* m = [[TPMensagem alloc] init];
+        m.identificador = [s valueForKey:@"mensagem_id"];
+        m.mensagem = [s valueForKey:@"mensagem"];
+        m.idUsuario = [s valueForKey:@"usuario_id"];
+        
+        [lista addObject:m];
+    }
+    
+    return lista;
+}
+
++(NSMutableArray*)buscaMusicasBanda:(NSString*)identificador{
+    NSDictionary* json = [BandaConexao buscaMusicasBanda:identificador];
+    
+    NSMutableArray* lista = [[NSMutableArray alloc] init];
+    
+    for (NSString* s in json) {
+        TPMusica* m = [[TPMusica alloc] init];
+        m.identificador = [s valueForKey:@"musica_id"];
+        m.url = [s valueForKey:@"musica"];
+        m.idUsuario = [s valueForKey:@"usuario_id"];
+        
+        [lista addObject:m];
+    }
+    
+    return lista;
+}
+
++(NSString*)enviaMensagem:(NSString*)mensagem idBanda:(NSString*)idBanda idUsuario:(NSString*)idUsuario{
+    return [BandaConexao enviaMensagem:mensagem idBanda:idBanda idUsuario:idUsuario];
 }
 
 @end

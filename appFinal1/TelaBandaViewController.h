@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TelaBandaViewController : UIViewController
+#import "TPBanda.h"
+
+@interface TelaBandaViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property TPBanda* banda;
+
+@property (strong, nonatomic) IBOutlet UITableView *tbMensagens;
+
+- (IBAction)txtMensagemSend:(id)sender;
 
 @end

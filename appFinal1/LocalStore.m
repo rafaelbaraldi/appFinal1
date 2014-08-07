@@ -59,6 +59,7 @@
     _TelaNovaBanda = [[TelaNovaBandaViewController alloc] initWithNibName:@"TelaNovaBandaViewController" bundle:nil];
     _TelaAmigos = [[TelaAmigosViewController alloc] initWithNibName:@"TelaAmigosViewController" bundle:nil];
     _TelaBanda = [[TelaBandaViewController alloc] initWithNibName:@"TelaBandaViewController" bundle:nil];
+//    _TelaInfosBanda = [[TelaInfosBandaViewController alloc] initWithNibName:@"TelaInfosBandaViewController" bundle:nil];
 }
 
 -(void)carregaContexto{

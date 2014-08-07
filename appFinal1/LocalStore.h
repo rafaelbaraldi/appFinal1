@@ -22,6 +22,7 @@
 #import "TelaNovaBandaViewController.h"
 #import "TelaAmigosViewController.h"
 #import "TelaBandaViewController.h"
+//#import "TelaInfosBandaViewController.h"
 
 #import "TBInstrumentosViewController.h"
 #import "TBInstrumentosQueTocaViewController.h"
@@ -61,6 +62,7 @@
 @property TelaNovaBandaViewController* TelaNovaBanda;
 @property TelaAmigosViewController* TelaAmigos;
 @property TelaBandaViewController *TelaBanda;
+//@property TelaInfosBandaViewController *TelaInfosBanda;
 
 
 @property AppDelegate *appDelegate;
