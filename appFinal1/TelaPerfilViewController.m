@@ -10,6 +10,8 @@
 
 #import "LoginStore.h"
 #import "LocalStore.h"
+#import "BandaStore.h"
+
 #import "Musica.h"
 #import "PerfilStore.h"
 #import "TPBanda.h"
@@ -112,9 +114,13 @@
     
     for (TPBanda* b in _bandas) {
         
+        //Imagem
         UIButton* icone = [[UIButton alloc] initWithFrame:CGRectMake(x, 15, 45, 45)];
         [icone setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", [_bandas indexOfObject:b]]] forState:UIControlStateNormal];
+        [icone setTitle:b.identificador forState:UIControlStateNormal];
+        [icone addTarget:self action:@selector(banda:) forControlEvents:UIControlEventTouchUpInside];
         
+        //Nome
         UILabel* nome = [[UILabel alloc] initWithFrame:CGRectMake(x, 45, 45, 45)];
         nome.text =  b.nome;
         nome.textColor = [UIColor blackColor];
@@ -128,10 +134,25 @@
         [_scrollBanda addSubview:icone];
         [_scrollBanda addSubview:nome];
         
+        
+        //Posicao
         x += 70;
     }
-    
+
+    //Scroll
     [_scrollBanda setContentSize:CGSizeMake(x, 82)];
+}
+
+-(void)banda:(UIButton*)bt{
+    
+    [[BandaStore sharedStore] setIdBandaSelecionada:[bt titleLabel].text];
+    
+    if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaBanda]]) {
+        [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaBanda] animated:YES];
+    }
+    else{
+        [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaBanda] animated:YES];
+    }
 }
 
 -(void)carregaAudios{

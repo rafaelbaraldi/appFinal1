@@ -34,6 +34,29 @@
     return json;
 }
 
++(NSDictionary*)buscaBanda:(NSString*)identificador{
+    NSString *url = @"http://54.187.203.61/appMusica/buscaBanda.php";
+    
+    NSString *post = [NSString stringWithFormat:@"id=%@", identificador];
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSMutableURLRequest *request = [[ NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"context-type"];
+    [request setHTTPBody:postData];
+    
+    NSURLResponse *response;
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    
+    NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    s = [[LocalStore sharedStore]substituiCaracteresHTML:s];
+    
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[s dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
+    
+    return json;
+}
+
 +(NSString*)cadastraBanda:(NSData*)jsonCadastro{
     NSString *url = @"http://54.187.203.61/appMusica/cadastroBanda.php";
     

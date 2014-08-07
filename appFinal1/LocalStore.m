@@ -58,6 +58,7 @@
     _TelaGravacao = [[CoreAudioViewController alloc] initWithNibName:@"CoreAudioViewController" bundle:nil];
     _TelaNovaBanda = [[TelaNovaBandaViewController alloc] initWithNibName:@"TelaNovaBandaViewController" bundle:nil];
     _TelaAmigos = [[TelaAmigosViewController alloc] initWithNibName:@"TelaAmigosViewController" bundle:nil];
+    _TelaBanda = [[TelaBandaViewController alloc] initWithNibName:@"TelaBandaViewController" bundle:nil];
 }
 
 -(void)carregaContexto{

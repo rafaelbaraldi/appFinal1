@@ -11,6 +11,7 @@
 @interface BandaConexao : NSObject
 
 +(NSDictionary*)buscaIdAmigos:(NSString*)identificador;
++(NSDictionary*)buscaBanda:(NSString*)identificador;
 
 +(NSString*)cadastraBanda:(NSData*)jsonCadastro;
 

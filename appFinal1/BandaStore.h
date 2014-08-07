@@ -8,13 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+#import "TPBanda.h"
+
 @interface BandaStore : NSObject
 
 +(BandaStore*)sharedStore;
 
 @property NSMutableArray* membros;
+@property NSString *idBandaSelecionada;
 
 +(NSMutableArray*)retornaListaDeAmigos;
 +(NSString*)criarBanda:(NSString*)nome membros:(NSString*)membros;
+
++(TPBanda*)buscaBanda:(NSString*)identificador;
 
 @end

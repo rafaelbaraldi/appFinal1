@@ -65,4 +65,35 @@
     return cadastrou;
 }
 
++(TPBanda*)buscaBanda:(NSString*)identificador{
+    
+    NSDictionary *json = [BandaConexao buscaBanda:identificador];
+    
+    TPBanda *banda = [[TPBanda alloc] init];
+    
+    banda.identificador = @"";
+    banda.nome = @"";
+    banda.mensagens = [[NSMutableArray alloc] init];
+    banda.membros = [[NSMutableArray alloc]init];
+    banda.musicas = [[NSMutableArray alloc]init];
+    
+    for(NSString *s in json){
+        if([banda.nome  isEqualToString:@""]){
+            banda.identificador = [s valueForKeyPath:@"id"];
+            banda.nome = [s valueForKeyPath:@"nome"];;
+        }
+        if (![[s valueForKeyPath:@"mensagem"] isEqualToString:@""]){
+            [banda.mensagens addObject:[s valueForKeyPath:@"mensagem"]];
+        }
+        if (![[s valueForKeyPath:@"usuario_id"] isEqualToString:@""]) {
+            [banda.membros addObject:[s valueForKeyPath:@"usuario_id"]];
+        }
+        if (![[s valueForKeyPath:@"musica"] isEqualToString:@""]) {
+            [banda.musicas addObject:[s valueForKeyPath:@"musica"]];
+        }
+    }
+    
+    return banda;
+}
+
 @end
