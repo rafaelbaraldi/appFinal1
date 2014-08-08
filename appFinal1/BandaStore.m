@@ -134,4 +134,8 @@
     return [BandaConexao enviaMensagem:mensagem idBanda:idBanda idUsuario:idUsuario];
 }
 
++(NSString*)enviaMusica:(NSString*)nomeMusica urlMusica:(NSString*)urlMusica idBanda:(NSString*)idBanda idUsuario:(NSString*)idUsuario{
+    return [BandaConexao enviaMusica:nomeMusica urlMusica:urlMusica idBanda:idBanda idUsuario:idUsuario];
+}
+
 @end

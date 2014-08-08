@@ -18,4 +18,6 @@
 +(NSString*)cadastraBanda:(NSData*)jsonCadastro;
 +(NSString*)enviaMensagem:(NSString*)mensagem idBanda:(NSString*)idBanda idUsuario:(NSString*)idUsuario;
 
++(NSString*)enviaMusica:(NSString*)nomeMusica urlMusica:(NSString*)urlMusica idBanda:(NSString*)idBanda idUsuario:(NSString*)idUsuario;
+
 @end

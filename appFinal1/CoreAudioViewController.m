@@ -86,8 +86,7 @@
     m.nome = _txtNome.text;
     m.categoria = _txtCategoria.text;
     m.url = urlPlay.path;
-    m.idUsuario = 0;
-    
+    m.idUsuario = [NSNumber numberWithInt:[[[LocalStore sharedStore] usuarioAtual].identificador intValue]];
     [[[LocalStore sharedStore] context] save:nil];
 }
 

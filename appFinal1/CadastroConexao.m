@@ -37,8 +37,8 @@
     [request setHTTPBody:body];
 
     NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",s);
+//    NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",s);
 }
 
 +(NSString*)cadastrar:(NSData*)jsonCadastro{

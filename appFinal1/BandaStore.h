@@ -26,4 +26,6 @@
 
 +(TPBanda*)buscaBanda:(NSString*)identificador;
 
++(NSString*)enviaMusica:(NSString*)nomeMusica urlMusica:(NSString*)urlMusica idBanda:(NSString*)idBanda idUsuario:(NSString*)idUsuario;
+
 @end

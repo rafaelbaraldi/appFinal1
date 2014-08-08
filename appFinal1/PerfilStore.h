@@ -12,4 +12,8 @@
 
 +(NSMutableArray*)retornaListaDeBandas;
 
++(NSMutableArray*)retornaListaDeMusicas;
++(NSMutableArray*)retornaListaDeMusicasPorCategorias:(NSMutableArray*)musicas;
++(NSMutableArray*)retornaListaDeCategorias:(NSMutableArray*)musicas;
+
 @end

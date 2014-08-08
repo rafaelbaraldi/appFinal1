@@ -67,6 +67,14 @@
     [_tabBar setSelectedItem:_perfilItem];
 }
 
+-(void) viewWillDisappear:(BOOL)animated{
+
+    //Remove view da scroll Banda
+    for (UIView* v in [_scrollBanda subviews]) {
+        [v removeFromSuperview];
+    }
+}
+
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
 }
@@ -156,25 +164,10 @@
 }
 
 -(void)carregaAudios{
-    _musicas = [[NSMutableArray alloc] initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Musica"] error:nil]];
-    _categorias = [[NSMutableArray alloc] init];
-    _musicasPorCategoria = [[NSMutableArray alloc] init];
     
-    for (Musica* m in _musicas) {
-        if(![_categorias containsObject:m.categoria]){
-            [_categorias addObject:m.categoria];
-            [_musicasPorCategoria addObject:[[NSMutableArray alloc] init]];
-        }
-        //        NSLog(@"%@", m.url);
-    }
-    
-    for (int i = 0; i < [_categorias count]; i++) {
-        for (Musica* m in _musicas) {
-            if([[_categorias objectAtIndex:i] isEqualToString:m.categoria]){
-                [[_musicasPorCategoria objectAtIndex:i] addObject:m];
-            }
-        }
-    }
+    _musicas = [PerfilStore retornaListaDeMusicas];
+    _categorias = [PerfilStore retornaListaDeCategorias:_musicas];
+    _musicasPorCategoria = [PerfilStore retornaListaDeMusicasPorCategorias:_musicas];
     
     [_collectionV registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"FlickrCell"];
     [_collectionV registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
