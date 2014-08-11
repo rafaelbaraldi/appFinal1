@@ -9,6 +9,7 @@
 #import "TelaInfosBandaViewController.h"
 #import "TelaMusicasViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "TPMusica.h"
 
 @interface TelaInfosBandaViewController ()
 
@@ -46,9 +47,52 @@
     for (UIView* v in [_scrollMembros subviews]) {
         [v removeFromSuperview];
     }
+    
+    for (UIView* v in [_scrollMusicas subviews]) {
+        [v removeFromSuperview];
+    }
 }
 
 -(void)carregaMusicas{
+    int x = 15;
+    int y = 10;
+    
+    int i = 0;
+    
+    for (TPMusica* u in _banda.musicas) {
+        
+        if(i % 2 == 0){
+            y = 10;
+        }
+        else{
+            y = 95;
+        }
+        
+        UIButton* view = [[UIButton alloc] initWithFrame:CGRectMake(15, 3, 45, 45)];
+        CGRect frame = [view frame];
+        frame.origin.x = x;
+        frame.origin.y = y;
+        [view setFrame:frame];
+        view.titleLabel.text = u.url;
+        [view setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        
+        [_scrollMusicas addSubview:view];
+        
+        if(!(i % 2 == 0)){
+            x += 80;
+        }
+        
+        i++;
+    }
+    
+    if(!(i % 2 == 0)){
+        [_scrollMusicas setContentSize:CGSizeMake(x + 80, 169)];
+    }
+    else{
+        [_scrollMusicas setContentSize:CGSizeMake(x, 169)];
+    }
+    
+    
     
     
     //    player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:@"/Users/rafaelbaraldi/Library/Application Support/iPhone Simulator/7.1/Applications/617742BD-CC25-4CBD-8D3F-450293F47FEB/tmp/0.ter.t"] error:nil];

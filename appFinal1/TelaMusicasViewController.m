@@ -11,6 +11,7 @@
 #import "PerfilStore.h"
 #import "Musica.h"
 #import "TelaInfosBandaViewController.h"
+#import "BandaStore.h"
 
 @interface TelaMusicasViewController ()
 
@@ -67,6 +68,10 @@
     
     
     NSString* s = [BandaStore enviaMusica:((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).nome urlMusica:((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).url idBanda:[[BandaStore sharedStore] idBandaSelecionada] idUsuario:[[LocalStore sharedStore] usuarioAtual].identificador];
+    
+    if([s length] > 0){
+        [BandaStore enviaMensagem:[NSString stringWithFormat:@"%@ enviou uma nova musica! Consulte as musicas de sua banda clicando no nome da banda acima", [[LocalStore sharedStore] usuarioAtual].nome] idBanda:[[BandaStore sharedStore] idBandaSelecionada] idUsuario:[[LocalStore sharedStore] usuarioAtual].identificador];
+    }
     
     
     [[self navigationController] popViewControllerAnimated:YES];
