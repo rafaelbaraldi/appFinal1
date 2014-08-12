@@ -53,6 +53,20 @@
     }
 }
 
+-(void)play:(UIButton*)sender{
+    
+    NSString* s = sender.titleLabel.text;
+    NSError* e;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://54.187.203.61/appMusica/MusicasDeBandas/7/38/lll.aac"] error:&e];
+    
+    NSURL* u = [[NSURL alloc] initWithString:@"http://54.187.203.61/appMusica/MusicasDeBandas/7/38/oi.mp3"];
+    NSData* d = [[NSData alloc] initWithContentsOfURL:u];
+    player = [[AVAudioPlayer alloc] initWithData:d error:nil];
+    [player setVolume:10];
+    [player prepareToPlay];
+    [player play];
+}
+
 -(void)carregaMusicas{
     int x = 15;
     int y = 10;
@@ -68,15 +82,23 @@
             y = 95;
         }
         
-        UIButton* view = [[UIButton alloc] initWithFrame:CGRectMake(15, 3, 45, 45)];
+        UIButton* view = [[UIButton alloc] initWithFrame:CGRectMake(x - 10, y + 45, 75, 45)];
         CGRect frame = [view frame];
         frame.origin.x = x;
         frame.origin.y = y;
         [view setFrame:frame];
-        view.titleLabel.text = u.url;
-        [view setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [view setTitle:u.url forState:UIControlStateNormal];
+        [view setBackgroundColor:[UIColor greenColor]];
+        [[view titleLabel] setAlpha:0];
+        [view addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UILabel* lblNome = [[UILabel alloc] initWithFrame:CGRectMake(x - 10, y + 45, 75, 45)];
+        [lblNome setFont:[UIFont fontWithName:@"Verdana" size:7.0]];
+        [lblNome setTextAlignment:NSTextAlignmentCenter];
+        lblNome.text = u.url;
         
         [_scrollMusicas addSubview:view];
+        [_scrollMusicas addSubview:lblNome];
         
         if(!(i % 2 == 0)){
             x += 80;
@@ -91,23 +113,10 @@
     else{
         [_scrollMusicas setContentSize:CGSizeMake(x, 169)];
     }
+ 
     
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     
-    
-    
-    //    player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:@"/Users/rafaelbaraldi/Library/Application Support/iPhone Simulator/7.1/Applications/617742BD-CC25-4CBD-8D3F-450293F47FEB/tmp/0.ter.t"] error:nil];
-    
-    //    NSURL* url = [[NSURL alloc] initFileURLWithPath:((Musica*)[_musicas objectAtIndex:2]).url];
-    //    player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
-    
-//    player = [[AVAudioPlayer alloc]initWithContentsOfURL:urlPlay error:nil];
-    
-    
-    
-//    AVAudioPlayer *player;
-//    
-//    player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://54.187.203.61/appMusica/FotosDePerfil/0.1.a.aac"] error:nil];
-//    [player play];
 }
 
 -(void)carregaMembros{
