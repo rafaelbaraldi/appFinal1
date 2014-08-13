@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblEstilo;
 @property (weak, nonatomic) IBOutlet UILabel *lblAtribuicoes;
 @property (strong, nonatomic) IBOutlet UILabel *lblTituloAtribuicoes;
+@property (strong, nonatomic) IBOutlet UILabel *lblEmail;
 @property (weak, nonatomic) IBOutlet UIImageView *imageUsuario;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblInstrumentos;

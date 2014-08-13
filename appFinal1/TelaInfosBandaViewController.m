@@ -56,15 +56,13 @@
 -(void)play:(UIButton*)sender{
     
     NSString* s = sender.titleLabel.text;
-    NSError* e;
-    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://54.187.203.61/appMusica/MusicasDeBandas/7/38/lll.aac"] error:&e];
     
-    NSURL* u = [[NSURL alloc] initWithString:@"http://54.187.203.61/appMusica/MusicasDeBandas/7/38/oi.mp3"];
+    NSURL* u = [[NSURL alloc] initWithString:s];
     NSData* d = [[NSData alloc] initWithContentsOfURL:u];
-    player = [[AVAudioPlayer alloc] initWithData:d error:nil];
-    [player setVolume:10];
-    [player prepareToPlay];
-    [player play];
+    _player = [[AVAudioPlayer alloc] initWithData:d error:nil];
+    [_player setVolume:10];
+    [_player prepareToPlay];
+    [_player play];
 }
 
 -(void)carregaMusicas{
@@ -95,7 +93,19 @@
         UILabel* lblNome = [[UILabel alloc] initWithFrame:CGRectMake(x - 10, y + 45, 75, 45)];
         [lblNome setFont:[UIFont fontWithName:@"Verdana" size:7.0]];
         [lblNome setTextAlignment:NSTextAlignmentCenter];
-        lblNome.text = u.url;
+        
+        NSString* nomeMusica = u.url;
+        
+        
+        nomeMusica = [nomeMusica substringFromIndex:[nomeMusica rangeOfString:@"/"].location + 1];
+        nomeMusica = [nomeMusica substringFromIndex:[nomeMusica rangeOfString:@"/"].location + 1];
+        nomeMusica = [nomeMusica substringFromIndex:[nomeMusica rangeOfString:@"/"].location + 1];
+        nomeMusica = [nomeMusica substringFromIndex:[nomeMusica rangeOfString:@"/"].location + 1];
+        nomeMusica = [nomeMusica substringFromIndex:[nomeMusica rangeOfString:@"/"].location + 1];
+        nomeMusica = [nomeMusica substringFromIndex:[nomeMusica rangeOfString:@"/"].location + 1];
+        nomeMusica = [nomeMusica substringFromIndex:[nomeMusica rangeOfString:@"/"].location + 1];
+        
+        lblNome.text = nomeMusica;
         
         [_scrollMusicas addSubview:view];
         [_scrollMusicas addSubview:lblNome];
@@ -116,6 +126,7 @@
  
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [[AVAudioSession sharedInstance] setActive: YES error: nil];
     
 }
 

@@ -10,6 +10,7 @@
 
 #import "TPInstrumento.h"
 #import "TPHorario.h"
+#import "LocalStore.h"
 
 #import "BuscaConexao.h"
 
@@ -66,6 +67,7 @@
     pessoa.sexo = @"";
     pessoa.cidade = @"";
     pessoa.bairro = @"";
+    pessoa.email = @"";
     pessoa.atribuicoes = @"";
     pessoa.horarios = [[NSMutableArray alloc] init];
     pessoa.instrumentos = [[NSMutableArray alloc]init];
@@ -77,6 +79,7 @@
             pessoa.nome = [s valueForKeyPath:@"nome"];
             pessoa.cidade = [s valueForKeyPath:@"cidade"];
             pessoa.sexo = [s valueForKeyPath:@"sexo"];
+            pessoa.email = [s valueForKeyPath:@"email"];
             pessoa.bairro = [s valueForKeyPath:@"bairro"];
             pessoa.atribuicoes = [s valueForKeyPath:@"atribuicoes"];
         }
@@ -109,12 +112,14 @@
     NSDictionary *json = [BuscaConexao buscaUsuario:[[BuscaStore sharedStore]instrumento] estilo:[[BuscaStore sharedStore]estilo] cidade:cidade horario:[[BuscaStore sharedStore] horario]];
     
     for(NSString *s in json){
-        TPUsuario *ret = [[TPUsuario alloc]init];
-        ret.identificador = [s valueForKey:@"identificador"];
-        ret.nome = [s valueForKeyPath:@"nome"];
-        ret.cidade = [s valueForKeyPath:@"cidade"];
-        
-        [usuarios addObject:ret];
+        if(![[s valueForKey:@"identificador"] isEqualToString:[[LocalStore sharedStore] usuarioAtual].identificador]){
+            TPUsuario *ret = [[TPUsuario alloc]init];
+            ret.identificador = [s valueForKey:@"identificador"];
+            ret.nome = [s valueForKeyPath:@"nome"];
+            ret.cidade = [s valueForKeyPath:@"cidade"];
+            
+            [usuarios addObject:ret];
+        }
     }
     
     return usuarios;

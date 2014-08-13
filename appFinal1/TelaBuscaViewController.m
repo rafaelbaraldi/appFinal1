@@ -263,17 +263,8 @@
         cidade.adjustsFontSizeToFitWidth = YES;
         cidade.tag = 2;
         
-        UIButton *btnEnviarMsg = [[UIButton alloc] initWithFrame:CGRectMake(250, 8, 24, 24)];
-        [btnEnviarMsg setImage:[UIImage imageNamed:@"escrever.png"] forState:UIControlStateNormal];
-    
-        UIButton *btnAdicionar = [UIButton buttonWithType:UIButtonTypeContactAdd];
-        [btnAdicionar setFrame:CGRectMake(280, 9, 25, 25)];
-        
         [celula addSubview:nome];
         [celula addSubview:cidade];
-        
-        [celula addSubview:btnEnviarMsg];
-        [celula addSubview:btnAdicionar];
         
         //Carrega Foto
         UIImageView *fotoUsuario = [self carregaImagemUsuario:indexPath.row];
@@ -329,10 +320,10 @@
     }
     
     if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:vc]) {
-        [[self navigationController] popToViewController:vc animated:YES];
+        [[self navigationController] popToViewController:vc animated:NO];
     }
     else{
-        [[self navigationController] pushViewController:vc animated:YES];
+        [[self navigationController] pushViewController:vc animated:NO];
     }
 }
 

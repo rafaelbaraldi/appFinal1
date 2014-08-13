@@ -124,7 +124,7 @@
         
         //Imagem
         UIButton* icone = [[UIButton alloc] initWithFrame:CGRectMake(x, 15, 45, 45)];
-        [icone setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", [_bandas indexOfObject:b]]] forState:UIControlStateNormal];
+        [icone setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%lu.png", (unsigned long)[_bandas indexOfObject:b]]] forState:UIControlStateNormal];
         [icone setTitle:b.identificador forState:UIControlStateNormal];
         [icone addTarget:self action:@selector(banda:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -169,8 +169,10 @@
     _categorias = [PerfilStore retornaListaDeCategorias:_musicas];
     _musicasPorCategoria = [PerfilStore retornaListaDeMusicasPorCategorias:_musicas];
     
-    [_collectionV registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"FlickrCell"];
-    [_collectionV registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+    UINib *cellNib = [UINib nibWithNibName:@"CellMusica" bundle:nil];
+    [_collectionV registerNib:cellNib forCellWithReuseIdentifier:@"FlickrCell"];
+//    [_collectionV registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+    [_collectionV registerNib:cellNib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
     
     //    [_collectionV setAllowsSelection:YES];
     
@@ -178,18 +180,26 @@
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 }
 
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return [_categorias count];
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return [[_musicasPorCategoria objectAtIndex:section] count];
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FlickrCell" forIndexPath:indexPath];
-//    if(cell == nil){
-//        cell = [[UICollectionViewCell alloc] init];
-//    }
-    cell.backgroundColor = [UIColor blueColor];
     
-    UILabel* lblMusica = [[UILabel alloc] initWithFrame:CGRectMake(6, 6, 20, 20)];
+    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FlickrCell" forIndexPath:indexPath];
+    
+    UILabel* lblMusica = (UILabel*)[cell viewWithTag:1];
     lblMusica.text = ((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).nome;
     lblMusica.textColor = [UIColor whiteColor];
     lblMusica.font = [lblMusica.font fontWithSize:8];
-    [cell addSubview:lblMusica];
+    
+    
+    cell.backgroundColor = [UIColor blueColor];
+    
     
     return cell;
 }
@@ -204,21 +214,15 @@
             reusableview = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         }
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        UILabel* label = (UILabel*)[reusableview viewWithTag:1];
         label.text = [_categorias objectAtIndex:indexPath.section];
         label.textColor = [UIColor greenColor];
-        [reusableview addSubview:label];
+//        [reusableview addSubview:label];
+        
         return reusableview;
     }
     return nil;
-}
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return [_categorias count];
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [[_musicasPorCategoria objectAtIndex:section] count];
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -253,10 +257,10 @@
     }
     
     if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:vc]) {
-        [[self navigationController] popToViewController:vc animated:YES];
+        [[self navigationController] popToViewController:vc animated:NO];
     }
     else{
-        [[self navigationController] pushViewController:vc animated:YES];
+        [[self navigationController] pushViewController:vc animated:NO];
     }
 }
 

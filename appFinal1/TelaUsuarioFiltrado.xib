@@ -10,6 +10,7 @@
                 <outlet property="imageUsuario" destination="GsB-IR-rtq" id="btz-nc-DVZ"/>
                 <outlet property="lblAtribuicoes" destination="fUi-9D-9UP" id="HKQ-UC-96P"/>
                 <outlet property="lblCidadeBairro" destination="gFX-7q-Y1o" id="qTa-xV-0CJ"/>
+                <outlet property="lblEmail" destination="pCs-TF-Rp7" id="qUY-1x-Urz"/>
                 <outlet property="lblEstilo" destination="AaZ-l0-7ji" id="Q1o-Hu-xVc"/>
                 <outlet property="lblInstrumentos" destination="WqM-s2-405" id="XVN-12-2xu"/>
                 <outlet property="lblNome" destination="Z08-L2-oai" id="pQy-WW-D6I"/>
@@ -51,13 +52,6 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iPd-sc-BU9">
-                            <rect key="frame" x="282" y="106" width="30" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="escrever.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estilo Musical" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FFL-Ob-HTH">
                             <rect key="frame" x="10" y="185" width="106" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -101,6 +95,12 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pCs-TF-Rp7">
+                            <rect key="frame" x="154" y="110" width="155" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -113,7 +113,4 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
-    <resources>
-        <image name="escrever.png" width="47" height="47"/>
-    </resources>
 </document>

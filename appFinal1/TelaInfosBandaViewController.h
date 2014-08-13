@@ -16,6 +16,7 @@
 @interface TelaInfosBandaViewController : UIViewController
 
 @property TPBanda* banda;
+@property AVAudioPlayer *player;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollMembros;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollMusicas;

@@ -63,9 +63,10 @@
 -(void)carregaUsuarioFiltrado{
     _pessoa = [BuscaStore buscaPessoa:_identificador];
     
-    //Nome e Sexo
+    //Nome e Sexo e email
     _lblNome.text = _pessoa.nome;
     _lblSexo.text = _pessoa.sexo;
+    _lblEmail.text = _pessoa.email;
     
     //Cidade e Bairro
     _lblCidadeBairro.lineBreakMode = NSLineBreakByCharWrapping;

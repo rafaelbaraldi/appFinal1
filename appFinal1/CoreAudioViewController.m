@@ -161,10 +161,10 @@
     }
     
     if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:vc]) {
-        [[self navigationController] popToViewController:vc animated:YES];
+        [[self navigationController] popToViewController:vc animated:NO];
     }
     else{
-        [[self navigationController] pushViewController:vc animated:YES];
+        [[self navigationController] pushViewController:vc animated:NO];
     }
 }
 
