@@ -34,4 +34,25 @@
     return json;
 }
 
++(NSDictionary*)buscaQtdDeAmigos{
+    NSString *url = @"http://54.187.203.61/appMusica/buscaQtdDeAmigos.php";
+    
+    NSString *post = [NSString stringWithFormat:@"id=%@", [[LocalStore sharedStore] usuarioAtual].identificador];
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSMutableURLRequest *request = [[ NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"context-type"];
+    [request setHTTPBody:postData];
+    
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    s = [[LocalStore sharedStore]substituiCaracteresHTML:s];
+    
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[s dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
+    
+    return json;
+}
+
 @end

@@ -36,6 +36,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *btnRemoverInstrumento;
 @property (strong, nonatomic) IBOutlet UIButton *btnRemoverEstilo;
+@property (strong, nonatomic) IBOutlet UILabel *lblMsgBusca;
 
 @property (strong, nonatomic) IBOutlet UITabBarItem *buscarItem;
 @property (strong, nonatomic) IBOutlet UITabBar *tabBar;

@@ -12,7 +12,6 @@
 #import "TPMusica.h"
 
 @interface TelaInfosBandaViewController ()
-
 @end
 
 @implementation TelaInfosBandaViewController
@@ -20,15 +19,12 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        
     }
     return self;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -42,7 +38,6 @@
 }
 
 -(void) viewWillDisappear:(BOOL)animated{
-    
     //Remove view da scroll Banda
     for (UIView* v in [_scrollMembros subviews]) {
         [v removeFromSuperview];
@@ -59,8 +54,8 @@
     
     NSURL* u = [[NSURL alloc] initWithString:s];
     NSData* d = [[NSData alloc] initWithContentsOfURL:u];
+    
     _player = [[AVAudioPlayer alloc] initWithData:d error:nil];
-    [_player setVolume:10];
     [_player prepareToPlay];
     [_player play];
 }

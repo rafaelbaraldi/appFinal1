@@ -9,6 +9,7 @@
 #import "TBFiltroHorario.h"
 
 #import "BuscaStore.h"
+#import "LocalStore.h"
 
 @interface TBFiltroHorario ()
 
@@ -27,7 +28,7 @@
 }
 
 -(void)retorna{
-    [[self navigationController] popToRootViewControllerAnimated:YES];
+    [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
 }
 
 - (void)viewDidLoad{

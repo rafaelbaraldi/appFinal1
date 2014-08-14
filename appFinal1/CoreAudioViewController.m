@@ -18,8 +18,7 @@
 
 @implementation CoreAudioViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -36,10 +35,8 @@
     [_tabBar setSelectedItem:_gravarItem];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     _musicas = [[NSMutableArray alloc]initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Musica"] error:nil]];
     
@@ -75,8 +72,7 @@
 }
 
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
 }
 
@@ -139,6 +135,10 @@
 }
 
 - (IBAction)txtCategoriaSair:(id)sender {
+    [sender resignFirstResponder];
+}
+
+- (IBAction)txtNomeSair:(id)sender {
     [sender resignFirstResponder];
 }
 

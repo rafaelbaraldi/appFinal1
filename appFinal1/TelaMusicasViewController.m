@@ -64,12 +64,7 @@
     return cell;
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+-(void)enviaMusicaServidor:(NSIndexPath*)indexPath{
     NSString* s = [BandaStore enviaMusica:((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).nome urlMusica:((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).url idBanda:[[BandaStore sharedStore] idBandaSelecionada] idUsuario:[[LocalStore sharedStore] usuarioAtual].identificador];
     
     if([s length] > 0){
@@ -78,6 +73,22 @@
     
     
     [[self navigationController] popViewControllerAnimated:YES];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if(buttonIndex == 1){
+        [self enviaMusicaServidor:_indexMusica];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    _indexMusica = indexPath;
+    
+    UIAlertView *alertMusica = [[UIAlertView alloc] initWithTitle:@"Musica" message:@"Tem certeza que deseja enviar essa musica?" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Sim", nil];
+    
+    [alertMusica show];
 }
 
 @end

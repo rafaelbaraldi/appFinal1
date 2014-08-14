@@ -36,15 +36,33 @@
 }
 
 - (IBAction)btnCadastrarClick:(id)sender {
-    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaCadastro] animated:YES];
+    
+    if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaCadastro]]) {
+        [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaCadastro] animated:YES];
+    }
+    else{
+        [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaCadastro] animated:YES];
+    }
 }
 
 - (IBAction)btnEntrarClick:(id)sender {
     [LocalStore setParaUsuarioZero];
-    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
+    
+    if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaBusca]]) {
+        [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
+    }
+    else{
+        [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
+    }
 }
 
 - (IBAction)btnLoginClick:(id)sender {
-     [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaLogin] animated:YES];
+    
+    if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaLogin]]) {
+        [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaLogin] animated:YES];
+    }
+    else{
+        [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaLogin] animated:YES];
+    }
 }
 @end

@@ -14,4 +14,6 @@
 @property NSMutableArray *categorias;
 @property NSMutableArray *musicasPorCategoria;
 
+@property NSIndexPath* indexMusica;
+
 @end

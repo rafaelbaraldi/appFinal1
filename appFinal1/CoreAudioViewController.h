@@ -29,5 +29,6 @@
 - (IBAction)gravar:(id)sender;
 - (IBAction)playGravacao:(id)sender;
 - (IBAction)txtCategoriaSair:(id)sender;
+- (IBAction)txtNomeSair:(id)sender;
 
 @end

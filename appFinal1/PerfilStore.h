@@ -16,4 +16,6 @@
 +(NSMutableArray*)retornaListaDeMusicasPorCategorias:(NSMutableArray*)musicas;
 +(NSMutableArray*)retornaListaDeCategorias:(NSMutableArray*)musicas;
 
++(NSString*)qtdDeAmigos;
+
 @end

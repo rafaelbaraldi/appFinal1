@@ -13,6 +13,7 @@
                 <outlet property="btnRemoverEstilo" destination="bym-wc-cur" id="lwy-Rq-7St"/>
                 <outlet property="btnRemoverInstrumento" destination="h0P-7Z-idq" id="C3I-R3-P8k"/>
                 <outlet property="buscarItem" destination="jib-XL-ILu" id="6aw-0e-MJc"/>
+                <outlet property="lblMsgBusca" destination="2R3-Zl-kHm" id="Wlc-a7-KLF"/>
                 <outlet property="tabBar" destination="nJ8-aO-iVP" id="H8V-TF-p51"/>
                 <outlet property="tbUsuarios" destination="yzY-OJ-snY" id="eJZ-MP-7hM"/>
                 <outlet property="txtCidade" destination="Pn6-pB-ta9" id="OM5-mq-buj"/>
@@ -25,6 +26,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2R3-Zl-kHm">
+                    <rect key="frame" x="37" y="311" width="263" height="54"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJ8-aO-iVP">
                     <rect key="frame" x="0.0" y="525" width="320" height="49"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>

@@ -4,15 +4,12 @@
 //
 //  Created by RAFAEL BARALDI on 06/08/14.
 //  Copyright (c) 2014 RAFAEL BARALDI. All rights reserved.
-//
 
 #import "TelaNovaBandaViewController.h"
-
 #import "BandaStore.h"
 #import "LocalStore.h"
 
 @interface TelaNovaBandaViewController ()
-
 @end
 
 @implementation TelaNovaBandaViewController
@@ -28,7 +25,6 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -37,7 +33,6 @@
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)btnMaisMembroClick:(id)sender {
@@ -53,9 +48,9 @@
         }
         
         [BandaStore criarBanda:_txtNomeDaBanda.text membros:idDosMembros];
+        
+        [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
     }
-    
-    [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaPerfil] animated:YES];
 }
 
 - (IBAction)txtNomeDaBandaDone:(id)sender {
@@ -79,6 +74,15 @@
     celula.textLabel.text = ((TPUsuario*)[[[BandaStore sharedStore] membros] objectAtIndex:indexPath.row]).nome;
     
     return celula;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        
+        [[[BandaStore sharedStore] membros] removeObjectAtIndex:indexPath.row];
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 @end

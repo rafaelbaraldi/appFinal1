@@ -14,6 +14,13 @@
 
 @implementation PerfilStore
 
++(NSString*)qtdDeAmigos{
+    
+    NSDictionary *json = [PerfilConexao buscaQtdDeAmigos];
+    
+    return [json valueForKeyPath:@"qtd"];
+}
+
 +(NSMutableArray*)retornaListaDeBandas{
     
     NSMutableArray *itens = [[NSMutableArray alloc] init];

@@ -114,13 +114,13 @@ static NSString* senha = @"";
     }
     
     //Salva usuario logado no CoreData
-    [u setNome:[usuario valueForKeyPath:@"nome"]];
-    [u setEmail:[usuario valueForKeyPath:@"email"]];
-    [u setSenha:[usuario valueForKeyPath:@"senha"]];
-    [u setSexo:[usuario valueForKeyPath:@"sexo"]];
-    [u setCidade:[usuario valueForKeyPath:@"cidade"]];
-    [u setBairro:[usuario valueForKeyPath:@"bairro"]];
-    [u setObservacoes:[usuario valueForKeyPath:@"observacoes"]];
+    [u setNome:[usuario valueForKeyPath:@"-"]];
+    [u setEmail:[usuario valueForKeyPath:@"-"]];
+    [u setSenha:[usuario valueForKeyPath:@"-"]];
+    [u setSexo:[usuario valueForKeyPath:@"-"]];
+    [u setCidade:[usuario valueForKeyPath:@"-"]];
+    [u setBairro:[usuario valueForKeyPath:@"-"]];
+    [u setObservacoes:[usuario valueForKeyPath:@"-"]];
     
     NSNumber *number = [[NSNumber alloc] initWithInt:[[usuario valueForKey:@"id"] intValue]];
     [u setIdentificador:number];

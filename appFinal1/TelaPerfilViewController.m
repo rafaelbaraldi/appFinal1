@@ -96,6 +96,13 @@
     
     //Editar Perfil
     _btnPerfilEditar.enabled = YES;
+    
+    //Qtd de Amigos
+    [self carregaQtdDeAmigos];
+}
+
+-(void)carregaQtdDeAmigos{
+    _lblPerfilAmigos.text = [NSString stringWithFormat:@"%@", [PerfilStore qtdDeAmigos]];
 }
 
 -(void)carregaBotaoOpcoes{

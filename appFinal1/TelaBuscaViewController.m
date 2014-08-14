@@ -81,8 +81,6 @@
 
 -(void)carregaUsuarioBuscado{
     
-    UILabel *lblMsgFiltro = [[UILabel alloc] initWithFrame:CGRectMake(20, 300, 287, 50)];
-    
     if([[[BuscaStore sharedStore] instrumento] length] > 0
        || [[[BuscaStore sharedStore] estilo] length] > 0
        || [[[BuscaStore sharedStore] horario] length] > 0
@@ -92,19 +90,19 @@
         if([_usuarios count] == 0){
             
             //Exibi label para pedir o instrumento
-            [lblMsgFiltro setText:@"Nenhum resultado encontrado para a sua pesquisa"];
-            [lblMsgFiltro setTextAlignment:NSTextAlignmentCenter];
-            [lblMsgFiltro setNumberOfLines:2];
-            
-            [[self view] addSubview:lblMsgFiltro];
+            [_lblMsgBusca setText:@"Nenhum resultado encontrado para a sua pesquisa"];
+            [_lblMsgBusca setTextAlignment:NSTextAlignmentCenter];
+            [_lblMsgBusca setNumberOfLines:2];
         }
         else{
-            [lblMsgFiltro removeFromSuperview];
+            [_lblMsgBusca setText:@""];
         }
     }
     else{
-        [lblMsgFiltro removeFromSuperview];
+        [_lblMsgBusca setText:@""];
     }
+    
+    [_tbUsuarios reloadData];
 }
 
 -(void)arredondaBordaBotoes{
@@ -143,7 +141,7 @@
         _btnRemoverEstilo.hidden = YES;
     }
     
-    [_tbUsuarios reloadData];
+    [self carregaUsuarioBuscado];
 }
 
 -(void)carregaFiltroDeHorario{
@@ -227,7 +225,7 @@
 
 -(void)textFieldDidChange{
     _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
-    [_tbUsuarios reloadData];
+    [self carregaUsuarioBuscado];
 }
 
 //Delegate TableView

@@ -776,10 +776,10 @@
 		73EC6E9C196B3B710034CB9B /* Perfil */ = {
 			isa = PBXGroup;
 			children = (
+				731B555B198816F20092D608 /* Imagens */,
 				1BDA1185199BE998005F7262 /* Celulas */,
 				1BEA45AD1992C99200876D75 /* Singleton */,
 				1BEA45A61992C92100876D75 /* WebService */,
-				731B555B198816F20092D608 /* Imagens */,
 				739DA1E0198C0E53005053DB /* Tela */,
 			);
 			name = Perfil;

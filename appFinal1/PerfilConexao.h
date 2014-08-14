@@ -12,4 +12,6 @@
 
 +(NSDictionary*)buscaIdENomeBandas:(NSString*)identificador;
 
++(NSDictionary*)buscaQtdDeAmigos;
+
 @end
