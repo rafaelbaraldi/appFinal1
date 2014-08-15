@@ -73,6 +73,7 @@
 		31A0043F1993F0CA00121EF6 /* TelaBandaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A0043D1993F0CA00121EF6 /* TelaBandaViewController.m */; };
 		31A004401993F0CA00121EF6 /* TelaBandaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31A0043E1993F0CA00121EF6 /* TelaBandaViewController.xib */; };
 		31C31744194783B700C99512 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C31743194783B700C99512 /* delete.png */; };
+		31F1F8AF199E82380000B61F /* som.png in Resources */ = {isa = PBXBuildFile; fileRef = 31F1F8AE199E82380000B61F /* som.png */; };
 		31F67C75193515CC00113DA8 /* escrever.png in Resources */ = {isa = PBXBuildFile; fileRef = 31F67C74193515CC00113DA8 /* escrever.png */; };
 		31F67C79193523D400113DA8 /* TelaUsuarioFiltrado.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F67C77193523D400113DA8 /* TelaUsuarioFiltrado.m */; };
 		31F67C7A193523D400113DA8 /* TelaUsuarioFiltrado.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F67C78193523D400113DA8 /* TelaUsuarioFiltrado.xib */; };
@@ -218,6 +219,7 @@
 		31A0043D1993F0CA00121EF6 /* TelaBandaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaBandaViewController.m; sourceTree = "<group>"; };
 		31A0043E1993F0CA00121EF6 /* TelaBandaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaBandaViewController.xib; sourceTree = "<group>"; };
 		31C31743194783B700C99512 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		31F1F8AE199E82380000B61F /* som.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = som.png; sourceTree = "<group>"; };
 		31F67C74193515CC00113DA8 /* escrever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = escrever.png; sourceTree = "<group>"; };
 		31F67C76193523D400113DA8 /* TelaUsuarioFiltrado.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaUsuarioFiltrado.h; sourceTree = "<group>"; };
 		31F67C77193523D400113DA8 /* TelaUsuarioFiltrado.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaUsuarioFiltrado.m; sourceTree = "<group>"; };
@@ -659,6 +661,7 @@
 			children = (
 				739DA1DE198C0DF8005053DB /* opcoes.png */,
 				731B555C198817040092D608 /* perfil.png */,
+				31F1F8AE199E82380000B61F /* som.png */,
 			);
 			name = Imagens;
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 				1BEA459B1992C7A100876D75 /* 1.png in Resources */,
 				1BE8E3D1192533AD00D108C0 /* Images.xcassets in Resources */,
 				1BEA459F1992C7A100876D75 /* 3.png in Resources */,
+				31F1F8AF199E82380000B61F /* som.png in Resources */,
 				1B1613081992A2A1009D5513 /* TelaNovaBandaViewController.xib in Resources */,
 				31F67C75193515CC00113DA8 /* escrever.png in Resources */,
 				1BEA45A41992C7A100876D75 /* 5.png in Resources */,
