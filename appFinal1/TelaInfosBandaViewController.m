@@ -75,13 +75,13 @@
             y = 95;
         }
         
-        UIButton* view = [[UIButton alloc] initWithFrame:CGRectMake(x - 10, y + 45, 75, 45)];
+        UIButton* view = [[UIButton alloc] initWithFrame:CGRectMake(x - 10, y + 45, 45, 45)];
         CGRect frame = [view frame];
         frame.origin.x = x;
         frame.origin.y = y;
         [view setFrame:frame];
         [view setTitle:u.url forState:UIControlStateNormal];
-        [view setBackgroundColor:[UIColor greenColor]];
+        [view setBackgroundImage:[UIImage imageNamed:@"som.png"] forState:UIControlStateNormal];
         [[view titleLabel] setAlpha:0];
         [view addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -89,9 +89,8 @@
         [lblNome setFont:[UIFont fontWithName:@"Verdana" size:7.0]];
         [lblNome setTextAlignment:NSTextAlignmentCenter];
         
-        NSString* nomeMusica = u.url;
-        
-        
+        NSString* nomeMusica =  u.url;
+
         nomeMusica = [nomeMusica substringFromIndex:[nomeMusica rangeOfString:@"/"].location + 1];
         nomeMusica = [nomeMusica substringFromIndex:[nomeMusica rangeOfString:@"/"].location + 1];
         nomeMusica = [nomeMusica substringFromIndex:[nomeMusica rangeOfString:@"/"].location + 1];
