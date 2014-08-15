@@ -155,6 +155,9 @@
     
     _imageUsuario.layer.masksToBounds = YES;
     _imageUsuario.layer.cornerRadius = _imageUsuario.frame.size.width / 2;
+    if (foto == nil) {
+        foto = [UIImage imageNamed:@"perfil.png"];
+    }
     _imageUsuario.image = foto;
     _imageUsuario.tag = 3;
 }

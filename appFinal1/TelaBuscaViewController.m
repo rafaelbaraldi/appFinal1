@@ -276,6 +276,9 @@
         //Reaproveita Foto
         NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
         UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
+        if (foto == nil) {
+            foto = [UIImage imageNamed:@"perfil.png"];
+        }
         
         ((UIImageView*)[celula viewWithTag:3]).image = foto;
     }
@@ -293,6 +296,9 @@
     UIImageView *fotoUsuario = [[UIImageView alloc] initWithFrame:CGRectMake(15, 3, 65, 65)];
     fotoUsuario.layer.masksToBounds = YES;
     fotoUsuario.layer.cornerRadius = fotoUsuario.frame.size.width / 2;
+    if (foto == nil) {
+        foto = [UIImage imageNamed:@"perfil.png"];
+    }
     fotoUsuario.image = foto;
     fotoUsuario.tag = 3;
     

@@ -84,7 +84,11 @@
     //Imagem
     NSString *urlImage = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", [[LocalStore sharedStore] usuarioAtual].identificador];
     
-    _imagePerfil.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]]];
+    UIImage* foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]]];
+    if (foto == nil) {
+        foto = [UIImage imageNamed:@"perfil.png"];
+    }
+    _imagePerfil.image = foto;
     _imagePerfil.layer.masksToBounds = YES;
     _imagePerfil.layer.cornerRadius = _imagePerfil.frame.size.width / 2;
     
