@@ -85,7 +85,7 @@
     
     if (_fotoSelecionada.image != nil) {
         UIImage *foto = _fotoSelecionada.image;
-        foto = [self imageWithImage:foto scaledToSize:CGSizeMake(foto.size.width / 10, foto.size.height / 10)];
+        foto = [self imageWithImage:foto scaledToSize:CGSizeMake(192, 256)];
         
         [CadastroConexao uploadFoto: foto];
     }
