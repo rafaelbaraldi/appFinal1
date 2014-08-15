@@ -36,6 +36,9 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    //Collection view
+    [self collectionMusica];
+    
     //Botao opções
     [self carregaBotaoOpcoes];
 }
@@ -77,6 +80,12 @@
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
+}
+
+-(void)collectionMusica{
+    
+    _collectionV.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 -(void)carregaDadosUsuario{
@@ -153,7 +162,6 @@
         [_scrollBanda addSubview:icone];
         [_scrollBanda addSubview:nome];
         
-        
         //Posicao
         x += 70;
     }
@@ -182,12 +190,10 @@
     
     UINib *cellNib = [UINib nibWithNibName:@"CellMusica" bundle:nil];
     [_collectionV registerNib:cellNib forCellWithReuseIdentifier:@"FlickrCell"];
-//    [_collectionV registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
-    [_collectionV registerNib:cellNib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
-    
-    //    [_collectionV setAllowsSelection:YES];
-    
-    
+
+    UINib *cellTitulo = [UINib nibWithNibName:@"CellTituloMusica" bundle:nil];
+    [_collectionV registerNib:cellTitulo forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 }
 
@@ -205,12 +211,14 @@
     
     UILabel* lblMusica = (UILabel*)[cell viewWithTag:1];
     lblMusica.text = ((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).nome;
-    lblMusica.textColor = [UIColor whiteColor];
     lblMusica.font = [lblMusica.font fontWithSize:8];
-    
-    
-    cell.backgroundColor = [UIColor blueColor];
-    
+
+//    UIImageView *imageSom = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"som.png"]];
+//    imageSom.frame = CGRectMake(0, 0, 30, 30);
+//    imageSom.contentMode = UIViewContentModeScaleAspectFit;
+//    imageSom.clipsToBounds = YES;
+//    [cell addSubview:imageSom];
+//    [cell setBackgroundColor:[UIColor grayColor]];
     
     return cell;
 }
@@ -225,11 +233,8 @@
             reusableview = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         }
         
-//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         UILabel* label = (UILabel*)[reusableview viewWithTag:1];
         label.text = [_categorias objectAtIndex:indexPath.section];
-        label.textColor = [UIColor greenColor];
-//        [reusableview addSubview:label];
         
         return reusableview;
     }
@@ -242,10 +247,6 @@
     NSURL* url = [[NSURL alloc] initFileURLWithPath:((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).url];
     
     player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
-    
-//    NSURL* url = [[NSURL alloc] initFileURLWithPath:((Musica*)[_musicas objectAtIndex:2]).url];
-//    player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
-    
     [player play];
 }
 
