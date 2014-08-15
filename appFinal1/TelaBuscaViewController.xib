@@ -60,13 +60,13 @@
                             <rect key="frame" x="5" y="2" width="150" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.98823535442352295" green="0.12549020349979401" blue="0.30196079611778259" alpha="1" colorSpace="deviceRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-60-fJs">
                             <rect key="frame" x="4" y="26" width="135" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.14117647707462311" green="0.66666668653488159" blue="0.96862751245498657" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="backgroundColor" red="0.98823535442352295" green="0.12549020349979401" blue="0.30196079611778259" alpha="1" colorSpace="deviceRGB"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Instrumento">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,7 +78,7 @@
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pe-oG-gi2">
                             <rect key="frame" x="163" y="26" width="128" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.14117647707462311" green="0.66666668653488159" blue="0.96862751245498657" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="backgroundColor" red="0.98823535442352295" green="0.12549020349979401" blue="0.30196079611778259" alpha="1" colorSpace="deviceRGB"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Estilo Musical ">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -97,9 +97,9 @@
                             </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jH1-oh-0US">
-                            <rect key="frame" x="4" y="63" width="287" height="30"/>
+                            <rect key="frame" x="4" y="62" width="287" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.072338819464524043" green="0.65865858311599468" blue="0.97864079475402832" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.98823535442352295" green="0.12549020349979401" blue="0.30196079611778259" alpha="1" colorSpace="deviceRGB"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Horarios Disponiveis para ensaio">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -137,6 +137,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="Esconder filtro">
+                        <color key="titleColor" red="1" green="0.97945190544465832" blue="0.9410339939708553" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>

@@ -68,15 +68,20 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"mensagemCell"];
     }
     
-    cell.textLabel.text = ((TPMensagem*)[_banda.mensagens objectAtIndex:indexPath.row]).mensagem;
+    NSString *msg = ((TPMensagem*)[_banda.mensagens objectAtIndex:indexPath.row]).mensagem;
+    
+    cell.textLabel.text = msg;
     
     return cell;
 }
+
 
 - (IBAction)txtMensagemSend:(id)sender {
     [sender resignFirstResponder];
     
     NSLog(@"%@", [BandaStore enviaMensagem:[sender text] idBanda:_banda.identificador idUsuario:[[LocalStore sharedStore] usuarioAtual].identificador]);
+    
+    [sender setText:@""];
     
     [self recarregaMensagens];
 }

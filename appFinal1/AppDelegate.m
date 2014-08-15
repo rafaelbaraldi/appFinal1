@@ -46,9 +46,10 @@
         telaVc = [[LocalStore sharedStore] TelaInicio];
     }
     
-//    telaVc = [[LocalStore sharedStore] TelaPerfil];
-    
     UINavigationController *navegacaoC = [[UINavigationController alloc] initWithRootViewController:telaVc];
+    [navegacaoC.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor redColor]}];
+    [navegacaoC.navigationBar setBarTintColor:[UIColor whiteColor]];
+
     [self.window setRootViewController:navegacaoC];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

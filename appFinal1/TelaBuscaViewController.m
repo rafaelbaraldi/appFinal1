@@ -33,7 +33,6 @@
     if (self) {
         [[self navigationItem] setTitle:@"Buscar Músico"];
         _usuarios = [[NSMutableArray alloc] init];
-        
     }
     return self;
 }
@@ -67,6 +66,9 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    //bg
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    [_viewFiltros setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     
     //Metodo de Busca por cidade
     [_txtCidade addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
@@ -101,6 +103,9 @@
     else{
         [_lblMsgBusca setText:@""];
     }
+    
+    //Exibi botao de esconder os filtros de busca
+    [self habilitaBotaoEsconder];
     
     [_tbUsuarios reloadData];
 }
@@ -282,9 +287,6 @@
         
         ((UIImageView*)[celula viewWithTag:3]).image = foto;
     }
-    
-    //Exibi botao de esconder os filtros de busca
-    [self habilitaBotaoEsconder];
     
     return celula;
 }

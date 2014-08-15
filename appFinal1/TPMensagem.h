@@ -13,5 +13,6 @@
 @property NSString* mensagem;
 @property NSString* identificador;
 @property NSString* idUsuario;
+@property NSString* nomeUsuario;
 
 @end

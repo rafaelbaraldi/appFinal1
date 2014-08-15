@@ -106,6 +106,7 @@
         m.identificador = [s valueForKey:@"mensagem_id"];
         m.mensagem = [s valueForKey:@"mensagem"];
         m.idUsuario = [s valueForKey:@"usuario_id"];
+        m.nomeUsuario = [s valueForKeyPath:@"usuario_nome"];
         
         [lista addObject:m];
     }

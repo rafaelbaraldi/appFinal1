@@ -37,8 +37,9 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    _todosInstrumentos = [BuscaStore retornaListaDe:@"instrumento"];
+//    [self.navigationItem.backBarButtonItem set
     
+    _todosInstrumentos = [BuscaStore retornaListaDe:@"instrumento"];
     [[[BuscaStore sharedStore] instrumentosFiltrados] removeAllObjects];
 }
 
