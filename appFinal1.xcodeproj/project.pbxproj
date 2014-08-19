@@ -175,7 +175,7 @@
 		1BE8E3CA192533AD00D108C0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1BE8E3CB192533AD00D108C0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1BE8E3CE192533AD00D108C0 /* appFinal1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = appFinal1.xcdatamodel; sourceTree = "<group>"; };
-		1BE8E3D0192533AD00D108C0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1BE8E3D0192533AD00D108C0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = appFinal1/Images.xcassets; sourceTree = "<group>"; };
 		1BE8E3D6192533AD00D108C0 /* appFinal1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appFinal1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BE8E3D7192533AD00D108C0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		1BE8E3E0192533AD00D108C0 /* appFinal1Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "appFinal1Tests-Info.plist"; sourceTree = "<group>"; };
@@ -318,10 +318,10 @@
 		1B1613021992A275009D5513 /* Banda */ = {
 			isa = PBXGroup;
 			children = (
-				1BEA45831992C75600876D75 /* Imagens */,
 				1B1613121992A975009D5513 /* WebService */,
 				1B1613091992A498009D5513 /* Singleton */,
 				1B1613031992A283009D5513 /* Tela */,
+				1BEA45831992C75600876D75 /* Imagens */,
 			);
 			name = Banda;
 			sourceTree = "<group>";
@@ -414,10 +414,10 @@
 		1B82766A192BDA0100E461AD /* Busca */ = {
 			isa = PBXGroup;
 			children = (
-				31F67C6F1935130A00113DA8 /* Imagens */,
 				1B5FE141192FCFE600E35BCC /* WebService */,
 				1B5FE13D192FC22600E35BCC /* Singleton */,
 				1B82766B192BDB2000E461AD /* Tela */,
+				31F67C6F1935130A00113DA8 /* Imagens */,
 			);
 			name = Busca;
 			sourceTree = "<group>";
@@ -447,6 +447,9 @@
 		1BD384511926A56D0044A2E4 /* Tela */ = {
 			isa = PBXGroup;
 			children = (
+				737F349A1976E70800AAF796 /* Tela Horarios */,
+				73A3072A19746B17005551D3 /* Tela Instrumentos */,
+				73AEFF6E197449AC00B249BB /* Tela Estilos */,
 				1BE8E3EF1925343300D108C0 /* TelaCadastroViewController.h */,
 				1BE8E3F01925343300D108C0 /* TelaCadastroViewController.m */,
 				1BE8E3F11925343300D108C0 /* TelaCadastroViewController.xib */,
@@ -478,9 +481,11 @@
 		1BE8E3AD192533AD00D108C0 = {
 			isa = PBXGroup;
 			children = (
+				1BE8E3C1192533AD00D108C0 /* appFinal1 */,
+				1BE8E3D0192533AD00D108C0 /* Images.xcassets */,
 				2F270FC91981936C00EFBEB4 /* Reachability.h */,
 				2F270FCA1981936C00EFBEB4 /* Reachability.m */,
-				1BE8E3C1192533AD00D108C0 /* appFinal1 */,
+				1BE8E3C2192533AD00D108C0 /* Supporting Files */,
 				1BE8E3DE192533AD00D108C0 /* appFinal1Tests */,
 				1BE8E3B8192533AD00D108C0 /* Frameworks */,
 				1BE8E3B7192533AD00D108C0 /* Products */,
@@ -514,19 +519,17 @@
 			children = (
 				1BE8E3CA192533AD00D108C0 /* AppDelegate.h */,
 				1BE8E3CB192533AD00D108C0 /* AppDelegate.m */,
-				316AAA08199E9D75001CE96B /* Imagens Layout */,
-				1B1613021992A275009D5513 /* Banda */,
-				737D09E41975C5B1000975F6 /* Inicio */,
-				1B166626193507FC00E2FB47 /* Classes */,
-				1BE8E3F91925449D00D108C0 /* Singleton */,
 				1BE8E3F5192539C500D108C0 /* Banco */,
-				73EC6E9C196B3B710034CB9B /* Perfil */,
-				73EC6E8D196B11C40034CB9B /* Login */,
+				1BE8E3F91925449D00D108C0 /* Singleton */,
+				1B166626193507FC00E2FB47 /* Classes */,
+				737D09E41975C5B1000975F6 /* Inicio */,
 				1BE8E3F4192539B900D108C0 /* Cadastro */,
-				2FB3B33E197459E70054B7F7 /* Gravacao */,
+				73EC6E8D196B11C40034CB9B /* Login */,
 				1B82766A192BDA0100E461AD /* Busca */,
-				1BE8E3D0192533AD00D108C0 /* Images.xcassets */,
-				1BE8E3C2192533AD00D108C0 /* Supporting Files */,
+				2FB3B33E197459E70054B7F7 /* Gravacao */,
+				73EC6E9C196B3B710034CB9B /* Perfil */,
+				1B1613021992A275009D5513 /* Banda */,
+				316AAA08199E9D75001CE96B /* Imagens Layout */,
 			);
 			path = appFinal1;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				1BE8E3C9192533AD00D108C0 /* appFinal1-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = appFinal1;
 			sourceTree = "<group>";
 		};
 		1BE8E3DE192533AD00D108C0 /* appFinal1Tests */ = {
@@ -565,9 +569,6 @@
 			children = (
 				73A30735197483A3005551D3 /* WebService */,
 				1BD384531926A5810044A2E4 /* Singleton */,
-				737F349A1976E70800AAF796 /* Tela Horarios */,
-				73A3072A19746B17005551D3 /* Tela Instrumentos */,
-				73AEFF6E197449AC00B249BB /* Tela Estilos */,
 				1BD384511926A56D0044A2E4 /* Tela */,
 			);
 			name = Cadastro;
@@ -639,8 +640,8 @@
 		2FB3B33E197459E70054B7F7 /* Gravacao */ = {
 			isa = PBXGroup;
 			children = (
-				1B438250199169BD00780F7D /* Imagens */,
 				2FB3B33F197459F10054B7F7 /* Tela */,
+				1B438250199169BD00780F7D /* Imagens */,
 			);
 			name = Gravacao;
 			sourceTree = "<group>";
@@ -707,6 +708,7 @@
 		739DA1E0198C0E53005053DB /* Tela */ = {
 			isa = PBXGroup;
 			children = (
+				1BDA1185199BE998005F7262 /* Celulas */,
 				73EC6E9D196B3BB90034CB9B /* TelaPerfilViewController.h */,
 				73EC6E9E196B3BB90034CB9B /* TelaPerfilViewController.m */,
 				73EC6E9F196B3BB90034CB9B /* TelaPerfilViewController.xib */,
@@ -755,8 +757,8 @@
 		73EC6E8D196B11C40034CB9B /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				73EC6E98196B32DD0034CB9B /* Singleton */,
 				73EC6E94196B181E0034CB9B /* WebService */,
+				73EC6E98196B32DD0034CB9B /* Singleton */,
 				73EC6E8E196B12060034CB9B /* Tela */,
 			);
 			name = Login;
@@ -796,11 +798,10 @@
 		73EC6E9C196B3B710034CB9B /* Perfil */ = {
 			isa = PBXGroup;
 			children = (
-				731B555B198816F20092D608 /* Imagens */,
-				1BDA1185199BE998005F7262 /* Celulas */,
-				1BEA45AD1992C99200876D75 /* Singleton */,
 				1BEA45A61992C92100876D75 /* WebService */,
+				1BEA45AD1992C99200876D75 /* Singleton */,
 				739DA1E0198C0E53005053DB /* Tela */,
+				731B555B198816F20092D608 /* Imagens */,
 			);
 			name = Perfil;
 			sourceTree = "<group>";

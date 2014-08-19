@@ -46,6 +46,7 @@
         telaVc = [[LocalStore sharedStore] TelaInicio];
     }
     
+    //Navigation Controller - Alterar Cores
     UINavigationController *navegacaoC = [[UINavigationController alloc] initWithRootViewController:telaVc];
     [navegacaoC.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor redColor]}];
     [navegacaoC.navigationBar setBarTintColor:[UIColor whiteColor]];

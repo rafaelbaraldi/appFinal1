@@ -7,13 +7,11 @@
 //
 
 #import "CoreAudioViewController.h"
-//#import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "Musica.h"
 #import "LocalStore.h"
 
 @interface CoreAudioViewController ()
-
 @end
 
 @implementation CoreAudioViewController
@@ -21,7 +19,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         _gravando = false;
         
         [[self navigationItem] setTitle:@"Gravar"];
@@ -32,51 +29,42 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
+    //Imagem do tab bar selecionada
     [_tabBar setSelectedItem:_gravarItem];
 }
-
-- (void)viewDidLoad{
-    [super viewDidLoad];
-    
-    _musicas = [[NSMutableArray alloc]initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Musica"] error:nil]];
-    
-    for (Musica* m in _musicas) {
-        NSLog(@"%@", m.url);
-    }
-}
-
-
--(void)carregaGravador{
-    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc]init];
-    //AVFormatIDKey==kAudioFormatLinearPCM
-    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
-    //AVSampleRateKey==8000/44100/96000
-    [recordSetting setValue:[NSNumber numberWithFloat:44100] forKey:AVSampleRateKey];
-    //canal 1 = mono - canal 2 = stereo
-    [recordSetting setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
-    //quality
-    [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityHigh] forKey:AVEncoderAudioQualityKey];
-    
-    NSURL *url = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.%@.%@", 0, _txtCategoria.text, _txtNome.text]]];
-    
-    //    NSString *strUrl = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    //    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/lll.aac", strUrl]];
-    
-    urlPlay = url;
-    recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordSetting error:nil];
-    
-    NSLog(@"%@", [urlPlay path]);
-    
-    
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-}
-
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
 }
 
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    
+    //Carrega todas as músicas do CoreData
+    _musicas = [[NSMutableArray alloc]initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Musica"] error:nil]];
+}
+
+-(void)carregaGravador{
+    
+    //Set configuração da Gravação
+    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc]init];
+    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
+    [recordSetting setValue:[NSNumber numberWithFloat:44100] forKey:AVSampleRateKey];
+    [recordSetting setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
+    [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityHigh] forKey:AVEncoderAudioQualityKey];
+    
+    //URL da música a gravar
+    NSURL *url = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.%@.%@", 0, _txtCategoria.text, _txtNome.text]]];
+    
+    urlPlay = url;
+    recorder = [[AVAudioRecorder alloc] initWithURL:url settings:recordSetting error:nil];
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+}
+
+//Registar gravação no CoreData
 -(void)registrarGravacao{
+    
     Musica *m = [NSEntityDescription insertNewObjectForEntityForName:@"Musica" inManagedObjectContext:[[LocalStore sharedStore] context]];
     
     m.nome = _txtNome.text;
@@ -95,49 +83,61 @@
     return NO;
 }
 
+//Vamos gravar um som galera!
 - (IBAction)gravar:(id)sender {
+    
+    UIAlertView *alertGravacao = [[UIAlertView alloc] initWithTitle:@"ERRO" message:@"" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    
     if([_txtCategoria.text length] > 0 && [_txtNome.text length] > 0){
         if(![self musicaComEsseNomeJaExisteNessaCategoria]){
             if(_gravando){
+                //Para gravação
                 [recorder stop];
+                
+                //Altera botao da gravação
                 [_btnGravar setTitle:@"Gravar" forState:UIControlStateNormal];
                 _gravando = false;
             }
             else{
+                //Preparava gravador
                 [self carregaGravador];
                 [recorder prepareToRecord];
+                
+                //Alterar botao da gravação
                 [_btnGravar setTitle:@"Gravando" forState:UIControlStateNormal];
                 _gravando = true;
+                
+                //Salva no CoreData a gravacao
                 [self registrarGravacao];
+                
+                //Inicia gravação
                 [recorder record];
             }
         }
         else{
-            NSLog(@"Musica com esse nome ja existe nessa categoria");
+            [alertGravacao setMessage:@"Música com esse nome jé existe nessa categoria. Digite outro nome."];
+            [alertGravacao show];
         }
     }
     else{
-        NSLog(@"sem nome ou categoria");
+        [alertGravacao setMessage:@"Campos em branco. Preencha corretamente."];
+        [alertGravacao show];
     }
 }
 
-
+//PLay Audio da gravação
 - (IBAction)playGravacao:(id)sender {
-    
-//    player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:@"/Users/rafaelbaraldi/Library/Application Support/iPhone Simulator/7.1/Applications/617742BD-CC25-4CBD-8D3F-450293F47FEB/tmp/0.ter.t"] error:nil];
-    
-//    NSURL* url = [[NSURL alloc] initFileURLWithPath:((Musica*)[_musicas objectAtIndex:2]).url];
-//    player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
     
     player = [[AVAudioPlayer alloc]initWithContentsOfURL:urlPlay error:nil];
     [player play];
-    
 }
 
+//Delegate RETURN - UITextField Nome da categoria
 - (IBAction)txtCategoriaSair:(id)sender {
     [sender resignFirstResponder];
 }
 
+//Delegate RETURN - UITextField Nome da musica
 - (IBAction)txtNomeSair:(id)sender {
     [sender resignFirstResponder];
 }

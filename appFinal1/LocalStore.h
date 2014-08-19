@@ -76,4 +76,6 @@
 
 +(void)setParaUsuarioZero;
 
++(void)carregaCoresDoLayout;
+
 @end

@@ -18,9 +18,7 @@
 
 #import <AVFoundation/AVAudioSession.h>
 
-
 @interface TelaPerfilViewController ()
-
 @end
 
 @implementation TelaPerfilViewController
@@ -37,7 +35,7 @@
     [super viewDidLoad];
     
     //Collection view
-    [self collectionMusica];
+    [self carregaConfiguracaoCollectionMusica];
     
     //Botao opções
     [self carregaBotaoOpcoes];
@@ -46,12 +44,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self viewDidLoad];
     
-    if ([[[LocalStore sharedStore] usuarioAtual].identificador isEqualToString:@"0"]) {
-        [[self navigationItem] setRightBarButtonItem:nil];
-    }
-    else{
-        [self carregaBotaoOpcoes];
-    }
+    [self escondeBotaoDeVoltarSeUsuarioLogado];
     
     //Carrega dados do Usuario
     [self carregaDadosUsuario];
@@ -70,6 +63,15 @@
     [_tabBar setSelectedItem:_perfilItem];
 }
 
+-(void)escondeBotaoDeVoltarSeUsuarioLogado{
+    if ([[[LocalStore sharedStore] usuarioAtual].identificador isEqualToString:@"0"]) {
+        [[self navigationItem] setRightBarButtonItem:nil];
+    }
+    else{
+        [self carregaBotaoOpcoes];
+    }
+}
+
 -(void) viewWillDisappear:(BOOL)animated{
 
     //Remove view da scroll Banda
@@ -82,7 +84,7 @@
     [super didReceiveMemoryWarning];
 }
 
--(void)collectionMusica{
+-(void)carregaConfiguracaoCollectionMusica{
     
     _collectionV.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -101,20 +103,15 @@
     _imagePerfil.layer.masksToBounds = YES;
     _imagePerfil.layer.cornerRadius = _imagePerfil.frame.size.width / 2;
     
-    //Nome
+    //Nome, cidade e Bairro
     _lblPerfilNome.text = [[LocalStore sharedStore] usuarioAtual].nome;
-    NSLog(@"%@", _lblPerfilNome.text);
     _lblPerfilCidade.text = [[LocalStore sharedStore] usuarioAtual].cidade;
     _lblPerfilBairro.text = [[LocalStore sharedStore] usuarioAtual].bairro;
     
-    //Editar Perfil
-    _btnPerfilEditar.enabled = YES;
+    //Botao Editar Perfil (Função em programção)
+    _btnPerfilEditar.enabled = NO;
     
-    //Qtd de Amigos
-    [self carregaQtdDeAmigos];
-}
-
--(void)carregaQtdDeAmigos{
+    //Carrega Qtd de Amigos
     _lblPerfilAmigos.text = [NSString stringWithFormat:@"%@", [PerfilStore qtdDeAmigos]];
 }
 
@@ -132,7 +129,6 @@
 }
 
 - (IBAction)btnPerfilEditarClick:(id)sender {
-    
 }
 
 -(void)carregaBandas{
@@ -212,13 +208,6 @@
     UILabel* lblMusica = (UILabel*)[cell viewWithTag:1];
     lblMusica.text = ((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).nome;
     lblMusica.font = [lblMusica.font fontWithSize:8];
-
-//    UIImageView *imageSom = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"som.png"]];
-//    imageSom.frame = CGRectMake(0, 0, 30, 30);
-//    imageSom.contentMode = UIViewContentModeScaleAspectFit;
-//    imageSom.clipsToBounds = YES;
-//    [cell addSubview:imageSom];
-//    [cell setBackgroundColor:[UIColor grayColor]];
     
     return cell;
 }
@@ -242,7 +231,6 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%@", ((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).url);
     
     NSURL* url = [[NSURL alloc] initFileURLWithPath:((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).url];
     

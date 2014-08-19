@@ -67,6 +67,11 @@
     _context = [_appDelegate managedObjectContext];
 }
 
++(void)carregaCoresDoLayout{
+    
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:239 green:29 blue:71 alpha:1]];
+}
+
 
 -(NSString*)substituiCaracteresHTML:(NSString*)htmlCode{
     

@@ -33,6 +33,9 @@
     if (self) {
         [[self navigationItem] setTitle:@"Buscar Músico"];
         _usuarios = [[NSMutableArray alloc] init];
+        
+//        [LocalStore carregaCoresDoLayout];
+//            [[UITabBar appearance] setTintColor:[UIColor colorWithRed:239 green:29 blue:71 alpha:1]];
     }
     return self;
 }
@@ -42,14 +45,11 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    if (![[[LocalStore sharedStore] usuarioAtual].identificador isEqualToString:@"0"]) {
-        [[self navigationItem] setHidesBackButton:YES];
-    }
-    else{
-        [[self navigationItem] setHidesBackButton:NO];
-    }
     
+    //Seleciona a imagem da tab bar
     [_tabBar setSelectedItem:_buscarItem];
+    
+    [self escondeBotaoDeBoltarSeUsuarioLogado];
     
     //Habilitar Botao de esonder Filtro
     [self habilitaBotaoEsconder];
@@ -61,6 +61,15 @@
     [self carregaUsuarioBuscado];
     
     [self atualizaTela];
+}
+
+-(void)escondeBotaoDeBoltarSeUsuarioLogado{
+    if (![[[LocalStore sharedStore] usuarioAtual].identificador isEqualToString:@"0"]) {
+        [[self navigationItem] setHidesBackButton:YES];
+    }
+    else{
+        [[self navigationItem] setHidesBackButton:NO];
+    }
 }
 
 - (void)viewDidLoad{

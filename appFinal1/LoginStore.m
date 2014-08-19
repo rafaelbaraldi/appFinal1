@@ -60,8 +60,6 @@ static NSString* senha = @"";
     
     if(identificador != nil){
         
-//        Usuario *u = [self carregaUsuarioCoreData:identificador];
-//        [self salvaUsuarioTPUsuario:u];
         [[LocalStore sharedStore] setUsuarioAtual:[BuscaStore buscaPessoa:identificador]];
         
         resposta = YES;
@@ -69,18 +67,6 @@ static NSString* senha = @"";
     
     return resposta;
 }
-
-//+(void)salvaUsuarioTPUsuario:(Usuario*)u{
-//    
-//    [[LocalStore sharedStore] usuarioAtual].identificador = [NSString stringWithFormat:@"%d", [u.identificador intValue]];
-//    [[LocalStore sharedStore] usuarioAtual].nome = u.nome;
-//    [[LocalStore sharedStore] usuarioAtual].email = u.email;
-//    [[LocalStore sharedStore] usuarioAtual].senha = u.senha;
-//    [[LocalStore sharedStore] usuarioAtual].sexo = u.sexo;
-//    [[LocalStore sharedStore] usuarioAtual].cidade = u.cidade;
-//    [[LocalStore sharedStore] usuarioAtual].bairro = u.bairro;
-//    [[LocalStore sharedStore] usuarioAtual].atribuicoes = u.observacoes;
-//}
 
 +(Usuario*)carregaUsuarioCoreData:(NSString *)identificador{
     
@@ -128,20 +114,12 @@ static NSString* senha = @"";
     [[[LocalStore sharedStore] context]  save:nil];
     
     //Salva usuario Logado no TPUsuario
-//    [self salvaUsuarioTPUsuario:u];
     [[LocalStore sharedStore] setUsuarioAtual:[BuscaStore buscaPessoa:[usuario valueForKeyPath:@"id"]]];
     
     //Salva id do Usuario para autenticar login
     NSUserDefaults *autenticaLogin = [NSUserDefaults standardUserDefaults];
     [autenticaLogin setObject:[u.identificador stringValue] forKey:@"identificador"];
-    [autenticaLogin synchronize];
-    
-    //    NSArray * a = [[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Usuario"] error:nil];
-    //
-    //    for (Usuario* us in a) {
-    //        NSLog(@"id = %d, nome = %@", [us.identificador intValue], us.nome);
-    //    }
-    
+    [autenticaLogin synchronize];    
 }
 
 +(void)deslogar{

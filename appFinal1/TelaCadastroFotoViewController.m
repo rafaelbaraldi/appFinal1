@@ -68,6 +68,7 @@
     }
 }
 
+//Metodo para alterar dimensoes da imagem
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
     UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
@@ -83,6 +84,7 @@
 
 - (IBAction)btnContinuarClick:(id)sender {
     
+    //Verificar se carregou alguma foto
     if (_fotoSelecionada.image != nil) {
         UIImage *foto = _fotoSelecionada.image;
         foto = [self imageWithImage:foto scaledToSize:CGSizeMake(192, 256)];
@@ -90,6 +92,7 @@
         [CadastroConexao uploadFoto: foto];
     }
     
+    //Vai para tela de busca - inicio do APP
     if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaPerfil]]) {
         [[self navigationController] popToViewController:[[LocalStore sharedStore] TelaBusca] animated:YES];
     }
