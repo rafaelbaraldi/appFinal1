@@ -65,6 +65,8 @@
 		1BEA45A51992C7A100876D75 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA45941992C7A100876D75 /* 7.png */; };
 		1BEA45A91992C96200876D75 /* PerfilConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEA45A81992C96200876D75 /* PerfilConexao.m */; };
 		1BEA45AC1992C98D00876D75 /* PerfilStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEA45AB1992C98D00876D75 /* PerfilStore.m */; };
+		1BF141F119A536B800E5C9CE /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BF141F019A536B800E5C9CE /* logo.jpg */; };
+		1BF141F319A5389800E5C9CE /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BF141F219A5389800E5C9CE /* logo.png */; };
 		2F270FCB1981936C00EFBEB4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F270FCA1981936C00EFBEB4 /* Reachability.m */; };
 		2F79ACC519802CF000C3DD0E /* Musica.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F79ACC419802CF000C3DD0E /* Musica.m */; };
 		2F79ACCB19802D2900C3DD0E /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F79ACCA19802D2900C3DD0E /* Usuario.m */; };
@@ -210,6 +212,8 @@
 		1BEA45A81992C96200876D75 /* PerfilConexao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfilConexao.m; sourceTree = "<group>"; };
 		1BEA45AA1992C98D00876D75 /* PerfilStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfilStore.h; sourceTree = "<group>"; };
 		1BEA45AB1992C98D00876D75 /* PerfilStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfilStore.m; sourceTree = "<group>"; };
+		1BF141F019A536B800E5C9CE /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpg; sourceTree = "<group>"; };
+		1BF141F219A5389800E5C9CE /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		2F270FC91981936C00EFBEB4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		2F270FCA1981936C00EFBEB4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		2F79ACC319802CF000C3DD0E /* Musica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Musica.h; sourceTree = "<group>"; };
@@ -642,6 +646,15 @@
 			name = Singleton;
 			sourceTree = "<group>";
 		};
+		1BF141EF19A536B000E5C9CE /* imagens */ = {
+			isa = PBXGroup;
+			children = (
+				1BF141F219A5389800E5C9CE /* logo.png */,
+				1BF141F019A536B800E5C9CE /* logo.jpg */,
+			);
+			name = imagens;
+			sourceTree = "<group>";
+		};
 		2FB3B33E197459E70054B7F7 /* Gravacao */ = {
 			isa = PBXGroup;
 			children = (
@@ -695,6 +708,7 @@
 				737D09E51975C5D1000975F6 /* TelaInicioViewController.h */,
 				737D09E61975C5D1000975F6 /* TelaInicioViewController.m */,
 				737D09E71975C5D1000975F6 /* TelaInicioViewController.xib */,
+				1BF141EF19A536B000E5C9CE /* imagens */,
 			);
 			name = Inicio;
 			sourceTree = "<group>";
@@ -908,6 +922,7 @@
 				31F67C7A193523D400113DA8 /* TelaUsuarioFiltrado.xib in Resources */,
 				739DA1DF198C0DF8005053DB /* opcoes.png in Resources */,
 				31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */,
+				1BF141F119A536B800E5C9CE /* logo.jpg in Resources */,
 				1BEA45951992C7A100876D75 /* 8.png in Resources */,
 				31A004401993F0CA00121EF6 /* TelaBandaViewController.xib in Resources */,
 				1BEA45971992C7A100876D75 /* 10.png in Resources */,
@@ -931,6 +946,7 @@
 				1B1613081992A2A1009D5513 /* TelaNovaBandaViewController.xib in Resources */,
 				31F67C75193515CC00113DA8 /* escrever.png in Resources */,
 				1BEA45A41992C7A100876D75 /* 5.png in Resources */,
+				1BF141F319A5389800E5C9CE /* logo.png in Resources */,
 				1B1613111992A6E2009D5513 /* TelaAmigosViewController.xib in Resources */,
 				31C31744194783B700C99512 /* delete.png in Resources */,
 				73DF446D197053EB000EE360 /* TelaEsqueciSenhaViewController.xib in Resources */,

@@ -40,6 +40,9 @@
     [[_btnCadastrar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
     [[_btnEntrar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
     [[_btnLogin layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    
+//    _imgLogo.layer.masksToBounds = YES;
+//    [[_imgLogo layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];;
 }
 
 - (void)didReceiveMemoryWarning{

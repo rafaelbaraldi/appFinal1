@@ -14,6 +14,7 @@
 - (IBAction)btnEntrarClick:(id)sender;
 - (IBAction)btnLoginClick:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIImageView *imgLogo;
 @property (strong, nonatomic) IBOutlet UIButton *btnCadastrar;
 @property (strong, nonatomic) IBOutlet UIButton *btnLogin;
 @property (strong, nonatomic) IBOutlet UIButton *btnEntrar;
