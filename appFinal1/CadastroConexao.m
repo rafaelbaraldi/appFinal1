@@ -18,7 +18,7 @@
 
     NSString *url = @"http://54.187.203.61/appMusica/cadastroFoto.php";
 
-    NSData *postData = UIImageJPEGRepresentation(foto, 5);
+    NSData *postData = UIImagePNGRepresentation(foto);
     
     NSMutableURLRequest *request = [[ NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"POST"];
@@ -30,15 +30,15 @@
 
     NSMutableData *body = [NSMutableData data];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"%@.jpg\"\r\n", [[LocalStore sharedStore] usuarioAtual].identificador] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"%@.png\"\r\n", [[LocalStore sharedStore] usuarioAtual].identificador] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[NSData dataWithData:postData]];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setHTTPBody:body];
 
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@ -- %@",s, [[LocalStore sharedStore] usuarioAtual].identificador);
+    [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+//    NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@ -- %@",s, [[LocalStore sharedStore] usuarioAtual].identificador);
 }
 
 +(NSString*)cadastrar:(NSData*)jsonCadastro{

@@ -87,7 +87,7 @@
     //Verificar se carregou alguma foto
     if (_fotoSelecionada.image != nil) {
         UIImage *foto = _fotoSelecionada.image;
-        foto = [self imageWithImage:foto scaledToSize:CGSizeMake(192, 256)];
+        foto = [self imageWithImage:foto scaledToSize:CGSizeMake(96, 128)];
         
         [CadastroConexao uploadFoto: foto];
     }

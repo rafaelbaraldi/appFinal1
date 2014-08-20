@@ -22,6 +22,8 @@
 
 #import "TPUsuario.h"
 
+#import "ImgStore.h"
+
 @interface TelaBuscaViewController ()
 
 @end
@@ -279,37 +281,50 @@
         [celula addSubview:cidade];
         
         //Carrega Foto
-        UIImageView *fotoUsuario = [self carregaImagemUsuario:indexPath.row];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^(void) {
+            UIImageView *fotoUsuario = [self carregaImagemUsuario:indexPath.row];
         
-        [celula addSubview:fotoUsuario];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [celula addSubview:fotoUsuario];
+            });
+        });
     }
     else{
         ((UILabel*)[celula viewWithTag:1]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
         ((UILabel*)[celula viewWithTag:2]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
         
         //Reaproveita Foto
-        NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
-        UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
-        if (foto == nil) {
-            foto = [UIImage imageNamed:@"perfil.png"];
-        }
-        
-        ((UIImageView*)[celula viewWithTag:3]).image = foto;
+        UIImageView *foto = [self carregaImagemUsuario:indexPath.row];
+        ((UIImageView*)[celula viewWithTag:3]).image = foto.image;
     }
     
     return celula;
 }
 
 -(UIImageView*)carregaImagemUsuario:(NSInteger)row{
-    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", ((TPUsuario*)[_usuarios objectAtIndex:row]).identificador];
-    UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
+
+    //URL Foto do Usuario
+    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", ((TPUsuario*)[_usuarios objectAtIndex:row]).identificador];
+
+    UIImage *foto;
+    if([[ImgStore sharedImageCache] existeImg:urlFoto] == true){
+        foto = [[ImgStore sharedImageCache] getImage:urlFoto];
+    }
+    else{
+        if([[ImgStore sharedImageCache] existeImgNoServidor:urlFoto] == true){
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlFoto]];
+            foto = [[UIImage alloc] initWithData:imageData];
+            [[ImgStore sharedImageCache] addImage:urlFoto imagem:foto];
+        }
+        else{
+            foto = [UIImage imageNamed:@"perfil.png"];
+        }
+    }
     
     UIImageView *fotoUsuario = [[UIImageView alloc] initWithFrame:CGRectMake(15, 3, 65, 65)];
     fotoUsuario.layer.masksToBounds = YES;
     fotoUsuario.layer.cornerRadius = fotoUsuario.frame.size.width / 2;
-    if (foto == nil) {
-        foto = [UIImage imageNamed:@"perfil.png"];
-    }
     fotoUsuario.image = foto;
     fotoUsuario.tag = 3;
     
