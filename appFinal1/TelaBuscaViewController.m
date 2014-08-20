@@ -35,9 +35,6 @@
     if (self) {
         [[self navigationItem] setTitle:@"Buscar Músico"];
         _usuarios = [[NSMutableArray alloc] init];
-        
-//        [LocalStore carregaCoresDoLayout];
-//            [[UITabBar appearance] setTintColor:[UIColor colorWithRed:239 green:29 blue:71 alpha:1]];
     }
     return self;
 }
@@ -78,9 +75,10 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    //bg
+    //BG
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     [_viewFiltros setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
     
     //Metodo de Busca por cidade
     [_txtCidade addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];

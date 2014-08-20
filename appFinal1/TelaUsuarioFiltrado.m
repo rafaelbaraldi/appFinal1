@@ -40,11 +40,22 @@
     
     [self carregaUsuarioFiltrado];
     
+    //Back red
+    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
+    
+    //Carrega opcoes Scrool View
+    [self carregaOpcoesScrool];
+}
+
+-(void)carregaOpcoesScrool{
     _scrollView.pagingEnabled = NO;
     _scrollView.showsVerticalScrollIndicator = YES;
     _scrollView.scrollEnabled = YES;
     _scrollView.showsHorizontalScrollIndicator = YES;
     _scrollView.frame = self.view.frame;
+    
+    //BG
+    _scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -90,7 +101,6 @@
     //Instrumentos
     [self carregaInstrumentosUsuario];
 }
-
 
 -(void)carregaEstilosUsuario{
     
@@ -150,7 +160,7 @@
 
 -(void)carregaImagemUsuario{
 
-    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", [BuscaStore buscaPessoa:_identificador].identificador];
+    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", [BuscaStore buscaPessoa:_identificador].identificador];
     UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
     
     _imageUsuario.layer.masksToBounds = YES;
@@ -196,7 +206,6 @@
     NSDictionary *attributtes = @{NSParagraphStyleAttributeName : style,};
     label.attributedText = [[NSAttributedString alloc] initWithString:label.text
                                                                       attributes:attributtes];
-    
     label.lineBreakMode = NSLineBreakByCharWrapping;
 }
 

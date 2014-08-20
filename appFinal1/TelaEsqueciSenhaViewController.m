@@ -35,14 +35,13 @@
     
     //bg
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
     [self arredondaBordaBotoes];
 }
 
 -(void)arredondaBordaBotoes{
-    
     [[_btnProcurar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
 }
-
 
 -(void)viewWillAppear:(BOOL)animated{
     

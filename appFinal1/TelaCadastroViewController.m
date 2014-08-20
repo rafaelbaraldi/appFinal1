@@ -27,6 +27,7 @@ const int OBSERVACOES = 2;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [[self navigationItem] setTitle:@"Cadastro"];
     }
     return self;
 }
@@ -38,12 +39,9 @@ const int OBSERVACOES = 2;
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    
     //bg
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
-    
-    
-    [[self navigationItem] setTitle:@"Cadastro"];
+    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
     
     //Usa Cadastro no singleton
     [[CadastroStore sharedStore]setViewTela:self];
@@ -124,6 +122,15 @@ const int OBSERVACOES = 2;
         usuario.horarios = [usuario.horarios substringFromIndex:2];
     }
     
+    //Finalizamos um cadastro
+    [self finalizaCadastro:usuario];
+    
+    //Limpa tela após cadastras
+    [self limpaTela];
+}
+
+-(void)finalizaCadastro:(Usuario*)usuario{
+    
     NSString *valida = [CadastroStore validaCadastro:usuario];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERRO" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -150,6 +157,19 @@ const int OBSERVACOES = 2;
             [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaCadastroFoto] animated:YES];
         }
     }
+}
+
+-(void)limpaTela{
+    _txtNome.text = @"";
+    _txtEmail.text = @"";
+    _txtSenha.text = @"";
+    _txtCidade.text = @"";
+    _txtBairro.text = @"";
+    _txtObservacoes.text = @"";
+    
+    [[[CadastroStore sharedStore] instrumentosQueToca] removeAllObjects];
+    [[[CadastroStore sharedStore] estilosQueToca] removeAllObjects];
+    [[[CadastroStore sharedStore] horariosQueToca] removeAllObjects];
 }
 
 - (IBAction)btnHorariosClick:(id)sender {

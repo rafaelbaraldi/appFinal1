@@ -35,6 +35,7 @@
     
     //bg
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
     [self arredondaBordaBotoes];
     
     [_txtSenha setSecureTextEntry:YES];

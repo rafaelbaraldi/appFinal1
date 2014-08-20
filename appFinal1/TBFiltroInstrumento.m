@@ -25,6 +25,7 @@
     if (self) {
         
         [[self navigationItem] setTitle:@"Filtro Instrumento"];
+        [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
     }
     return self;
 }
@@ -36,9 +37,6 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-//    [self.navigationItem.backBarButtonItem set
-    
     _todosInstrumentos = [BuscaStore retornaListaDe:@"instrumento"];
     [[[BuscaStore sharedStore] instrumentosFiltrados] removeAllObjects];
 }

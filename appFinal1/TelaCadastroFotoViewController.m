@@ -27,13 +27,13 @@
         
         [[self navigationItem] setTitle:@"Cadastro Foto"];
         [[self navigationItem] setHidesBackButton:YES];
+        
     }
     return self;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
     
     //bg
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -62,10 +62,6 @@
 }
 
 -(void)exibiFoto{
-    
-    //Vai tentar carregar a foto cadastrada
-//    NSString *urlImage = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.jpg", [[LocalStore sharedStore] usuarioAtual].identificador];
-//    _fotoSelecionada.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]]];
     
     if (_fotoSelecionada.image != nil) {
         [_imgView setImage:_fotoSelecionada.image];
@@ -98,6 +94,9 @@
         
         [CadastroConexao uploadFoto: foto];
     }
+    
+    //Limpa Imagem
+    _fotoSelecionada = nil;
     
     //Vai para tela de busca - inicio do APP
     if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaPerfil]]) {
