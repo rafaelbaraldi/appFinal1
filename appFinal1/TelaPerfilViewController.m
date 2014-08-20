@@ -61,6 +61,7 @@
     
     //Botao do NAvigationItem
     [_tabBar setSelectedItem:_perfilItem];
+    [_tabBar setTintColor:[UIColor redColor]];
 }
 
 -(void)escondeBotaoDeVoltarSeUsuarioLogado{
@@ -265,6 +266,8 @@
 }
 
 - (IBAction)btnCriarBandaClick:(id)sender {
-    [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaNovaBanda] animated:YES];
+    if(![[[LocalStore sharedStore] usuarioAtual].identificador isEqualToString:@"0"]){
+        [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaNovaBanda] animated:YES];
+    }
 }
 @end

@@ -7,9 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TelaCadastroViewController">
             <connections>
                 <outlet property="btnConfirmar" destination="yAn-l7-pUc" id="vnP-Pr-UgM"/>
-                <outlet property="btnEstilos" destination="IhR-l6-OG9" id="hF2-YQ-isc"/>
-                <outlet property="btnHorarios" destination="bMY-ZV-hAu" id="GAz-Eh-hwo"/>
-                <outlet property="btnInstrumentos" destination="2vP-PE-NJq" id="Ifr-n1-HH4"/>
+                <outlet property="btnEstilos" destination="IhR-l6-OG9" id="pdE-hI-87w"/>
+                <outlet property="btnHorarios" destination="bMY-ZV-hAu" id="yae-7C-tIu"/>
+                <outlet property="btnInstrumentos" destination="2vP-PE-NJq" id="O5u-Yr-6Kb"/>
                 <outlet property="lblCabecalho" destination="ZYL-If-F3M" id="hJ6-RA-VFA"/>
                 <outlet property="lblEstilos" destination="9YT-ss-PXQ" id="MFG-n2-sfm"/>
                 <outlet property="lblExemploObservacoes" destination="cre-rv-EyK" id="xfI-cf-2PL"/>
@@ -32,8 +32,9 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Por favor confirme suas informações abaixo:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYL-If-F3M">
                     <rect key="frame" x="34" y="72" width="253" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tK2-vN-3Su">
@@ -66,10 +67,12 @@
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Idd-DK-tTQ">
                     <rect key="frame" x="26" y="214" width="269" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <segments>
                         <segment title="Masculino"/>
                         <segment title="Feminino"/>
                     </segments>
+                    <color key="tintColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                 </segmentedControl>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cidade" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5GH-bR-2Py">
                     <rect key="frame" x="26" y="253" width="129" height="30"/>
@@ -92,7 +95,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vP-PE-NJq">
                     <rect key="frame" x="26" y="297" width="269" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.13333334028720856" green="0.59215688705444336" blue="0.96078437566757202" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Instrumentos">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -105,7 +108,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhR-l6-OG9">
                     <rect key="frame" x="26" y="354" width="269" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.13333334028720856" green="0.59215688705444336" blue="0.96078437566757202" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" title="Estilos Musicais">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -117,7 +120,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMY-ZV-hAu">
                     <rect key="frame" x="26" y="410" width="269" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.13333334028720856" green="0.59215688705444336" blue="0.96078437566757202" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" title="Horários para ensaio">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -130,18 +133,21 @@
                     <rect key="frame" x="26" y="325" width="269" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ex: Conhecimento em escala, ritimicas, teoria" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cre-rv-EyK">
                     <rect key="frame" x="34" y="491" width="261" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YT-ss-PXQ">
                     <rect key="frame" x="26" y="382" width="269" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Observações" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fmi-r7-pnf">
@@ -154,8 +160,10 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAn-l7-pUc">
-                    <rect key="frame" x="130" y="526" width="68" height="30"/>
+                    <rect key="frame" x="108" y="527" width="105" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" title="Confirmar">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>

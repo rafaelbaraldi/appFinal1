@@ -24,12 +24,19 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _fotoSelecionada = [[UIImageView alloc] init];
+        
+        [[self navigationItem] setTitle:@"Cadastro Foto"];
+        [[self navigationItem] setHidesBackButton:YES];
     }
     return self;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    
+    //bg
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     
     //Carrega menu
     [self carregaMenu];
@@ -40,18 +47,18 @@
     [self carregaControladorDeImagem];
 }
 
+-(void)arredondaBordaBotoes{
+    
+    [[_btnAdicionarFoto layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnContinuar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+}
+
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [self exibiFoto];
-}
-
--(void)arredondaBordaBotoes{
-    
-    [[_btnAdicionarFoto layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
-    [[_btnContinuar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
 }
 
 -(void)exibiFoto{

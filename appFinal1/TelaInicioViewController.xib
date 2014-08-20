@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TelaInicioViewController">
             <connections>
+                <outlet property="btnCadastrar" destination="gie-G9-1bf" id="mGD-b1-iQL"/>
+                <outlet property="btnEntrar" destination="Ibq-7B-LN9" id="Yse-so-Pyx"/>
+                <outlet property="btnLogin" destination="RKB-xa-cEP" id="ygc-pz-u5s"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,7 +20,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gie-G9-1bf">
                     <rect key="frame" x="78" y="199" width="165" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.19215688110000001" green="0.50588238240000005" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" title="Cadastre-se">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -29,7 +32,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKB-xa-cEP">
                     <rect key="frame" x="78" y="255" width="165" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.19215688110000001" green="0.50588238240000005" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" title="Entrar com Login">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,7 +44,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibq-7B-LN9">
                     <rect key="frame" x="78" y="307" width="165" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.19215688110000001" green="0.50588238240000005" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" title="Entrar sem Login">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

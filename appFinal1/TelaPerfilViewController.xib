@@ -92,12 +92,12 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gif-oH-5tS">
+                <tabBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="gif-oH-5tS">
                     <rect key="frame" x="0.0" y="525" width="320" height="49"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
-                        <tabBarItem tag="1" title="Gravar" image="gravar.png" id="dKl-z4-QUr">
+                        <tabBarItem tag="1" title="Gravar" image="gravarIcon.png" id="dKl-z4-QUr">
                             <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="10"/>
                         </tabBarItem>
                         <tabBarItem tag="2" systemItem="search" id="wg7-G1-VDR">
@@ -140,7 +140,7 @@
         </view>
     </objects>
     <resources>
-        <image name="gravar.png" width="30" height="30"/>
+        <image name="gravarIcon.png" width="32" height="32"/>
         <image name="perfil.png" width="512" height="512"/>
     </resources>
 </document>

@@ -29,6 +29,17 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    //bg
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    [self arredondaBordaBotoes];
+}
+
+-(void)arredondaBordaBotoes{
+    
+    [[_btnCadastrar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnEntrar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnLogin layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
 }
 
 - (void)didReceiveMemoryWarning{

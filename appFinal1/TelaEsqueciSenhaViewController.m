@@ -10,6 +10,7 @@
 
 #import "LoginStore.h"
 #import "LoginConexao.h"
+#import "LocalStore.h"
 
 @interface TelaEsqueciSenhaViewController ()
 
@@ -31,7 +32,17 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    //bg
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    [self arredondaBordaBotoes];
 }
+
+-(void)arredondaBordaBotoes{
+    
+    [[_btnProcurar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     
@@ -64,8 +75,8 @@
     NSString *resultado = [retorno valueForKeyPath:@"resultado"];
  
     if([resultado isEqualToString:@"sucesso"]){
-        [_lblMsg setHidden:YES];
-        [_btnProcurar setHidden:NO];
+        [_lblMsg setHidden:NO];
+        [_btnProcurar setHidden:YES];
     }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Nenhuma conta encontrada" message:@"Não foi possível encontrar nenhuma conta correspondente." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];

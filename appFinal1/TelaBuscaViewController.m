@@ -50,6 +50,7 @@
     
     //Seleciona a imagem da tab bar
     [_tabBar setSelectedItem:_buscarItem];
+    [_tabBar setTintColor:[UIColor redColor]];
     
     [self escondeBotaoDeBoltarSeUsuarioLogado];
     

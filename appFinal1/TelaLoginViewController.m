@@ -33,6 +33,10 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    //bg
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    [self arredondaBordaBotoes];
+    
     [_txtSenha setSecureTextEntry:YES];
     
     
@@ -45,6 +49,11 @@
         if (networkStatus == ReachableViaWiFi) { NSLog(@"wifi"); }
         else if (networkStatus == ReachableViaWWAN) { NSLog(@"carrier");}
     }
+}
+
+-(void)arredondaBordaBotoes{
+    
+    [[_btnContinuar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

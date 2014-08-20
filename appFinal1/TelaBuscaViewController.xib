@@ -34,12 +34,12 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tabBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ8-aO-iVP">
+                <tabBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="nJ8-aO-iVP">
                     <rect key="frame" x="0.0" y="525" width="320" height="49"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
-                        <tabBarItem tag="1" title="Gravar" image="gravar.png" id="p7Z-6i-Aqn">
+                        <tabBarItem tag="1" title="Gravar" image="gravarIcon.png" id="p7Z-6i-Aqn">
                             <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="10"/>
                         </tabBarItem>
                         <tabBarItem tag="2" systemItem="search" id="jib-XL-ILu">
@@ -49,7 +49,7 @@
                             <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="10"/>
                         </tabBarItem>
                     </items>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <color key="selectedImageTintColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="VKX-Yp-bUU"/>
@@ -170,6 +170,6 @@
     </objects>
     <resources>
         <image name="delete.png" width="512" height="512"/>
-        <image name="gravar.png" width="30" height="30"/>
+        <image name="gravarIcon.png" width="32" height="32"/>
     </resources>
 </document>

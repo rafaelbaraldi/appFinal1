@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoreAudioViewController">
             <connections>
                 <outlet property="btnGravar" destination="xq6-C9-MdR" id="l4L-0C-rBN"/>
+                <outlet property="btnTocar" destination="kR1-bE-xq0" id="ukv-7t-AUe"/>
                 <outlet property="gravarItem" destination="TEj-qM-8ki" id="odl-na-1c2"/>
                 <outlet property="tabBar" destination="Kee-EF-taZ" id="9yg-Ve-F2O"/>
                 <outlet property="txtCategoria" destination="8Yg-xD-65j" id="jhj-6b-eRV"/>
@@ -22,7 +23,9 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xq6-C9-MdR">
                     <rect key="frame" x="42" y="356" width="89" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" title="Gravar">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -32,7 +35,9 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kR1-bE-xq0">
                     <rect key="frame" x="171" y="356" width="118" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.98823535439999999" green="0.12549020350000001" blue="0.30196079609999998" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" title="Tocar Gravacao">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -57,12 +62,12 @@
                         <action selector="txtCategoriaSair:" destination="-1" eventType="editingDidEndOnExit" id="lBH-p2-Ycg"/>
                     </connections>
                 </textField>
-                <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kee-EF-taZ">
+                <tabBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Kee-EF-taZ">
                     <rect key="frame" x="0.0" y="525" width="320" height="49"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
-                        <tabBarItem tag="1" title="Gravar" image="gravar.png" id="TEj-qM-8ki">
+                        <tabBarItem tag="1" title="Gravar" image="gravarIcon.png" id="TEj-qM-8ki">
                             <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="10"/>
                         </tabBarItem>
                         <tabBarItem tag="2" systemItem="search" id="c3r-MW-hxS">
@@ -83,6 +88,6 @@
         </view>
     </objects>
     <resources>
-        <image name="gravar.png" width="30" height="30"/>
+        <image name="gravarIcon.png" width="32" height="32"/>
     </resources>
 </document>

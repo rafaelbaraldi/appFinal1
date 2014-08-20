@@ -31,6 +31,7 @@
     
     //Imagem do tab bar selecionada
     [_tabBar setSelectedItem:_gravarItem];
+    [_tabBar setTintColor:[UIColor redColor]];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -40,8 +41,19 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    
+    //bg
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    [self arredondaBordaBotoes];
+    
     //Carrega todas as músicas do CoreData
     _musicas = [[NSMutableArray alloc]initWithArray:[[[LocalStore sharedStore] context] executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"Musica"] error:nil]];
+}
+
+-(void)arredondaBordaBotoes{
+    
+    [[_btnGravar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnTocar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
 }
 
 -(void)carregaGravador{

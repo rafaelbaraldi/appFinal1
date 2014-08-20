@@ -11,7 +11,7 @@
 @interface TelaEsqueciSenhaViewController : UIViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 @property (weak, nonatomic) IBOutlet UITextView *lblMsg;
-@property (weak, nonatomic) IBOutlet UITextView *btnProcurar;
+@property (weak, nonatomic) IBOutlet UIButton *btnProcurar;
 
 - (IBAction)btnProcurarClick:(id)sender;
 

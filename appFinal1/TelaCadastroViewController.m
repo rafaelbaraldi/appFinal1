@@ -38,6 +38,11 @@ const int OBSERVACOES = 2;
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    
+    //bg
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    
+    
     [[self navigationItem] setTitle:@"Cadastro"];
     
     //Usa Cadastro no singleton
@@ -60,6 +65,8 @@ const int OBSERVACOES = 2;
     [[_btnEstilos layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
     [[_btnInstrumentos layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
     [[_btnHorarios layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnConfirmar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_segGenero layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
 }
 
 -(IBAction)btnEstilosClik:(id)sender {

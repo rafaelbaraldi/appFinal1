@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtNome;
 @property (weak, nonatomic) IBOutlet UITextField *txtCategoria;
 @property (weak, nonatomic) IBOutlet UIButton *btnGravar;
+@property (strong, nonatomic) IBOutlet UIButton *btnTocar;
 @property (strong, nonatomic) IBOutlet UITabBarItem *gravarItem;
 @property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 

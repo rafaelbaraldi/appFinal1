@@ -16,4 +16,6 @@
 - (IBAction)btnSenhaClick:(id)sender;
 - (IBAction)btnContinuarClick:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIButton *btnContinuar;
+
 @end
