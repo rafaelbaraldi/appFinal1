@@ -55,6 +55,8 @@
     NSString* s = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
     s = [[LocalStore sharedStore]substituiCaracteresHTML:s];
     
+//    NSLog(@"%@", s);
+    
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[s dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
     
     return json;

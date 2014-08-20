@@ -94,10 +94,12 @@
 
 -(void)carregaUsuarioBuscado{
     
+    //Verifica se possui algum filtro requisitado
     if([[[BuscaStore sharedStore] instrumento] length] > 0
        || [[[BuscaStore sharedStore] estilo] length] > 0
        || [[[BuscaStore sharedStore] horario] length] > 0
-       ){
+       || _txtCidade.text > 0){
+        
         _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
         
         if([_usuarios count] == 0){
@@ -106,6 +108,7 @@
             [_lblMsgBusca setText:@"Nenhum resultado encontrado para a sua pesquisa"];
             [_lblMsgBusca setTextAlignment:NSTextAlignmentCenter];
             [_lblMsgBusca setNumberOfLines:2];
+            [_lblMsgBusca setTintColor:[UIColor whiteColor]];
         }
         else{
             [_lblMsgBusca setText:@""];
@@ -157,18 +160,19 @@
         _btnRemoverEstilo.hidden = YES;
     }
     
-    [self carregaUsuarioBuscado];
+//    [self carregaUsuarioBuscado];
 }
 
+//Carrega String do filtro de Horario
 -(void)carregaFiltroDeHorario{
     
     NSString *h = @"";
     for (NSString* s in [[BuscaStore sharedStore] horariosFiltrados]) {
-        h = [NSString stringWithFormat:@"%@, %@", h, s];
+        h = [NSString stringWithFormat:@"%@,%%20%@", h, s];
     }
     
     if([h length] > 0){
-        h = [h substringFromIndex:2];
+        h = [h substringFromIndex:4];
     }
     
     [[BuscaStore sharedStore] setHorario:h];
@@ -180,11 +184,13 @@
     [[self navigationController] pushViewController:tbInstrumentoVC animated:YES];
 }
 
+//Abre view de Estilo Musical para filtrar
 - (IBAction)btnEstiloClick:(id)sender {
     TBFiltroEstilo *tbEstiloVC = [[TBFiltroEstilo alloc] init];
     [[self navigationController] pushViewController:tbEstiloVC animated:YES];
 }
 
+//Abre view de Horarios para filtrar
 - (IBAction)btnHorariosClick:(id)sender {
     TBFiltroHorario *tbHorariosVC = [[TBFiltroHorario alloc] init];
     [[self navigationController] pushViewController:tbHorariosVC animated:YES];
@@ -239,21 +245,24 @@
     return YES;
 }
 
+//Busca pela cidade
 -(void)textFieldDidChange{
-    _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
+//    _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [self carregaUsuarioBuscado];
 }
 
-//Delegate TableView
+//Delegate TableView - Numero de linhas da tabela
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return [_usuarios count];
 }
 
+//Numero de sessoes
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
+//Quando seleciona a linha, entra na tela de perfil do usuario
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     TelaUsuarioFiltrado *tuVC = [[TelaUsuarioFiltrado alloc] initWithIdentificador:((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];    
@@ -266,7 +275,7 @@
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioPesquisaCell"];
         
-        UILabel *nome = [[UILabel alloc] initWithFrame:CGRectMake(90, 5, 200, 15)];
+        UILabel *nome = [[UILabel alloc] initWithFrame:CGRectMake(90, 5, 200, 20)];
         nome.text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
         nome.adjustsFontSizeToFitWidth = YES;
         nome.tag = 1;
@@ -308,17 +317,18 @@
     NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", ((TPUsuario*)[_usuarios objectAtIndex:row]).identificador];
 
     UIImage *foto;
-    if([[ImgStore sharedImageCache] existeImg:urlFoto] == true){
+    if([[ImgStore sharedImageCache] existeImg:urlFoto]){
         foto = [[ImgStore sharedImageCache] getImage:urlFoto];
     }
     else{
-        if([[ImgStore sharedImageCache] existeImgNoServidor:urlFoto] == true){
+        if([[ImgStore sharedImageCache] existeImgNoServidor:urlFoto]){
             NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlFoto]];
             foto = [[UIImage alloc] initWithData:imageData];
             [[ImgStore sharedImageCache] addImage:urlFoto imagem:foto];
         }
         else{
             foto = [UIImage imageNamed:@"perfil.png"];
+            [[ImgStore sharedImageCache] addImage:urlFoto imagem:foto];
         }
     }
     

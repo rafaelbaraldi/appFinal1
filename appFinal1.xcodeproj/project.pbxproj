@@ -522,8 +522,6 @@
 			children = (
 				1BE8E3CA192533AD00D108C0 /* AppDelegate.h */,
 				1BE8E3CB192533AD00D108C0 /* AppDelegate.m */,
-				73F6F70A19A4D6F90003B408 /* ImgStore.h */,
-				73F6F70B19A4D6F90003B408 /* ImgStore.m */,
 				1BE8E3F5192539C500D108C0 /* Banco */,
 				1BE8E3F91925449D00D108C0 /* Singleton */,
 				1B166626193507FC00E2FB47 /* Classes */,
@@ -596,6 +594,8 @@
 			children = (
 				1BE8E3FA192544E900D108C0 /* LocalStore.h */,
 				1BE8E3FB192544E900D108C0 /* LocalStore.m */,
+				73F6F70A19A4D6F90003B408 /* ImgStore.h */,
+				73F6F70B19A4D6F90003B408 /* ImgStore.m */,
 			);
 			name = Singleton;
 			sourceTree = "<group>";
