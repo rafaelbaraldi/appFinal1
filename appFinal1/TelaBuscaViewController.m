@@ -47,7 +47,7 @@
     
     //Seleciona a imagem da tab bar
     [_tabBar setSelectedItem:_buscarItem];
-    [_tabBar setTintColor:[UIColor redColor]];
+    [_tabBar setTintColor:[[LocalStore sharedStore] CORFONTE]];
     
     [self escondeBotaoDeBoltarSeUsuarioLogado];
     
@@ -287,6 +287,10 @@
         
         [celula addSubview:nome];
         [celula addSubview:cidade];
+        
+//        UIImageView *foto = [[UIImageView alloc] initWithFrame:CGRectMake(15, 3, 65, 65)];
+//        foto.image = [UIImage imageNamed:@"perfil.png"];
+//        [celula.imageView setImage:foto.image];
         
         //Carrega Foto
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);

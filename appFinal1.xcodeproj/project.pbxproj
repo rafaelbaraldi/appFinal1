@@ -120,6 +120,8 @@
 		73EC6EA0196B3BB90034CB9B /* TelaPerfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73EC6E9E196B3BB90034CB9B /* TelaPerfilViewController.m */; };
 		73EC6EA1196B3BB90034CB9B /* TelaPerfilViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EC6E9F196B3BB90034CB9B /* TelaPerfilViewController.xib */; };
 		73F6F70C19A4D6F90003B408 /* ImgStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F6F70B19A4D6F90003B408 /* ImgStore.m */; };
+		73F6F70E19A633960003B408 /* selecionado.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F6F70D19A633960003B408 /* selecionado.png */; };
+		73F6F71119A63F980003B408 /* deselecionado.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F6F71019A63F980003B408 /* deselecionado.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -293,6 +295,8 @@
 		73EC6E9F196B3BB90034CB9B /* TelaPerfilViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaPerfilViewController.xib; sourceTree = "<group>"; };
 		73F6F70A19A4D6F90003B408 /* ImgStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgStore.h; sourceTree = "<group>"; };
 		73F6F70B19A4D6F90003B408 /* ImgStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgStore.m; sourceTree = "<group>"; };
+		73F6F70D19A633960003B408 /* selecionado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selecionado.png; sourceTree = "<group>"; };
+		73F6F71019A63F980003B408 /* deselecionado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deselecionado.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -577,6 +581,7 @@
 				73A30735197483A3005551D3 /* WebService */,
 				1BD384531926A5810044A2E4 /* Singleton */,
 				1BD384511926A56D0044A2E4 /* Tela */,
+				73F6F70F19A6339E0003B408 /* Imagens */,
 			);
 			name = Cadastro;
 			sourceTree = "<group>";
@@ -687,6 +692,7 @@
 			isa = PBXGroup;
 			children = (
 				31F67C74193515CC00113DA8 /* escrever.png */,
+				73F6F71019A63F980003B408 /* deselecionado.png */,
 				31C31743194783B700C99512 /* delete.png */,
 			);
 			name = Imagens;
@@ -825,6 +831,14 @@
 			name = Perfil;
 			sourceTree = "<group>";
 		};
+		73F6F70F19A6339E0003B408 /* Imagens */ = {
+			isa = PBXGroup;
+			children = (
+				73F6F70D19A633960003B408 /* selecionado.png */,
+			);
+			name = Imagens;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -921,6 +935,7 @@
 				73A3072919744CBC005551D3 /* TBEstilosViewController.xib in Resources */,
 				31F67C7A193523D400113DA8 /* TelaUsuarioFiltrado.xib in Resources */,
 				739DA1DF198C0DF8005053DB /* opcoes.png in Resources */,
+				73F6F71119A63F980003B408 /* deselecionado.png in Resources */,
 				31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */,
 				1BF141F119A536B800E5C9CE /* logo.jpg in Resources */,
 				1BEA45951992C7A100876D75 /* 8.png in Resources */,
@@ -935,6 +950,7 @@
 				316AAA07199E8C81001CE96B /* CellTituloMusica.xib in Resources */,
 				1B7301E419A525C200F8B717 /* gravarIcon.png in Resources */,
 				1BEA45991992C7A100876D75 /* 12.png in Resources */,
+				73F6F70E19A633960003B408 /* selecionado.png in Resources */,
 				1BEA45A31992C7A100876D75 /* 15.png in Resources */,
 				73029BA719819A4200BFB4B3 /* TBFiltroHorario.xib in Resources */,
 				737F34A619785C3F00AAF796 /* TelaCadastroFotoViewController.xib in Resources */,
