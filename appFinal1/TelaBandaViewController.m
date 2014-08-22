@@ -29,6 +29,9 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    //BG - Layout
+//    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
 }
 
 -(void)dadosBanda{
@@ -40,12 +43,21 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
+    //Carrega banda Atual
     _banda = [BandaStore buscaBanda:[[BandaStore sharedStore] idBandaSelecionada]];
+    
+    //Recarrega as Mensagens da tela
     [_tbMensagens reloadData];
+    
+    [self carregaTituloNavigationBarCustom];
+}
+
+-(void)carregaTituloNavigationBarCustom{
     
     UIButton* button = [[UIButton alloc] initWithFrame:CGRectZero];
     [button setTitle:_banda.nome forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setTitleColor:[[LocalStore sharedStore] CORFONTE] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(dadosBanda) forControlEvents:UIControlEventTouchUpInside];
     [button sizeToFit];
     
@@ -74,7 +86,6 @@
     
     return cell;
 }
-
 
 - (IBAction)txtMensagemSend:(id)sender {
     [sender resignFirstResponder];

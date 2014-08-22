@@ -23,4 +23,6 @@
 
 -(BOOL)existeImgNoServidor:(NSString *)url;
 
++(void)processImageDataWithURLString:(NSString *)urlString andBlock:(void (^)(NSData *imageData))processImage;
+
 @end

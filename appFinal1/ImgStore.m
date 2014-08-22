@@ -24,7 +24,6 @@ static ImgStore* sharedImgCache = nil;
 
 +(id)alloc{
     @synchronized([ImgStore class]){
-//        NSAssert(sharedImgCache == nil, @"Attempted to allocate a second instance of a singleton.");
         sharedImgCache = [super alloc];
         
         return sharedImgCache;
@@ -65,8 +64,22 @@ static ImgStore* sharedImgCache = nil;
     if(foto == nil){
         return NO;
     }
-    
     return YES;
 }
+
++(void)processImageDataWithURLString:(NSString *)urlString andBlock:(void (^)(NSData *imageData))processImage{
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    dispatch_queue_t callerQueue = dispatch_get_main_queue();
+    dispatch_queue_t downloadQueue = dispatch_queue_create("com.myapp.processsmagequeue", NULL);
+    dispatch_async(downloadQueue, ^{
+        NSData * imageData = [NSData dataWithContentsOfURL:url];
+        
+        dispatch_async(callerQueue, ^{
+            processImage(imageData);
+        });
+    });
+}
+
 
 @end

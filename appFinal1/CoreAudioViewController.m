@@ -41,8 +41,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    
-    //bg
+    //bg - Layout
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     [self arredondaBordaBotoes];
     
