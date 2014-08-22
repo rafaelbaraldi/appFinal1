@@ -271,6 +271,9 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioPesquisaCell"];
     
+    //URL imagem do Usuario
+    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
+    
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioPesquisaCell"];
         
@@ -293,40 +296,48 @@
 //        [celula.imageView setImage:foto.image];
         
         //Carrega Foto
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^(void) {
-            UIImageView *fotoUsuario = [self carregaImagemUsuario:indexPath.row];
+//        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+//        dispatch_async(queue, ^(void) {
+//            UIImageView *fotoUsuario = [self carregaImagemUsuario:indexPath.row];
+//        
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [celula addSubview:fotoUsuario];
+//            });
+//        });
+    
         
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [celula addSubview:fotoUsuario];
-            });
-        });
+        [ImgStore processImageDataWithURLString:urlFoto andBlock:^(NSData *imageData) {
+            if (self.view.window) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                
+                [celula addSubview:[self carregaImagemUsuario:indexPath.row fotoUsuario:image]];
+            }
+        }];
     }
     else{
         ((UILabel*)[celula viewWithTag:1]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
         ((UILabel*)[celula viewWithTag:2]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
         
         //Reaproveita Foto
-        UIImageView *foto = [self carregaImagemUsuario:indexPath.row];
-        ((UIImageView*)[celula viewWithTag:3]).image = foto.image;
+        UIImage *foto = [[ImgStore sharedImageCache] getImage:urlFoto];
+        ((UIImageView*)[celula viewWithTag:3]).image = foto;
     }
     
     return celula;
 }
 
--(UIImageView*)carregaImagemUsuario:(NSInteger)row{
+-(UIImageView*)carregaImagemUsuario:(NSInteger)row fotoUsuario:(UIImage*)foto{
 
     //URL Foto do Usuario
     NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", ((TPUsuario*)[_usuarios objectAtIndex:row]).identificador];
 
-    UIImage *foto;
     if([[ImgStore sharedImageCache] existeImg:urlFoto]){
         foto = [[ImgStore sharedImageCache] getImage:urlFoto];
     }
     else{
         if([[ImgStore sharedImageCache] existeImgNoServidor:urlFoto]){
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlFoto]];
-            foto = [[UIImage alloc] initWithData:imageData];
+//            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlFoto]];
+//            foto = [[UIImage alloc] initWithData:imageData];
             [[ImgStore sharedImageCache] addImage:urlFoto imagem:foto];
         }
         else{
