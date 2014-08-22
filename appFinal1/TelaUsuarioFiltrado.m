@@ -50,6 +50,7 @@
 }
 
 -(void)carregaOpcoesScrool{
+    
     _scrollView.pagingEnabled = NO;
     _scrollView.showsVerticalScrollIndicator = YES;
     _scrollView.scrollEnabled = YES;

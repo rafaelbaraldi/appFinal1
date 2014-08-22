@@ -124,9 +124,6 @@ const int OBSERVACOES = 2;
     
     //Finalizamos um cadastro
     [self finalizaCadastro:usuario];
-    
-    //Limpa tela após cadastras
-    [self limpaTela];
 }
 
 -(void)finalizaCadastro:(Usuario*)usuario{
@@ -151,6 +148,9 @@ const int OBSERVACOES = 2;
             [alert show];
         }
         else{
+            //Limpa tela após cadastras
+            [self limpaTela];
+            
             //Realiza Login
             [LoginStore login:usuario.email senha:usuario.senha];
             

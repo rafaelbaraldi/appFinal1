@@ -39,6 +39,9 @@
     
     //Botao opções
     [self carregaBotaoOpcoes];
+    
+    //BG
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -109,11 +112,22 @@
     _lblPerfilCidade.text = [[LocalStore sharedStore] usuarioAtual].cidade;
     _lblPerfilBairro.text = [[LocalStore sharedStore] usuarioAtual].bairro;
     
-    //Botao Editar Perfil (Função em programção)
-    _btnPerfilEditar.enabled = NO;
+    //Botao Editar Perfil (Função em programação)
+    [self botaoPerfilEditar];
     
     //Carrega Qtd de Amigos
     _lblPerfilAmigos.text = [NSString stringWithFormat:@"%@", [PerfilStore qtdDeAmigos]];
+}
+
+-(void)botaoPerfilEditar{
+    
+    _btnPerfilEditar.enabled = NO;
+
+    [_btnPerfilEditar setBackgroundColor:[UIColor whiteColor]];
+    [_btnPerfilEditar setTitleColor:[[LocalStore sharedStore] CORFONTE] forState:UIControlStateNormal];
+    [[_btnPerfilEditar layer] setBorderWidth:2];
+    [[_btnPerfilEditar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    [[_btnPerfilEditar layer] setBorderColor:([[LocalStore sharedStore] CORFONTE].CGColor)];
 }
 
 -(void)carregaBotaoOpcoes{
@@ -135,7 +149,7 @@
 -(void)carregaBandas{
     _bandas = [PerfilStore retornaListaDeBandas];
     
-    int x = 10;
+    int x = 0;
     
     for (TPBanda* b in _bandas) {
         
@@ -146,10 +160,10 @@
         [icone addTarget:self action:@selector(banda:) forControlEvents:UIControlEventTouchUpInside];
         
         //Nome
-        UILabel* nome = [[UILabel alloc] initWithFrame:CGRectMake(x, 45, 45, 45)];
+        UILabel* nome = [[UILabel alloc] initWithFrame:CGRectMake(x - 7, 45, 60, 45)];
         nome.text =  b.nome;
         nome.textColor = [UIColor blackColor];
-        [nome setFont:[UIFont fontWithName:@"Verdana" size:7.0]];
+        [nome setFont:[UIFont fontWithName:@"Verdana" size:8.0]];
         [nome setTextAlignment:NSTextAlignmentCenter];
         
         if([b.nome length] > 11){
@@ -160,11 +174,14 @@
         [_scrollBanda addSubview:nome];
         
         //Posicao
-        x += 70;
+        x += 65;
     }
 
     //Scroll
     [_scrollBanda setContentSize:CGSizeMake(x, 82)];
+//    [[_scrollBanda layer] setCornerRadius:2.5f];
+//    [[_scrollBanda layer] setBorderWidth:1];
+//    [[_scrollBanda layer] setBorderColor:[[LocalStore sharedStore] CORFONTE].CGColor];
 }
 
 -(void)banda:(UIButton*)bt{
@@ -192,6 +209,9 @@
     [_collectionV registerNib:cellTitulo forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
 
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    //Opcoes CollectionView de Musicas
+    [_collectionV setBackgroundColor:[UIColor clearColor]];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{

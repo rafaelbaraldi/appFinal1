@@ -296,10 +296,7 @@
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^(void) {
             UIImageView *fotoUsuario = [self carregaImagemUsuario:indexPath.row];
-        
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [celula addSubview:fotoUsuario];
-            });
+            [celula addSubview:fotoUsuario];
         });
     }
     else{
