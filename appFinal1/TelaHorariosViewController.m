@@ -11,6 +11,8 @@
 #import "LocalStore.h"
 #import "CadastroStore.h"
 
+#import "LayoutCustom.h"
+
 @interface TelaHorariosViewController ()
 
 @end
@@ -61,34 +63,13 @@
 
     NSMutableArray *horariosQueToca = [[CadastroStore sharedStore] horariosQueToca];
     if ([horariosQueToca containsObject:cellData]){
-        [cell addSubview:[self botaoCollectionViewCellSelecionado]];
+        [cell addSubview:[LayoutCustom botaoCollectionViewCellSelecionado]];
     }
     else{
-        [cell addSubview:[self botaoCollectionViewCellDefatult:cell]];
+        [cell addSubview:[LayoutCustom botaoCollectionViewCellDefatult:cell]];
     }
     
     return cell;
-}
-         
--(UIImageView*)botaoCollectionViewCellDefatult:(UICollectionViewCell*)cell{
-    
-    [(UIImageView*)[cell viewWithTag:1] removeFromSuperview];
-    
-    UIImageView *botao = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    [[botao layer] setCornerRadius:5];
-    [[botao layer] setBorderColor:[UIColor blackColor].CGColor];
-    [[botao layer] setBorderWidth:2.5f];
-    
-    return botao;
-}
-
--(UIImageView*)botaoCollectionViewCellSelecionado{
-    
-    UIImageView *botaoSelecionado = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    botaoSelecionado.image = [UIImage imageNamed:@"selecionado.png"];
-    botaoSelecionado.tag = 1;
-    
-    return botaoSelecionado;
 }
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -101,11 +82,11 @@
     NSMutableArray *horariosQueToca = [[CadastroStore sharedStore] horariosQueToca];
     if (![horariosQueToca containsObject:cellData] ){
         [horariosQueToca addObject:cellData];
-        [cell addSubview:[self botaoCollectionViewCellSelecionado]];
+        [cell addSubview:[LayoutCustom botaoCollectionViewCellSelecionado]];
     }
     else{
         [horariosQueToca removeObject:cellData];
-        [cell addSubview:[self botaoCollectionViewCellDefatult:cell]];
+        [cell addSubview:[LayoutCustom botaoCollectionViewCellDefatult:cell]];
     }
 }
 

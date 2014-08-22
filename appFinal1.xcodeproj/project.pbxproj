@@ -109,6 +109,7 @@
 		73A3073319746B60005551D3 /* TBInstrumentosQueTocaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A3073119746B60005551D3 /* TBInstrumentosQueTocaViewController.m */; };
 		73A3073419746B60005551D3 /* TBInstrumentosQueTocaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A3073219746B60005551D3 /* TBInstrumentosQueTocaViewController.xib */; };
 		73A307381974844A005551D3 /* CadastroConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A307371974844A005551D3 /* CadastroConexao.m */; };
+		73C16CE119A76F3C00B30E50 /* LayoutCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C16CE019A76F3C00B30E50 /* LayoutCustom.m */; };
 		73C8496A196F11BD003D9371 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C84969196F11BD003D9371 /* Security.framework */; };
 		73DF446C197053EB000EE360 /* TelaEsqueciSenhaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DF446A197053EB000EE360 /* TelaEsqueciSenhaViewController.m */; };
 		73DF446D197053EB000EE360 /* TelaEsqueciSenhaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73DF446B197053EB000EE360 /* TelaEsqueciSenhaViewController.xib */; };
@@ -277,6 +278,8 @@
 		73A3073219746B60005551D3 /* TBInstrumentosQueTocaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBInstrumentosQueTocaViewController.xib; sourceTree = "<group>"; };
 		73A307361974844A005551D3 /* CadastroConexao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroConexao.h; sourceTree = "<group>"; };
 		73A307371974844A005551D3 /* CadastroConexao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadastroConexao.m; sourceTree = "<group>"; };
+		73C16CDF19A76F3C00B30E50 /* LayoutCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutCustom.h; sourceTree = "<group>"; };
+		73C16CE019A76F3C00B30E50 /* LayoutCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutCustom.m; sourceTree = "<group>"; };
 		73C84969196F11BD003D9371 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		73DF4469197053EB000EE360 /* TelaEsqueciSenhaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaEsqueciSenhaViewController.h; sourceTree = "<group>"; };
 		73DF446A197053EB000EE360 /* TelaEsqueciSenhaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaEsqueciSenhaViewController.m; sourceTree = "<group>"; };
@@ -436,21 +439,15 @@
 		1B82766B192BDB2000E461AD /* Tela */ = {
 			isa = PBXGroup;
 			children = (
+				73C16CE419A7701000B30E50 /* Tela Estilos */,
+				73C16CE319A76FE600B30E50 /* Tela Instrumentos */,
+				73C16CE219A76FCF00B30E50 /* Tela Horarios */,
 				1B82766C192BDB3500E461AD /* TelaBuscaViewController.h */,
 				1B82766D192BDB3500E461AD /* TelaBuscaViewController.m */,
 				1B82766E192BDB3500E461AD /* TelaBuscaViewController.xib */,
 				31F67C76193523D400113DA8 /* TelaUsuarioFiltrado.h */,
 				31F67C77193523D400113DA8 /* TelaUsuarioFiltrado.m */,
 				31F67C78193523D400113DA8 /* TelaUsuarioFiltrado.xib */,
-				31F83E11192E84C70070D597 /* TBFiltroEstilo.h */,
-				31F83E12192E84C70070D597 /* TBFiltroEstilo.m */,
-				31F83E13192E84C70070D597 /* TBFiltroEstilo.xib */,
-				31F83E19192E85050070D597 /* TBFiltroInstrumento.h */,
-				31F83E1A192E85050070D597 /* TBFiltroInstrumento.m */,
-				31F83E1B192E85050070D597 /* TBFiltroInstrumento.xib */,
-				73029BA319819A4200BFB4B3 /* TBFiltroHorario.h */,
-				73029BA419819A4200BFB4B3 /* TBFiltroHorario.m */,
-				73029BA519819A4200BFB4B3 /* TBFiltroHorario.xib */,
 			);
 			name = Tela;
 			sourceTree = "<group>";
@@ -605,6 +602,7 @@
 				1BE8E3FB192544E900D108C0 /* LocalStore.m */,
 				73F6F70A19A4D6F90003B408 /* ImgStore.h */,
 				73F6F70B19A4D6F90003B408 /* ImgStore.m */,
+				73C16CDE19A76F1400B30E50 /* Layout */,
 			);
 			name = Singleton;
 			sourceTree = "<group>";
@@ -775,6 +773,45 @@
 				73A3072019744C09005551D3 /* TBEstilosQueTocaViewController.h */,
 				73A3072119744C09005551D3 /* TBEstilosQueTocaViewController.m */,
 				73A3072219744C09005551D3 /* TBEstilosQueTocaViewController.xib */,
+			);
+			name = "Tela Estilos";
+			sourceTree = "<group>";
+		};
+		73C16CDE19A76F1400B30E50 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				73C16CDF19A76F3C00B30E50 /* LayoutCustom.h */,
+				73C16CE019A76F3C00B30E50 /* LayoutCustom.m */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		73C16CE219A76FCF00B30E50 /* Tela Horarios */ = {
+			isa = PBXGroup;
+			children = (
+				73029BA319819A4200BFB4B3 /* TBFiltroHorario.h */,
+				73029BA419819A4200BFB4B3 /* TBFiltroHorario.m */,
+				73029BA519819A4200BFB4B3 /* TBFiltroHorario.xib */,
+			);
+			name = "Tela Horarios";
+			sourceTree = "<group>";
+		};
+		73C16CE319A76FE600B30E50 /* Tela Instrumentos */ = {
+			isa = PBXGroup;
+			children = (
+				31F83E19192E85050070D597 /* TBFiltroInstrumento.h */,
+				31F83E1A192E85050070D597 /* TBFiltroInstrumento.m */,
+				31F83E1B192E85050070D597 /* TBFiltroInstrumento.xib */,
+			);
+			name = "Tela Instrumentos";
+			sourceTree = "<group>";
+		};
+		73C16CE419A7701000B30E50 /* Tela Estilos */ = {
+			isa = PBXGroup;
+			children = (
+				31F83E11192E84C70070D597 /* TBFiltroEstilo.h */,
+				31F83E12192E84C70070D597 /* TBFiltroEstilo.m */,
+				31F83E13192E84C70070D597 /* TBFiltroEstilo.xib */,
 			);
 			name = "Tela Estilos";
 			sourceTree = "<group>";
@@ -1007,6 +1044,7 @@
 				1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */,
 				31F83E1C192E85050070D597 /* TBFiltroInstrumento.m in Sources */,
 				73EC6E9B196B32FE0034CB9B /* LoginStore.m in Sources */,
+				73C16CE119A76F3C00B30E50 /* LayoutCustom.m in Sources */,
 				737D09E81975C5D1000975F6 /* TelaInicioViewController.m in Sources */,
 				31F83E14192E84C70070D597 /* TBFiltroEstilo.m in Sources */,
 				73E0B14219893EFC00107711 /* TPHorario.m in Sources */,
