@@ -25,7 +25,6 @@
     if (self) {
         
         [[self navigationItem] setTitle:@"Filtro Instrumento"];
-        [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
     }
     return self;
 }

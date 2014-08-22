@@ -64,7 +64,7 @@
     
     //Botao do NAvigationItem
     [_tabBar setSelectedItem:_perfilItem];
-    [_tabBar setTintColor:[UIColor redColor]];
+    [_tabBar setTintColor:[[LocalStore sharedStore] CORFONTE]];
 }
 
 -(void)escondeBotaoDeVoltarSeUsuarioLogado{

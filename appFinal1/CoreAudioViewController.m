@@ -31,7 +31,7 @@
     
     //Imagem do tab bar selecionada
     [_tabBar setSelectedItem:_gravarItem];
-    [_tabBar setTintColor:[UIColor redColor]];
+    [_tabBar setTintColor:[[LocalStore sharedStore] CORFONTE]];
 }
 
 - (void)didReceiveMemoryWarning{

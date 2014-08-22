@@ -41,7 +41,7 @@ const int OBSERVACOES = 2;
     
     //bg
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
-    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
+    [[[self navigationController] navigationBar] setTintColor:[[LocalStore sharedStore] CORFONTE]];
     
     //Usa Cadastro no singleton
     [[CadastroStore sharedStore]setViewTela:self];

@@ -78,7 +78,7 @@
     //BG
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     [_viewFiltros setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
-    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
+    [[[self navigationController] navigationBar] setTintColor:[[LocalStore sharedStore] CORFONTE]];
     
     //Metodo de Busca por cidade
     [_txtCidade addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
@@ -115,6 +115,7 @@
     }
     else{
         [_lblMsgBusca setText:@""];
+        [_usuarios removeAllObjects];
     }
     
     //Exibi botao de esconder os filtros de busca
@@ -158,8 +159,6 @@
     else{
         _btnRemoverEstilo.hidden = YES;
     }
-    
-//    [self carregaUsuarioBuscado];
 }
 
 //Carrega String do filtro de Horario
@@ -169,11 +168,9 @@
     for (NSString* s in [[BuscaStore sharedStore] horariosFiltrados]) {
         h = [NSString stringWithFormat:@"%@,%%20%@", h, s];
     }
-    
     if([h length] > 0){
         h = [h substringFromIndex:4];
     }
-    
     [[BuscaStore sharedStore] setHorario:h];
 }
 
@@ -201,6 +198,7 @@
     
     _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [self atualizaTela];
+    [self carregaUsuarioBuscado];
 }
 
 - (IBAction)btnRemoverInstrumentoClick:(id)sender {
@@ -209,6 +207,7 @@
     
     _usuarios = [BuscaStore atualizaBusca:_usuarios cidade:_txtCidade.text];
     [self atualizaTela];
+    [self carregaUsuarioBuscado];
 }
 
 - (IBAction)btnEsconderFiltroClick:(id)sender {
@@ -271,6 +270,9 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioPesquisaCell"];
     
+    //URL Foto do Usuario
+    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
+    
     if(celula == nil){
         celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioPesquisaCell"];
         
@@ -293,19 +295,20 @@
 //        [celula.imageView setImage:foto.image];
         
         //Carrega Foto
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^(void) {
-            UIImageView *fotoUsuario = [self carregaImagemUsuario:indexPath.row];
-            [celula addSubview:fotoUsuario];
-        });
-    }
+//        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+//        dispatch_async(queue, ^(void) {
+//            UIImageView *fotoUsuario = [self carregaImagemUsuario:indexPath.row];
+//            [celula addSubview:fotoUsuario];
+//        });
+
+        [celula addSubview:[self carregaImagemUsuario:indexPath.row]];
+    } 
     else{
         ((UILabel*)[celula viewWithTag:1]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
         ((UILabel*)[celula viewWithTag:2]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
         
         //Reaproveita Foto
-        UIImageView *foto = [self carregaImagemUsuario:indexPath.row];
-        ((UIImageView*)[celula viewWithTag:3]).image = foto.image;
+        ((UIImageView*)[celula viewWithTag:3]).image = [self carregaImagemUsuario:indexPath.row].image;
     }
     
     return celula;
@@ -317,25 +320,30 @@
     NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", ((TPUsuario*)[_usuarios objectAtIndex:row]).identificador];
 
     UIImage *foto;
+    UIImageView *fotoUsuario = [[UIImageView alloc] initWithFrame:CGRectMake(15, 3, 65, 65)];
+    
     if([[ImgStore sharedImageCache] existeImg:urlFoto]){
         foto = [[ImgStore sharedImageCache] getImage:urlFoto];
+        fotoUsuario.image = foto;
     }
     else{
         if([[ImgStore sharedImageCache] existeImgNoServidor:urlFoto]){
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlFoto]];
-            foto = [[UIImage alloc] initWithData:imageData];
-            [[ImgStore sharedImageCache] addImage:urlFoto imagem:foto];
+            
+            [ImgStore processImageDataWithURLString:urlFoto andBlock:^(NSData *imageData) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                fotoUsuario.image = image;
+                [[ImgStore sharedImageCache] addImage:urlFoto imagem:image];
+            }];
         }
         else{
             foto = [UIImage imageNamed:@"perfil.png"];
             [[ImgStore sharedImageCache] addImage:urlFoto imagem:foto];
+            fotoUsuario.image = foto;
         }
     }
-    
-    UIImageView *fotoUsuario = [[UIImageView alloc] initWithFrame:CGRectMake(15, 3, 65, 65)];
+
     fotoUsuario.layer.masksToBounds = YES;
     fotoUsuario.layer.cornerRadius = fotoUsuario.frame.size.width / 2;
-    fotoUsuario.image = foto;
     fotoUsuario.tag = 3;
     
     return fotoUsuario;
