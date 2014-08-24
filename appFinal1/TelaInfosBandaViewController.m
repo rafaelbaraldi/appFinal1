@@ -10,7 +10,8 @@
 #import "TelaMusicasViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "TPMusica.h"
-#import "ImgStore.h"
+//#import "ImgStore.h"
+#import "UIImageView+WebCache.h"
 
 @interface TelaInfosBandaViewController ()
 @end
@@ -197,27 +198,21 @@
     
     //URL da foto
     NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", identificador];
-    
-    UIImage *foto;
-    if([[ImgStore sharedImageCache] existeImg:urlFoto]){
-        foto = [[ImgStore sharedImageCache] getImage:urlFoto];
-    }
-    else{
-        if([[ImgStore sharedImageCache] existeImgNoServidor:urlFoto]){
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlFoto]];
-            foto = [[UIImage alloc] initWithData:imageData];
-            [[ImgStore sharedImageCache] addImage:urlFoto imagem:foto];
-        }
-        else{
-            foto = [UIImage imageNamed:@"perfil.png"];
-            [[ImgStore sharedImageCache] addImage:urlFoto imagem:foto];
-        }
-    }
+    NSURL *imageURL = [NSURL URLWithString:urlFoto];
     
     UIImageView *fotoUsuario = [[UIImageView alloc] initWithFrame:CGRectMake(15, 3, 50, 50)];
+    fotoUsuario.image = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:urlFoto];
+    
+    if (fotoUsuario.image == nil) {
+        [fotoUsuario sd_setImageWithURL:imageURL placeholderImage:nil
+                                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                       [[SDImageCache sharedImageCache] storeImage:image forKey:urlFoto];
+                                   }];
+    }
+    
+
     fotoUsuario.layer.masksToBounds = YES;
     fotoUsuario.layer.cornerRadius = fotoUsuario.frame.size.width / 2;
-    fotoUsuario.image = foto;
     fotoUsuario.tag = 3;
     
     return fotoUsuario;

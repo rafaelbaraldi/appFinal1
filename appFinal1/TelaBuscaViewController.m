@@ -22,7 +22,10 @@
 
 #import "TPUsuario.h"
 
-#import "ImgStore.h"
+//#import "ImgStore.h"
+
+#import "UIImageView+WebCache.h"
+#import "celulaPerfilTableViewCell.h"
 
 @interface TelaBuscaViewController ()
 
@@ -89,6 +92,9 @@
     
     //Deixa a borda dos boteos arredondados
     [self arredondaBordaBotoes];
+    
+    _tbUsuarios.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    _tbUsuarios.separatorColor = [UIColor clearColor];
 }
 
 -(void)carregaUsuarioBuscado{
@@ -263,90 +269,67 @@
 //Quando seleciona a linha, entra na tela de perfil do usuario
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    TelaUsuarioFiltrado *tuVC = [[TelaUsuarioFiltrado alloc] initWithIdentificador:((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];    
+    TelaUsuarioFiltrado *tuVC = [[TelaUsuarioFiltrado alloc] initWithIdentificador:((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
     [[self navigationController] pushViewController:tuVC animated:YES];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioPesquisaCell"];
+    
+    celulaPerfilTableViewCell* celula = [tableView dequeueReusableCellWithIdentifier:@"UsuarioPesquisaCell"];
     
     //URL Foto do Usuario
     NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).identificador];
+    NSURL *imageURL = [NSURL URLWithString:urlFoto];
     
     if(celula == nil){
-        celula = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioPesquisaCell"];
+        celula = [[celulaPerfilTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsuarioPesquisaCell"];
         
         UILabel *nome = [[UILabel alloc] initWithFrame:CGRectMake(90, 5, 200, 20)];
         nome.text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
         nome.adjustsFontSizeToFitWidth = YES;
+        nome.textColor = [UIColor whiteColor];
+        nome.font = [UIFont boldSystemFontOfSize:16];
         nome.tag = 1;
         
         UILabel *cidade = [[UILabel alloc] initWithFrame:CGRectMake(90, 25, 200, 15)];
         cidade.text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
         cidade.font = [UIFont fontWithName:@"arial" size:10];
+        cidade.textColor = [UIColor whiteColor];
         cidade.adjustsFontSizeToFitWidth = YES;
         cidade.tag = 2;
         
         [celula addSubview:nome];
         [celula addSubview:cidade];
-        
-//        UIImageView *foto = [[UIImageView alloc] initWithFrame:CGRectMake(15, 3, 65, 65)];
-//        foto.image = [UIImage imageNamed:@"perfil.png"];
-//        [celula.imageView setImage:foto.image];
-        
-        //Carrega Foto
-//        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-//        dispatch_async(queue, ^(void) {
-//            UIImageView *fotoUsuario = [self carregaImagemUsuario:indexPath.row];
-//            [celula addSubview:fotoUsuario];
-//        });
-
-        [celula addSubview:[self carregaImagemUsuario:indexPath.row]];
-    } 
+    }
     else{
         ((UILabel*)[celula viewWithTag:1]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).nome;
         ((UILabel*)[celula viewWithTag:2]).text = ((TPUsuario*)[_usuarios objectAtIndex:indexPath.row]).cidade;
-        
-        //Reaproveita Foto
-        ((UIImageView*)[celula viewWithTag:3]).image = [self carregaImagemUsuario:indexPath.row].image;
     }
+    
+    // Here we use the new provided setImageWithURL: method to load the web image
+    [celula.imageView sd_setImageWithURL:imageURL placeholderImage:[self carregaImagemFake]
+                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                   [[SDImageCache sharedImageCache] storeImage:image forKey:urlFoto];
+    }];
+    
+    //Layout Celula
+    UIView *bgColorCell = [[UIView alloc] init];
+    [bgColorCell setBackgroundColor:[[LocalStore sharedStore] CORFONTE]];
+    [celula setSelectedBackgroundView:bgColorCell];
+    [celula setBackgroundColor:[UIColor clearColor]];
     
     return celula;
 }
 
--(UIImageView*)carregaImagemUsuario:(NSInteger)row{
-
-    //URL Foto do Usuario
-    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", ((TPUsuario*)[_usuarios objectAtIndex:row]).identificador];
-
-    UIImage *foto;
-    UIImageView *fotoUsuario = [[UIImageView alloc] initWithFrame:CGRectMake(15, 3, 65, 65)];
+-(UIImage*)carregaImagemFake{
     
-    if([[ImgStore sharedImageCache] existeImg:urlFoto]){
-        foto = [[ImgStore sharedImageCache] getImage:urlFoto];
-        fotoUsuario.image = foto;
-    }
-    else{
-        if([[ImgStore sharedImageCache] existeImgNoServidor:urlFoto]){
-            
-            [ImgStore processImageDataWithURLString:urlFoto andBlock:^(NSData *imageData) {
-                UIImage *image = [UIImage imageWithData:imageData];
-                fotoUsuario.image = image;
-                [[ImgStore sharedImageCache] addImage:urlFoto imagem:image];
-            }];
-        }
-        else{
-            foto = [UIImage imageNamed:@"perfil.png"];
-            [[ImgStore sharedImageCache] addImage:urlFoto imagem:foto];
-            fotoUsuario.image = foto;
-        }
-    }
-
+    UIImageView *fotoUsuario = [[UIImageView alloc] initWithFrame:CGRectMake(5, 3, 65, 65)];
+    fotoUsuario.image = [UIImage imageNamed:@"perfil.png"];
     fotoUsuario.layer.masksToBounds = YES;
     fotoUsuario.layer.cornerRadius = fotoUsuario.frame.size.width / 2;
-    fotoUsuario.tag = 3;
+    fotoUsuario.tag = 4;
     
-    return fotoUsuario;
+    return fotoUsuario.image;
 }
 
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{

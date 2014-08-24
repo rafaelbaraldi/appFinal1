@@ -11,8 +11,10 @@
 #import "TPInstrumento.h"
 #import "TPHorario.h"
 #import "BuscaStore.h"
-#import "ImgStore.h"
+//#import "ImgStore.h"
 #import "LocalStore.h"
+
+#import "UIImageView+WebCache.h"
 
 @interface TelaUsuarioFiltrado ()
 
@@ -183,13 +185,15 @@
     NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", [BuscaStore buscaPessoa:_identificador].identificador];
 //    UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
 
-    UIImage *foto = [[ImgStore sharedImageCache] getImage:urlFoto];
+//    UIImage *foto = [[ImgStore sharedImageCache] getImage:urlFoto];
+    
+    UIImage* foto = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:urlFoto];
+    if(foto == nil){
+        foto = [UIImage imageNamed:@"perfil.png"];
+    }
     
     _imageUsuario.layer.masksToBounds = YES;
     _imageUsuario.layer.cornerRadius = _imageUsuario.frame.size.width / 2;
-    if (foto == nil) {
-        foto = [UIImage imageNamed:@"perfil.png"];
-    }
     _imageUsuario.image = foto;
     _imageUsuario.tag = 3;
 }

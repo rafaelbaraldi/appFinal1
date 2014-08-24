@@ -17,6 +17,7 @@
 #import "TPBanda.h"
 
 #import <AVFoundation/AVAudioSession.h>
+#import "UIImageView+WebCache.h"
 
 @interface TelaPerfilViewController ()
 @end
@@ -97,13 +98,17 @@
 -(void)carregaDadosUsuario{
     
     //Imagem
-    NSString *urlImage = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", [[LocalStore sharedStore] usuarioAtual].identificador];
+    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", [[LocalStore sharedStore] usuarioAtual].identificador];
+    NSURL *imageURL = [NSURL URLWithString:urlFoto];
     
-    UIImage* foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]]];
-    if (foto == nil) {
-        foto = [UIImage imageNamed:@"perfil.png"];
+    _imagePerfil.image = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:urlFoto];
+    
+    if (_imagePerfil.image == nil) {
+        [_imagePerfil sd_setImageWithURL:imageURL placeholderImage:nil
+                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                  [[SDImageCache sharedImageCache] storeImage:image forKey:urlFoto];
+                              }];
     }
-    _imagePerfil.image = foto;
     _imagePerfil.layer.masksToBounds = YES;
     _imagePerfil.layer.cornerRadius = _imagePerfil.frame.size.width / 2;
     
@@ -228,7 +233,7 @@
     
     UILabel* lblMusica = (UILabel*)[cell viewWithTag:1];
     lblMusica.text = ((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).nome;
-    lblMusica.font = [lblMusica.font fontWithSize:8];
+    lblMusica.font = [lblMusica.font fontWithSize:10];
     
     return cell;
 }
