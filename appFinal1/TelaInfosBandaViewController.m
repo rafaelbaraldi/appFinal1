@@ -54,23 +54,9 @@
 }
 
 -(void)play:(UIButton*)sender{
-    
-//    NSString* s = sender.titleLabel.text;
-//    //Caso haja espaço coloque %20
-//    s = [s stringByReplacingOccurrencesOfString:@" " withString:[NSString stringWithFormat:@"%%20"]];
-//    
-//    NSURL* u = [[NSURL alloc] initWithString:s];
-//    NSData* d = [[NSData alloc] initWithContentsOfURL:u];
-//    
-//    _player = [[AVAudioPlayer alloc] initWithData:d error:nil];
-//    [_player prepareToPlay];
-//    [_player play];
-    
+
     dispatch_queue_t downloadQueue = dispatch_queue_create("audio data downloader", NULL);
     dispatch_async(downloadQueue, ^{
-//        NSURL *audioURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/%@.mp3", FONYK_FILES_URL, [self.voicenote valueForKeyPath:@"Fonyker.fonykid"], [self.voicenote valueForKeyPath:@"Voicenote.vnid"]]];
-//        NSData *audioData = [NSData dataWithContentsOfURL:audioURL];
-        
         
         NSString* s = sender.titleLabel.text;
         //Caso haja espaço coloque %20
@@ -81,24 +67,29 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-                
+            //Remove load da musica
+            [self.view setAlpha:1];
+            [[self.view viewWithTag:10] removeFromSuperview];
             
             NSError *error = nil;
             _player = [[AVAudioPlayer alloc] initWithData:d error:&error];
-            NSLog(@"%@", error);
-//            audioPlayer.delegate = self;
             [_player prepareToPlay];
             [_player play];
         });
     });
     
-    UILabel *t = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 200, 50)];
-    [t setText:@"sajiosa"];
-    [t setTag:10];
-    [self.view addSubview:t];
+    //Adiciona load p/ carrega musica
+    UIActivityIndicatorView *load = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [load setCenter:self.view.center];
+    [load startAnimating];
+    [load setTag:10];
+    [self.view setAlpha:0.5];
+    [self.view addSubview:load];
 }
 
 -(void)carregaMusicas{
+    
+    
     
     //X e Y  - Posicao das Views na Tela
     int x = 15;
