@@ -264,8 +264,10 @@
 }
 
 - (IBAction)btnSeguirClick:(id)sender {
-    [BuscaConexao seguirAmigo:_pessoa.identificador acao:@"inserir"];
-    [self carregaBotaoSeguirAmigo];
+    if(![[[LocalStore sharedStore] usuarioAtual].identificador isEqualToString:@"0"]){
+        [BuscaConexao seguirAmigo:_pessoa.identificador acao:@"inserir"];
+        [self carregaBotaoSeguirAmigo];
+    }
 }
 
 -(void)botaoSeguirAmigo{
