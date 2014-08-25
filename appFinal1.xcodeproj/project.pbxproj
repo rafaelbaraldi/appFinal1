@@ -138,7 +138,7 @@
 		73EC6E9B196B32FE0034CB9B /* LoginStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 73EC6E9A196B32FE0034CB9B /* LoginStore.m */; };
 		73EC6EA0196B3BB90034CB9B /* TelaPerfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73EC6E9E196B3BB90034CB9B /* TelaPerfilViewController.m */; };
 		73EC6EA1196B3BB90034CB9B /* TelaPerfilViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73EC6E9F196B3BB90034CB9B /* TelaPerfilViewController.xib */; };
-		73F6F70C19A4D6F90003B408 /* ImgStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F6F70B19A4D6F90003B408 /* ImgStore.m */; };
+		73F6F70C19A4D6F90003B408 /* MusicaStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F6F70B19A4D6F90003B408 /* MusicaStore.m */; };
 		73F6F70E19A633960003B408 /* selecionado.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F6F70D19A633960003B408 /* selecionado.png */; };
 		73F6F71119A63F980003B408 /* deselecionado.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F6F71019A63F980003B408 /* deselecionado.png */; };
 /* End PBXBuildFile section */
@@ -350,8 +350,8 @@
 		73EC6E9D196B3BB90034CB9B /* TelaPerfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaPerfilViewController.h; sourceTree = "<group>"; };
 		73EC6E9E196B3BB90034CB9B /* TelaPerfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaPerfilViewController.m; sourceTree = "<group>"; };
 		73EC6E9F196B3BB90034CB9B /* TelaPerfilViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaPerfilViewController.xib; sourceTree = "<group>"; };
-		73F6F70A19A4D6F90003B408 /* ImgStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgStore.h; sourceTree = "<group>"; };
-		73F6F70B19A4D6F90003B408 /* ImgStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgStore.m; sourceTree = "<group>"; };
+		73F6F70A19A4D6F90003B408 /* MusicaStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicaStore.h; sourceTree = "<group>"; };
+		73F6F70B19A4D6F90003B408 /* MusicaStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicaStore.m; sourceTree = "<group>"; };
 		73F6F70D19A633960003B408 /* selecionado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selecionado.png; sourceTree = "<group>"; };
 		73F6F71019A63F980003B408 /* deselecionado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deselecionado.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -659,8 +659,8 @@
 			children = (
 				1BE8E3FA192544E900D108C0 /* LocalStore.h */,
 				1BE8E3FB192544E900D108C0 /* LocalStore.m */,
-				73F6F70A19A4D6F90003B408 /* ImgStore.h */,
-				73F6F70B19A4D6F90003B408 /* ImgStore.m */,
+				73F6F70A19A4D6F90003B408 /* MusicaStore.h */,
+				73F6F70B19A4D6F90003B408 /* MusicaStore.m */,
 				73C16CDE19A76F1400B30E50 /* Layout */,
 			);
 			name = Singleton;
@@ -1135,7 +1135,7 @@
 				736BF94C19A8C24B0010C356 /* MKAnnotationView+WebCache.m in Sources */,
 				1BE8E3FC192544E900D108C0 /* LocalStore.m in Sources */,
 				1BE8E3CF192533AD00D108C0 /* appFinal1.xcdatamodeld in Sources */,
-				73F6F70C19A4D6F90003B408 /* ImgStore.m in Sources */,
+				73F6F70C19A4D6F90003B408 /* MusicaStore.m in Sources */,
 				1BE8E3F21925343300D108C0 /* TelaCadastroViewController.m in Sources */,
 				73A3072819744CBC005551D3 /* TBEstilosViewController.m in Sources */,
 				736BF95119A8C24B0010C356 /* SDWebImageDownloader.m in Sources */,

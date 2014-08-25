@@ -27,6 +27,9 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    //BG - Layout
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -52,14 +55,47 @@
 
 -(void)play:(UIButton*)sender{
     
-    NSString* s = sender.titleLabel.text;
+//    NSString* s = sender.titleLabel.text;
+//    //Caso haja espaço coloque %20
+//    s = [s stringByReplacingOccurrencesOfString:@" " withString:[NSString stringWithFormat:@"%%20"]];
+//    
+//    NSURL* u = [[NSURL alloc] initWithString:s];
+//    NSData* d = [[NSData alloc] initWithContentsOfURL:u];
+//    
+//    _player = [[AVAudioPlayer alloc] initWithData:d error:nil];
+//    [_player prepareToPlay];
+//    [_player play];
     
-    NSURL* u = [[NSURL alloc] initWithString:s];
-    NSData* d = [[NSData alloc] initWithContentsOfURL:u];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("audio data downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+//        NSURL *audioURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/%@.mp3", FONYK_FILES_URL, [self.voicenote valueForKeyPath:@"Fonyker.fonykid"], [self.voicenote valueForKeyPath:@"Voicenote.vnid"]]];
+//        NSData *audioData = [NSData dataWithContentsOfURL:audioURL];
+        
+        
+        NSString* s = sender.titleLabel.text;
+        //Caso haja espaço coloque %20
+        s = [s stringByReplacingOccurrencesOfString:@" " withString:[NSString stringWithFormat:@"%%20"]];
+
+        NSURL* u = [[NSURL alloc] initWithString:s];
+        NSData* d = [[NSData alloc] initWithContentsOfURL:u];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+                
+            
+            NSError *error = nil;
+            _player = [[AVAudioPlayer alloc] initWithData:d error:&error];
+            NSLog(@"%@", error);
+//            audioPlayer.delegate = self;
+            [_player prepareToPlay];
+            [_player play];
+        });
+    });
     
-    _player = [[AVAudioPlayer alloc] initWithData:d error:nil];
-    [_player prepareToPlay];
-    [_player play];
+    UILabel *t = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 200, 50)];
+    [t setText:@"sajiosa"];
+    [t setTag:10];
+    [self.view addSubview:t];
 }
 
 -(void)carregaMusicas{
@@ -94,8 +130,9 @@
         
         //Carrega nome da Musica
         UILabel* lblNome = [[UILabel alloc] initWithFrame:CGRectMake(x - 10, y + 45, 75, 45)];
-        [lblNome setFont:[UIFont fontWithName:@"Verdana" size:7.0]];
+        [lblNome setFont:[UIFont fontWithName:@"Verdana" size:9.0]];
         [lblNome setTextAlignment:NSTextAlignmentCenter];
+        [lblNome setTextColor:[UIColor whiteColor]];
         
         lblNome.text = [self carregaNomeMusica:u.url];
         
@@ -119,7 +156,6 @@
         [_scrollMusicas setContentSize:CGSizeMake(x, 169)];
     }
  
-    
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive: YES error: nil];
 }
@@ -166,10 +202,11 @@
         [view setFrame:frame];
         
         //Carrega nome do Usuario
-        UILabel* lblNome = [[UILabel alloc] initWithFrame:CGRectMake(x - 10, y + 37, 77, 45)];
+        UILabel* lblNome = [[UILabel alloc] initWithFrame:CGRectMake(x - 15, y + 37, 85, 45)];
         [lblNome setFont:[UIFont fontWithName:@"Verdana" size:9.0]];
         [lblNome setTextAlignment:NSTextAlignmentCenter];
         lblNome.text = u.nome;
+        lblNome.textColor = [UIColor whiteColor];
         
         //Add Imagem e nome do usuario
         [_scrollMembros addSubview:lblNome];
