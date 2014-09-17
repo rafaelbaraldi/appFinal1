@@ -51,6 +51,10 @@ const int OBSERVACOES = 2;
     
     //Senha
     [_txtSenha setSecureTextEntry:YES];
+    
+    
+    //Teste font
+    [_lblCabecalho setFont:[UIFont fontWithName:@"WalkwayBold" size:14]];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -176,6 +180,17 @@ const int OBSERVACOES = 2;
     [[self navigationController] pushViewController:[[LocalStore sharedStore] TelaHorarios] animated:YES];
 }
 
+//Valida e-mail
+- (IBAction)txtEmailDidEnd:(id)sender {
+    
+    if ([[CadastroStore validaEmail:_txtEmail.text] length] > 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERRO" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        alert.message = @"O domínio desse e-mail é inválido. Por favor digite novamente";
+        [alert show];
+    }
+}
+
+//Regular Tela para digitar as opções de Observacoes
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     if(textField.tag == OBSERVACOES){
@@ -186,6 +201,7 @@ const int OBSERVACOES = 2;
     return YES;
 }
 
+//Regular Tela para digitar as opções de Observacoes
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
     if(textField.tag == OBSERVACOES){

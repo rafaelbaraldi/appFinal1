@@ -87,6 +87,7 @@
 		31F83E15192E84C70070D597 /* TBFiltroEstilo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E13192E84C70070D597 /* TBFiltroEstilo.xib */; };
 		31F83E1C192E85050070D597 /* TBFiltroInstrumento.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F83E1A192E85050070D597 /* TBFiltroInstrumento.m */; };
 		31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F83E1B192E85050070D597 /* TBFiltroInstrumento.xib */; };
+		31FB8CDB19CA25BF00ECEBDF /* WalkwayBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31FB8CDA19CA25BF00ECEBDF /* WalkwayBold.otf */; };
 		73029BA619819A4200BFB4B3 /* TBFiltroHorario.m in Sources */ = {isa = PBXBuildFile; fileRef = 73029BA419819A4200BFB4B3 /* TBFiltroHorario.m */; };
 		73029BA719819A4200BFB4B3 /* TBFiltroHorario.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73029BA519819A4200BFB4B3 /* TBFiltroHorario.xib */; };
 		731B555D198817040092D608 /* perfil.png in Resources */ = {isa = PBXBuildFile; fileRef = 731B555C198817040092D608 /* perfil.png */; };
@@ -263,6 +264,7 @@
 		31F83E19192E85050070D597 /* TBFiltroInstrumento.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBFiltroInstrumento.h; sourceTree = "<group>"; };
 		31F83E1A192E85050070D597 /* TBFiltroInstrumento.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBFiltroInstrumento.m; sourceTree = "<group>"; };
 		31F83E1B192E85050070D597 /* TBFiltroInstrumento.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBFiltroInstrumento.xib; sourceTree = "<group>"; };
+		31FB8CDA19CA25BF00ECEBDF /* WalkwayBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = WalkwayBold.otf; sourceTree = "<group>"; };
 		73029BA319819A4200BFB4B3 /* TBFiltroHorario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBFiltroHorario.h; sourceTree = "<group>"; };
 		73029BA419819A4200BFB4B3 /* TBFiltroHorario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBFiltroHorario.m; sourceTree = "<group>"; };
 		73029BA519819A4200BFB4B3 /* TBFiltroHorario.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBFiltroHorario.xib; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 			children = (
 				1BE8E3CA192533AD00D108C0 /* AppDelegate.h */,
 				1BE8E3CB192533AD00D108C0 /* AppDelegate.m */,
+				31E1ED0719CA0A6900552DBE /* fontes */,
 				1BE8E3F5192539C500D108C0 /* Banco */,
 				1BE8E3F91925449D00D108C0 /* Singleton */,
 				1B166626193507FC00E2FB47 /* Classes */,
@@ -738,6 +741,14 @@
 				316AAA0F199EA49B001CE96B /* bgNavigation.png */,
 			);
 			name = "Imagens Layout";
+			sourceTree = "<group>";
+		};
+		31E1ED0719CA0A6900552DBE /* fontes */ = {
+			isa = PBXGroup;
+			children = (
+				31FB8CDA19CA25BF00ECEBDF /* WalkwayBold.otf */,
+			);
+			name = fontes;
 			sourceTree = "<group>";
 		};
 		31F67C6F1935130A00113DA8 /* Imagens */ = {
@@ -1070,6 +1081,7 @@
 				31F83E1D192E85050070D597 /* TBFiltroInstrumento.xib in Resources */,
 				1BF141F119A536B800E5C9CE /* logo.jpg in Resources */,
 				1BEA45951992C7A100876D75 /* 8.png in Resources */,
+				31FB8CDB19CA25BF00ECEBDF /* WalkwayBold.otf in Resources */,
 				31A004401993F0CA00121EF6 /* TelaBandaViewController.xib in Resources */,
 				1BEA45971992C7A100876D75 /* 10.png in Resources */,
 				316AAA0A199E9D89001CE96B /* bg.png in Resources */,
