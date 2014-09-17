@@ -14,27 +14,25 @@
 
 @implementation appFinal1Tests
 
-- (void)setUp
-{
+- (void)setUp{
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    
 }
 
-- (void)tearDown
-{
+- (void)tearDown{
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+    
+    
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
-}
 
 -(void)testLogando{
     
-    NSString *email = @"ricardo@gmail.com";
-    NSString *senha = @"1";
+    NSString *email = @"cardosorafael@outlook.com.br";
+    NSString *senha = @"123";
     
     NSDictionary *json = [LoginConexao login:email senha:senha];
     

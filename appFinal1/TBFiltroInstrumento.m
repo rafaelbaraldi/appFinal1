@@ -25,7 +25,6 @@
     if (self) {
         
         [[self navigationItem] setTitle:@"Filtro Instrumento"];
-        [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
     }
     return self;
 }
@@ -37,8 +36,15 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    //Carrega lista de todos instrumentos musicais
     _todosInstrumentos = [BuscaStore retornaListaDe:@"instrumento"];
+    
+    //Remove lista de busca de instrumentos filtrados
     [[[BuscaStore sharedStore] instrumentosFiltrados] removeAllObjects];
+    
+    //BG
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

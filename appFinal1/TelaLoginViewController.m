@@ -35,21 +35,19 @@
     
     //bg
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
-    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
+    [[[self navigationController] navigationBar] setTintColor:[[LocalStore sharedStore] CORFONTE]];
     [self arredondaBordaBotoes];
-    
     [_txtSenha setSecureTextEntry:YES];
-    
-    
-    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
-    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
-    if (networkStatus == NotReachable) {
-        NSLog(@"There IS NO internet connection");
-    } else {
-        NSLog(@"There IS internet connection");
-        if (networkStatus == ReachableViaWiFi) { NSLog(@"wifi"); }
-        else if (networkStatus == ReachableViaWWAN) { NSLog(@"carrier");}
-    }
+
+//    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+//    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+//    if (networkStatus == NotReachable) {
+//        NSLog(@"There IS NO internet connection");
+//    } else {
+//        NSLog(@"There IS internet connection");
+//        if (networkStatus == ReachableViaWiFi) { NSLog(@"wifi"); }
+//        else if (networkStatus == ReachableViaWWAN) { NSLog(@"carrier");}
+//    }
 }
 
 -(void)arredondaBordaBotoes{

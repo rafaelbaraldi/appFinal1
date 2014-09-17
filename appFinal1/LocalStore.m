@@ -29,11 +29,15 @@
     self = [super init];
     if(self){
         _RAIOBORDA = 5;
+        
         _USUARIOZERO = @"0";
+        
         _URL = @"http://54.187.203.61/appMusica/";
         
-        [self carregaTelas];
+        _CORFONTE = [UIColor colorWithRed:0.937 green:0.114 blue:0.278 alpha:1];
         
+        
+        [self carregaTelas];
         [self carregaContexto];
     }
     return self;

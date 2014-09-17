@@ -33,6 +33,14 @@
     //bg
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     [self arredondaBordaBotoes];
+    
+    
+    //teste nome fontes
+    for (NSString *familyName in [UIFont familyNames]) {
+        for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
+            NSLog(@"%@", fontName);
+        }
+    }
 }
 
 -(void)arredondaBordaBotoes{

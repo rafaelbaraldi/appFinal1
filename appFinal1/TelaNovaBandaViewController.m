@@ -25,6 +25,8 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    [self carregaLayout];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -33,6 +35,16 @@
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
+}
+
+-(void) carregaLayout{
+    //BG - Layout
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    
+    [[_btnCriarBanda layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
+    
+    //Remove linhas em branco da TableView
+    _tbMembros.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (IBAction)btnMaisMembroClick:(id)sender {
