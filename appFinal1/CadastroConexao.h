@@ -16,6 +16,4 @@
 
 +(void)uploadFoto:(UIImage*)foto;
 
-+(NSString*)validarEmail:(NSString*)email;
-
 @end

@@ -116,18 +116,4 @@
     return valida;
 }
 
-+(NSString*)validaEmail:(NSString *)email{
-    
-    NSString *resposta =[CadastroConexao validarEmail:email];
-    
-    if ([resposta length] > 0) {
-        return @"erro";
-    }
-    else{
-        return resposta;
-    }
-}
-
 @end
-
-
