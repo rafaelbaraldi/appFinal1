@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface TelaOpcoesViewController : UIViewController
+@interface TelaOpcoesViewController : UIViewController <FBLoginViewDelegate>
 
 - (IBAction)btnAlterarFoto:(id)sender;
 - (IBAction)btnEcontrarAmigos:(id)sender;
