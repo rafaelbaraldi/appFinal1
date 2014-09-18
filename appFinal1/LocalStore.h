@@ -35,14 +35,11 @@
 
 @interface LocalStore : NSObject
 
-/////////////////////////////////
-@property int RAIOBORDA;
 
+@property int RAIOBORDA;
 @property NSString *USUARIOZERO;
 @property NSString *URL;
-
-@property UIColor *CORFONTE;
-////////////////////////////////
+/////////////////////////////
 
 @property TPUsuario *usuarioAtual;
 

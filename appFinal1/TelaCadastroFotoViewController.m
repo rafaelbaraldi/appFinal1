@@ -96,7 +96,7 @@
     }
     
     //Limpa Imagem
-    _fotoSelecionada.image = [UIImage imageNamed:@"perfil.png"];
+    _fotoSelecionada.image = nil;
     
     //Vai para tela de busca - inicio do APP
     if ([LocalStore verificaSeViewJaEstaNaPilha:[[self navigationController] viewControllers] proximaTela:[[LocalStore sharedStore] TelaPerfil]]) {

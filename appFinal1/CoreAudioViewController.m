@@ -31,7 +31,7 @@
     
     //Imagem do tab bar selecionada
     [_tabBar setSelectedItem:_gravarItem];
-    [_tabBar setTintColor:[[LocalStore sharedStore] CORFONTE]];
+    [_tabBar setTintColor:[UIColor redColor]];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -41,7 +41,8 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    //bg - Layout
+    
+    //bg
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     [self arredondaBordaBotoes];
     

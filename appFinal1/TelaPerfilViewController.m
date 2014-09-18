@@ -17,7 +17,6 @@
 #import "TPBanda.h"
 
 #import <AVFoundation/AVAudioSession.h>
-#import "UIImageView+WebCache.h"
 
 @interface TelaPerfilViewController ()
 @end
@@ -40,9 +39,6 @@
     
     //Botao opções
     [self carregaBotaoOpcoes];
-    
-    //BG
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -65,7 +61,7 @@
     
     //Botao do NAvigationItem
     [_tabBar setSelectedItem:_perfilItem];
-    [_tabBar setTintColor:[[LocalStore sharedStore] CORFONTE]];
+    [_tabBar setTintColor:[UIColor redColor]];
 }
 
 -(void)escondeBotaoDeVoltarSeUsuarioLogado{
@@ -98,17 +94,13 @@
 -(void)carregaDadosUsuario{
     
     //Imagem
-    NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", [[LocalStore sharedStore] usuarioAtual].identificador];
-    NSURL *imageURL = [NSURL URLWithString:urlFoto];
+    NSString *urlImage = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", [[LocalStore sharedStore] usuarioAtual].identificador];
     
-    _imagePerfil.image = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:urlFoto];
-    
-    if (_imagePerfil.image == nil) {
-        [_imagePerfil sd_setImageWithURL:imageURL placeholderImage:nil
-                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                  [[SDImageCache sharedImageCache] storeImage:image forKey:urlFoto];
-                              }];
+    UIImage* foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]]];
+    if (foto == nil) {
+        foto = [UIImage imageNamed:@"perfil.png"];
     }
+    _imagePerfil.image = foto;
     _imagePerfil.layer.masksToBounds = YES;
     _imagePerfil.layer.cornerRadius = _imagePerfil.frame.size.width / 2;
     
@@ -117,22 +109,11 @@
     _lblPerfilCidade.text = [[LocalStore sharedStore] usuarioAtual].cidade;
     _lblPerfilBairro.text = [[LocalStore sharedStore] usuarioAtual].bairro;
     
-    //Botao Editar Perfil (Função em programação)
-    [self botaoPerfilEditar];
+    //Botao Editar Perfil (Função em programção)
+    _btnPerfilEditar.enabled = NO;
     
     //Carrega Qtd de Amigos
     _lblPerfilAmigos.text = [NSString stringWithFormat:@"%@", [PerfilStore qtdDeAmigos]];
-}
-
--(void)botaoPerfilEditar{
-    
-    _btnPerfilEditar.enabled = NO;
-
-    [_btnPerfilEditar setBackgroundColor:[UIColor whiteColor]];
-    [_btnPerfilEditar setTitleColor:[[LocalStore sharedStore] CORFONTE] forState:UIControlStateNormal];
-    [[_btnPerfilEditar layer] setBorderWidth:2];
-    [[_btnPerfilEditar layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
-    [[_btnPerfilEditar layer] setBorderColor:([[LocalStore sharedStore] CORFONTE].CGColor)];
 }
 
 -(void)carregaBotaoOpcoes{
@@ -154,7 +135,7 @@
 -(void)carregaBandas{
     _bandas = [PerfilStore retornaListaDeBandas];
     
-    int x = 0;
+    int x = 10;
     
     for (TPBanda* b in _bandas) {
         
@@ -165,10 +146,10 @@
         [icone addTarget:self action:@selector(banda:) forControlEvents:UIControlEventTouchUpInside];
         
         //Nome
-        UILabel* nome = [[UILabel alloc] initWithFrame:CGRectMake(x - 7, 45, 60, 45)];
+        UILabel* nome = [[UILabel alloc] initWithFrame:CGRectMake(x, 45, 45, 45)];
         nome.text =  b.nome;
         nome.textColor = [UIColor blackColor];
-        [nome setFont:[UIFont fontWithName:@"Verdana" size:8.0]];
+        [nome setFont:[UIFont fontWithName:@"Verdana" size:7.0]];
         [nome setTextAlignment:NSTextAlignmentCenter];
         
         if([b.nome length] > 11){
@@ -179,14 +160,11 @@
         [_scrollBanda addSubview:nome];
         
         //Posicao
-        x += 65;
+        x += 70;
     }
 
     //Scroll
     [_scrollBanda setContentSize:CGSizeMake(x, 82)];
-//    [[_scrollBanda layer] setCornerRadius:2.5f];
-//    [[_scrollBanda layer] setBorderWidth:1];
-//    [[_scrollBanda layer] setBorderColor:[[LocalStore sharedStore] CORFONTE].CGColor];
 }
 
 -(void)banda:(UIButton*)bt{
@@ -214,9 +192,6 @@
     [_collectionV registerNib:cellTitulo forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
 
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-    
-    //Opcoes CollectionView de Musicas
-    [_collectionV setBackgroundColor:[UIColor clearColor]];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -233,7 +208,7 @@
     
     UILabel* lblMusica = (UILabel*)[cell viewWithTag:1];
     lblMusica.text = ((Musica*)[[_musicasPorCategoria objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).nome;
-    lblMusica.font = [lblMusica.font fontWithSize:10];
+    lblMusica.font = [lblMusica.font fontWithSize:8];
     
     return cell;
 }

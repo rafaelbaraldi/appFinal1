@@ -11,8 +11,6 @@
 #import "LocalStore.h"
 #import "CadastroStore.h"
 
-#import "LayoutCustom.h"
-
 @interface TelaHorariosViewController ()
 
 @end
@@ -31,10 +29,6 @@
     [super viewDidLoad];
     
     [self carregaValoresHorarios];
-}
-
--(void)viewDidDisappear:(BOOL)animated{
-    [_collectionHorario reloadData];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -63,10 +57,10 @@
 
     NSMutableArray *horariosQueToca = [[CadastroStore sharedStore] horariosQueToca];
     if ([horariosQueToca containsObject:cellData]){
-        [cell addSubview:[LayoutCustom botaoCollectionViewCellSelecionado]];
+        [cell setBackgroundColor:[UIColor redColor]];
     }
     else{
-        [cell addSubview:[LayoutCustom botaoCollectionViewCellDefatult:cell]];
+        [cell setBackgroundColor:[UIColor grayColor]];
     }
     
     return cell;
@@ -82,11 +76,11 @@
     NSMutableArray *horariosQueToca = [[CadastroStore sharedStore] horariosQueToca];
     if (![horariosQueToca containsObject:cellData] ){
         [horariosQueToca addObject:cellData];
-        [cell addSubview:[LayoutCustom botaoCollectionViewCellSelecionado]];
+        [cell setBackgroundColor:[UIColor redColor]];
     }
     else{
         [horariosQueToca removeObject:cellData];
-        [cell addSubview:[LayoutCustom botaoCollectionViewCellDefatult:cell]];
+        [cell setBackgroundColor:[UIColor grayColor]];
     }
 }
 

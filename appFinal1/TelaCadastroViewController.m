@@ -41,7 +41,7 @@ const int OBSERVACOES = 2;
     
     //bg
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
-    [[[self navigationController] navigationBar] setTintColor:[[LocalStore sharedStore] CORFONTE]];
+    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
     
     //Usa Cadastro no singleton
     [[CadastroStore sharedStore]setViewTela:self];
@@ -124,6 +124,9 @@ const int OBSERVACOES = 2;
     
     //Finalizamos um cadastro
     [self finalizaCadastro:usuario];
+    
+    //Limpa tela após cadastras
+    [self limpaTela];
 }
 
 -(void)finalizaCadastro:(Usuario*)usuario{
@@ -148,9 +151,6 @@ const int OBSERVACOES = 2;
             [alert show];
         }
         else{
-            //Limpa tela após cadastras
-            [self limpaTela];
-            
             //Realiza Login
             [LoginStore login:usuario.email senha:usuario.senha];
             

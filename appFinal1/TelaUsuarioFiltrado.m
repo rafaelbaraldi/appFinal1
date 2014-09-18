@@ -11,10 +11,6 @@
 #import "TPInstrumento.h"
 #import "TPHorario.h"
 #import "BuscaStore.h"
-//#import "ImgStore.h"
-#import "LocalStore.h"
-
-#import "UIImageView+WebCache.h"
 
 @interface TelaUsuarioFiltrado ()
 
@@ -45,14 +41,13 @@
     [self carregaUsuarioFiltrado];
     
     //Back red
-    [[[self navigationController] navigationBar] setTintColor:[[LocalStore sharedStore] CORFONTE]];
+    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
     
     //Carrega opcoes Scrool View
     [self carregaOpcoesScrool];
 }
 
 -(void)carregaOpcoesScrool{
-    
     _scrollView.pagingEnabled = NO;
     _scrollView.showsVerticalScrollIndicator = YES;
     _scrollView.scrollEnabled = YES;
@@ -89,8 +84,7 @@
     _lblCidadeBairro.numberOfLines = 2;
     _lblCidadeBairro.text = [NSString stringWithFormat:@"%@, %@", _pessoa.cidade, _pessoa.bairro];
     
-    //Atribuicoes
-    [self carregaAtribuicoes];
+    _lblAtribuicoes.text = _pessoa.atribuicoes;
     
     //Estilos
     [self carregaEstilosUsuario];
@@ -108,38 +102,6 @@
     [self carregaInstrumentosUsuario];
 }
 
--(void)carregaPosicaoView{
-    CGRect frame = _lblEstilo.frame;
-    frame.size.width = 299;
-    frame.size.height = ceilf((float)[_pessoa.estilos count] / 4) * 27;
-    [_lblEstilo setFrame:frame];
-    
-    frame = _lblInstrumentos.frame;
-    frame.origin.y = _lblEstilo.frame.origin.y + _lblEstilo.frame.size.height + 30;
-    frame.size.height = ([_pessoa.instrumentos count] + 1) * 27;
-    [_lblInstrumentos setFrame:frame];
-    
-    frame = _lblTituloAtribuicoes.frame;
-    frame.origin.y = _lblInstrumentos.frame.origin.y + _lblInstrumentos.frame.size.height + 30;
-    [_lblTituloAtribuicoes setFrame:frame];
-    
-    frame = _lblAtribuicoes.frame;
-    frame.origin.y = _lblTituloAtribuicoes.frame.origin.y + _lblTituloAtribuicoes.frame.size.height + 10;
-    [_lblAtribuicoes setFrame:frame];
-}
-
--(void)carregaAtribuicoes{
-    
-    if([_pessoa.atribuicoes length] == 0){
-        _lblAtribuicoes.text = @" - ";
-    }
-    else{
-        _lblAtribuicoes.text = _pessoa.atribuicoes;
-    }
-    
-    [_lblAtribuicoes sizeToFit];
-}
-
 -(void)carregaEstilosUsuario{
     
     _lblEstilo.numberOfLines = ceilf((float)[_pessoa.estilos count] / 4);
@@ -154,22 +116,38 @@
     [self espacoEntreLinhasLBL:_lblEstilo];
 }
 
+-(void)carregaPosicaoView{
+    CGRect frame = _lblEstilo.frame;
+    frame.size.width = 299;
+    frame.size.height = ceilf((float)[_pessoa.estilos count] / 4) * 27;
+    [_lblEstilo setFrame:frame];
+
+    frame = _lblInstrumentos.frame;
+    frame.origin.y = _lblEstilo.frame.origin.y + _lblEstilo.frame.size.height + 30;
+    frame.size.height = ([_pessoa.instrumentos count] + 1) * 27;
+    [_lblInstrumentos setFrame:frame];
+
+    frame = _lblTituloAtribuicoes.frame;
+    frame.origin.y = _lblInstrumentos.frame.origin.y + _lblInstrumentos.frame.size.height + 30;
+    [_lblTituloAtribuicoes setFrame:frame];
+
+    frame = _lblAtribuicoes.frame;
+    frame.origin.y = _lblTituloAtribuicoes.frame.origin.y + _lblTituloAtribuicoes.frame.size.height + 10;
+    [_lblAtribuicoes setFrame:frame];
+}
+
 -(void)carregaHorariosUsuario{
     
-    UILabel *lblTituloHorario = [[UILabel alloc] initWithFrame:CGRectMake(20, _lblAtribuicoes.frame.origin.y + _lblAtribuicoes.frame.size.height + 20, 300, 20)];
-    UILabel *lblHorarios = [[UILabel alloc] initWithFrame:CGRectMake(20, lblTituloHorario.frame.origin.y + lblTituloHorario.frame.size.height, 300, 20)];
+    UILabel *lblTituloHorario = [[UILabel alloc] initWithFrame:CGRectMake(10, _lblAtribuicoes.frame.origin.y + _lblAtribuicoes.frame.size.height + 30, 300, 20)];
+    UILabel *lblHorarios = [[UILabel alloc] initWithFrame:CGRectMake(10, lblTituloHorario.frame.origin.y + lblTituloHorario.frame.size.height + 20, 300, 20)];
     
     lblTituloHorario.text = @"Horarios para ensaio";
-    lblTituloHorario.textColor = [[LocalStore sharedStore] CORFONTE];
-    lblTituloHorario.font = [UIFont boldSystemFontOfSize:18];
-    
     lblHorarios.text = [TPHorario horariosEmTexto:_pessoa.horarios];
     
     //Espaco entre as linhas
     [self espacoEntreLinhasLBL:lblHorarios];
     
     lblHorarios.numberOfLines = [_pessoa.horarios count];
-    lblHorarios.textColor = [UIColor whiteColor];
     [lblHorarios sizeToFit];
     
     [_scrollView addSubview:lblTituloHorario];
@@ -183,37 +161,30 @@
 -(void)carregaImagemUsuario{
 
     NSString *urlFoto = [NSString stringWithFormat:@"http://54.187.203.61/appMusica/FotosDePerfil/%@.png", [BuscaStore buscaPessoa:_identificador].identificador];
-//    UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
-
-//    UIImage *foto = [[ImgStore sharedImageCache] getImage:urlFoto];
-    
-    UIImage* foto = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:urlFoto];
-    if(foto == nil){
-        foto = [UIImage imageNamed:@"perfil.png"];
-    }
+    UIImage *foto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlFoto]]];
     
     _imageUsuario.layer.masksToBounds = YES;
     _imageUsuario.layer.cornerRadius = _imageUsuario.frame.size.width / 2;
+    if (foto == nil) {
+        foto = [UIImage imageNamed:@"perfil.png"];
+    }
     _imageUsuario.image = foto;
     _imageUsuario.tag = 3;
 }
 
 -(void)carregaInstrumentosUsuario{
-//    _lblInstrumentos.text = @"Instrumento                               Possui";
+    _lblInstrumentos.text = @"Instrumento                               Possui";
     
     int i = 0;
-    
-//    _lblInstrumentos.frame = CGRectMake(_lblInstrumentos.frame.origin.x, _lblInstrumentos.frame.origin.y, 290, _lblInstrumentos.frame.size.height);
-    
     for(TPInstrumento *tp in _pessoa.instrumentos){
         _lblInstrumentos.text = [NSString stringWithFormat:@"%@\n%@", _lblInstrumentos.text, tp.nome];
         
         UIButton *btnPossui = [[UIButton alloc] initWithFrame:CGRectMake(240, 33+(i*27), 18, 18)];
         if (tp.possui) {
-            [btnPossui addSubview:[self botaoInstrumentoPossui:YES]];
+            btnPossui.backgroundColor = [UIColor greenColor];
         }
         else{
-            [btnPossui addSubview:[self botaoInstrumentoPossui:NO]];
+            btnPossui.backgroundColor = [UIColor redColor];
         }
         
         [_lblInstrumentos addSubview:btnPossui];
@@ -224,20 +195,7 @@
     [self espacoEntreLinhasLBL:_lblInstrumentos];
 
     _lblInstrumentos.numberOfLines = [_pessoa.instrumentos count] + 1;
-//    [_lblInstrumentos sizeToFit];
-}
-
--(UIImageView*)botaoInstrumentoPossui:(BOOL)possui{
-    
-    UIImageView *botao = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
-    if(possui){
-        botao.image = [UIImage imageNamed:@"selecionado.png"];
-    }
-    else{
-        botao.image = [UIImage imageNamed:@"deselecionado.png"];
-    }
-    
-    return botao;
+    [_lblInstrumentos sizeToFit];
 }
 
 -(void)espacoEntreLinhasLBL:(UILabel*)label{
@@ -256,38 +214,26 @@
     NSString *result = [BuscaConexao seguirAmigo:_pessoa.identificador acao:@"consultar"];
     
     if ([result isEqualToString:@"1\n"]) {
-        [self botaoSguindoAmigo];
+        [self alterarBotaoSeguirAmigo];
     }
     else{
-        [self botaoSeguirAmigo];
+        [[_btnSeguir layer] setBorderWidth:1];
+        [[_btnSeguir layer] setBorderColor:([UIColor blueColor].CGColor)];
+        [_btnSeguir setTitle:@"Seguir" forState:UIControlStateNormal];
+        [_btnSeguir setBackgroundColor:[UIColor whiteColor]];
+        [_btnSeguir setTintColor:[UIColor blueColor]];
     }
 }
 
 - (IBAction)btnSeguirClick:(id)sender {
-    if(![[[LocalStore sharedStore] usuarioAtual].identificador isEqualToString:@"0"]){
-        [BuscaConexao seguirAmigo:_pessoa.identificador acao:@"inserir"];
-        [self carregaBotaoSeguirAmigo];
-    }
+    [BuscaConexao seguirAmigo:_pessoa.identificador acao:@"inserir"];
+    [self carregaBotaoSeguirAmigo];
 }
 
--(void)botaoSeguirAmigo{
-    
-    [_btnSeguir setTitle:@"Seguir" forState:UIControlStateNormal];
-    [_btnSeguir setBackgroundColor:[UIColor whiteColor]];
-    [_btnSeguir setTitleColor:[[LocalStore sharedStore] CORFONTE] forState:UIControlStateNormal];
-    [[_btnSeguir layer] setBorderWidth:2];
-    [[_btnSeguir layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
-    [[_btnSeguir layer] setBorderColor:([[LocalStore sharedStore] CORFONTE].CGColor)];
-}
+-(void)alterarBotaoSeguirAmigo{
 
--(void)botaoSguindoAmigo{
-    
     [_btnSeguir setTitle:@"Seguindo" forState:UIControlStateNormal];
-    [_btnSeguir setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_btnSeguir setBackgroundColor:[[LocalStore sharedStore] CORFONTE]];
-    [[_btnSeguir layer] setBorderWidth:2];
-    [[_btnSeguir layer] setCornerRadius:[[LocalStore sharedStore] RAIOBORDA]];
-    [[_btnSeguir layer] setBorderColor:[UIColor whiteColor].CGColor];
-
+    [_btnSeguir setBackgroundColor:[UIColor blueColor]];
+    [_btnSeguir setTintColor:[UIColor whiteColor]];
 }
 @end

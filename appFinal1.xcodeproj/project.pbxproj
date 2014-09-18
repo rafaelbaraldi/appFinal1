@@ -18,7 +18,6 @@
 		1B1613111992A6E2009D5513 /* TelaAmigosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B16130F1992A6E2009D5513 /* TelaAmigosViewController.xib */; };
 		1B1613151992A993009D5513 /* BandaConexao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1613141992A993009D5513 /* BandaConexao.m */; };
 		1B1666291935084000E2FB47 /* TPUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1666281935084000E2FB47 /* TPUsuario.m */; };
-		1B28C40A19C76018008391C7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B28C40919C76018008391C7 /* FacebookSDK.framework */; };
 		1B52395F1995537800D2A640 /* TelaMusicasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B52395D1995537800D2A640 /* TelaMusicasViewController.m */; };
 		1B5239601995537800D2A640 /* TelaMusicasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B52395E1995537800D2A640 /* TelaMusicasViewController.xib */; };
 		1B5FE140192FC23B00E35BCC /* BuscaStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5FE13F192FC23B00E35BCC /* BuscaStore.m */; };
@@ -153,7 +152,6 @@
 		1B1613141992A993009D5513 /* BandaConexao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandaConexao.m; sourceTree = "<group>"; };
 		1B1666271935084000E2FB47 /* TPUsuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPUsuario.h; sourceTree = "<group>"; };
 		1B1666281935084000E2FB47 /* TPUsuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPUsuario.m; sourceTree = "<group>"; };
-		1B28C40919C76018008391C7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		1B52395C1995537800D2A640 /* TelaMusicasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelaMusicasViewController.h; sourceTree = "<group>"; };
 		1B52395D1995537800D2A640 /* TelaMusicasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelaMusicasViewController.m; sourceTree = "<group>"; };
 		1B52395E1995537800D2A640 /* TelaMusicasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TelaMusicasViewController.xib; sourceTree = "<group>"; };
@@ -307,7 +305,6 @@
 				1BE8E3C0192533AD00D108C0 /* CoreData.framework in Frameworks */,
 				1BE8E3BE192533AD00D108C0 /* UIKit.framework in Frameworks */,
 				1BE8E3BA192533AD00D108C0 /* Foundation.framework in Frameworks */,
-				1B28C40A19C76018008391C7 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +511,6 @@
 		1BE8E3B8192533AD00D108C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1B28C40919C76018008391C7 /* FacebookSDK.framework */,
 				73C84969196F11BD003D9371 /* Security.framework */,
 				1BE8E3B9192533AD00D108C0 /* Foundation.framework */,
 				1BE8E3BB192533AD00D108C0 /* CoreGraphics.framework */,
@@ -1142,10 +1138,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/rafael.baraldi/Documents/FacebookSDK,
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "appFinal1/appFinal1-Prefix.pch";
 				INFOPLIST_FILE = "appFinal1/appFinal1-Info.plist";
@@ -1159,10 +1151,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/rafael.baraldi/Documents/FacebookSDK,
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "appFinal1/appFinal1-Prefix.pch";
 				INFOPLIST_FILE = "appFinal1/appFinal1-Info.plist";

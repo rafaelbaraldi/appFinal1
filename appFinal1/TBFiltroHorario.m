@@ -11,8 +11,6 @@
 #import "BuscaStore.h"
 #import "LocalStore.h"
 
-#import "LayoutCustom.h"
-
 @interface TBFiltroHorario ()
 
 @end
@@ -61,10 +59,10 @@
     
     NSMutableArray *horarios = [[BuscaStore sharedStore] horariosFiltrados];
     if ([horarios containsObject:cellData]){
-        [cell addSubview:[LayoutCustom botaoCollectionViewCellSelecionado]];
+        [cell setBackgroundColor:[UIColor redColor]];
     }
     else{
-        [cell addSubview:[LayoutCustom botaoCollectionViewCellDefatult:cell]];
+        [cell setBackgroundColor:[UIColor grayColor]];
     }
     
     return cell;
@@ -80,11 +78,11 @@
     NSMutableArray *horarios = [[BuscaStore sharedStore] horariosFiltrados];
     if (![horarios containsObject:cellData] ){
         [horarios addObject:cellData];
-        [cell addSubview:[LayoutCustom botaoCollectionViewCellSelecionado]];
+        [cell setBackgroundColor:[UIColor redColor]];
     }
     else{
         [horarios removeObject:cellData];
-        [cell addSubview:[LayoutCustom botaoCollectionViewCellDefatult:cell]];
+        [cell setBackgroundColor:[UIColor grayColor]];
     }
 }
 

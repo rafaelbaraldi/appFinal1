@@ -23,6 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [[self navigationItem] setTitle:@"Filtro Estilo Musical"];
+        
     }
     return self;
 }
@@ -34,14 +35,9 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
 
-    //Carrega Lista de todos estilos musicais
     _todosEstilos = [BuscaStore retornaListaDe:@"estilo"];
-
-    //Remove lista de estilos pelo filtro de Busca 
-    [[[BuscaStore sharedStore] estilosFiltrados] removeAllObjects];
     
-    //BG
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    [[[BuscaStore sharedStore] estilosFiltrados] removeAllObjects];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
